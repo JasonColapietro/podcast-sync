@@ -18,8 +18,8 @@ const { R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_BUCKET = 'aisu
 const SHOW = {
   title: 'AI Suede — Build, Create, Ship',
   subtitle: 'Music IP, AI tools, and solo founder stories',
-  description: 'AI tools for creators, music production, and solo founder stories from Jason Colapietro of Suede Labs AI. Covers building with AI, programmable IP, and what it actually takes to ship as a solo founder.',
-  keywords: 'AI, music production, creator economy, programmable IP, blockchain music, Suede Labs, Jason Colapietro, solo founder, Web3, Base, on-chain royalties, music NFT, artist ownership, crypto, entrepreneurship',
+  description: 'AI tools for creators, music production, and solo founder stories from Jason Colapietro (also known as Johnny Suede) of Suede Labs AI. Covers building with AI, programmable IP, and what it actually takes to ship as a solo founder.',
+  keywords: 'AI, music production, creator economy, programmable IP, blockchain music, Suede Labs, Jason Colapietro, Johnny Suede, solo founder, Web3, Base, on-chain royalties, music NFT, artist ownership, crypto, entrepreneurship',
   author: 'Jason Colapietro',
   email: 'jasoncola1@gmail.com',
   link: 'https://podcast.suedeai.ai',
