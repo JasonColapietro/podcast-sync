@@ -96,13 +96,21 @@ function formatDuration(sec) {
     : `${m}:${String(s).padStart(2, '0')}`
 }
 
+function fixDescription(text) {
+  if (!text) return text
+  return text
+    .replace(/🔗 Suede Labs → \[add link\]/g, '🔗 Suede Labs → https://suedeai.ai')
+    .replace(/🐦 Johnny Suede → \[add link\]/g, '🐦 Johnny Suede → https://x.com/johnnysuede')
+    .replace(/🐦 @aisuede → \[add link\]/g, '🐦 @aisuede → https://x.com/aisuede')
+}
+
 function buildRSS(episodes) {
   const items = episodes.map((ep, i) => `
     <item>
       <title><![CDATA[${ep.title}]]></title>
       <itunes:title><![CDATA[${ep.title}]]></itunes:title>
-      <description><![CDATA[${ep.description || ep.title}]]></description>
-      <content:encoded><![CDATA[${ep.description || ep.title}]]></content:encoded>
+      <description><![CDATA[${fixDescription(ep.description || ep.title)}]]></description>
+      <content:encoded><![CDATA[${fixDescription(ep.description || ep.title)}]]></content:encoded>
       <enclosure url="${ep.audioUrl}" length="${ep.fileSize}" type="audio/mpeg"/>
       <guid isPermaLink="false">aisuede-${ep.id}</guid>
       <pubDate>${new Date(ep.timestamp * 1000).toUTCString()}</pubDate>
