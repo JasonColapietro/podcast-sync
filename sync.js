@@ -17,14 +17,20 @@ const { R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_BUCKET = 'aisu
 
 const SHOW = {
   title: 'AI Suede — Build, Create, Ship',
+  subtitle: 'Music IP, AI tools, and solo founder stories',
   description: 'AI tools for creators, music production, and solo founder stories from Jason Colapietro of Suede Labs AI. Covers building with AI, programmable IP, and what it actually takes to ship as a solo founder.',
+  keywords: 'AI, music production, creator economy, programmable IP, blockchain music, Suede Labs, Jason Colapietro, solo founder, Web3, Base, on-chain royalties, music NFT, artist ownership, crypto, entrepreneurship',
   author: 'Jason Colapietro',
   email: 'jasoncola1@gmail.com',
   link: 'https://podcast.suedeai.ai',
+  feedUrl: 'https://podcast.suedeai.ai/feed.xml',
   image: 'https://podcast.suedeai.ai/artwork.jpg',
   language: 'en-us',
   category: 'Technology',
   subcategory: 'Entrepreneurship',
+  copyright: `© ${new Date().getFullYear()} Jason Colapietro / Suede Labs AI`,
+  // Podcasting 2.0 stable GUID for this show (generated once, never changes)
+  guid: 'b3e7f1a2-4c8d-4e9f-a0b1-2c3d4e5f6a7b',
 }
 
 function makeS3() {
@@ -91,28 +97,40 @@ function formatDuration(sec) {
 }
 
 function buildRSS(episodes) {
-  const items = episodes.map(ep => `
+  const items = episodes.map((ep, i) => `
     <item>
       <title><![CDATA[${ep.title}]]></title>
+      <itunes:title><![CDATA[${ep.title}]]></itunes:title>
       <description><![CDATA[${ep.description || ep.title}]]></description>
+      <content:encoded><![CDATA[${ep.description || ep.title}]]></content:encoded>
       <enclosure url="${ep.audioUrl}" length="${ep.fileSize}" type="audio/mpeg"/>
       <guid isPermaLink="false">aisuede-${ep.id}</guid>
       <pubDate>${new Date(ep.timestamp * 1000).toUTCString()}</pubDate>
       <itunes:duration>${formatDuration(ep.duration)}</itunes:duration>
       <itunes:explicit>false</itunes:explicit>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:episode>${episodes.length - i}</itunes:episode>
       ${ep.thumbnail ? `<itunes:image href="${ep.thumbnail}"/>` : ''}
     </item>`).join('')
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0"
   xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
-  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:podcast="https://podcastindex.org/namespace/1.0">
   <channel>
     <title>${SHOW.title}</title>
+    <atom:link href="${SHOW.feedUrl}" rel="self" type="application/rss+xml"/>
     <description>${SHOW.description}</description>
     <link>${SHOW.link}</link>
     <language>${SHOW.language}</language>
+    <copyright>${SHOW.copyright}</copyright>
     <itunes:author>${SHOW.author}</itunes:author>
+    <itunes:subtitle>${SHOW.subtitle}</itunes:subtitle>
+    <itunes:summary>${SHOW.description}</itunes:summary>
+    <itunes:keywords>${SHOW.keywords}</itunes:keywords>
+    <itunes:type>episodic</itunes:type>
     <itunes:owner>
       <itunes:name>${SHOW.author}</itunes:name>
       <itunes:email>${SHOW.email}</itunes:email>
@@ -122,6 +140,9 @@ function buildRSS(episodes) {
       <itunes:category text="${SHOW.subcategory}"/>
     </itunes:category>
     <itunes:explicit>false</itunes:explicit>
+    <podcast:guid>${SHOW.guid}</podcast:guid>
+    <podcast:locked>no</podcast:locked>
+    <podcast:person role="host" href="https://suedeai.ai/founder">${SHOW.author}</podcast:person>
     ${items}
   </channel>
 </rss>`
