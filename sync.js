@@ -102,6 +102,9 @@ function fixDescription(text) {
     .replace(/🔗 Suede Labs → \[add link\]/g, '🔗 Suede Labs → https://suedeai.ai')
     .replace(/🐦 Johnny Suede → \[add link\]/g, '🐦 Johnny Suede → https://x.com/johnnysuede')
     .replace(/🐦 @aisuede → \[add link\]/g, '🐦 @aisuede → https://x.com/aisuede')
+    .replace(/\[([^\]]+)\]\(\1\)/g, '$1')
+    .replace(/https:\/\/twitter\.com\//g, 'https://x.com/')
+    .replace(/x\.com\/jasoncola1\b/g, 'x.com/johnnysuede')
 }
 
 function buildRSS(episodes) {
