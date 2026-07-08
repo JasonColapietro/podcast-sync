@@ -10,7 +10,7 @@
     <description>AI tools for creators, music production, and solo founder stories from Jason Colapietro (also known as Johnny Suede) of Suede Labs AI. Covers building with AI, programmable IP, and what it actually takes to ship as a solo founder.</description>
     <link>https://podcast.suedeai.ai</link>
     <language>en-us</language>
-    <copyright>© 2026 Jason Colapietro / Suede Labs AI</copyright>
+    <copyright>&#xA9; 2026 Jason Colapietro / Suede Labs AI</copyright>
     <itunes:author>Jason Colapietro</itunes:author>
     <itunes:subtitle>Music IP, AI tools, and solo founder stories</itunes:subtitle>
     <itunes:summary>AI tools for creators, music production, and solo founder stories from Jason Colapietro (also known as Johnny Suede) of Suede Labs AI. Covers building with AI, programmable IP, and what it actually takes to ship as a solo founder.</itunes:summary>
@@ -1116,10 +1116,10 @@ This is the exclusive $SUEDE AI AMA segment from Mario Nawfal’s Crypto Roundta
       <itunes:image href="https://i.ytimg.com/vi/8uJewXJ1U28/maxresdefault.jpg"/>
     </item>
     <item>
-      <title><![CDATA[New member welcome part two $SUEDE￼]]></title>
-      <itunes:title><![CDATA[New member welcome part two $SUEDE￼]]></itunes:title>
-      <description><![CDATA[New member welcome part two $SUEDE￼]]></description>
-      <content:encoded><![CDATA[New member welcome part two $SUEDE￼]]></content:encoded>
+      <title><![CDATA[New member welcome part two $SUEDE]]></title>
+      <itunes:title><![CDATA[New member welcome part two $SUEDE]]></itunes:title>
+      <description><![CDATA[New member welcome part two $SUEDE]]></description>
+      <content:encoded><![CDATA[New member welcome part two $SUEDE]]></content:encoded>
       <enclosure url="https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/3WCYIsEdqX4.mp3" length="9809781" type="audio/mpeg"/>
       <guid isPermaLink="false">aisuede-3WCYIsEdqX4</guid>
       <pubDate>Sat, 28 Dec 2024 00:42:44 GMT</pubDate>

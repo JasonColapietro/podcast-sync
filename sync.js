@@ -28,7 +28,7 @@ const SHOW = {
   language: 'en-us',
   category: 'Technology',
   subcategory: 'Entrepreneurship',
-  copyright: `© ${new Date().getFullYear()} Jason Colapietro / Suede Labs AI`,
+  copyright: `&#xA9; ${new Date().getFullYear()} Jason Colapietro / Suede Labs AI`,
   // Podcasting 2.0 stable GUID for this show (generated once, never changes)
   guid: 'b3e7f1a2-4c8d-4e9f-a0b1-2c3d4e5f6a7b',
 }
@@ -96,9 +96,13 @@ function formatDuration(sec) {
     : `${m}:${String(s).padStart(2, '0')}`
 }
 
+function cleanText(text) {
+  return String(text).replace(/\uFFFC/g, '').trim()
+}
+
 function fixDescription(text) {
   if (!text) return text
-  return text
+  return cleanText(text)
     .replace(/🔗 Suede Labs → \[add link\]/g, '🔗 Suede Labs → https://suedeai.ai')
     .replace(/🐦 Johnny Suede → \[add link\]/g, '🐦 Johnny Suede → https://x.com/johnnysuede')
     .replace(/🐦 @aisuede → \[add link\]/g, '🐦 @aisuede → https://x.com/aisuede')
@@ -108,12 +112,15 @@ function fixDescription(text) {
 }
 
 function buildRSS(episodes) {
-  const items = episodes.map((ep, i) => `
+  const items = episodes.map((ep, i) => {
+    const title = cleanText(ep.title)
+    const description = fixDescription(ep.description || ep.title)
+    return `
     <item>
-      <title><![CDATA[${ep.title}]]></title>
-      <itunes:title><![CDATA[${ep.title}]]></itunes:title>
-      <description><![CDATA[${fixDescription(ep.description || ep.title)}]]></description>
-      <content:encoded><![CDATA[${fixDescription(ep.description || ep.title)}]]></content:encoded>
+      <title><![CDATA[${title}]]></title>
+      <itunes:title><![CDATA[${title}]]></itunes:title>
+      <description><![CDATA[${description}]]></description>
+      <content:encoded><![CDATA[${description}]]></content:encoded>
       <enclosure url="${ep.audioUrl}" length="${ep.fileSize}" type="audio/mpeg"/>
       <guid isPermaLink="false">aisuede-${ep.id}</guid>
       <pubDate>${new Date(ep.timestamp * 1000).toUTCString()}</pubDate>
@@ -122,7 +129,8 @@ function buildRSS(episodes) {
       <itunes:episodeType>full</itunes:episodeType>
       <itunes:episode>${episodes.length - i}</itunes:episode>
       ${ep.thumbnail ? `<itunes:image href="${ep.thumbnail}"/>` : ''}
-    </item>`).join('')
+    </item>`
+  }).join('')
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0"
