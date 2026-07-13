@@ -1,0 +1,11 @@
+# AI Suede Podcast
+> Podcast feed from Jason Colapietro on Suede Labs AI, creator ownership, music IP, programmable media, and solo founder shipping.
+
+## Main sections
+- [Podcast home](https://podcast.suedeai.ai/): Episode artwork, description, and links to listen.
+- [RSS feed](https://podcast.suedeai.ai/feed.xml): Full episode feed for podcast apps.
+
+## Key facts
+- Host: Jason Colapietro, founder of Suede Labs AI.
+- Topics: creator ownership infrastructure, programmable IP, music rights, AI product shipping.
+- Publisher: Suede Labs AI (suedeai.ai).
