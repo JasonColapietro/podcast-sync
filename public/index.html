@@ -39,27 +39,47 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "PodcastSeries",
-        "@id": "https://podcast.suedeai.ai/#podcast",
-        "name": "AI Suede - Build, Create, Ship",
-        "url": "https://podcast.suedeai.ai/",
-        "description": "Podcast feed from Jason Colapietro on Suede Labs AI, creator ownership, music IP, programmable media, and solo founder shipping.",
-        "image": "https://podcast.suedeai.ai/artwork.jpg",
-        "inLanguage": "en-US",
-        "author": {
-          "@type": "Person",
-          "@id": "https://suedeai.ai/founder#person",
-          "name": "Jason Colapietro",
-          "alternateName": "Johnny Suede",
-          "url": "https://suedeai.ai/founder"
-        },
-        "publisher": {
-          "@type": "Organization",
-          "@id": "https://suedeai.ai/#organization",
-          "name": "Suede Labs AI",
-          "url": "https://suedeai.ai"
-        },
-        "webFeed": "https://podcast.suedeai.ai/feed.xml"
+        "@graph": [
+          {
+            "@type": "PodcastSeries",
+            "@id": "https://podcast.suedeai.ai/#podcast",
+            "name": "AI Suede - Build, Create, Ship",
+            "url": "https://podcast.suedeai.ai/",
+            "description": "Podcast feed from Jason Colapietro on Suede Labs AI, creator ownership, music IP, programmable media, and solo founder shipping.",
+            "image": "https://podcast.suedeai.ai/artwork.jpg",
+            "inLanguage": "en-US",
+            "author": {
+              "@type": "Person",
+              "@id": "https://suedeai.ai/founder#person",
+              "name": "Jason Colapietro",
+              "alternateName": "Johnny Suede",
+              "url": "https://suedeai.ai/founder"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "@id": "https://suedeai.ai/#organization",
+              "name": "Suede Labs AI",
+              "url": "https://suedeai.ai"
+            },
+            "webFeed": "https://podcast.suedeai.ai/feed.xml"
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://podcast.suedeai.ai/#webpage",
+            "url": "https://podcast.suedeai.ai/",
+            "name": "AI Suede Podcast | Jason Colapietro and Suede Labs AI",
+            "description": "Podcast feed from Jason Colapietro on Suede Labs AI, creator ownership, music IP, programmable media, and solo founder shipping.",
+            "datePublished": "2026-07-15",
+            "dateModified": "2026-07-15",
+            "isPartOf": {
+              "@id": "https://podcast.suedeai.ai/#podcast"
+            },
+            "primaryImageOfPage": {
+              "@type": "ImageObject",
+              "url": "https://podcast.suedeai.ai/artwork.jpg"
+            }
+          }
+        ]
       }
     </script>
     <style>
@@ -176,6 +196,20 @@
           monospace;
       }
 
+      nav.footer-nav {
+        margin-top: 12px;
+      }
+
+      nav.footer-nav a {
+        margin-right: 16px;
+        color: var(--muted);
+        text-decoration: none;
+      }
+
+      nav.footer-nav a:hover {
+        color: var(--text);
+      }
+
       @media (max-width: 780px) {
         main {
           padding: 40px 0;
@@ -208,7 +242,14 @@
             <a class="button secondary" href="https://suedeai.ai">Suede Labs AI</a>
           </div>
           <p class="meta">
-            Feed URL: <code>https://podcast.suedeai.ai/feed.xml</code>
+            Feed URL: <code>https://podcast.suedeai.ai/feed.xml</code><br />
+            Page last updated <time dateTime="2026-07-15">2026-07-15</time>.
+            <nav class="footer-nav" aria-label="Footer">
+              <a href="/about">About</a>
+              <a href="/contact">Contact</a>
+              <a href="https://suedeai.ai/founder">Jason Colapietro</a>
+              <a href="https://suedeai.ai">Suede Labs AI</a>
+            </nav>
           </p>
         </div>
         <img class="artwork" src="/artwork.jpg" alt="AI Suede podcast artwork" />
