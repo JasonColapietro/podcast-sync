@@ -145,8 +145,21 @@
         font-size: 19px;
       }
 
+      /* <picture> is the grid item now, so it carries the sizing the
+         <img> used to. Without this the picture would shrink to inline
+         width and the artwork column would collapse. */
+      .artwork-frame {
+        display: block;
+        width: 100%;
+      }
+
       .artwork {
         width: 100%;
+        /* The width/height attributes on the <img> reserve space before the
+           image loads (no layout shift), but a definite height would beat
+           aspect-ratio and render the square artwork 320x640. height:auto
+           hands sizing back to aspect-ratio. */
+        height: auto;
         aspect-ratio: 1;
         border: 1px solid var(--line);
         border-radius: 8px;
@@ -219,6 +232,7 @@
           grid-template-columns: 1fr;
         }
 
+        .artwork-frame,
         .artwork {
           max-width: 320px;
         }
@@ -252,7 +266,29 @@
             </nav>
           </p>
         </div>
-        <img class="artwork" src="/artwork.jpg" alt="AI Suede podcast artwork" />
+        <!-- Web-sized derivatives only. /artwork.jpg stays the 3000x3000
+             original because feed.xml, og:image, twitter:image and the
+             JSON-LD all point at it — Apple Podcasts requires 1400-3000px,
+             and social crawlers fetch it server-side, so none of that costs
+             a visitor anything. This <img> was the one place the full
+             319 KB file was being sent to real browsers for a box that is
+             never wider than 320px. -->
+        <picture class="artwork-frame">
+          <source
+            type="image/webp"
+            srcset="/artwork-640.webp 640w, /artwork-960.webp 960w"
+            sizes="320px"
+          />
+          <img
+            class="artwork"
+            src="/artwork-640.jpg"
+            srcset="/artwork-640.jpg 640w, /artwork-960.jpg 960w"
+            sizes="320px"
+            width="640"
+            height="640"
+            alt="AI Suede podcast artwork"
+          />
+        </picture>
       </section>
     </main>
   </body>
