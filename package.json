@@ -3,7 +3,8 @@
   "type": "module",
   "version": "1.0.0",
   "scripts": {
-    "sync": "node sync.js"
+    "sync": "node sync.js",
+    "build:episodes": "node build-episodes.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.600.0",
