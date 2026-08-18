@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "scripts": {
     "sync": "node sync.js",
-    "build:episodes": "node build-episodes.mjs"
+    "build:episodes": "node build-episodes.mjs",
+    "test": "node --test"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.600.0",
