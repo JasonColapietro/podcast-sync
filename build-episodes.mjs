@@ -213,6 +213,10 @@ const SHARED_HEAD = (e) => `    <meta charset="utf-8" />
     <title>${esc(e.title)} | AI Suede Podcast</title>
     <meta name="description" content="${esc(e.metaDescription)}" />
     <link rel="canonical" href="${e.url}" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link
       rel="alternate"
       type="application/rss+xml"
