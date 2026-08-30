@@ -135,6 +135,24 @@ const schemaDescription = (e) => truncateAtWord(resolveSummary(e), 400);
 const bodyText = (e) =>
   looksLikeStub(e.description) ? fallbackSummary(e) : e.description.replace(/\*\*|__/g, "");
 
+/**
+ * Give every episode's show notes a useful semantic section without rewriting
+ * feed copy. The one long transcript-style description already carries a
+ * chapter marker; split at that existing boundary so neither retrieval block
+ * exceeds the audited ~375-word ceiling. Every original word stays in order.
+ */
+const episodeSections = (e) => {
+  const marker = "⏱️ Chapters";
+  const chapterStart = e.body.indexOf(marker);
+  if (chapterStart > 0) {
+    return [
+      { heading: "Episode show notes", body: e.body.slice(0, chapterStart).trim() },
+      { heading: "Episode chapters", body: e.body.slice(chapterStart).trim() },
+    ];
+  }
+  return [{ heading: "Episode show notes", body: e.body }];
+};
+
 /** Stable, readable slug. Falls back to the guid so a page always has a home. */
 const slugify = (title, guid) => {
   const base = String(title)
@@ -295,6 +313,7 @@ const STYLE = `      :root { color-scheme: dark; --bg:#09090b; --panel:#151517; 
       .eyebrow { text-transform:uppercase; letter-spacing:.12em; font-size:12px;
         color:var(--muted); margin:0 0 8px; }
       h1 { font-size:clamp(24px,4vw,38px); line-height:1.2; margin:0 0 12px; }
+      h2 { font-size:clamp(20px,3vw,26px); line-height:1.25; margin:32px 0 12px; }
       .meta { color:var(--muted); font-size:14px; margin:0 0 28px; }
       .notes { white-space:pre-wrap; }
       audio { width:100%; margin:20px 0 28px; }
@@ -321,7 +340,14 @@ ${STYLE}
         ${e.date ? `Published ${esc(e.date)}` : ""}${e.date && e.duration ? " &middot; " : ""}${e.duration ? `${esc(e.duration)}` : ""}
       </p>
       ${e.audio ? `<audio controls preload="none" src="${esc(e.audio)}"></audio>` : ""}
-      <div class="notes">${esc(e.body)}</div>
+${episodeSections(e)
+  .map(
+    (section) => `      <section class="notes-section">
+        <h2>${section.heading}</h2>
+        <div class="notes">${esc(section.body)}</div>
+      </section>`,
+  )
+  .join("\n")}
       <hr />
       <p class="meta">
         From <a href="/">AI Suede — Build, Create, Ship</a> by
