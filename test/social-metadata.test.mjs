@@ -15,6 +15,13 @@ const pages = readdirSync(episodesDir)
   .filter((name) => name.endsWith(".html"))
   .sort();
 
+const FAVICON_LINKS = [
+  'rel="icon" href="/favicon.ico" sizes="any"',
+  'rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"',
+  'rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"',
+  'rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"',
+];
+
 const metaContent = (html, attribute, value) => {
   const pattern = new RegExp(
     `<meta\\s+${attribute}="${value}"\\s+content="([^"]*)"\\s*/?>`,
@@ -25,6 +32,11 @@ const metaContent = (html, attribute, value) => {
 test("generated episode pages match the feed episode set", () => {
   assert.ok(episodes.length > 0, "expected at least one episode in the feed");
   assert.equal(pages.length, episodes.length, "expected one generated page per feed episode");
+});
+
+test("the podcast root advertises the Suede favicon set", () => {
+  const html = readFileSync(join(root, "public", "index.html"), "utf8");
+  for (const link of FAVICON_LINKS) assert.ok(html.includes(link), `missing ${link}`);
 });
 
 for (const page of pages) {
@@ -40,5 +52,6 @@ for (const page of pages) {
     assert.equal(metaContent(html, "name", "twitter:title"), ogTitle);
     assert.equal(metaContent(html, "name", "twitter:description"), ogDescription);
     assert.equal(metaContent(html, "name", "twitter:image"), ogImage);
+    for (const link of FAVICON_LINKS) assert.ok(html.includes(link), `${page}: missing ${link}`);
   });
 }
