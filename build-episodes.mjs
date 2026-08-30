@@ -227,7 +227,10 @@ const SHARED_HEAD = (e) => `    <meta charset="utf-8" />
     <meta property="og:image" content="${ARTWORK}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@AISUEDE" />
-    <meta name="twitter:creator" content="@johnnysuede" />`;
+    <meta name="twitter:creator" content="@johnnysuede" />
+    <meta name="twitter:title" content="${esc(e.title)}" />
+    <meta name="twitter:description" content="${esc(e.metaDescription)}" />
+    <meta name="twitter:image" content="${ARTWORK}" />`;
 
 const episodeJsonLd = (e) =>
   JSON.stringify(
