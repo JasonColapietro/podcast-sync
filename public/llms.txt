@@ -3,6 +3,7 @@
 
 ## Main sections
 - [Podcast home](https://podcast.suedeai.ai/): Episode artwork, description, and links to listen.
+- [Appearances](https://podcast.suedeai.ai/appearances): Guest appearances on other people's podcasts, AMAs and Spaces, grouped by host show.
 - [RSS feed](https://podcast.suedeai.ai/feed.xml): Full episode feed for podcast apps.
 
 ## Key facts

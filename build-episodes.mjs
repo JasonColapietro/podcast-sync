@@ -19,6 +19,15 @@
 import { readFileSync, writeFileSync, mkdirSync, rmSync, existsSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath, pathToFileURL } from "url";
+import {
+  APPEARANCES_URL,
+  allCreditNodes,
+  creditSentence,
+  episodeCredit,
+  groupAppearances,
+  guestSentence,
+  hostedCredit,
+} from "./appearances.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PUBLIC = join(__dirname, "public");
@@ -258,8 +267,27 @@ const SHARED_HEAD = (e) => `    <meta charset="utf-8" />
     <meta name="twitter:description" content="${esc(e.metaDescription)}" />
     <meta name="twitter:image" content="${ARTWORK}" />`;
 
-const episodeJsonLd = (e) =>
-  JSON.stringify(
+/**
+ * Most of these recordings are appearances on other people's programmes. For
+ * those, the credit comes from appearances.mjs: `actor` for him and for any host
+ * who is a Person, `producer` for whoever put the recording on, `isBasedOn` for
+ * the original show — and no `author`, because he did not author them.
+ *
+ * Episodes he genuinely made keep `author`, and five of those carry the inverse
+ * credit: he is the author and the third party the notes name is the guest, with
+ * no `producer` and no `isBasedOn` because nobody else put them on. Both tables
+ * live in appearances.mjs; a slug is in at most one of them, so the two lookups
+ * can never both answer.
+ *
+ * Which property any of these entities lands under is decided by its type, not
+ * its role — `actor` is Person-only in schema.org, so an organisation is
+ * credited by a property that is in range for it, whether it hosted the
+ * recording or guested on it. See THE TYPE RULE and the evidence rule, both in
+ * appearances.mjs.
+ */
+const episodeJsonLd = (e) => {
+  const credit = episodeCredit(e.slug, PERSON_ID) ?? hostedCredit(e.slug, PERSON_ID);
+  return JSON.stringify(
     {
       "@context": "https://schema.org",
       "@graph": [
@@ -292,7 +320,7 @@ const episodeJsonLd = (e) =>
           // of the person in front of search and answer engines far more often
           // than the rich original, which is how a satellite ends up outranking
           // the node it was meant to point at.
-          author: { "@id": PERSON_ID },
+          ...(credit ? credit.properties : { author: { "@id": PERSON_ID } }),
         },
         {
           "@type": "PodcastSeries",
@@ -301,11 +329,13 @@ const episodeJsonLd = (e) =>
           url: `${SITE}/`,
           webFeed: `${SITE}/feed.xml`,
         },
+        ...(credit ? credit.nodes : []),
       ],
     },
     null,
     2,
   );
+};
 
 const STYLE = `      :root { color-scheme: dark; --bg:#09090b; --panel:#151517; --text:#f4f4f5;
         --muted:#a1a1aa; --line:#2a2a2e; --accent:#f43f5e; }
@@ -319,6 +349,8 @@ const STYLE = `      :root { color-scheme: dark; --bg:#09090b; --panel:#151517; 
       h1 { font-size:clamp(24px,4vw,38px); line-height:1.2; margin:0 0 12px; }
       h2 { font-size:clamp(20px,3vw,26px); line-height:1.25; margin:32px 0 12px; }
       .meta { color:var(--muted); font-size:14px; margin:0 0 28px; }
+      .credit { margin:0 0 28px; padding:12px 14px; border:1px solid var(--line);
+        border-radius:8px; background:var(--panel); font-size:15px; }
       .notes { white-space:pre-wrap; }
       audio { width:100%; margin:20px 0 28px; }
       nav.crumbs { font-size:14px; color:var(--muted); margin-bottom:24px; }
@@ -343,6 +375,17 @@ ${STYLE}
       <p class="meta">
         ${e.date ? `Published ${esc(e.date)}` : ""}${e.date && e.duration ? " &middot; " : ""}${e.duration ? `${esc(e.duration)}` : ""}
       </p>
+${
+  // An appearance points at /appearances; an episode of his own with a named
+  // guest says so and points nowhere, because it is not an appearance.
+  creditSentence(e.slug)
+    ? `      <p class="credit">${esc(creditSentence(e.slug))}
+        <a href="/appearances">All appearances</a>.
+      </p>`
+    : guestSentence(e.slug)
+      ? `      <p class="credit">${esc(guestSentence(e.slug))}</p>`
+      : ""
+}
       ${e.audio ? `<audio controls preload="none" src="${esc(e.audio)}"></audio>` : ""}
 ${episodeSections(e)
   .map(
@@ -354,14 +397,184 @@ ${episodeSections(e)
   .join("\n")}
       <hr />
       <p class="meta">
-        From <a href="/">AI Suede — Build, Create, Ship</a> by
-        <a href="https://suedeai.ai/founder">Jason Colapietro</a>.
+${
+  // An appearance is carried on this feed, not authored for it. Saying "by
+  // Jason Colapietro" under someone else's episode is the same false claim the
+  // JSON-LD used to make.
+  creditSentence(e.slug)
+    ? `        Carried on <a href="/">AI Suede — Build, Create, Ship</a>.`
+    : `        From <a href="/">AI Suede — Build, Create, Ship</a> by
+        <a href="https://suedeai.ai/founder">Jason Colapietro</a>.`
+}
         Subscribe via <a href="/feed.xml">RSS</a>.
       </p>
     </main>
   </body>
 </html>
 `;
+
+// ---------------------------------------------------------------------------
+// /appearances — one page listing every appearance on someone else's programme.
+//
+// The appearances existed only as 20 pages scattered through /episodes, each
+// looking like an episode of his own show. There was no single URL a journalist
+// or an answer engine could cite for "where has Jason Colapietro appeared?", so
+// the answer had to be assembled from 33 pages or not given at all. This is
+// that URL: a CollectionPage whose `about` is the canonical Person and whose
+// ItemList carries every appearance, grouped by who hosted it.
+// ---------------------------------------------------------------------------
+
+const APPEARANCES_TITLE = "Podcast appearances | Jason Colapietro";
+const APPEARANCES_DESC =
+  "Guest appearances by Jason Colapietro (Johnny Suede) of Suede Labs AI on other people's " +
+  "podcasts, AMAs and Spaces — grouped by show, each linking to the full recording.";
+
+const appearancesJsonLd = (groups) => {
+  const items = groups.flatMap((g) => g.episodes.map(({ episode }) => episode));
+  return JSON.stringify(
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "CollectionPage",
+          "@id": `${APPEARANCES_URL}#webpage`,
+          url: APPEARANCES_URL,
+          name: APPEARANCES_TITLE,
+          description: APPEARANCES_DESC,
+          isPartOf: { "@id": `${SITE}/#podcast` },
+          about: { "@id": PERSON_ID },
+          mainEntity: { "@id": `${APPEARANCES_URL}#list` },
+        },
+        {
+          "@type": "ItemList",
+          "@id": `${APPEARANCES_URL}#list`,
+          name: "Podcast and AMA appearances",
+          itemListOrder: "https://schema.org/ItemListOrderDescending",
+          numberOfItems: items.length,
+          itemListElement: items.map((e, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            url: e.url,
+            item: { "@id": `${e.url}#episode` },
+          })),
+        },
+        {
+          "@type": "PodcastSeries",
+          "@id": `${SITE}/#podcast`,
+          name: "AI Suede - Build, Create, Ship",
+          url: `${SITE}/`,
+          webFeed: `${SITE}/feed.xml`,
+        },
+        // The hosts and programmes themselves, so this page is where the
+        // third-party entities are described rather than only referenced.
+        ...allCreditNodes(),
+      ],
+    },
+    null,
+    2,
+  );
+};
+
+const appearancesPage = (groups) => {
+  const total = groups.reduce((n, g) => n + g.episodes.length, 0);
+  return `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>${esc(APPEARANCES_TITLE)}</title>
+    <meta name="description" content="${esc(APPEARANCES_DESC)}" />
+    <link rel="canonical" href="${APPEARANCES_URL}" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="AI Suede - Build, Create, Ship"
+      href="${SITE}/feed.xml"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="AI Suede Podcast" />
+    <meta property="og:title" content="${esc(APPEARANCES_TITLE)}" />
+    <meta property="og:description" content="${esc(APPEARANCES_DESC)}" />
+    <meta property="og:url" content="${APPEARANCES_URL}" />
+    <meta property="og:image" content="${ARTWORK}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@AISUEDE" />
+    <meta name="twitter:creator" content="@johnnysuede" />
+    <meta name="twitter:title" content="${esc(APPEARANCES_TITLE)}" />
+    <meta name="twitter:description" content="${esc(APPEARANCES_DESC)}" />
+    <meta name="twitter:image" content="${ARTWORK}" />
+    <script type="application/ld+json">
+${appearancesJsonLd(groups)}
+    </script>
+    <style>
+${STYLE}
+      .lede { color:var(--muted); font-size:17px; margin:0 0 32px; }
+      .show { margin:0 0 32px; padding:18px 20px; border:1px solid var(--line);
+        border-radius:10px; background:var(--panel); }
+      .show h2 { margin:0 0 4px; font-size:20px; }
+      .show .handle { color:var(--muted); font-size:13px; margin:0 0 14px; }
+      .show ul { margin:0; padding-left:20px; }
+      .show li { margin:8px 0; }
+      .show .ep-meta { display:block; color:var(--muted); font-size:13px; }
+      nav.footer-nav { margin-top:12px; font-size:14px; }
+      nav.footer-nav a { margin-right:16px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav class="crumbs"><a href="/">AI Suede Podcast</a> &rsaquo; Appearances</nav>
+      <p class="eyebrow">Appearances</p>
+      <h1>Where Jason Colapietro has been a guest</h1>
+      <p class="lede">
+        ${total} recording${total === 1 ? "" : "s"} across ${groups.length} third-party programme${groups.length === 1 ? "" : "s"} — podcasts,
+        exchange AMAs and Spaces hosted by other people. Each is carried on the
+        <a href="/">AI Suede</a> feed, but the show and the host are theirs.
+        Episodes made for this feed are listed on the <a href="/">home page</a>.
+      </p>
+${groups
+  .map(
+    (g) => `      <section class="show">
+        <h2>${esc(g.name)}</h2>
+        <p class="handle">${
+          g.url
+            ? `<a href="${esc(g.url)}">${esc(g.handle ?? g.url)}</a> &middot; `
+            : g.handle
+              ? `${esc(g.handle)} &middot; `
+              : ""
+        }${g.episodes.length} appearance${g.episodes.length === 1 ? "" : "s"}</p>
+        <ul>
+${g.episodes
+  .map(
+    ({ episode: e }) =>
+      `          <li>\n            <a href="/episodes/${e.slug}">${esc(e.title)}</a>\n            <span class="ep-meta">${e.date ? esc(e.date) : ""}${e.date && e.duration ? " &middot; " : ""}${e.duration ? esc(e.duration) : ""}</span>\n          </li>`,
+  )
+  .join("\n")}
+        </ul>
+      </section>`,
+  )
+  .join("\n")}
+      <hr />
+      <p class="meta">
+        Every credit on this page is taken from the show notes of the recording it
+        names; where the notes do not say whose programme a conversation was, it is
+        not listed here.
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="/">Home</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+          <a href="https://suedeai.ai/founder">Jason Colapietro</a>
+          <a href="https://suedeai.ai">Suede Labs AI</a>
+        </nav>
+      </p>
+    </main>
+  </body>
+</html>
+`;
+};
 
 const main = () => {
   const xml = readFileSync(join(PUBLIC, "feed.xml"), "utf8");
@@ -378,10 +591,18 @@ const main = () => {
     writeFileSync(join(EPISODES_DIR, `${e.slug}.html`), episodePage(e));
   }
 
-  // Sitemap: the three static pages plus every episode.
+  // /appearances — regenerated from the same feed, so the index and the episode
+  // pages can never disagree about who hosted what.
+  const groups = groupAppearances(episodes);
+  const appearancesDir = join(PUBLIC, "appearances");
+  mkdirSync(appearancesDir, { recursive: true });
+  writeFileSync(join(appearancesDir, "index.html"), appearancesPage(groups));
+
+  // Sitemap: the static pages plus every episode.
   const staticUrls = [
     { loc: `${SITE}/`, changefreq: "weekly", priority: "1.0" },
     { loc: `${SITE}/about`, changefreq: "monthly", priority: "0.5" },
+    { loc: `${SITE}/appearances`, changefreq: "monthly", priority: "0.8" },
     { loc: `${SITE}/contact`, changefreq: "monthly", priority: "0.5" },
   ];
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -407,6 +628,10 @@ ${episodes
   // of "indexable" there is.
   const listHtml = `        <section class="episodes" aria-labelledby="episodes-heading">
           <h2 id="episodes-heading">Episodes</h2>
+          <p class="ep-meta">
+            ${groups.reduce((n, g) => n + g.episodes.length, 0)} of these are guest appearances on other people's shows &mdash;
+            <a href="/appearances">see them grouped by host</a>.
+          </p>
           <ol class="episode-list">
 ${episodes
   .map(
@@ -440,6 +665,10 @@ ${episodes
   writeFileSync(indexPath, index);
 
   console.log(`build-episodes: ${episodes.length} episode pages`);
+  console.log(
+    `build-episodes: ${groups.reduce((n, g) => n + g.episodes.length, 0)} appearances across ` +
+      `${groups.length} third-party programmes`,
+  );
   console.log(`build-episodes: sitemap ${staticUrls.length + episodes.length} URLs`);
 };
 
