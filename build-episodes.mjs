@@ -25,6 +25,8 @@ import {
   creditSentence,
   episodeCredit,
   groupAppearances,
+  guestSentence,
+  hostedCredit,
 } from "./appearances.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -269,16 +271,22 @@ const SHARED_HEAD = (e) => `    <meta charset="utf-8" />
  * Most of these recordings are appearances on other people's programmes. For
  * those, the credit comes from appearances.mjs: `actor` for him and for any host
  * who is a Person, `producer` for whoever put the recording on, `isBasedOn` for
- * the original show — and no `author`, because he did not author them. Episodes
- * he genuinely made keep `author`.
+ * the original show — and no `author`, because he did not author them.
  *
- * Which property an entity lands under is decided by its type, not its role —
- * `actor` is Person-only in schema.org, so an organisation is credited by a
- * property that is in range for it. See THE TYPE RULE and the evidence rule,
- * both in appearances.mjs.
+ * Episodes he genuinely made keep `author`, and five of those carry the inverse
+ * credit: he is the author and the third party the notes name is the guest, with
+ * no `producer` and no `isBasedOn` because nobody else put them on. Both tables
+ * live in appearances.mjs; a slug is in at most one of them, so the two lookups
+ * can never both answer.
+ *
+ * Which property any of these entities lands under is decided by its type, not
+ * its role — `actor` is Person-only in schema.org, so an organisation is
+ * credited by a property that is in range for it, whether it hosted the
+ * recording or guested on it. See THE TYPE RULE and the evidence rule, both in
+ * appearances.mjs.
  */
 const episodeJsonLd = (e) => {
-  const credit = episodeCredit(e.slug, PERSON_ID);
+  const credit = episodeCredit(e.slug, PERSON_ID) ?? hostedCredit(e.slug, PERSON_ID);
   return JSON.stringify(
     {
       "@context": "https://schema.org",
@@ -368,11 +376,15 @@ ${STYLE}
         ${e.date ? `Published ${esc(e.date)}` : ""}${e.date && e.duration ? " &middot; " : ""}${e.duration ? `${esc(e.duration)}` : ""}
       </p>
 ${
+  // An appearance points at /appearances; an episode of his own with a named
+  // guest says so and points nowhere, because it is not an appearance.
   creditSentence(e.slug)
     ? `      <p class="credit">${esc(creditSentence(e.slug))}
         <a href="/appearances">All appearances</a>.
       </p>`
-    : ""
+    : guestSentence(e.slug)
+      ? `      <p class="credit">${esc(guestSentence(e.slug))}</p>`
+      : ""
 }
       ${e.audio ? `<audio controls preload="none" src="${esc(e.audio)}"></audio>` : ""}
 ${episodeSections(e)

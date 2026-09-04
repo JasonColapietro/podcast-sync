@@ -35,11 +35,13 @@
  * test/appearances.test.mjs enforces all four against public/feed.xml, so a
  * credit that drifts from the source copy fails the build rather than shipping.
  *
- * The remaining 13 episodes are deliberately absent: 8 carry no third party at
- * all and stay authored by him, and 5 are genuinely ambiguous about whose
- * programme they were (listed in UNCLASSIFIED with the reason). An ambiguous
- * page keeps the markup it has — guessing is the one failure mode this file
- * exists to prevent.
+ * The remaining 13 episodes are his own. Five of them named a third party
+ * without ever saying who hosted, and were held back in an UNCLASSIFIED bucket
+ * rather than guessed at; the operator has since confirmed he hosted all five.
+ * They now sit in HOSTED, which is the exact inverse of an appearance: he is the
+ * `author`, and where the notes name a third party, that party is the GUEST
+ * (`actor`) rather than the programme's owner. The other eight name nobody and
+ * need no entry at all.
  */
 
 const SITE = "https://podcast.suedeai.ai";
@@ -65,6 +67,15 @@ export const ENTITIES = {
   btse: { type: "Organization", name: "BTSE", handle: "@BTSE_Official" },
   digifinex: { type: "Organization", name: "DigiFinex", handle: "@DigiFinex" },
   "apex-exchange": { type: "Organization", name: "APEX Exchange", handle: "@APEX_Exchange" },
+  // Guests on his own episodes (see HOSTED). The feed writes each name and
+  // nothing else — no @handle, no link — so each node is a name and a type.
+  // "AJ Writes Crypto" is the whole of what the copy gives: the title names it
+  // and the description calls the recording a "fireside", which is a thing two
+  // people do, so Person is the type the copy supports. MetaGuardians is spoken
+  // of as a project alongside $SUEDE ("What’s next for $SUEDE and
+  // MetaGuardians"), so Organization is.
+  "aj-writes-crypto": { type: "Person", name: "AJ Writes Crypto" },
+  metaguardians: { type: "Organization", name: "MetaGuardians" },
 };
 
 /**
@@ -194,24 +205,66 @@ export const APPEARANCES = {
 };
 
 /**
- * Episodes whose copy names a third party but never says whose programme it
- * was. These keep the markup they have. Each reason is the whole argument for
- * leaving it alone: a wrong credit on a provenance-first estate costs more than
- * a missing one, and every entry here is resolvable by one person who was
- * there.
+ * slug -> episodes he hosted himself.
+ *
+ * These five were the UNCLASSIFIED bucket: each names a third party (or, twice,
+ * names nobody at all) without the copy ever stating whose programme it was, so
+ * rather than guess, the pages were left alone. The operator — the one person
+ * who was there — has since confirmed he hosted all five. That makes them the
+ * inverse of an appearance: `author` is him, `partOfSeries` is his feed, and the
+ * named third party is the GUEST, not the programme's owner. No `producer` and
+ * no `isBasedOn`, because nobody else put these on.
+ *
+ * `guests` is empty where the copy names no third party. Confirming he hosted an
+ * episode says nothing about who else was in the room, and the invention rule
+ * does not bend for a resolved episode: an unnamed guest stays unnamed.
+ *
+ * `evidence` is the verbatim quote the guest credit rests on, checked against
+ * this episode's own copy by test/appearances.test.mjs. `note` records what the
+ * copy does and does not say, so a later reader can see which part of each entry
+ * is quoted and which part is the operator's confirmation.
  */
-export const UNCLASSIFIED = {
-  "aj-writes-crypto-and-suede-labs-ai":
-    'Title names "AJ Writes Crypto" and the description is the five-word stub ' +
-    '"$SUEDE Jason Colapietro Johnny Suede fireside". A fireside has a host, but the copy never says which side hosted.',
-  "suede-ai-interview":
-    'Title and description are both "$SUEDE AI Interview". An interview implies an interviewer; none is named.',
-  "x-spaces-when-suede-ai-suede-is-mentioned":
-    'Title implies other people\'s Spaces ("X Spaces when $SUEDE AI Suede is mentioned"), but no Space, host or account is named.',
-  "suede-x-metaguardians-chill-space":
-    'Copy reads "Join us for an exclusive Chill Space with MetaGuardians" — "join us" reads as Suede\'s own invitation, so which side owned the Space is not stated.',
-  "suede-ai-x-coinmerge-meme-culture-exclusive-voice-chat-game-changing-ai":
-    'Copy reads "Join us for an exclusive voice chat with CoinMerge". CoinMerge hosts elsewhere in this feed, but this page only says "with".',
+export const HOSTED = {
+  "aj-writes-crypto-and-suede-labs-ai": {
+    guests: ["aj-writes-crypto"],
+    evidence: ["AJ Writes Crypto and Suede Labs AI", "$SUEDE Jason Colapietro Johnny Suede fireside"],
+    note:
+      'Title names "AJ Writes Crypto"; the description is the five-word stub ' +
+      '"$SUEDE Jason Colapietro Johnny Suede fireside". The copy never said which side hosted the fireside. It was his.',
+  },
+  "suede-ai-interview": {
+    guests: [],
+    evidence: [],
+    note:
+      'Title and description are both "$SUEDE AI Interview". An interview implies an interviewer, but the copy names ' +
+      "no one, so this stays his episode with no guest credited.",
+  },
+  "x-spaces-when-suede-ai-suede-is-mentioned": {
+    guests: [],
+    evidence: [],
+    note:
+      'Title reads "X Spaces when $SUEDE AI Suede is mentioned." and the description is the stub "Suede ai". No Space, ' +
+      "host or account is named anywhere, so this stays his episode with no guest credited.",
+  },
+  "suede-x-metaguardians-chill-space": {
+    guests: ["metaguardians"],
+    evidence: [
+      "Join us for an exclusive **Chill Space** with **MetaGuardians**",
+      "What’s next for $SUEDE and MetaGuardians",
+    ],
+    note:
+      '"Join us for an exclusive Chill Space with MetaGuardians" — the "join us" was his, and MetaGuardians was the guest.',
+  },
+  "suede-ai-x-coinmerge-meme-culture-exclusive-voice-chat-game-changing-ai": {
+    guests: ["coinmerge"],
+    evidence: [
+      "$SUEDE AI x CoinMerge Meme Culture",
+      "Join us for an exclusive voice chat with CoinMerge",
+    ],
+    note:
+      'Copy reads "Join us for an exclusive voice chat with CoinMerge". CoinMerge hosts two other recordings in this ' +
+      "feed and is credited as their producer; on this one it was the guest.",
+  },
 };
 
 const entityId = (key) => `${APPEARANCES_URL}#${ENTITIES[key].type === "Person" ? "person" : "org"}-${key}`;
@@ -323,6 +376,46 @@ export const episodeCredit = (slug, personId) => {
   };
 };
 
+/**
+ * The credit to splice into one episode he hosted himself — the mirror image of
+ * episodeCredit():
+ *
+ *   author       — him, by canonical @id. He made this one, so the claim the
+ *                  appearance pages had to drop is the correct claim here.
+ *   actor /      — the guest, and only the guest. He is already the author;
+ *   contributor    naming him a second time as a participant on his own episode
+ *                  would say nothing the author edge does not. On an appearance
+ *                  he is the participant and `author` is absent; here it is the
+ *                  other way round, which is exactly the distinction being
+ *                  drawn. Which of the two properties a guest lands under is
+ *                  THE TYPE RULE's call, not this function's: a guest who is a
+ *                  Person is an `actor`, an organisation is a `contributor`.
+ *                  The role is identical either way — only the type differs.
+ *   producer     — absent. Nobody else put these on.
+ *   isBasedOn    — absent. There is no original programme; this IS the original.
+ *
+ * Guest entities are minted by the same entityId() as hosts, so one third party
+ * has one @id across the estate: CoinMerge hosting Sol Train and CoinMerge
+ * guesting on a voice chat are the same organisation, and giving it a second
+ * identifier for the second role would split it in two for anything reading the
+ * graph. A guest that never hosted is described on the episode page that names
+ * it rather than on /appearances, which lists only appearances.
+ */
+export const hostedCredit = (slug, personId) => {
+  const h = HOSTED[slug];
+  if (!h) return null;
+  const guests = byParticipation(h.guests);
+  const refs = (keys) => keys.map((k) => ({ "@id": entityId(k) }));
+  return {
+    properties: {
+      author: { "@id": personId },
+      ...(guests.actor.length ? { actor: refs(guests.actor) } : {}),
+      ...(guests.contributor.length ? { contributor: refs(guests.contributor) } : {}),
+    },
+    nodes: h.guests.map(entityNode),
+  };
+};
+
 const listNames = (keys) => {
   const names = keys.map((k) => ENTITIES[k].name);
   if (names.length <= 1) return names[0] ?? "";
@@ -342,6 +435,18 @@ export const creditSentence = (slug) => {
   if (hosts && programme) return `Guest appearance on ${programme}, hosted by ${hosts}.`;
   if (hosts) return `Guest appearance, hosted by ${hosts}.`;
   return `Guest appearance on ${programme}.`;
+};
+
+/**
+ * The visible credit for an episode he hosted, built from the same table as its
+ * markup — same rule as creditSentence(). Null where no guest is named, so those
+ * pages keep the plain "From AI Suede … by Jason Colapietro" footer they had.
+ */
+export const guestSentence = (slug) => {
+  const h = HOSTED[slug];
+  if (!h?.guests.length) return null;
+  const noun = h.guests.length === 1 ? "guest" : "guests";
+  return `Hosted by Jason Colapietro, with ${listNames(h.guests)} as ${noun}.`;
 };
 
 /**
