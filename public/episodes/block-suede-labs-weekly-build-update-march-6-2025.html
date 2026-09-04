@@ -50,9 +50,16 @@
         "encodingFormat": "audio/mpeg",
         "duration": "PT1H9M37S"
       },
-      "author": {
-        "@id": "https://suedeai.ai/founder#person"
-      }
+      "actor": [
+        {
+          "@id": "https://suedeai.ai/founder#person"
+        }
+      ],
+      "producer": [
+        {
+          "@id": "https://podcast.suedeai.ai/appearances#org-block"
+        }
+      ]
     },
     {
       "@type": "PodcastSeries",
@@ -60,6 +67,12 @@
       "name": "AI Suede - Build, Create, Ship",
       "url": "https://podcast.suedeai.ai/",
       "webFeed": "https://podcast.suedeai.ai/feed.xml"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://podcast.suedeai.ai/appearances#org-block",
+      "name": "Block",
+      "alternateName": "@Block"
     }
   ]
 }
@@ -77,6 +90,8 @@
       h1 { font-size:clamp(24px,4vw,38px); line-height:1.2; margin:0 0 12px; }
       h2 { font-size:clamp(20px,3vw,26px); line-height:1.25; margin:32px 0 12px; }
       .meta { color:var(--muted); font-size:14px; margin:0 0 28px; }
+      .credit { margin:0 0 28px; padding:12px 14px; border:1px solid var(--line);
+        border-radius:8px; background:var(--panel); font-size:15px; }
       .notes { white-space:pre-wrap; }
       audio { width:100%; margin:20px 0 28px; }
       nav.crumbs { font-size:14px; color:var(--muted); margin-bottom:24px; }
@@ -91,6 +106,9 @@
       <p class="meta">
         Published 2025-03-16 &middot; 1:09:37
       </p>
+      <p class="credit">Guest appearance, hosted by Block.
+        <a href="/appearances">All appearances</a>.
+      </p>
       <audio controls preload="none" src="https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/EUJjMQpt6Ls.mp3"></audio>
       <section class="notes-section">
         <h2>Episode show notes</h2>
@@ -98,8 +116,7 @@
       </section>
       <hr />
       <p class="meta">
-        From <a href="/">AI Suede — Build, Create, Ship</a> by
-        <a href="https://suedeai.ai/founder">Jason Colapietro</a>.
+        Carried on <a href="/">AI Suede — Build, Create, Ship</a>.
         Subscribe via <a href="/feed.xml">RSS</a>.
       </p>
     </main>
