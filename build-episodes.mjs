@@ -26,6 +26,10 @@ const EPISODES_DIR = join(PUBLIC, "episodes");
 const SITE = "https://podcast.suedeai.ai";
 const ARTWORK = `${SITE}/artwork.jpg`;
 const SHOW = "AI Suede — Build, Create, Ship";
+// Canonical Person @id for the host. The node itself is published at
+// https://suedeai.ai/founder; every page in this estate points at it rather
+// than redeclaring it.
+const PERSON_ID = "https://suedeai.ai/founder#person";
 
 // The (?=[\s/>]) lookahead is load-bearing: without it, <itunes:episode…> also
 // matches <itunes:episodeType>, and pick("itunes:episode") returns
@@ -281,7 +285,14 @@ const episodeJsonLd = (e) =>
                 ...(e.isoDuration ? { duration: e.isoDuration } : {}),
               }
             : undefined,
-          author: { "@id": "https://suedeai.ai/founder#person" },
+          // Reference the canonical Person by @id only. The full record —
+          // jobTitle, description, sameAs, image — lives at
+          // https://suedeai.ai/founder and is supplied from there. Restating a
+          // name/url-only copy of it on 30+ episode pages puts a thin duplicate
+          // of the person in front of search and answer engines far more often
+          // than the rich original, which is how a satellite ends up outranking
+          // the node it was meant to point at.
+          author: { "@id": PERSON_ID },
         },
         {
           "@type": "PodcastSeries",
@@ -289,13 +300,6 @@ const episodeJsonLd = (e) =>
           name: "AI Suede - Build, Create, Ship",
           url: `${SITE}/`,
           webFeed: `${SITE}/feed.xml`,
-        },
-        {
-          "@type": "Person",
-          "@id": "https://suedeai.ai/founder#person",
-          name: "Jason Colapietro",
-          alternateName: "Johnny Suede",
-          url: "https://suedeai.ai/founder",
         },
       ],
     },

@@ -4,6 +4,8 @@
   "version": "1.0.0",
   "scripts": {
     "sync": "node sync.js",
+    "regen:feed": "node regen-feed.mjs",
+    "check:feed": "node regen-feed.mjs --check",
     "build:episodes": "node build-episodes.mjs",
     "test": "node --test"
   },
