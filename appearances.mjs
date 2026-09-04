@@ -254,13 +254,46 @@ const entityKeysFor = (a) => {
 };
 
 /**
+ * THE TYPE RULE
+ * -------------
+ * Which property an entity may be published under, for the "took part in this
+ * recording" claim. The entity's TYPE decides it — never its role.
+ *
+ *   Person        -> `actor`
+ *   Organization  -> `contributor`
+ *
+ * schema.org ranges `actor` to Person (and PerformingGroup); an Organization
+ * there is out of range. `contributor` ranges to Organization and Person, so it
+ * carries the same claim for a non-person without leaving the schema. This is
+ * not pedantry: the entire point of this markup is that a machine reads it, and
+ * an out-of-range property is exactly what a strict parser drops — an off-spec
+ * credit is closer to no credit at all than to a correct one, which would defeat
+ * the change. PodcastEpisode has no `guest`, so these two are what there is.
+ *
+ * `producer` is deliberately outside this rule: it already ranges to
+ * Organization and Person, and it says something narrower and better than either
+ * ("put the recording on"), so an organisation that produced a recording is
+ * credited there rather than demoted to a vaguer property.
+ */
+export const participationProperty = (key) =>
+  ENTITIES[key].type === "Person" ? "actor" : "contributor";
+
+/** Split entity keys into the participation property each one belongs under. */
+export const byParticipation = (keys) => {
+  const split = { actor: [], contributor: [] };
+  for (const key of keys) split[participationProperty(key)].push(key);
+  return split;
+};
+
+/**
  * The credit to splice into one episode's JSON-LD.
  *
- *   actor      — him, by canonical @id, plus any host who is a person. `actor`
- *                is what schema.org gives a CreativeWork for "appeared in";
- *                PodcastEpisode has no `guest`.
- *   producer   — the parties who put the recording on. This is the third-party
- *                credit that was missing entirely.
+ *   actor      — him, by canonical @id, plus any host who is a Person. Hosts
+ *                that are organisations are not listed here: see THE TYPE RULE.
+ *   producer   — the parties who put the recording on, Person and Organization
+ *                alike. This is the third-party credit that was missing
+ *                entirely, and it is where an organisation that hosted a
+ *                recording is credited.
  *   isBasedOn  — the named original programme, where the copy names one.
  *   author     — deliberately absent. He did not author these, and the copy
  *                does not reliably say who did.
@@ -272,7 +305,9 @@ export const episodeCredit = (slug, personId) => {
   const a = APPEARANCES[slug];
   if (!a) return null;
 
-  const hostPeople = a.producers.filter((k) => ENTITIES[k].type === "Person");
+  // Organisations that hosted are credited by `producer` below, which is in
+  // range for them and more specific than a participation property would be.
+  const hostPeople = a.producers.filter((k) => participationProperty(k) === "actor");
   const nodes = entityKeysFor(a).map(entityNode);
   if (a.programme) nodes.push(programmeNode(a.programme));
 

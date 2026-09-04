@@ -11,6 +11,7 @@ import {
   PROGRAMMES,
   UNCLASSIFIED,
   creditSentence,
+  participationProperty,
 } from "../appearances.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -184,6 +185,75 @@ test("episodes he made keep him as author", () => {
     assert.deepEqual(node.author, { "@id": PERSON_ID }, `${e.slug} lost its author`);
     assert.ok(!("producer" in node), `${e.slug} credits a third party it has no evidence for`);
   }
+});
+
+/**
+ * THE TYPE RULE, enforced against what actually shipped.
+ *
+ * schema.org ranges `actor` to Person; `contributor` and `producer` range to
+ * Organization and Person alike. A property used outside its range is what a
+ * strict consumer discards, so an off-spec credit is nearer to no credit than to
+ * a correct one — which would defeat the whole point of publishing it.
+ *
+ * This reads the generated pages rather than the table, so it catches a credit
+ * that went out under the wrong property however it got there.
+ */
+const RANGE = {
+  actor: ["Person"],
+  contributor: ["Person", "Organization"],
+  producer: ["Person", "Organization"],
+};
+
+test("no entity is credited under a property its type is out of range for", () => {
+  let checked = 0;
+  const seen = new Set();
+
+  for (const e of episodes) {
+    const graph = graphFor(e.slug);
+    const typeOf = new Map(
+      graph.filter((n) => n["@id"] && n["@type"]).map((n) => [n["@id"], n["@type"]]),
+    );
+    const node = graph.find((n) => n["@type"] === "PodcastEpisode");
+
+    for (const [property, allowed] of Object.entries(RANGE)) {
+      if (!(property in node)) continue;
+      for (const ref of [].concat(node[property])) {
+        // The canonical Person is described off-site, at https://suedeai.ai/founder.
+        const type = ref["@id"] === PERSON_ID ? "Person" : typeOf.get(ref["@id"]);
+        assert.ok(type, `${e.slug}: ${ref["@id"]} is credited but never defined on the page`);
+        assert.ok(
+          allowed.includes(type),
+          `${e.slug}: ${type} is out of range for \`${property}\` (allowed: ${allowed.join(", ")})`,
+        );
+        seen.add(`${property}:${type}`);
+        checked += 1;
+      }
+    }
+  }
+
+  // Non-vacuous: this has to have actually looked at credits, and at both kinds
+  // of entity, or it is asserting nothing.
+  assert.ok(checked >= 27, `expected the whole feed's credits, checked ${checked}`);
+  assert.ok(seen.has("actor:Person"), "no Person was checked under actor");
+  assert.ok(
+    [...seen].some((k) => k.endsWith(":Organization")),
+    "no Organization was checked at all",
+  );
+});
+
+test("the table routes each entity to a property its type is in range for", () => {
+  const byProperty = { actor: 0, contributor: 0 };
+  for (const key of Object.keys(ENTITIES)) {
+    const property = participationProperty(key);
+    assert.ok(
+      RANGE[property].includes(ENTITIES[key].type),
+      `${key}: ${ENTITIES[key].type} routed to \`${property}\`, which is out of range for it`,
+    );
+    byProperty[property] += 1;
+  }
+  // Both branches of the rule are exercised by the real table.
+  assert.ok(byProperty.actor > 0, "no Person in the table");
+  assert.ok(byProperty.contributor > 0, "no Organization in the table");
 });
 
 /**

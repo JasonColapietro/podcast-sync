@@ -267,10 +267,15 @@ const SHARED_HEAD = (e) => `    <meta charset="utf-8" />
 
 /**
  * Most of these recordings are appearances on other people's programmes. For
- * those, the credit comes from appearances.mjs: `actor` for him (and for any
- * named host), `producer` for whoever put the recording on, `isBasedOn` for the
- * original show — and no `author`, because he did not author them. Episodes he
- * genuinely made keep `author`. See appearances.mjs for the evidence rule.
+ * those, the credit comes from appearances.mjs: `actor` for him and for any host
+ * who is a Person, `producer` for whoever put the recording on, `isBasedOn` for
+ * the original show — and no `author`, because he did not author them. Episodes
+ * he genuinely made keep `author`.
+ *
+ * Which property an entity lands under is decided by its type, not its role —
+ * `actor` is Person-only in schema.org, so an organisation is credited by a
+ * property that is in range for it. See THE TYPE RULE and the evidence rule,
+ * both in appearances.mjs.
  */
 const episodeJsonLd = (e) => {
   const credit = episodeCredit(e.slug, PERSON_ID);
