@@ -200,14 +200,15 @@
         border-radius: 8px;
         padding: 0 18px;
         background: var(--accent);
-        color: white;
+        color: var(--bg);
         font-weight: 800;
         text-decoration: none;
       }
 
-      .secondary {
+      .button.secondary {
         border-color: var(--line);
         background: var(--panel);
+        color: var(--text);
       }
 
       .meta {
@@ -224,11 +225,14 @@
       }
 
       nav.footer-nav {
-        margin-top: 12px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 10px;
+        margin: 2px 0 0 -8px;
       }
 
       nav.footer-nav a {
-        margin-right: 16px;
+        padding: 10px 8px;
         color: var(--muted);
         text-decoration: none;
       }
@@ -264,9 +268,10 @@
           <p class="eyebrow">Podcast RSS</p>
           <h1>AI Suede: build, create, ship.</h1>
           <p>
-            Conversations and clips from Jason Colapietro, also known as Johnny Suede,
-            on creator ownership, programmable IP, music rights, AI media, and what it
-            actually takes to ship as a solo founder.
+            AI Suede is the podcast feed for Jason Colapietro, also known as Johnny
+            Suede, founder of Suede Labs AI. It carries conversations and clips on
+            creator ownership, programmable IP, music rights, AI media, and what it
+            takes to ship as a solo founder.
           </p>
           <div class="actions">
             <a class="button" href="https://podcasts.apple.com/us/podcast/ai-suede-build-create-ship/id6787263913">Listen on Apple Podcasts</a>
@@ -284,6 +289,7 @@
               <a href="/contact">Contact</a>
               <a href="https://suedeai.ai/founder">Jason Colapietro</a>
               <a href="https://suedeai.ai">Suede Labs AI</a>
+              <a href="https://suedeai.ai/privacy">Privacy</a>
             </nav>
           </p>
         </div>
