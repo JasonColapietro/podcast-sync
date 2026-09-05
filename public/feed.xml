@@ -6,7 +6,7 @@
   xmlns:dc="http://purl.org/dc/elements/1.1/"
   xmlns:podcast="https://podcastindex.org/namespace/1.0">
   <channel>
-    <title>AI Suede — Build, Create, Ship</title>
+    <title>AI Suede: Build, Create, Ship</title>
     <atom:link href="https://podcast.suedeai.ai/feed.xml" rel="self" type="application/rss+xml"/>
     <description>AI tools for creators, music production, and solo founder stories from Jason Colapietro (also known as Johnny Suede) of Suede Labs AI. Covers building with AI, programmable IP, and what it actually takes to ship as a solo founder.</description>
     <link>https://podcast.suedeai.ai</link>

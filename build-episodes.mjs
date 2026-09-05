@@ -34,7 +34,7 @@ const PUBLIC = join(__dirname, "public");
 const EPISODES_DIR = join(PUBLIC, "episodes");
 const SITE = "https://podcast.suedeai.ai";
 const ARTWORK = `${SITE}/artwork.jpg`;
-const SHOW = "AI Suede — Build, Create, Ship";
+const SHOW = "AI Suede: Build, Create, Ship";
 // Canonical Person @id for the host. The node itself is published at
 // https://suedeai.ai/founder; every page in this estate points at it rather
 // than redeclaring it.
@@ -251,7 +251,7 @@ const SHARED_HEAD = (e) => `    <meta charset="utf-8" />
     <link
       rel="alternate"
       type="application/rss+xml"
-      title="AI Suede - Build, Create, Ship"
+      title="AI Suede: Build, Create, Ship"
       href="${SITE}/feed.xml"
     />
     <meta property="og:type" content="article" />
@@ -325,7 +325,7 @@ const episodeJsonLd = (e) => {
         {
           "@type": "PodcastSeries",
           "@id": `${SITE}/#podcast`,
-          name: "AI Suede - Build, Create, Ship",
+          name: "AI Suede: Build, Create, Ship",
           url: `${SITE}/`,
           webFeed: `${SITE}/feed.xml`,
         },
@@ -405,8 +405,8 @@ ${
   // Jason Colapietro" under someone else's episode is the same false claim the
   // JSON-LD used to make.
   creditSentence(e.slug)
-    ? `        Carried on <a href="/">AI Suede — Build, Create, Ship</a>.`
-    : `        From <a href="/">AI Suede — Build, Create, Ship</a> by
+    ? `        Carried on <a href="/">AI Suede: Build, Create, Ship</a>.`
+    : `        From <a href="/">AI Suede: Build, Create, Ship</a> by
         <a href="https://suedeai.ai/founder">Jason Colapietro</a>.`
 }
         Subscribe via <a href="/feed.xml">RSS</a>.
@@ -471,7 +471,7 @@ const appearancesJsonLd = (groups) => {
         {
           "@type": "PodcastSeries",
           "@id": `${SITE}/#podcast`,
-          name: "AI Suede - Build, Create, Ship",
+          name: "AI Suede: Build, Create, Ship",
           url: `${SITE}/`,
           webFeed: `${SITE}/feed.xml`,
         },
@@ -502,7 +502,7 @@ const appearancesPage = (groups) => {
     <link
       rel="alternate"
       type="application/rss+xml"
-      title="AI Suede - Build, Create, Ship"
+      title="AI Suede: Build, Create, Ship"
       href="${SITE}/feed.xml"
     />
     <meta property="og:type" content="website" />
@@ -570,8 +570,8 @@ ${g.episodes
   .join("\n")}
       <hr />
       <p class="meta">
-        Every credit on this page is taken from the show notes of the recording it
-        names; where the notes do not say whose programme a conversation was, it is
+        Credits on this page are taken from the show notes of the recording they
+        name; where the notes do not say whose programme a conversation was, it is
         not listed here.
         <nav class="footer-nav" aria-label="Footer">
           <a href="/">Home</a>
