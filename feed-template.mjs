@@ -14,7 +14,7 @@
  */
 
 export const SHOW = {
-  title: 'AI Suede — Build, Create, Ship',
+  title: 'AI Suede: Build, Create, Ship',
   subtitle: 'Music IP, AI tools, and solo founder stories',
   description: 'AI tools for creators, music production, and solo founder stories from Jason Colapietro (also known as Johnny Suede) of Suede Labs AI. Covers building with AI, programmable IP, and what it actually takes to ship as a solo founder.',
   keywords: 'AI, music production, creator economy, programmable IP, blockchain music, Suede Labs, Jason Colapietro, Johnny Suede, solo founder, Web3, Base, on-chain royalties, music NFT, artist ownership, crypto, entrepreneurship',
