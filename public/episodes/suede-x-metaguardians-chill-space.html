@@ -92,6 +92,9 @@
       .notes { white-space:pre-wrap; }
       audio { width:100%; margin:20px 0 28px; }
       nav.crumbs { font-size:14px; color:var(--muted); margin-bottom:24px; }
+      nav.footer-nav { display:flex; flex-wrap:wrap; gap:6px 10px; margin:2px 0 0 -8px;
+        font-size:14px; }
+      nav.footer-nav a { padding:10px 8px; color:var(--muted); text-decoration:none; }
       hr { border:0; border-top:1px solid var(--line); margin:36px 0; }
     </style>
   </head>
@@ -115,6 +118,13 @@
         <a href="https://suedeai.ai/founder">Jason Colapietro</a>.
         Subscribe via <a href="/feed.xml">RSS</a>.
       </p>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/appearances">Appearances</a>
+        <a href="/contact">Contact</a>
+        <a href="https://suedeai.ai/privacy">Privacy</a>
+      </nav>
     </main>
   </body>
 </html>
