@@ -417,6 +417,7 @@ ${
         <a href="/appearances">Appearances</a>
         <a href="/contact">Contact</a>
         <a href="https://suedeai.ai/privacy">Privacy</a>
+        <a href="https://hub.suedeai.ai">Suede estate directory</a>
       </nav>
     </main>
   </body>
@@ -580,6 +581,7 @@ ${g.episodes
           <a href="https://suedeai.ai/founder">Jason Colapietro</a>
           <a href="https://suedeai.ai">Suede Labs AI</a>
           <a href="https://suedeai.ai/privacy">Privacy</a>
+          <a href="https://hub.suedeai.ai">Suede estate directory</a>
         </nav>
       </p>
     </main>
