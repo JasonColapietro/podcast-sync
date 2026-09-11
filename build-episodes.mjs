@@ -290,26 +290,64 @@ const SHARED_HEAD = (e) => `    <meta charset="utf-8" />
 // generated on 2026-08-03 for episodes that aired in 2024 and 2025, and the
 // sitemap dated every one of them to its air date, understating the newest
 // by a hundred days and the oldest by six hundred (record-audit.py in
-// suede-seo, 2026-09-11). The page's own git history is the honest date:
-// its last commit, or today when the file is new or regenerated with
-// changes and not yet committed, never earlier than the episode itself.
+// suede-seo, 2026-09-11). Nor is the page's last commit the answer: an
+// em-dash pass on 2026-09-05 touched all 33 pages without changing a word.
+// The date is the newest commit that changed more than two lines of the
+// page's own words: not <meta>/<link> lines, not a line the same commit
+// changed identically in other pages, not a line whose letters and digits
+// survived. That is the rule record-audit.py applies, so the two agree.
+// A page not yet committed, or regenerated with changes, is dated today;
+// nothing is dated before the episode itself.
 function localToday() {
   const now = new Date();
   const pad = (n) => String(n).padStart(2, "0");
   return `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
 }
-
-function lastCommitDate(relPath) {
-  const status = spawnSync("git", ["-C", __dirname, "status", "--porcelain", "--", relPath], { encoding: "utf8" });
-  if (status.status !== 0) return localToday();
-  if (status.stdout.trim()) return localToday();
-  const log = spawnSync("git", ["-C", __dirname, "log", "-1", "--format=%cs", "--", relPath], { encoding: "utf8" });
-  const date = (log.stdout || "").trim();
-  return /^\d{4}-\d{2}-\d{2}$/.test(date) ? date : localToday();
+const git = (...args) => spawnSync("git", ["-C", __dirname, ...args], { encoding: "utf8" });
+const wordsOf = (line) => line.toLowerCase().replace(/[^0-9a-z]+/g, "");
+const META_LINE = /^\s*<(meta|link)\b/;
+const commitCache = new Map();
+function commitChanges(sha) {
+  if (!commitCache.has(sha)) {
+    const files = new Map();
+    let cur = null;
+    for (const line of (git("show", "--format=", sha).stdout || "").split("\n")) {
+      if (line.startsWith("diff --git ")) { cur = line.split(" b/")[1]; files.set(cur, []); continue; }
+      if (cur && (line[0] === "+" || line[0] === "-") && !line.startsWith("+++") && !line.startsWith("---")) {
+        files.get(cur).push([line[0], line.slice(1)]);
+      }
+    }
+    commitCache.set(sha, files);
+  }
+  return commitCache.get(sha);
 }
-
+function ownContentChanged(sha, rel) {
+  const files = commitChanges(sha);
+  const mine = files.get(rel) || [];
+  const shared = new Set();
+  for (const [f, lines] of files) if (f !== rel) for (const [, c] of lines) shared.add(c.trim());
+  const removed = new Set(mine.filter(([s]) => s === "-").map(([, c]) => wordsOf(c)));
+  const added = new Set(mine.filter(([s]) => s === "+").map(([, c]) => wordsOf(c)));
+  const restyled = new Set([...removed].filter((w) => w && added.has(w)));
+  let n = 0;
+  for (const [, c] of mine) {
+    const key = c.trim();
+    if (!key || META_LINE.test(c) || shared.has(key) || restyled.has(wordsOf(c))) continue;
+    n += 1;
+  }
+  return n > 2;
+}
+function contentDate(rel) {
+  if ((git("status", "--porcelain", "--", rel).stdout || "").trim()) return localToday();
+  const shas = (git("log", "-50", "--format=%h", "--", rel).stdout || "").split("\n").filter(Boolean);
+  for (const sha of shas) {
+    if (ownContentChanged(sha, rel)) return (git("log", "-1", "--format=%cs", sha).stdout || "").trim();
+  }
+  const first = shas[shas.length - 1];
+  return first ? (git("log", "-1", "--format=%cs", first).stdout || "").trim() : localToday();
+}
 const pageLastmod = (e) => {
-  const page = lastCommitDate(join("public", "episodes", `${e.slug}.html`));
+  const page = contentDate(join("public", "episodes", `${e.slug}.html`));
   return e.date && e.date > page ? e.date : page;
 };
 
