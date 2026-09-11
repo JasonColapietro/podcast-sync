@@ -17,6 +17,7 @@
  * when this module is executed directly.
  */
 import { readFileSync, writeFileSync, mkdirSync, rmSync, existsSync } from "fs";
+import { spawnSync } from "child_process";
 import { join, dirname } from "path";
 import { fileURLToPath, pathToFileURL } from "url";
 import {
@@ -285,6 +286,33 @@ const SHARED_HEAD = (e) => `    <meta charset="utf-8" />
  * recording or guested on it. See THE TYPE RULE and the evidence rule, both in
  * appearances.mjs.
  */
+// A sitemap <lastmod> describes the page, not the episode. These pages were
+// generated on 2026-08-03 for episodes that aired in 2024 and 2025, and the
+// sitemap dated every one of them to its air date, understating the newest
+// by a hundred days and the oldest by six hundred (record-audit.py in
+// suede-seo, 2026-09-11). The page's own git history is the honest date:
+// its last commit, or today when the file is new or regenerated with
+// changes and not yet committed, never earlier than the episode itself.
+function localToday() {
+  const now = new Date();
+  const pad = (n) => String(n).padStart(2, "0");
+  return `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+}
+
+function lastCommitDate(relPath) {
+  const status = spawnSync("git", ["-C", __dirname, "status", "--porcelain", "--", relPath], { encoding: "utf8" });
+  if (status.status !== 0) return localToday();
+  if (status.stdout.trim()) return localToday();
+  const log = spawnSync("git", ["-C", __dirname, "log", "-1", "--format=%cs", "--", relPath], { encoding: "utf8" });
+  const date = (log.stdout || "").trim();
+  return /^\d{4}-\d{2}-\d{2}$/.test(date) ? date : localToday();
+}
+
+const pageLastmod = (e) => {
+  const page = lastCommitDate(join("public", "episodes", `${e.slug}.html`));
+  return e.date && e.date > page ? e.date : page;
+};
+
 const episodeJsonLd = (e) => {
   const credit = episodeCredit(e.slug, PERSON_ID) ?? hostedCredit(e.slug, PERSON_ID);
   return JSON.stringify(
@@ -628,7 +656,7 @@ ${staticUrls
 ${episodes
   .map(
     (e) =>
-      `  <url>\n    <loc>${e.url}</loc>${e.date ? `\n    <lastmod>${e.date}</lastmod>` : ""}\n    <changefreq>yearly</changefreq>\n    <priority>0.7</priority>\n  </url>`,
+      `  <url>\n    <loc>${e.url}</loc>\n    <lastmod>${pageLastmod(e)}</lastmod>\n    <changefreq>yearly</changefreq>\n    <priority>0.7</priority>\n  </url>`,
   )
   .join("\n")}
 </urlset>
