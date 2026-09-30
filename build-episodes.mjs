@@ -29,6 +29,7 @@ import {
   guestSentence,
   hostedCredit,
 } from "./appearances.mjs";
+import { PAGE_KEYWORDS, episodeKeywords, keywordContent } from "./keywords.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PUBLIC = join(__dirname, "public");
@@ -244,6 +245,7 @@ const SHARED_HEAD = (e) => `    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>${esc(e.title)} | AI Suede Podcast</title>
     <meta name="description" content="${esc(e.metaDescription)}" />
+    <meta name="keywords" content="${esc(episodeKeywords(e).join(", "))}" />
     <link rel="canonical" href="${e.url}" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -363,6 +365,7 @@ const episodeJsonLd = (e) => {
           name: e.title,
           url: e.url,
           description: e.schemaDescription,
+          keywords: episodeKeywords(e).join(", "),
           datePublished: e.iso || undefined,
           // Belt and braces: only emit the key when it parses to a real number,
           // so a future feed change cannot reintroduce "episodeNumber": null.
@@ -560,6 +563,7 @@ const appearancesPage = (groups) => {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>${esc(APPEARANCES_TITLE)}</title>
     <meta name="description" content="${esc(APPEARANCES_DESC)}" />
+    <meta name="keywords" content="${esc(keywordContent(PAGE_KEYWORDS["/appearances"]))}" />
     <link rel="canonical" href="${APPEARANCES_URL}" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
