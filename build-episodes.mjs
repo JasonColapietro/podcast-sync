@@ -168,8 +168,33 @@ const episodeSections = (e) => {
   return [{ heading: "Episode show notes", body: e.body }];
 };
 
+/**
+ * Episode URLs are permanent. These titles said "Suede Labs" when their pages
+ * went live; the feed now renders them as "Suede AI", but the URL stays put so
+ * inbound links, the sitemap history and appearances.mjs keys keep resolving.
+ */
+export const PINNED_SLUGS = {
+  "aisuede-W1LxsxwGHK4": "how-music-ip-becomes-a-real-world-asset-on-base-suede-labs-avax-chainlin",
+  "aisuede-CdZWyuwhhS0": "aj-writes-crypto-and-suede-labs-ai",
+  "aisuede-VFTtm9EzMYs": "why-suede-labs-chose-avalanche-for-music-ip-the-subnet-architecture-bet",
+  "aisuede-wI89GiGIvYo": "mario-nawfal-suede-labs-the-web3-music-stack-explained",
+  "aisuede-TbCvLzh1psc": "binance-ama-suede-labs-on-the-music-ip-stack-full-recap",
+  "aisuede-7ktod33U8o0": "fity-eth-suede-labs-the-dark-truth-about-crypto-launches",
+  "aisuede-hm45Z3yUPZA": "coinmerge-fity-eth-on-suede-labs-sol-train",
+  "aisuede-PuLkFjiXwsY": "block-suede-labs-how-on-chain-royalties-actually-work",
+  "aisuede-_VLl8MNgePM": "block-suede-labs-ama-the-music-stack-on-base",
+  "aisuede-EUJjMQpt6Ls": "block-suede-labs-weekly-build-update-march-6-2025",
+  "aisuede-QO5YfD9q-KU": "apex-exchange-suede-labs-ai-music-crypto-distribution",
+  "aisuede-vFUa3R4x6ls": "btse-suede-labs-redefining-the-music-industry-with-crypto-ai",
+  "aisuede-DUO1njPGruw": "block-suede-labs-chill-ama-the-future-of-ai-in-music-web3",
+  "aisuede-yS81oANTwf0": "digifinex-suede-labs-ep-15-where-ai-and-music-are-headed",
+  "aisuede-wzdMA1mTtQI": "binance-suede-labs-ai-music-web3-creativity-full-ama",
+  "aisuede-FYWTqMPyvb0": "binance-livestream-ama-suede-labs-founder-on-music-ip",
+};
+
 /** Stable, readable slug. Falls back to the guid so a page always has a home. */
 const slugify = (title, guid) => {
+  if (PINNED_SLUGS[guid]) return PINNED_SLUGS[guid];
   const base = String(title)
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
@@ -505,7 +530,7 @@ ${
 
 const APPEARANCES_TITLE = "Podcast appearances | Jason Colapietro";
 const APPEARANCES_DESC =
-  "Guest appearances by Jason Colapietro (Johnny Suede) of Suede Labs AI on other people's " +
+  "Guest appearances by Jason Colapietro (Johnny Suede) of Suede AI on other people's " +
   "podcasts, AMAs and Spaces — grouped by show, each linking to the full recording.";
 
 const appearancesJsonLd = (groups) => {
@@ -648,7 +673,7 @@ ${g.episodes
           <a href="/about">About</a>
           <a href="/contact">Contact</a>
           <a href="https://suedeai.ai/founder">Jason Colapietro</a>
-          <a href="https://suedeai.ai">Suede Labs AI</a>
+          <a href="https://suedeai.ai">Suede AI</a>
           <a href="https://suedeai.ai/privacy">Privacy</a>
         </nav>
       </p>
