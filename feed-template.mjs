@@ -16,8 +16,8 @@
 export const SHOW = {
   title: 'AI Suede: Build, Create, Ship',
   subtitle: 'Music IP, AI tools, and solo founder stories',
-  description: 'AI tools for creators, music production, and solo founder stories from Jason Colapietro (also known as Johnny Suede) of Suede Labs AI. Covers building with AI, programmable IP, and what it actually takes to ship as a solo founder.',
-  keywords: 'AI, music production, creator economy, programmable IP, blockchain music, Suede Labs, Jason Colapietro, Johnny Suede, solo founder, Web3, Base, on-chain royalties, music NFT, artist ownership, crypto, entrepreneurship',
+  description: 'AI tools for creators, music production, and solo founder stories from Jason Colapietro (also known as Johnny Suede) of Suede AI. Covers building with AI, programmable IP, and what it actually takes to ship as a solo founder.',
+  keywords: 'AI, music production, creator economy, programmable IP, blockchain music, Suede AI, Jason Colapietro, Johnny Suede, solo founder, Web3, Base, on-chain royalties, music NFT, artist ownership, crypto, entrepreneurship',
   author: 'Jason Colapietro',
   // Ownership/administrative contact published in <itunes:owner>. This is a
   // machine-readable file that gets scraped wholesale, so it carries the
@@ -32,7 +32,7 @@ export const SHOW = {
   language: 'en-us',
   category: 'Technology',
   subcategory: 'Entrepreneurship',
-  copyright: `&#xA9; ${new Date().getFullYear()} Jason Colapietro / Suede Labs AI`,
+  copyright: `&#xA9; ${new Date().getFullYear()} Jason Colapietro / Suede AI`,
   // Podcasting 2.0 stable GUID for this show (generated once, never changes)
   guid: 'b3e7f1a2-4c8d-4e9f-a0b1-2c3d4e5f6a7b',
   // Canonical Person record for the host, so the feed names the person behind
@@ -53,9 +53,20 @@ export function cleanText(text) {
   return String(text).replace(/\uFFFC/g, '').trim()
 }
 
+// The company is Suede AI. Upstream YouTube copy still says "Suede Labs AI"
+// (and episode titles say "Suede Labs"), so the feed renames it at render time.
+// Only display text changes: episode page slugs are pinned in build-episodes.mjs.
+export function renameBrand(text) {
+  return String(text).replace(/Suede Labs AI\b/g, 'Suede AI')
+}
+
+export function fixTitle(text) {
+  return renameBrand(cleanText(text)).replace(/\bSuede Labs\b/g, 'Suede AI')
+}
+
 export function fixDescription(text) {
   if (!text) return text
-  return cleanText(text)
+  return renameBrand(cleanText(text))
     .replace(/🔗 Suede Labs → \[add link\]/g, '🔗 Suede Labs → https://suedeai.ai')
     .replace(/🐦 Johnny Suede → \[add link\]/g, '🐦 Johnny Suede → https://x.com/johnnysuede')
     .replace(/🐦 @aisuede → \[add link\]/g, '🐦 @aisuede → https://x.com/aisuede')
@@ -66,7 +77,7 @@ export function fixDescription(text) {
 
 export function buildRSS(episodes) {
   const items = episodes.map((ep, i) => {
-    const title = cleanText(ep.title)
+    const title = fixTitle(ep.title)
     const description = fixDescription(ep.description || ep.title)
     return `
     <item>

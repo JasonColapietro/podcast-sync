@@ -8,17 +8,17 @@
   <channel>
     <title>AI Suede: Build, Create, Ship</title>
     <atom:link href="https://podcast.suedeai.ai/feed.xml" rel="self" type="application/rss+xml"/>
-    <description>AI tools for creators, music production, and solo founder stories from Jason Colapietro (also known as Johnny Suede) of Suede Labs AI. Covers building with AI, programmable IP, and what it actually takes to ship as a solo founder.</description>
+    <description>AI tools for creators, music production, and solo founder stories from Jason Colapietro (also known as Johnny Suede) of Suede AI. Covers building with AI, programmable IP, and what it actually takes to ship as a solo founder.</description>
     <link>https://podcast.suedeai.ai</link>
     <language>en-us</language>
-    <copyright>&#xA9; 2026 Jason Colapietro / Suede Labs AI</copyright>
+    <copyright>&#xA9; 2026 Jason Colapietro / Suede AI</copyright>
     <managingEditor>info@suedeai.ai (Jason Colapietro)</managingEditor>
     <webMaster>info@suedeai.ai (Jason Colapietro)</webMaster>
     <dc:creator>Jason Colapietro</dc:creator>
     <itunes:author>Jason Colapietro</itunes:author>
     <itunes:subtitle>Music IP, AI tools, and solo founder stories</itunes:subtitle>
-    <itunes:summary>AI tools for creators, music production, and solo founder stories from Jason Colapietro (also known as Johnny Suede) of Suede Labs AI. Covers building with AI, programmable IP, and what it actually takes to ship as a solo founder.</itunes:summary>
-    <itunes:keywords>AI, music production, creator economy, programmable IP, blockchain music, Suede Labs, Jason Colapietro, Johnny Suede, solo founder, Web3, Base, on-chain royalties, music NFT, artist ownership, crypto, entrepreneurship</itunes:keywords>
+    <itunes:summary>AI tools for creators, music production, and solo founder stories from Jason Colapietro (also known as Johnny Suede) of Suede AI. Covers building with AI, programmable IP, and what it actually takes to ship as a solo founder.</itunes:summary>
+    <itunes:keywords>AI, music production, creator economy, programmable IP, blockchain music, Suede AI, Jason Colapietro, Johnny Suede, solo founder, Web3, Base, on-chain royalties, music NFT, artist ownership, crypto, entrepreneurship</itunes:keywords>
     <itunes:type>episodic</itunes:type>
     <itunes:owner>
       <itunes:name>Jason Colapietro</itunes:name>
@@ -170,8 +170,8 @@ We get into:
       <itunes:image href="https://i.ytimg.com/vi/-yeh9r_UMKc/maxresdefault.jpg"/>
     </item>
     <item>
-      <title><![CDATA[How Music IP Becomes a Real-World Asset on Base | Suede Labs × AVAX × Chainlink]]></title>
-      <itunes:title><![CDATA[How Music IP Becomes a Real-World Asset on Base | Suede Labs × AVAX × Chainlink]]></itunes:title>
+      <title><![CDATA[How Music IP Becomes a Real-World Asset on Base | Suede AI × AVAX × Chainlink]]></title>
+      <itunes:title><![CDATA[How Music IP Becomes a Real-World Asset on Base | Suede AI × AVAX × Chainlink]]></itunes:title>
       <description><![CDATA[Jason Colapietro on building Suede Labs across Base, AVAX, and Chainlink — and why music IP needs a real on-chain home, not another platform-as-landlord.
 
 We get into:
@@ -208,8 +208,8 @@ We get into:
       <itunes:image href="https://i.ytimg.com/vi/W1LxsxwGHK4/maxresdefault.jpg"/>
     </item>
     <item>
-      <title><![CDATA[AJ Writes Crypto and Suede Labs AI]]></title>
-      <itunes:title><![CDATA[AJ Writes Crypto and Suede Labs AI]]></itunes:title>
+      <title><![CDATA[AJ Writes Crypto and Suede AI]]></title>
+      <itunes:title><![CDATA[AJ Writes Crypto and Suede AI]]></itunes:title>
       <description><![CDATA[$SUEDE Jason Colapietro Johnny Suede fireside]]></description>
       <content:encoded><![CDATA[$SUEDE Jason Colapietro Johnny Suede fireside]]></content:encoded>
       <enclosure url="https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/CdZWyuwhhS0.mp3" length="4191165" type="audio/mpeg"/>
@@ -224,8 +224,8 @@ We get into:
       <itunes:image href="https://i.ytimg.com/vi/CdZWyuwhhS0/maxresdefault.jpg"/>
     </item>
     <item>
-      <title><![CDATA[Why Suede Labs Chose Avalanche for Music IP | The Subnet Architecture Bet]]></title>
-      <itunes:title><![CDATA[Why Suede Labs Chose Avalanche for Music IP | The Subnet Architecture Bet]]></itunes:title>
+      <title><![CDATA[Why Suede AI Chose Avalanche for Music IP | The Subnet Architecture Bet]]></title>
+      <itunes:title><![CDATA[Why Suede AI Chose Avalanche for Music IP | The Subnet Architecture Bet]]></itunes:title>
       <description><![CDATA[Jason Colapietro on building Suede Labs on Avalanche — the subnet architecture bet, what AVAX makes possible for compute, and why sovereign chains matter for creator infrastructure.
 
 We get into:
@@ -318,8 +318,8 @@ We get into:
       <itunes:image href="https://i.ytimg.com/vi/422CMPRWHgo/maxresdefault.jpg"/>
     </item>
     <item>
-      <title><![CDATA[Mario Nawfal × Suede Labs: The Web3 Music Stack, Explained]]></title>
-      <itunes:title><![CDATA[Mario Nawfal × Suede Labs: The Web3 Music Stack, Explained]]></itunes:title>
+      <title><![CDATA[Mario Nawfal × Suede AI: The Web3 Music Stack, Explained]]></title>
+      <itunes:title><![CDATA[Mario Nawfal × Suede AI: The Web3 Music Stack, Explained]]></itunes:title>
       <description><![CDATA[@MarioNawfal and Jason Colapietro break down the Web3 music stack that Suede Labs is building — the layers musicians have actually been waiting for: rights, royalties, and a real on-chain home for music IP.
 
 We get into:
@@ -430,8 +430,8 @@ We get into:
       <itunes:image href="https://i.ytimg.com/vi/b_yfSaJ634M/maxresdefault.jpg"/>
     </item>
     <item>
-      <title><![CDATA[Binance AMA: Suede Labs on the Music IP Stack (Full Recap)]]></title>
-      <itunes:title><![CDATA[Binance AMA: Suede Labs on the Music IP Stack (Full Recap)]]></itunes:title>
+      <title><![CDATA[Binance AMA: Suede AI on the Music IP Stack (Full Recap)]]></title>
+      <itunes:title><![CDATA[Binance AMA: Suede AI on the Music IP Stack (Full Recap)]]></itunes:title>
       <description><![CDATA[Full recap of the Binance AMA with Jason Colapietro — the music IP stack Suede Labs is building, what's actually live, and where it's headed.
 
 We get into:
@@ -486,8 +486,8 @@ We get into:
       <itunes:image href="https://i.ytimg.com/vi/ssS9b8YKyaQ/maxresdefault.jpg"/>
     </item>
     <item>
-      <title><![CDATA[Fity.eth × Suede Labs: The Dark Truth About Crypto Launches]]></title>
-      <itunes:title><![CDATA[Fity.eth × Suede Labs: The Dark Truth About Crypto Launches]]></itunes:title>
+      <title><![CDATA[Fity.eth × Suede AI: The Dark Truth About Crypto Launches]]></title>
+      <itunes:title><![CDATA[Fity.eth × Suede AI: The Dark Truth About Crypto Launches]]></itunes:title>
       <description><![CDATA[Fity.eth and Jason Colapietro on what actually goes wrong with token launches — the founder-side view of the games, the rugs, and what a launch designed for artists looks like instead.
 
 We get into:
@@ -526,8 +526,8 @@ We get into:
       <itunes:image href="https://i.ytimg.com/vi/7ktod33U8o0/maxresdefault.jpg"/>
     </item>
     <item>
-      <title><![CDATA[CoinMerge × Fity.eth on Suede Labs (Sol Train)]]></title>
-      <itunes:title><![CDATA[CoinMerge × Fity.eth on Suede Labs (Sol Train)]]></itunes:title>
+      <title><![CDATA[CoinMerge × Fity.eth on Suede AI (Sol Train)]]></title>
+      <itunes:title><![CDATA[CoinMerge × Fity.eth on Suede AI (Sol Train)]]></itunes:title>
       <description><![CDATA[CoinMerge's Sol Train hosts Fity.eth + Jason Colapietro on what Suede Labs is actually building — the music IP stack, the launchpad design, and what an artist-owned future looks like on Solana and Base.
 
 We get into:
@@ -566,8 +566,8 @@ We get into:
       <itunes:image href="https://i.ytimg.com/vi/hm45Z3yUPZA/maxresdefault.jpg"/>
     </item>
     <item>
-      <title><![CDATA[Block × Suede Labs: How On-Chain Royalties Actually Work]]></title>
-      <itunes:title><![CDATA[Block × Suede Labs: How On-Chain Royalties Actually Work]]></itunes:title>
+      <title><![CDATA[Block × Suede AI: How On-Chain Royalties Actually Work]]></title>
+      <itunes:title><![CDATA[Block × Suede AI: How On-Chain Royalties Actually Work]]></itunes:title>
       <description><![CDATA[Block AMA with Jason Colapietro on the actual mechanics of on-chain royalties — how settlement, payouts, and creator splits work when the music IP layer lives on-chain instead of in a label spreadsheet.
 
 We get into:
@@ -606,8 +606,8 @@ We get into:
       <itunes:image href="https://i.ytimg.com/vi/PuLkFjiXwsY/maxresdefault.jpg"/>
     </item>
     <item>
-      <title><![CDATA[Block × Suede Labs AMA: The Music Stack on Base]]></title>
-      <itunes:title><![CDATA[Block × Suede Labs AMA: The Music Stack on Base]]></itunes:title>
+      <title><![CDATA[Block × Suede AI AMA: The Music Stack on Base]]></title>
+      <itunes:title><![CDATA[Block × Suede AI AMA: The Music Stack on Base]]></itunes:title>
       <description><![CDATA[Block AMA with Jason Colapietro on the music stack Suede Labs is shipping on Base — what's live, what's next, and how the pieces fit together for artists who want to actually own their work.
 
 We get into:
@@ -646,8 +646,8 @@ We get into:
       <itunes:image href="https://i.ytimg.com/vi/_VLl8MNgePM/maxresdefault.jpg"/>
     </item>
     <item>
-      <title><![CDATA[Block × Suede Labs: Weekly Build Update (March 6 2025)]]></title>
-      <itunes:title><![CDATA[Block × Suede Labs: Weekly Build Update (March 6 2025)]]></itunes:title>
+      <title><![CDATA[Block × Suede AI: Weekly Build Update (March 6 2025)]]></title>
+      <itunes:title><![CDATA[Block × Suede AI: Weekly Build Update (March 6 2025)]]></itunes:title>
       <description><![CDATA[Weekly Suede Pulse update on @Block (March 6 2025) — Jason Colapietro on what shipped this week, what's next, and where the build is heading.
 
 We get into:
@@ -684,8 +684,8 @@ We get into:
       <itunes:image href="https://i.ytimg.com/vi/EUJjMQpt6Ls/sddefault.jpg"/>
     </item>
     <item>
-      <title><![CDATA[APEX Exchange × Suede Labs: AI, Music + Crypto Distribution]]></title>
-      <itunes:title><![CDATA[APEX Exchange × Suede Labs: AI, Music + Crypto Distribution]]></itunes:title>
+      <title><![CDATA[APEX Exchange × Suede AI: AI, Music + Crypto Distribution]]></title>
+      <itunes:title><![CDATA[APEX Exchange × Suede AI: AI, Music + Crypto Distribution]]></itunes:title>
       <description><![CDATA[APEX Exchange AMA with Jason Colapietro on what changes when AI tools meet a crypto-native distribution layer for music — and how Suede Labs makes that work for independent artists, not platforms.
 
 We get into:
@@ -784,8 +784,8 @@ Stay connected and be part of the AI-powered music revolution! 🚀🎶 #SUEDEAI
       <itunes:image href="https://i.ytimg.com/vi/TNNZiuAufbY/sddefault.jpg"/>
     </item>
     <item>
-      <title><![CDATA[BTSE × Suede Labs: Redefining the Music Industry with Crypto + AI]]></title>
-      <itunes:title><![CDATA[BTSE × Suede Labs: Redefining the Music Industry with Crypto + AI]]></itunes:title>
+      <title><![CDATA[BTSE × Suede AI: Redefining the Music Industry with Crypto + AI]]></title>
+      <itunes:title><![CDATA[BTSE × Suede AI: Redefining the Music Industry with Crypto + AI]]></itunes:title>
       <description><![CDATA[BTSE AMA with Jason Colapietro on what gets rebuilt when the music industry meets a real on-chain stack — and how AI tooling fits into that picture as a creator-side tool, not a replacement.
 
 We get into:
@@ -824,8 +824,8 @@ We get into:
       <itunes:image href="https://i.ytimg.com/vi/vFUa3R4x6ls/sddefault.jpg"/>
     </item>
     <item>
-      <title><![CDATA[Block × Suede Labs (Chill AMA): The Future of AI in Music + Web3]]></title>
-      <itunes:title><![CDATA[Block × Suede Labs (Chill AMA): The Future of AI in Music + Web3]]></itunes:title>
+      <title><![CDATA[Block × Suede AI (Chill AMA): The Future of AI in Music + Web3]]></title>
+      <itunes:title><![CDATA[Block × Suede AI (Chill AMA): The Future of AI in Music + Web3]]></itunes:title>
       <description><![CDATA[Casual Block AMA with Jason Colapietro on where AI tooling and Web3 actually overlap for music creators — and what an artist-owned future looks like when both stacks click into place.
 
 We get into:
@@ -864,8 +864,8 @@ We get into:
       <itunes:image href="https://i.ytimg.com/vi/DUO1njPGruw/sddefault.jpg"/>
     </item>
     <item>
-      <title><![CDATA[DigiFinex × Suede Labs (Ep 15): Where AI and Music Are Headed]]></title>
-      <itunes:title><![CDATA[DigiFinex × Suede Labs (Ep 15): Where AI and Music Are Headed]]></itunes:title>
+      <title><![CDATA[DigiFinex × Suede AI (Ep 15): Where AI and Music Are Headed]]></title>
+      <itunes:title><![CDATA[DigiFinex × Suede AI (Ep 15): Where AI and Music Are Headed]]></itunes:title>
       <description><![CDATA[DigiTalk Episode 15 with Jason Colapietro on the actual intersection of AI tooling and the music industry — and how Suede Labs builds for creators, not against them.
 
 We get into:
@@ -904,8 +904,8 @@ We get into:
       <itunes:image href="https://i.ytimg.com/vi/yS81oANTwf0/sddefault.jpg"/>
     </item>
     <item>
-      <title><![CDATA[Binance × Suede Labs: AI, Music + Web3 Creativity (Full AMA)]]></title>
-      <itunes:title><![CDATA[Binance × Suede Labs: AI, Music + Web3 Creativity (Full AMA)]]></itunes:title>
+      <title><![CDATA[Binance × Suede AI: AI, Music + Web3 Creativity (Full AMA)]]></title>
+      <itunes:title><![CDATA[Binance × Suede AI: AI, Music + Web3 Creativity (Full AMA)]]></itunes:title>
       <description><![CDATA[Binance AMA with Jason Colapietro on the intersection of AI tooling, music, and Web3 creativity — and what an artist-owned future actually looks like in production.
 
 We get into:
@@ -1092,8 +1092,8 @@ Stay connected and be part of the future of AI-powered music! 🚀🎶
       <itunes:image href="https://i.ytimg.com/vi/TxkJVR66wmo/maxresdefault.jpg"/>
     </item>
     <item>
-      <title><![CDATA[Binance Livestream AMA: Suede Labs Founder on Music IP]]></title>
-      <itunes:title><![CDATA[Binance Livestream AMA: Suede Labs Founder on Music IP]]></itunes:title>
+      <title><![CDATA[Binance Livestream AMA: Suede AI Founder on Music IP]]></title>
+      <itunes:title><![CDATA[Binance Livestream AMA: Suede AI Founder on Music IP]]></itunes:title>
       <description><![CDATA[Binance Livestream AMA with Jason Colapietro on the music IP stack Suede Labs is building — what's live, where it's heading, and how the pieces fit together for artists who want to actually own their work.
 
 We get into:
@@ -1198,10 +1198,10 @@ This is the exclusive $SUEDE AI AMA segment from Mario Nawfal’s Crypto Roundta
     <item>
       <title><![CDATA[Binance and Suede Crypto AI Agents]]></title>
       <itunes:title><![CDATA[Binance and Suede Crypto AI Agents]]></itunes:title>
-      <description><![CDATA[Jason Colapietro "Johnny Suede" Founder CEO of Suede Labs AI sit down with Binance Live.
+      <description><![CDATA[Jason Colapietro "Johnny Suede" Founder CEO of Suede AI sit down with Binance Live.
 
 Crypto AI Agents Music]]></description>
-      <content:encoded><![CDATA[Jason Colapietro "Johnny Suede" Founder CEO of Suede Labs AI sit down with Binance Live.
+      <content:encoded><![CDATA[Jason Colapietro "Johnny Suede" Founder CEO of Suede AI sit down with Binance Live.
 
 Crypto AI Agents Music]]></content:encoded>
       <enclosure url="https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/B6cfMw-bJG4.mp3" length="51215565" type="audio/mpeg"/>

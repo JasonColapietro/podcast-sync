@@ -227,7 +227,7 @@ export const APPEARANCES = {
 export const HOSTED = {
   "aj-writes-crypto-and-suede-labs-ai": {
     guests: ["aj-writes-crypto"],
-    evidence: ["AJ Writes Crypto and Suede Labs AI", "$SUEDE Jason Colapietro Johnny Suede fireside"],
+    evidence: ["AJ Writes Crypto and Suede AI", "$SUEDE Jason Colapietro Johnny Suede fireside"],
     note:
       'Title names "AJ Writes Crypto"; the description is the five-word stub ' +
       '"$SUEDE Jason Colapietro Johnny Suede fireside". The copy never said which side hosted the fireside. It was his.',

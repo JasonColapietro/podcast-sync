@@ -126,7 +126,7 @@ test("no page restates a thinner copy of the canonical Person", () => {
   assert.ok(references > 0, "expected the canonical Person to be referenced somewhere");
 });
 
-test("the Organization points at the real Suede Labs AI Wikidata entity", () => {
+test("the Organization points at the real Suede AI Wikidata entity", () => {
   for (const name of ["index.html", "about.html", "contact.html"]) {
     const html = readFileSync(join(root, "public", name), "utf8");
     // Q131489584 is a Cameroonian lawyer, not this company.
@@ -135,4 +135,18 @@ test("the Organization points at the real Suede Labs AI Wikidata entity", () => 
       assert.match(html, /wikidata\.org\/wiki\/Q141169484/, `${name} is missing the org's Wikidata ID`);
     }
   }
+});
+
+test("renamed episodes keep their original URLs and drop the retired name", async () => {
+  const { PINNED_SLUGS, parseEpisodes: parsePages } = await import("../build-episodes.mjs");
+  const pages = parsePages(feed);
+  const files = new Set(readdirSync(join(root, "public", "episodes")));
+  for (const [guid, slug] of Object.entries(PINNED_SLUGS)) {
+    const e = pages.find((p) => p.guid === guid);
+    assert.ok(e, `pinned guid ${guid} is not in the feed`);
+    assert.equal(e.slug, slug, `${guid} moved off its original URL`);
+    assert.ok(files.has(`${slug}.html`), `no page for pinned slug ${slug}`);
+  }
+  for (const e of pages) assert.doesNotMatch(e.title, /suede labs/i, `${e.slug} title still says Suede Labs`);
+  assert.doesNotMatch(feed, /Suede Labs AI/, "feed still uses the retired company name");
 });
