@@ -10,3 +10,7 @@
 - Host: Jason Colapietro, founder of Suede AI.
 - Topics: creator ownership infrastructure, programmable IP, music rights, AI product shipping.
 - Publisher: Suede AI (suedeai.ai).
+
+## Source and citation guide
+
+- [AI Instructions](https://podcast.suedeai.ai/ai-instructions): Site identity, authoritative sources and citation guidance.

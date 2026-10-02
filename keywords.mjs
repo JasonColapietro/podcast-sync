@@ -52,6 +52,7 @@ export const keywordContent = (terms) => withBrand(terms).join(", ");
 
 /** Static and index pages, keyed by public path. */
 export const PAGE_KEYWORDS = {
+  "/ai-instructions": ["AI instructions", "official sources", "citation guidance"],
   "/": [
     "AI podcast for musicians",
     "AI music podcast",

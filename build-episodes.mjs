@@ -707,6 +707,7 @@ const main = () => {
 
   // Sitemap: the static pages plus every episode.
   const staticUrls = [
+    { loc: `${SITE}/ai-instructions`, changefreq: "monthly", priority: "0.4" },
     { loc: `${SITE}/`, changefreq: "weekly", priority: "1.0" },
     { loc: `${SITE}/about`, changefreq: "monthly", priority: "0.5" },
     { loc: `${SITE}/appearances`, changefreq: "monthly", priority: "0.8" },
