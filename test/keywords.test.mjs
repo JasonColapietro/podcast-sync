@@ -19,7 +19,7 @@ const keywordsOf = (html) => {
 const isNoindex = (html) => /<meta\s+name="robots"\s+content="[^"]*noindex/i.test(html);
 
 // Every indexable HTML page on the site, keyed by its public path.
-const STATIC = { "/": "index.html", "/about": "about.html", "/contact": "contact.html", "/appearances": "appearances/index.html" };
+const STATIC = { "/ai-instructions": "ai-instructions.html", "/": "index.html", "/about": "about.html", "/contact": "contact.html", "/appearances": "appearances/index.html" };
 const episodeFiles = readdirSync(join(pub, "episodes")).filter((f) => f.endsWith(".html"));
 
 test("every indexable page carries a short keywords meta with exactly one brand term", () => {
