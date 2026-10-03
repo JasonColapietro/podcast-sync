@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://podcast.suedeai.ai/ai-instructions</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
     <loc>https://podcast.suedeai.ai/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -202,13 +207,13 @@
   </url>
   <url>
     <loc>https://podcast.suedeai.ai/episodes/new-member-welcome-part-two-suede</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-10-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://podcast.suedeai.ai/episodes/binance-and-suede-crypto-ai-agents</loc>
-    <lastmod>2026-09-30</lastmod>
+    <lastmod>2026-10-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -218,5 +223,4 @@
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
-<url><loc>https://podcast.suedeai.ai/ai-instructions</loc><lastmod>2026-10-01</lastmod></url>
 </urlset>

@@ -4,7 +4,7 @@ import { readFileSync, readdirSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
-import { parseEpisodes } from "../build-episodes.mjs";
+import { chapterSection, parseEpisodes } from "../build-episodes.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
@@ -40,16 +40,20 @@ for (const episode of episodes) {
     const noteBlocks = [...html.matchAll(/<div class="notes">([\s\S]*?)<\/div>/gi)].map((match) => match[1]);
 
     assert.equal(h1s.length, 1, "expected one episode title H1");
+    // Chapters captured from the upload (chapters.json) only ever apply to an
+    // episode whose own notes carry none, and render as their own section.
+    const extra = chapterSection(episode);
+    if (extra) assert.ok(!episode.body.includes("⏱️ Chapters"), "notes already carry chapters");
     assert.deepEqual(
       h2s,
-      episode.body.includes("⏱️ Chapters")
+      episode.body.includes("⏱️ Chapters") || extra
         ? ["Episode show notes", "Episode chapters"]
         : ["Episode show notes"],
     );
     assert.ok(noteBlocks.length > 0, "expected show-note content beneath an H2");
     assert.equal(
       noteBlocks.map(text).join(" "),
-      episode.body.replace(/\s+/g, " ").trim(),
+      [episode.body, extra?.body].filter(Boolean).join(" ").replace(/\s+/g, " ").trim(),
       "heading markup must preserve every existing show-note word in order",
     );
     for (const block of noteBlocks) {
