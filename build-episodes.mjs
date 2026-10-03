@@ -151,12 +151,39 @@ const bodyText = (e) =>
   looksLikeStub(e.description) ? fallbackSummary(e) : e.description.replace(/\*\*|__/g, "");
 
 /**
+ * YouTube chapter markers for uploads whose own description has none
+ * (chapters.json, captured from the upload; see its _comment). Rendered as their
+ * own section with a line saying where they came from, never merged into the
+ * show notes, so the notes stay exactly the feed's words.
+ */
+const CHAPTERS = JSON.parse(readFileSync(join(__dirname, "chapters.json"), "utf8"));
+export const videoId = (e) => String(e.guid).replace(/^aisuede-/, "");
+const clock = (sec) => {
+  const h = Math.floor(sec / 3600);
+  const m = Math.floor((sec % 3600) / 60);
+  const s = sec % 60;
+  const pad = (n) => String(n).padStart(2, "0");
+  return h ? `${h}:${pad(m)}:${pad(s)}` : `${m}:${pad(s)}`;
+};
+export const chapterSection = (e) => {
+  const list = CHAPTERS[videoId(e)];
+  if (!Array.isArray(list) || !list.length) return null;
+  return {
+    heading: "Episode chapters",
+    body:
+      "Chapter markers from the YouTube upload of this recording:\n" +
+      list.map((c) => `${clock(c.start)} ${c.title}`).join("\n"),
+  };
+};
+
+/**
  * Give every episode's show notes a useful semantic section without rewriting
  * feed copy. The one long transcript-style description already carries a
  * chapter marker; split at that existing boundary so neither retrieval block
  * exceeds the audited ~375-word ceiling. Every original word stays in order.
  */
 const episodeSections = (e) => {
+  const extra = chapterSection(e);
   const marker = "⏱️ Chapters";
   const chapterStart = e.body.indexOf(marker);
   if (chapterStart > 0) {
@@ -165,7 +192,7 @@ const episodeSections = (e) => {
       { heading: "Episode chapters", body: e.body.slice(chapterStart).trim() },
     ];
   }
-  return [{ heading: "Episode show notes", body: e.body }];
+  return [{ heading: "Episode show notes", body: e.body }, ...(extra ? [extra] : [])];
 };
 
 /**

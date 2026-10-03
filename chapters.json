@@ -1,0 +1,67 @@
+{
+  "_comment": "Chapter markers YouTube shows for uploads whose description carries none. The descriptions of these videos have no timestamps, so these titles are YouTube's automatically generated chapters, captured with yt-dlp on 2026-10-03. Keyed by YouTube video id (the feed guid without its 'aisuede-' prefix). build-episodes.mjs renders them under an 'Episode chapters' heading that says where they came from.",
+  "3WCYIsEdqX4": [
+    {
+      "start": 0,
+      "title": "Ethos and community values"
+    },
+    {
+      "start": 69,
+      "title": "The philosophy of trustless"
+    },
+    {
+      "start": 174,
+      "title": "Actions beyond words"
+    },
+    {
+      "start": 294,
+      "title": "Decentralization and mission"
+    },
+    {
+      "start": 441,
+      "title": "Future outlook and vision"
+    }
+  ],
+  "B6cfMw-bJG4": [
+    {
+      "start": 0,
+      "title": "Introduction and background"
+    },
+    {
+      "start": 162,
+      "title": "Project vision for music"
+    },
+    {
+      "start": 345,
+      "title": "Empowering artists with AI"
+    },
+    {
+      "start": 529,
+      "title": "Tokenomics and sustainability"
+    },
+    {
+      "start": 826,
+      "title": "Accessibility for new users"
+    },
+    {
+      "start": 1007,
+      "title": "Artist integration and usage"
+    },
+    {
+      "start": 1164,
+      "title": "Decentralization and governance"
+    },
+    {
+      "start": 1363,
+      "title": "Community growth and engagement"
+    },
+    {
+      "start": 1634,
+      "title": "Future events and expansion"
+    },
+    {
+      "start": 2018,
+      "title": "Roadmap and concluding remarks"
+    }
+  ]
+}
