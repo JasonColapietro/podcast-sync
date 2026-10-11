@@ -94,7 +94,16 @@
       .meta { color:var(--muted); font-size:14px; margin:0 0 28px; }
       .credit { margin:0 0 28px; padding:12px 14px; border:1px solid var(--line);
         border-radius:8px; background:var(--panel); font-size:15px; }
-      .notes { white-space:pre-wrap; }
+      .notes p { margin:0 0 14px; }
+      .notes ul { margin:0 0 14px; padding-left:22px; }
+      .notes li, ol.chapters li, ul.related-list li, ul.products li { margin:6px 0; }
+      ol.chapters { margin:0 0 14px; padding-left:22px; }
+      ol.chapters a { font-variant-numeric: tabular-nums; }
+      .topics { font-size:15px; margin:-12px 0 24px; }
+      ul.related-list, ul.products { margin:0; padding-left:20px; }
+      .summary { display:block; font-size:15px; }
+      .ep-meta { display:block; color:var(--muted); font-size:13px; }
+      nav.pager { display:flex; flex-wrap:wrap; gap:8px 24px; margin:32px 0 0; font-size:15px; }
       audio { width:100%; margin:20px 0 28px; }
       nav.crumbs { font-size:14px; color:var(--muted); margin-bottom:24px; }
       nav.footer-nav { display:flex; flex-wrap:wrap; gap:6px 10px; margin:2px 0 0 -8px;
@@ -111,14 +120,60 @@
       <p class="meta">
         Published 2025-03-14 &middot; 47:49
       </p>
+      <p class="topics">Topics: <a href="/topics/music-ip-real-world-assets">Music IP as a real-world asset</a>, <a href="/topics/ai-and-the-music-industry">AI and the music industry</a></p>
       <p class="credit">Guest appearance, hosted by Block.
         <a href="/appearances">All appearances</a>.
       </p>
       <audio controls preload="none" src="https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/DUO1njPGruw.mp3"></audio>
       <section class="notes-section">
         <h2>Episode show notes</h2>
-        <div class="notes">Casual Block AMA with Jason Colapietro on where AI tooling and Web3 actually overlap for music creators — and what an artist-owned future looks like when both stacks click into place. We get into: • What AI tools change for the working musician (and what they don't) • Where Web3 fits in the music value chain • Music IP as a real-world asset (RWA) on Base • What the next 12 months of build looks like at Suede Labs 🎙️ Hosted on @Block 🔗 Suede Labs → https://suedeai.ai 🐦 Johnny Suede → https://x.com/johnnysuede #Block #SuedeLabs #Base #x402 #ArtistRights #MusicRWA #MusicIP</div>
+        <div class="notes"><p>Casual Block AMA with Jason Colapietro on where AI tooling and Web3 actually overlap for music creators — and what an artist-owned future looks like when both stacks click into place.</p>
+<p>We get into:</p>
+<ul>
+<li>What AI tools change for the working musician (and what they don't)</li>
+<li>Where Web3 fits in the music value chain</li>
+<li>Music IP as a real-world asset (RWA) on Base</li>
+<li>What the next 12 months of build looks like at Suede Labs</li>
+</ul>
+<p>🎙️ Hosted on @Block<br />
+🔗 Suede Labs → https://suedeai.ai<br />
+🐦 Johnny Suede → https://x.com/johnnysuede</p>
+<p>#Block #SuedeLabs #Base #x402 #ArtistRights #MusicRWA #MusicIP</p></div>
       </section>
+      <section class="notes-section">
+        <h2>Related episodes</h2>
+        <p class="ep-meta">Chosen by the topics, hosts and keywords their show notes share with this episode, then by publish date.</p>
+        <ul class="related-list">
+          <li>
+            <a href="/episodes/binance-suede-labs-ai-music-web3-creativity-full-ama">Binance × Suede AI: AI, Music + Web3 Creativity (Full AMA)</a>
+            <span class="ep-meta">2025-03-12 &middot; 40:05 &middot; Guest appearance, hosted by Binance.</span>
+            <span class="summary">Binance AMA with Jason Colapietro on the intersection of AI tooling, music, and Web3 creativity — and what an artist-owned future actually looks like in…</span>
+            <span class="ep-meta">Shared topics: Music IP as a real-world asset, AI and the music industry</span>
+          </li>
+          <li>
+            <a href="/episodes/btse-suede-labs-redefining-the-music-industry-with-crypto-ai">BTSE × Suede AI: Redefining the Music Industry with Crypto + AI</a>
+            <span class="ep-meta">2025-03-16 &middot; 36:00 &middot; Guest appearance, hosted by BTSE.</span>
+            <span class="summary">BTSE AMA with Jason Colapietro on what gets rebuilt when the music industry meets a real on-chain stack — and how AI tooling fits into that picture as a…</span>
+            <span class="ep-meta">Shared topics: Music IP as a real-world asset, AI and the music industry</span>
+          </li>
+          <li>
+            <a href="/episodes/apex-exchange-suede-labs-ai-music-crypto-distribution">APEX Exchange × Suede AI: AI, Music + Crypto Distribution</a>
+            <span class="ep-meta">2025-03-16 &middot; 1:04:41 &middot; Guest appearance, hosted by APEX Exchange.</span>
+            <span class="summary">APEX Exchange AMA with Jason Colapietro on what changes when AI tools meet a crypto-native distribution layer for music — and how Suede Labs makes that…</span>
+            <span class="ep-meta">Shared topics: Music IP as a real-world asset, AI and the music industry</span>
+          </li>
+          <li>
+            <a href="/episodes/block-suede-labs-ama-the-music-stack-on-base">Block × Suede AI AMA: The Music Stack on Base</a>
+            <span class="ep-meta">2025-03-18 &middot; 53:21 &middot; Guest appearance, hosted by Block.</span>
+            <span class="summary">Block AMA with Jason Colapietro on the music stack Suede Labs is shipping on Base — what's live, what's next, and how the pieces fit together for artists…</span>
+            <span class="ep-meta">Shared topics: Music IP as a real-world asset</span>
+          </li>
+        </ul>
+      </section>
+      <nav class="pager" aria-label="Earlier and later episodes">
+        <a href="/episodes/digifinex-suede-labs-ep-15-where-ai-and-music-are-headed">Earlier (episode 11): DigiFinex × Suede AI (Ep 15): Where AI and Music Are Headed</a>
+        <a href="/episodes/btse-suede-labs-redefining-the-music-industry-with-crypto-ai">Later (episode 13): BTSE × Suede AI: Redefining the Music Industry with Crypto + AI</a>
+      </nav>
       <hr />
       <p class="meta">
         Carried on <a href="/">AI Suede: Build, Create, Ship</a>.

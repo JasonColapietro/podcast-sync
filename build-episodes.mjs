@@ -29,11 +29,21 @@ import {
   guestSentence,
   hostedCredit,
 } from "./appearances.mjs";
-import { PAGE_KEYWORDS, episodeKeywords, keywordContent } from "./keywords.mjs";
+import {
+  MIN_HUB_EPISODES,
+  PAGE_KEYWORDS,
+  TOPIC_HUBS,
+  episodeKeywords,
+  keywordContent,
+  topicPath,
+} from "./keywords.mjs";
+import { productByKey } from "./suede-sites.mjs";
+import { hubEpisodes, productsFor, proseLine, relatedEpisodes, topicQuotes, topicsFor } from "./topics.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PUBLIC = join(__dirname, "public");
 const EPISODES_DIR = join(PUBLIC, "episodes");
+const TOPICS_DIR = join(PUBLIC, "topics");
 const SITE = "https://podcast.suedeai.ai";
 const ARTWORK = `${SITE}/artwork.jpg`;
 const SHOW = "AI Suede: Build, Create, Ship";
@@ -103,6 +113,10 @@ const fallbackSummary = (e) => {
   return `${lead}: ${title}${end}`;
 };
 
+/** A list lead-in that ends an intro paragraph ("… We get into:"). */
+const LEAD_IN =
+  /\s*\b(?:we(?:['’]| )?ll?\s+(?:get into|discuss|be discussing|cover|be covering|dig into|talk about)|we discuss|in this (?:episode|clip|space|conversation|ama)|here['’]?s what)\b[:\-–—\s]*$/i;
+
 /**
  * The full (untruncated) plain-text summary for an episode: the opening
  * paragraph of the show notes, cleaned; if that opener is too thin, the rest of
@@ -114,13 +128,7 @@ const resolveSummary = (e) => {
   const raw = e.descriptionHtml || "";
   const paras = raw.split(/\n\s*\n+/);
   let intro = cleanText(paras[0] || "");
-  // Drop a list lead-in that ends the intro paragraph ("… We get into:").
-  intro = intro
-    .replace(
-      /\s*\b(?:we(?:['’]| )?ll?\s+(?:get into|discuss|be discussing|cover|be covering|dig into|talk about)|we discuss|in this (?:episode|clip|space|conversation|ama)|here['’]?s what)\b[:\-–—\s]*$/i,
-      "",
-    )
-    .trim();
+  intro = intro.replace(LEAD_IN, "").trim();
   if (intro.length < 60) {
     intro = cleanText(`${intro} ${cleanText(paras.slice(1).join(" "))}`);
   }
@@ -146,6 +154,21 @@ const truncateAtWord = (text, limit = 155) => {
 const metaDescription = (e) => truncateAtWord(resolveSummary(e), 155);
 /** Word-safe schema.org description — a fuller summary, still bullet-free. */
 const schemaDescription = (e) => truncateAtWord(resolveSummary(e), 400);
+/**
+ * The summary on a topic hub entry: the first paragraph of the show notes that
+ * says something (60 characters or more, no link, not just the title), whole.
+ * The 400-character schema description ended two hub entries mid-sentence, and
+ * when the opener is only the title (episode 14) resolveSummary runs on into
+ * the link lines. Stubs fall back to resolveSummary's sentence.
+ */
+const hubSummary = (e) => {
+  const title = cleanText(e.title).toLowerCase();
+  const para = String(e.descriptionHtml || "")
+    .split(/\n\s*\n+/)
+    .map((p) => cleanText(p).replace(LEAD_IN, "").trim())
+    .find((p) => p.length >= 60 && !/https?:\/\//i.test(p) && p.toLowerCase() !== title);
+  return para ?? resolveSummary(e);
+};
 /** Visible show-notes body: strip markdown emphasis; give stubs an honest line. */
 const bodyText = (e) =>
   looksLikeStub(e.description) ? fallbackSummary(e) : e.description.replace(/\*\*|__/g, "");
@@ -165,34 +188,109 @@ const clock = (sec) => {
   const pad = (n) => String(n).padStart(2, "0");
   return h ? `${h}:${pad(m)}:${pad(s)}` : `${m}:${pad(s)}`;
 };
-export const chapterSection = (e) => {
+const toSeconds = (stamp) =>
+  String(stamp)
+    .split(":")
+    .map(Number)
+    .reduce((total, part) => total * 60 + part, 0);
+
+/**
+ * The upload a feed item came from. sync.js downloads every episode from
+ * https://www.youtube.com/watch?v=<id>, with <id> the feed guid minus its
+ * "aisuede-" prefix, so this is the same URL, opened at `seconds`.
+ */
+export const youtubeAt = (e, seconds) =>
+  `https://www.youtube.com/watch?v=${encodeURIComponent(videoId(e))}${seconds ? `&t=${seconds}s` : ""}`;
+
+const NOTES_CHAPTER_MARKER = "⏱️ Chapters";
+const CHAPTER_LINE = /^(\d{1,2}(?::\d{2}){1,2})\s+(.+)$/;
+const BULLET_LINE = /^[•✅▪‣]\s*/u;
+
+/** The show-notes text a page renders: the feed's own copy, or the honest fallback for a stub. */
+const notesSource = (e) =>
+  looksLikeStub(e.description)
+    ? fallbackSummary(e)
+    : String(e.descriptionHtml).replace(/<[^>]+>/g, " ").replace(/\*\*|__/g, "");
+
+/**
+ * Split an episode's notes into the notes proper and, where there is one, a
+ * chapter list. The one long description carries its own "⏱️ Chapters" block;
+ * two uploads without one have YouTube's markers in chapters.json. Either way
+ * every word of the feed copy is rendered once, in order.
+ */
+export const episodeContent = (e) => {
+  const text = notesSource(e);
+  const at = text.indexOf(NOTES_CHAPTER_MARKER);
+  if (at > 0) {
+    const items = [];
+    const after = [];
+    for (const raw of text.slice(at + NOTES_CHAPTER_MARKER.length).split(/\r?\n/)) {
+      const line = raw.trim();
+      if (!line) continue;
+      const m = line.match(CHAPTER_LINE);
+      if (m && !after.length) items.push({ start: toSeconds(m[1]), stamp: m[1], title: m[2] });
+      else after.push(line);
+    }
+    return {
+      notes: text.slice(0, at).trim(),
+      chapters: {
+        intro:
+          "Chapter markers from the show notes. Each time opens the recording at that point on YouTube.",
+        items,
+        after: after.join("\n"),
+      },
+    };
+  }
   const list = CHAPTERS[videoId(e)];
-  if (!Array.isArray(list) || !list.length) return null;
-  return {
-    heading: "Episode chapters",
-    body:
-      "Chapter markers from the YouTube upload of this recording:\n" +
-      list.map((c) => `${clock(c.start)} ${c.title}`).join("\n"),
-  };
+  if (Array.isArray(list) && list.length) {
+    return {
+      notes: text.trim(),
+      chapters: {
+        intro:
+          "YouTube generated these chapter markers for the upload of this recording; the show notes carry none. " +
+          "Each time opens the recording at that point on YouTube.",
+        items: list.map((c) => ({ start: c.start, stamp: clock(c.start), title: c.title })),
+        after: "",
+      },
+    };
+  }
+  return { notes: text.trim(), chapters: null };
 };
 
 /**
- * Give every episode's show notes a useful semantic section without rewriting
- * feed copy. The one long transcript-style description already carries a
- * chapter marker; split at that existing boundary so neither retrieval block
- * exceeds the audited ~375-word ceiling. Every original word stays in order.
+ * Feed notes as HTML blocks: blank lines separate paragraphs, lines that open
+ * with a list glyph become list items (the glyph is the list marker now), and
+ * every other line break is kept. The feed copy used to be collapsed into one
+ * run-on paragraph with its bullets inline.
  */
-const episodeSections = (e) => {
-  const extra = chapterSection(e);
-  const marker = "⏱️ Chapters";
-  const chapterStart = e.body.indexOf(marker);
-  if (chapterStart > 0) {
-    return [
-      { heading: "Episode show notes", body: e.body.slice(0, chapterStart).trim() },
-      { heading: "Episode chapters", body: e.body.slice(chapterStart).trim() },
-    ];
+const renderNotes = (text) => {
+  const out = [];
+  let para = [];
+  let list = [];
+  const flushPara = () => {
+    if (para.length) out.push(`<p>${para.map(esc).join("<br />\n")}</p>`);
+    para = [];
+  };
+  const flushList = () => {
+    if (list.length) out.push(`<ul>\n${list.map((item) => `<li>${esc(item)}</li>`).join("\n")}\n</ul>`);
+    list = [];
+  };
+  for (const raw of String(text).split(/\r?\n/)) {
+    const line = raw.replace(/\s+/g, " ").trim();
+    if (!line) {
+      flushPara();
+      flushList();
+    } else if (BULLET_LINE.test(line)) {
+      flushPara();
+      list.push(line.replace(BULLET_LINE, ""));
+    } else {
+      flushList();
+      para.push(line);
+    }
   }
-  return [{ heading: "Episode show notes", body: e.body }, ...(extra ? [extra] : [])];
+  flushPara();
+  flushList();
+  return out.join("\n");
 };
 
 /**
@@ -291,7 +389,7 @@ export const parseEpisodes = (xml) => {
 };
 
 // Exported so the guard test can prove truncation lands on a word boundary.
-export { resolveSummary, metaDescription, schemaDescription, truncateAtWord, looksLikeStub, fallbackSummary, cleanText };
+export { resolveSummary, metaDescription, schemaDescription, hubSummary, truncateAtWord, looksLikeStub, fallbackSummary, cleanText };
 
 const SHARED_HEAD = (e) => `    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -472,7 +570,16 @@ const STYLE = `      :root { color-scheme: dark; --bg:#09090b; --panel:#151517; 
       .meta { color:var(--muted); font-size:14px; margin:0 0 28px; }
       .credit { margin:0 0 28px; padding:12px 14px; border:1px solid var(--line);
         border-radius:8px; background:var(--panel); font-size:15px; }
-      .notes { white-space:pre-wrap; }
+      .notes p { margin:0 0 14px; }
+      .notes ul { margin:0 0 14px; padding-left:22px; }
+      .notes li, ol.chapters li, ul.related-list li, ul.products li { margin:6px 0; }
+      ol.chapters { margin:0 0 14px; padding-left:22px; }
+      ol.chapters a { font-variant-numeric: tabular-nums; }
+      .topics { font-size:15px; margin:-12px 0 24px; }
+      ul.related-list, ul.products { margin:0; padding-left:20px; }
+      .summary { display:block; font-size:15px; }
+      .ep-meta { display:block; color:var(--muted); font-size:13px; }
+      nav.pager { display:flex; flex-wrap:wrap; gap:8px 24px; margin:32px 0 0; font-size:15px; }
       audio { width:100%; margin:20px 0 28px; }
       nav.crumbs { font-size:14px; color:var(--muted); margin-bottom:24px; }
       nav.footer-nav { display:flex; flex-wrap:wrap; gap:6px 10px; margin:2px 0 0 -8px;
@@ -480,7 +587,99 @@ const STYLE = `      :root { color-scheme: dark; --bg:#09090b; --panel:#151517; 
       nav.footer-nav a { padding:10px 8px; color:var(--muted); text-decoration:none; }
       hr { border:0; border-top:1px solid var(--line); margin:36px 0; }`;
 
-const episodePage = (e) => `<!doctype html>
+/** One-line credit for an episode listed on another page, from appearances.mjs. */
+const creditLabel = (e) =>
+  creditSentence(e.slug) ?? guestSentence(e.slug) ?? "Episode by Jason Colapietro.";
+
+const dateAndLength = (e) =>
+  [e.date ? esc(e.date) : "", e.duration ? esc(e.duration) : ""].filter(Boolean).join(" &middot; ");
+
+const topicLinks = (hubs) =>
+  hubs.map((h) => `<a href="${topicPath(h.slug)}">${esc(h.name)}</a>`).join(", ");
+
+const chaptersSection = (e, chapters) => `      <section class="notes-section">
+        <h2>Episode chapters</h2>
+        <p class="ep-meta">${esc(chapters.intro)}</p>
+        <ol class="chapters">
+${chapters.items
+  .map(
+    (c) =>
+      `          <li><a href="${esc(youtubeAt(e, c.start))}">${esc(c.stamp)}</a> ${esc(c.title)}</li>`,
+  )
+  .join("\n")}
+        </ol>${
+          chapters.after
+            ? `\n        <div class="notes">${renderNotes(chapters.after)}</div>`
+            : ""
+        }
+      </section>`;
+
+/**
+ * Products the notes name, each with its live description (suede-sites.mjs) and
+ * the naming lines, labelled with the date the notes were published so a line
+ * from older notes is not read as the product's description today. A legal-effect claim is
+ * never quoted here (topics.mjs); the product is still listed, as "named".
+ */
+const productsSection = (e, mentions) => {
+  const published = e.date ? `, published ${esc(e.date)}` : "";
+  return `      <section class="notes-section">
+        <h2>Suede AI products in this episode</h2>
+        <ul class="products">
+${mentions
+  .map(
+    ({ product, lines }) => `          <li>
+            <a href="${esc(product.href)}">${esc(product.name)}</a>. ${esc(product.description)}
+            <span class="ep-meta">${
+              lines.length
+                ? `In the show notes${published}: ${lines.map((l) => `&ldquo;${esc(l)}&rdquo;`).join(" ")}`
+                : `Named in the show notes${published}.`
+            }</span>
+          </li>`,
+  )
+  .join("\n")}
+        </ul>
+      </section>`;
+};
+
+const relatedSection = (e, all) => `      <section class="notes-section">
+        <h2>Related episodes</h2>
+        <p class="ep-meta">Chosen by the topics, hosts and keywords their show notes share with this episode, then by publish date.</p>
+        <ul class="related-list">
+${relatedEpisodes(e, all)
+  .map(
+    ({ episode: r, sharedHubs }) => `          <li>
+            <a href="/episodes/${r.slug}">${esc(r.title)}</a>
+            <span class="ep-meta">${dateAndLength(r)}${dateAndLength(r) ? " &middot; " : ""}${esc(creditLabel(r))}</span>${
+              looksLikeStub(r.description) ? "" : `\n            <span class="summary">${esc(r.metaDescription)}</span>`
+            }${
+              sharedHubs.length
+                ? `\n            <span class="ep-meta">Shared topics: ${sharedHubs.map((h) => esc(h.name)).join(", ")}</span>`
+                : ""
+            }
+          </li>`,
+  )
+  .join("\n")}
+        </ul>
+      </section>`;
+
+/** Earlier and later episode by feed number; the feed lists newest first. */
+const pager = (e, all) => {
+  const i = all.indexOf(e);
+  const later = i > 0 ? all[i - 1] : null;
+  const earlier = i >= 0 && i < all.length - 1 ? all[i + 1] : null;
+  const link = (label, x) =>
+    `<a href="/episodes/${x.slug}">${label}${x.number ? ` (episode ${esc(x.number)})` : ""}: ${esc(x.title)}</a>`;
+  const links = [earlier && link("Earlier", earlier), later && link("Later", later)].filter(Boolean);
+  return links.length
+    ? `      <nav class="pager" aria-label="Earlier and later episodes">\n        ${links.join("\n        ")}\n      </nav>`
+    : "";
+};
+
+const episodePage = (e, all) => {
+  const { notes, chapters } = episodeContent(e);
+  const hubs = topicsFor(e);
+  const mentions = productsFor(e);
+  return `<!doctype html>
 <html lang="en">
   <head>
 ${SHARED_HEAD(e)}
@@ -499,7 +698,7 @@ ${STYLE}
       <p class="meta">
         ${e.date ? `Published ${esc(e.date)}` : ""}${e.date && e.duration ? " &middot; " : ""}${e.duration ? `${esc(e.duration)}` : ""}
       </p>
-${
+${hubs.length ? `      <p class="topics">Topics: ${topicLinks(hubs)}</p>\n` : ""}${
   // An appearance points at /appearances; an episode of his own with a named
   // guest says so and points nowhere, because it is not an appearance.
   creditSentence(e.slug)
@@ -511,13 +710,17 @@ ${
       : ""
 }
       ${e.audio ? `<audio controls preload="none" src="${esc(e.audio)}"></audio>` : ""}
-${episodeSections(e)
-  .map(
-    (section) => `      <section class="notes-section">
-        <h2>${section.heading}</h2>
-        <div class="notes">${esc(section.body)}</div>
-      </section>`,
-  )
+      <section class="notes-section">
+        <h2>Episode show notes</h2>
+        <div class="notes">${renderNotes(notes)}</div>
+      </section>
+${[
+  chapters ? chaptersSection(e, chapters) : "",
+  mentions.length ? productsSection(e, mentions) : "",
+  relatedSection(e, all),
+  pager(e, all),
+]
+  .filter(Boolean)
   .join("\n")}
       <hr />
       <p class="meta">
@@ -543,6 +746,212 @@ ${
   </body>
 </html>
 `;
+};
+
+// ---------------------------------------------------------------------------
+// /topics/<slug> — one page per subject several episodes' notes cover.
+//
+// Every episode page used to stand alone: a recording about on-chain royalties
+// had no route to the six others about the same thing, except the full list on
+// the home page. A hub lists every recording whose show notes cover the topic
+// (topics.mjs decides, from the notes), with its summary and the notes' own
+// lines on the subject, so each page answers "which episodes cover X?" from
+// the feed's own words.
+// ---------------------------------------------------------------------------
+
+const hubUrl = (hub) => `${SITE}${topicPath(hub.slug)}`;
+
+const totalLength = (episodes) => {
+  const minutes = Math.round(episodes.reduce((t, e) => t + toSeconds(e.duration || 0), 0) / 60);
+  const h = Math.floor(minutes / 60);
+  const m = minutes % 60;
+  return [h ? `${h} hour${h === 1 ? "" : "s"}` : "", m ? `${m} minute${m === 1 ? "" : "s"}` : ""]
+    .filter(Boolean)
+    .join(" ");
+};
+
+const hubJsonLd = (hub, members) =>
+  JSON.stringify(
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "CollectionPage",
+          "@id": `${hubUrl(hub)}#webpage`,
+          url: hubUrl(hub),
+          name: hub.title,
+          description: hub.description(members.length),
+          keywords: keywordContent(PAGE_KEYWORDS[topicPath(hub.slug)]),
+          isPartOf: { "@id": `${SITE}/#podcast` },
+          mainEntity: { "@id": `${hubUrl(hub)}#list` },
+        },
+        {
+          "@type": "ItemList",
+          "@id": `${hubUrl(hub)}#list`,
+          name: hub.name,
+          itemListOrder: "https://schema.org/ItemListOrderDescending",
+          numberOfItems: members.length,
+          itemListElement: members.map((e, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            url: e.url,
+            item: { "@id": `${e.url}#episode` },
+          })),
+        },
+        {
+          "@type": "PodcastSeries",
+          "@id": `${SITE}/#podcast`,
+          name: "AI Suede: Build, Create, Ship",
+          url: `${SITE}/`,
+          webFeed: `${SITE}/feed.xml`,
+        },
+      ],
+    },
+    null,
+    2,
+  );
+
+/**
+ * Why an entry is on the hub, when neither a quote nor its summary shows it:
+ * the hub matched its title, or a notes line that is not quoted here (a
+ * legal-effect claim, see topics.mjs) and stays on the episode page.
+ */
+const hubReason = (hub, e, summary, quotes) => {
+  if (quotes.length || hub.match.test(summary)) return "";
+  if (hub.match.test(proseLine(e.title))) return "Listed for its title.";
+  return "Listed for a line of its show notes; the full notes are on the episode page.";
+};
+
+const hubEntry = (hub, e) => {
+  const summary = hubSummary(e);
+  const quotes = topicQuotes(e, hub).filter((q) => !cleanText(summary).includes(cleanText(q)));
+  const reason = hubReason(hub, e, summary, quotes);
+  return `      <section class="hub-ep">
+        <h2><a href="/episodes/${e.slug}">${esc(e.title)}</a></h2>
+        <span class="ep-meta">${e.number ? `Episode ${esc(e.number)} &middot; ` : ""}${dateAndLength(e)}${dateAndLength(e) ? " &middot; " : ""}${esc(creditLabel(e))}</span>
+        <p>${esc(summary)}</p>${
+          quotes.length
+            ? `\n        <p class="ep-meta">On this topic, from the show notes:</p>\n        <ul class="quotes">\n${quotes
+                .map((q) => `          <li>${esc(q)}</li>`)
+                .join("\n")}\n        </ul>`
+            : ""
+        }${reason ? `\n        <p class="ep-meta">${esc(reason)}</p>` : ""}
+      </section>`;
+};
+
+const hubPage = (hub, members, hubs, episodes) => {
+  const appearances = members.filter((e) => creditSentence(e.slug)).length;
+  const own = members.length - appearances;
+  const dates = members.map((e) => e.date).filter(Boolean).sort();
+  const product = hub.product ? productByKey(hub.product) : null;
+  const others = hubs.filter((h) => h.slug !== hub.slug);
+  const desc = hub.description(members.length);
+  return `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>${esc(hub.title)}</title>
+    <meta name="description" content="${esc(desc)}" />
+    <meta name="keywords" content="${esc(keywordContent(PAGE_KEYWORDS[topicPath(hub.slug)]))}" />
+    <link rel="canonical" href="${hubUrl(hub)}" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="AI Suede: Build, Create, Ship"
+      href="${SITE}/feed.xml"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="AI Suede Podcast" />
+    <meta property="og:title" content="${esc(hub.title)}" />
+    <meta property="og:description" content="${esc(desc)}" />
+    <meta property="og:url" content="${hubUrl(hub)}" />
+    <meta property="og:image" content="${ARTWORK}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@AISUEDE" />
+    <meta name="twitter:creator" content="@johnnysuede" />
+    <meta name="twitter:title" content="${esc(hub.title)}" />
+    <meta name="twitter:description" content="${esc(desc)}" />
+    <meta name="twitter:image" content="${ARTWORK}" />
+    <script type="application/ld+json">
+${hubJsonLd(hub, members)}
+    </script>
+    <style>
+${STYLE}
+      .lede { font-size:17px; margin:0 0 12px; }
+      .hub-ep { margin:0 0 28px; padding:18px 20px; border:1px solid var(--line);
+        border-radius:10px; background:var(--panel); }
+      .hub-ep h2 { margin:0 0 4px; font-size:20px; }
+      .hub-ep p { margin:10px 0 0; }
+      .hub-ep ul.quotes { margin:6px 0 0; padding-left:20px; }
+      .hub-ep ul.quotes li { margin:4px 0; }
+      .product { margin:0 0 32px; padding:12px 14px; border:1px solid var(--line);
+        border-radius:8px; font-size:15px; }
+      ul.topic-list { padding-left:20px; }
+      ul.topic-list li { margin:8px 0; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav class="crumbs"><a href="/">AI Suede Podcast</a> &rsaquo; Topic</nav>
+      <p class="eyebrow">Topic</p>
+      <h1>${esc(hub.name)}</h1>
+      <p class="lede">${esc(hub.lede)}</p>
+      <p class="meta">
+        ${members.length} recordings: ${[
+          own ? `${own} episode${own === 1 ? "" : "s"} of AI Suede` : "",
+          appearances
+            ? `${appearances} guest appearance${appearances === 1 ? "" : "s"} on other programmes (<a href="/appearances">see all appearances</a>)`
+            : "",
+        ]
+          .filter(Boolean)
+          .join(" and ")},
+        published ${esc(dates[0])} to ${esc(dates[dates.length - 1])}, ${esc(totalLength(members))} of audio in all.
+        Newest first. Each entry gives the episode's summary, then quotes the other lines of its show notes on the topic or says why it is listed.
+      </p>
+${
+  product
+    ? `      <p class="product">
+        <a href="${esc(product.href)}">${esc(product.name)}</a>. ${esc(product.description)}
+        <span class="ep-meta">Named in the show notes of ${
+          members.filter((e) => productsFor(e).some((m) => m.product.key === product.key)).length
+        } of these recordings.</span>
+      </p>\n`
+    : ""
+}${members.map((e) => hubEntry(hub, e)).join("\n")}
+      <section class="notes-section">
+        <h2>Other topics</h2>
+        <ul class="topic-list">
+${others
+  .map(
+    (h) =>
+      `          <li><a href="${topicPath(h.slug)}">${esc(h.name)}</a>: ${hubEpisodes(h, episodes).length} recordings. ${esc(h.short)}</li>`,
+  )
+  .join("\n")}
+        </ul>
+      </section>
+      <hr />
+      <p class="meta">
+        From <a href="/">AI Suede: Build, Create, Ship</a>, the podcast feed of the
+        <a href="https://www.youtube.com/@aisuede">@aisuede YouTube channel</a>.
+        Subscribe via <a href="/feed.xml">RSS</a>.
+      </p>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/appearances">Appearances</a>
+        <a href="/contact">Contact</a>
+        <a href="https://suedeai.ai/privacy">Privacy</a>
+      </nav>
+    </main>
+  </body>
+</html>
+`;
+};
 
 // ---------------------------------------------------------------------------
 // /appearances — one page listing every appearance on someone else's programme.
@@ -722,7 +1131,26 @@ const main = () => {
   if (existsSync(EPISODES_DIR)) rmSync(EPISODES_DIR, { recursive: true });
   mkdirSync(EPISODES_DIR, { recursive: true });
   for (const e of episodes) {
-    writeFileSync(join(EPISODES_DIR, `${e.slug}.html`), episodePage(e));
+    writeFileSync(join(EPISODES_DIR, `${e.slug}.html`), episodePage(e, episodes));
+  }
+
+  // /topics/<slug> — rebuilt from scratch like /episodes, so a hub dropped from
+  // TOPIC_HUBS takes its page with it. A hub too small to be worth a page fails
+  // the build rather than shipping a thin one.
+  const hubs = TOPIC_HUBS.map((hub) => ({ hub, members: hubEpisodes(hub, episodes) }));
+  for (const { hub, members } of hubs) {
+    if (members.length < MIN_HUB_EPISODES) {
+      console.error(
+        `build-episodes: topic ${hub.slug} matches ${members.length} episodes (minimum ${MIN_HUB_EPISODES}); ` +
+          "drop it from TOPIC_HUBS or widen its match",
+      );
+      process.exit(1);
+    }
+  }
+  if (existsSync(TOPICS_DIR)) rmSync(TOPICS_DIR, { recursive: true });
+  mkdirSync(TOPICS_DIR, { recursive: true });
+  for (const { hub, members } of hubs) {
+    writeFileSync(join(TOPICS_DIR, `${hub.slug}.html`), hubPage(hub, members, TOPIC_HUBS, episodes));
   }
 
   // /appearances — regenerated from the same feed, so the index and the episode
@@ -732,7 +1160,7 @@ const main = () => {
   mkdirSync(appearancesDir, { recursive: true });
   writeFileSync(join(appearancesDir, "index.html"), appearancesPage(groups));
 
-  // Sitemap: the static pages plus every episode.
+  // Sitemap: the static pages, the topic hubs, and every episode.
   const staticUrls = [
     { loc: `${SITE}/ai-instructions`, changefreq: "monthly", priority: "0.4" },
     { loc: `${SITE}/`, changefreq: "weekly", priority: "1.0" },
@@ -746,6 +1174,12 @@ ${staticUrls
   .map(
     (u) =>
       `  <url>\n    <loc>${u.loc}</loc>\n    <changefreq>${u.changefreq}</changefreq>\n    <priority>${u.priority}</priority>\n  </url>`,
+  )
+  .join("\n")}
+${hubs
+  .map(
+    ({ hub }) =>
+      `  <url>\n    <loc>${hubUrl(hub)}</loc>\n    <lastmod>${contentDate(join("public", "topics", `${hub.slug}.html`))}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>`,
   )
   .join("\n")}
 ${episodes
@@ -777,8 +1211,39 @@ ${episodes
           </ol>
         </section>`;
 
+  // Topic hubs on the homepage, above the episode list, so each hub is one
+  // followed link from the root.
+  const topicsHtml = `        <section class="topics" aria-labelledby="topics-heading">
+          <h2 id="topics-heading">Browse by topic</h2>
+          <ul class="topic-list">
+${hubs
+  .map(
+    ({ hub, members }) =>
+      `            <li>\n              <a href="${topicPath(hub.slug)}">${esc(hub.name)}</a>\n              <span class="ep-meta">${members.length} recordings. ${esc(hub.short)}</span>\n            </li>`,
+  )
+  .join("\n")}
+          </ul>
+        </section>`;
+
   const indexPath = join(PUBLIC, "index.html");
   let index = readFileSync(indexPath, "utf8");
+  const T_START = "<!-- TOPICS:START -->";
+  const T_END = "<!-- TOPICS:END -->";
+  const topicsBlock = `${T_START}\n${topicsHtml}\n        ${T_END}`;
+  if (index.includes(T_START)) {
+    index = index.replace(new RegExp(`${T_START}[\\s\\S]*?${T_END}`), topicsBlock);
+  } else {
+    index = index.replace("      <!-- EPISODES:START -->", `      ${topicsBlock}\n      <!-- EPISODES:START -->`);
+  }
+  if (!index.includes(".topic-list")) {
+    index = index.replace(
+      "    </style>",
+      `      .topics { margin-top: 48px; }
+      .topic-list { list-style: none; padding-left: 0; }
+      .topic-list li { margin: 12px 0; }
+    </style>`,
+    );
+  }
   const START = "<!-- EPISODES:START -->";
   const END = "<!-- EPISODES:END -->";
   const block = `${START}\n${listHtml}\n        ${END}`;
@@ -804,7 +1269,8 @@ ${episodes
     `build-episodes: ${groups.reduce((n, g) => n + g.episodes.length, 0)} appearances across ` +
       `${groups.length} third-party programmes`,
   );
-  console.log(`build-episodes: sitemap ${staticUrls.length + episodes.length} URLs`);
+  console.log(`build-episodes: ${hubs.length} topic hubs (${hubs.map(({ hub, members }) => `${hub.slug} ${members.length}`).join(", ")})`);
+  console.log(`build-episodes: sitemap ${staticUrls.length + hubs.length + episodes.length} URLs`);
 };
 
 if (import.meta.url === pathToFileURL(process.argv[1]).href) main();

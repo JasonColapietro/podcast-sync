@@ -87,7 +87,7 @@
             "name": "AI Suede Podcast | Jason Colapietro and Suede AI",
             "description": "Podcast feed from Jason Colapietro on Suede AI, creator ownership, music IP, programmable media, and solo founder shipping.",
             "datePublished": "2026-07-15",
-            "dateModified": "2026-09-05",
+            "dateModified": "2026-10-11",
             "isPartOf": {
               "@id": "https://podcast.suedeai.ai/#podcast"
             },
@@ -262,6 +262,9 @@
       .episode-list { list-style: decimal; padding-left: 24px; }
       .episode-list li { margin: 10px 0; }
       .ep-meta { display: block; color: var(--muted); font-size: 13px; }
+      .topics { margin-top: 48px; }
+      .topic-list { list-style: none; padding-left: 0; }
+      .topic-list li { margin: 12px 0; }
     </style>
   </head>
   <body>
@@ -285,7 +288,7 @@
           </div>
           <p class="meta">
             Feed URL: <code>https://podcast.suedeai.ai/feed.xml</code><br />
-            Page last updated <time dateTime="2026-07-15">2026-07-15</time>.
+            Page last updated <time dateTime="2026-10-11">2026-10-11</time>.
             <nav class="footer-nav" aria-label="Footer">
               <a href="/about">About</a>
               <a href="/appearances">Appearances</a>
@@ -320,6 +323,33 @@
           />
         </picture>
       </section>
+      <!-- TOPICS:START -->
+        <section class="topics" aria-labelledby="topics-heading">
+          <h2 id="topics-heading">Browse by topic</h2>
+          <ul class="topic-list">
+            <li>
+              <a href="/topics/music-ip-real-world-assets">Music IP as a real-world asset</a>
+              <span class="ep-meta">17 recordings. Tokenized music rights that the people who made the work own and earn from.</span>
+            </li>
+            <li>
+              <a href="/topics/music-royalties">Music royalties and the Vault</a>
+              <span class="ep-meta">7 recordings. On-chain settlement and payouts, legacy royalty lag, and the Vault.</span>
+            </li>
+            <li>
+              <a href="/topics/music-rights-registry-and-provenance">Rights registry and provenance</a>
+              <span class="ep-meta">7 recordings. Public records of who made a work: the rights registry, provenance and signatures.</span>
+            </li>
+            <li>
+              <a href="/topics/token-launches-and-tokenomics">Token launches and tokenomics</a>
+              <span class="ep-meta">7 recordings. Launch failures, token burns, and a launchpad built to pay artists.</span>
+            </li>
+            <li>
+              <a href="/topics/ai-and-the-music-industry">AI and the music industry</a>
+              <span class="ep-meta">15 recordings. AI as a creator-side tool, paying artists when AI uses their work, AI agents.</span>
+            </li>
+          </ul>
+        </section>
+        <!-- TOPICS:END -->
       <!-- EPISODES:START -->
         <section class="episodes" aria-labelledby="episodes-heading">
           <h2 id="episodes-heading">Episodes</h2>

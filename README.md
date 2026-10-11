@@ -12,8 +12,11 @@ Pulls new episodes, syncs audio to Cloudflare R2, and serves a standard podcast 
 `feed-template.mjs`, shared by `sync.js` (which needs YouTube and R2) and
 `regen-feed.mjs` (which does not). To change the feed, edit the template and run
 `npm run regen:feed`; `npm run check:feed` fails if the committed XML has drifted
-from the template. `build-episodes.mjs` then regenerates the episode pages and
-sitemap from the feed.
+from the template. `build-episodes.mjs` then regenerates the episode pages, the
+topic hubs under `/topics`, and the sitemap from the feed. A hub is defined in
+`keywords.mjs` (`TOPIC_HUBS`); `topics.mjs` decides which episodes belong to it
+from each episode's own show notes, picks related episodes, and finds the Suede
+AI products the notes name (`suede-sites.mjs`, live-checked links only).
 
 ## Run
 

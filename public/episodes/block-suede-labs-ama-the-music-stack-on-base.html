@@ -94,7 +94,16 @@
       .meta { color:var(--muted); font-size:14px; margin:0 0 28px; }
       .credit { margin:0 0 28px; padding:12px 14px; border:1px solid var(--line);
         border-radius:8px; background:var(--panel); font-size:15px; }
-      .notes { white-space:pre-wrap; }
+      .notes p { margin:0 0 14px; }
+      .notes ul { margin:0 0 14px; padding-left:22px; }
+      .notes li, ol.chapters li, ul.related-list li, ul.products li { margin:6px 0; }
+      ol.chapters { margin:0 0 14px; padding-left:22px; }
+      ol.chapters a { font-variant-numeric: tabular-nums; }
+      .topics { font-size:15px; margin:-12px 0 24px; }
+      ul.related-list, ul.products { margin:0; padding-left:20px; }
+      .summary { display:block; font-size:15px; }
+      .ep-meta { display:block; color:var(--muted); font-size:13px; }
+      nav.pager { display:flex; flex-wrap:wrap; gap:8px 24px; margin:32px 0 0; font-size:15px; }
       audio { width:100%; margin:20px 0 28px; }
       nav.crumbs { font-size:14px; color:var(--muted); margin-bottom:24px; }
       nav.footer-nav { display:flex; flex-wrap:wrap; gap:6px 10px; margin:2px 0 0 -8px;
@@ -111,14 +120,69 @@
       <p class="meta">
         Published 2025-03-18 &middot; 53:21
       </p>
+      <p class="topics">Topics: <a href="/topics/music-ip-real-world-assets">Music IP as a real-world asset</a>, <a href="/topics/music-royalties">Music royalties and the Vault</a>, <a href="/topics/music-rights-registry-and-provenance">Rights registry and provenance</a></p>
       <p class="credit">Guest appearance, hosted by Block.
         <a href="/appearances">All appearances</a>.
       </p>
       <audio controls preload="none" src="https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/_VLl8MNgePM.mp3"></audio>
       <section class="notes-section">
         <h2>Episode show notes</h2>
-        <div class="notes">Block AMA with Jason Colapietro on the music stack Suede Labs is shipping on Base — what's live, what's next, and how the pieces fit together for artists who want to actually own their work. We get into: • Why Base is the right home for music IP infrastructure • Tooling for creators — from rights registry to royalty vaults • Music IP as a real-world asset (RWA): tokenized rights with on-chain settlement • What &quot;shipped&quot; means at every layer of the stack right now 🎙️ Hosted on @Block 🔗 Suede Labs → https://suedeai.ai 🐦 Johnny Suede → https://x.com/johnnysuede #Block #SuedeLabs #Base #x402 #MusicRWA #ArtistRights #MusicIP #OnChainMusic</div>
+        <div class="notes"><p>Block AMA with Jason Colapietro on the music stack Suede Labs is shipping on Base — what's live, what's next, and how the pieces fit together for artists who want to actually own their work.</p>
+<p>We get into:</p>
+<ul>
+<li>Why Base is the right home for music IP infrastructure</li>
+<li>Tooling for creators — from rights registry to royalty vaults</li>
+<li>Music IP as a real-world asset (RWA): tokenized rights with on-chain settlement</li>
+<li>What &quot;shipped&quot; means at every layer of the stack right now</li>
+</ul>
+<p>🎙️ Hosted on @Block<br />
+🔗 Suede Labs → https://suedeai.ai<br />
+🐦 Johnny Suede → https://x.com/johnnysuede</p>
+<p>#Block #SuedeLabs #Base #x402 #MusicRWA #ArtistRights #MusicIP #OnChainMusic</p></div>
       </section>
+      <section class="notes-section">
+        <h2>Suede AI products in this episode</h2>
+        <ul class="products">
+          <li>
+            <a href="https://registry.suedeai.ai">Suede AI IP Registry</a>. The ID and trust layer for music: one verifiable public ID per work, with a wallet-signed creator claim, contributors, timestamp, and derivative links on Base and Avalanche.
+            <span class="ep-meta">In the show notes, published 2025-03-18: &ldquo;Tooling for creators — from rights registry to royalty vaults&rdquo;</span>
+          </li>
+        </ul>
+      </section>
+      <section class="notes-section">
+        <h2>Related episodes</h2>
+        <p class="ep-meta">Chosen by the topics, hosts and keywords their show notes share with this episode, then by publish date.</p>
+        <ul class="related-list">
+          <li>
+            <a href="/episodes/binance-livestream-ama-suede-labs-founder-on-music-ip">Binance Livestream AMA: Suede AI Founder on Music IP</a>
+            <span class="ep-meta">2025-02-19 &middot; 40:24 &middot; Guest appearance, hosted by Binance.</span>
+            <span class="summary">Binance Livestream AMA with Jason Colapietro on the music IP stack Suede Labs is building — what's live, where it's heading, and how the pieces fit…</span>
+            <span class="ep-meta">Shared topics: Music IP as a real-world asset, Music royalties and the Vault, Rights registry and provenance</span>
+          </li>
+          <li>
+            <a href="/episodes/stop-losing-rights-own-your-ip-music-rwas-ai-x402-on-base-jason-colapiet">Stop Losing Rights, Own Your IP: Music RWAs, AI, x402 on Base | Jason Colapietro</a>
+            <span class="ep-meta">2026-05-15 &middot; 2:27:14 &middot; Guest appearance, hosted by matthewjmalek.</span>
+            <span class="summary">Jason Colapietro (founder, Suede Labs) sits down with @matthewjmalek to talk about why the music industry's IP layer is structurally broken — and how an…</span>
+            <span class="ep-meta">Shared topics: Music IP as a real-world asset, Music royalties and the Vault, Rights registry and provenance</span>
+          </li>
+          <li>
+            <a href="/episodes/block-suede-labs-how-on-chain-royalties-actually-work">Block × Suede AI: How On-Chain Royalties Actually Work</a>
+            <span class="ep-meta">2025-03-22 &middot; 53:16 &middot; Guest appearance, hosted by Block.</span>
+            <span class="summary">Block AMA with Jason Colapietro on the actual mechanics of on-chain royalties — how settlement, payouts, and creator splits work when the music IP layer…</span>
+            <span class="ep-meta">Shared topics: Music IP as a real-world asset, Music royalties and the Vault</span>
+          </li>
+          <li>
+            <a href="/episodes/btse-suede-labs-redefining-the-music-industry-with-crypto-ai">BTSE × Suede AI: Redefining the Music Industry with Crypto + AI</a>
+            <span class="ep-meta">2025-03-16 &middot; 36:00 &middot; Guest appearance, hosted by BTSE.</span>
+            <span class="summary">BTSE AMA with Jason Colapietro on what gets rebuilt when the music industry meets a real on-chain stack — and how AI tooling fits into that picture as a…</span>
+            <span class="ep-meta">Shared topics: Music IP as a real-world asset, Rights registry and provenance</span>
+          </li>
+        </ul>
+      </section>
+      <nav class="pager" aria-label="Earlier and later episodes">
+        <a href="/episodes/block-suede-labs-weekly-build-update-march-6-2025">Earlier (episode 16): Block × Suede AI: Weekly Build Update (March 6 2025)</a>
+        <a href="/episodes/block-suede-labs-how-on-chain-royalties-actually-work">Later (episode 18): Block × Suede AI: How On-Chain Royalties Actually Work</a>
+      </nav>
       <hr />
       <p class="meta">
         Carried on <a href="/">AI Suede: Build, Create, Ship</a>.

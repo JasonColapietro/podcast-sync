@@ -5,7 +5,7 @@ import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
 import { parseEpisodes } from "../build-episodes.mjs";
-import { BRAND_TERM, MAX_TERMS, PAGE_KEYWORDS, episodeKeywords, isBrandTerm, keywordContent, withBrand } from "../keywords.mjs";
+import { BRAND_TERM, MAX_TERMS, PAGE_KEYWORDS, TOPIC_HUBS, episodeKeywords, isBrandTerm, keywordContent, topicPath, withBrand } from "../keywords.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const pub = join(__dirname, "..", "public");
@@ -20,12 +20,17 @@ const isNoindex = (html) => /<meta\s+name="robots"\s+content="[^"]*noindex/i.tes
 
 // Every indexable HTML page on the site, keyed by its public path.
 const STATIC = { "/ai-instructions": "ai-instructions.html", "/": "index.html", "/about": "about.html", "/contact": "contact.html", "/appearances": "appearances/index.html" };
+// Topic hubs are generated, but their keywords come from the same central map.
+for (const hub of TOPIC_HUBS) STATIC[topicPath(hub.slug)] = join("topics", `${hub.slug}.html`);
 const episodeFiles = readdirSync(join(pub, "episodes")).filter((f) => f.endsWith(".html"));
 
 test("every indexable page carries a short keywords meta with exactly one brand term", () => {
   const files = [...Object.values(STATIC), ...episodeFiles.map((f) => join("episodes", f))];
   const topLevel = readdirSync(pub).filter((f) => f.endsWith(".html"));
   for (const f of topLevel) assert.ok(Object.values(STATIC).includes(f), `unmapped page public/${f}: add it to PAGE_KEYWORDS`);
+  for (const f of readdirSync(join(pub, "topics"))) {
+    assert.ok(Object.values(STATIC).includes(join("topics", f)), `unmapped page public/topics/${f}: add it to TOPIC_HUBS`);
+  }
   for (const rel of files) {
     const html = readFileSync(join(pub, rel), "utf8");
     if (isNoindex(html)) continue;
