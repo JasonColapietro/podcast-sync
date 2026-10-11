@@ -1127,16 +1127,9 @@ const main = () => {
     process.exit(1);
   }
 
-  // Regenerate cleanly so a retitled episode does not leave a stale page behind.
-  if (existsSync(EPISODES_DIR)) rmSync(EPISODES_DIR, { recursive: true });
-  mkdirSync(EPISODES_DIR, { recursive: true });
-  for (const e of episodes) {
-    writeFileSync(join(EPISODES_DIR, `${e.slug}.html`), episodePage(e, episodes));
-  }
-
-  // /topics/<slug> — rebuilt from scratch like /episodes, so a hub dropped from
-  // TOPIC_HUBS takes its page with it. A hub too small to be worth a page fails
-  // the build rather than shipping a thin one.
+  // A hub too small to be worth a page fails the build rather than shipping a
+  // thin one. Checked before anything is written, so a failed build leaves
+  // public/ exactly as it was instead of half regenerated.
   const hubs = TOPIC_HUBS.map((hub) => ({ hub, members: hubEpisodes(hub, episodes) }));
   for (const { hub, members } of hubs) {
     if (members.length < MIN_HUB_EPISODES) {
@@ -1147,6 +1140,16 @@ const main = () => {
       process.exit(1);
     }
   }
+
+  // Regenerate cleanly so a retitled episode does not leave a stale page behind.
+  if (existsSync(EPISODES_DIR)) rmSync(EPISODES_DIR, { recursive: true });
+  mkdirSync(EPISODES_DIR, { recursive: true });
+  for (const e of episodes) {
+    writeFileSync(join(EPISODES_DIR, `${e.slug}.html`), episodePage(e, episodes));
+  }
+
+  // /topics/<slug> — rebuilt from scratch like /episodes, so a hub dropped from
+  // TOPIC_HUBS takes its page with it.
   if (existsSync(TOPICS_DIR)) rmSync(TOPICS_DIR, { recursive: true });
   mkdirSync(TOPICS_DIR, { recursive: true });
   for (const { hub, members } of hubs) {

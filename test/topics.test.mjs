@@ -1,6 +1,8 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync, readdirSync } from "fs";
+import { spawnSync } from "child_process";
+import { cpSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from "fs";
+import { tmpdir } from "os";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
@@ -48,6 +50,40 @@ test("no topic page ships without its hub, and no hub is too thin to be a page",
       hubEpisodes(hub, episodes).length >= MIN_HUB_EPISODES,
       `${hub.slug} has fewer than ${MIN_HUB_EPISODES} episodes`,
     );
+  }
+});
+
+test("a hub below the minimum fails the build before any file is written", () => {
+  // Run the builder on a scratch copy whose feed keeps one episode, so every hub
+  // falls below MIN_HUB_EPISODES, and check public/ is left exactly as it was.
+  const root = join(__dirname, "..");
+  const dir = mkdtempSync(join(tmpdir(), "build-episodes-"));
+  try {
+    for (const f of readdirSync(root)) {
+      if (f.endsWith(".mjs") || f === "chapters.json") cpSync(join(root, f), join(dir, f));
+    }
+    const out = join(dir, "public");
+    cpSync(PUBLIC, out, { recursive: true });
+    const first = feed.match(/<item>[\s\S]*?<\/item>/)[0];
+    writeFileSync(
+      join(out, "feed.xml"),
+      feed.slice(0, feed.indexOf("<item>")) + first + feed.slice(feed.lastIndexOf("</item>") + "</item>".length),
+    );
+    const snapshot = () =>
+      readdirSync(out, { recursive: true })
+        .sort()
+        .map((rel) => {
+          const stat = statSync(join(out, rel));
+          return [rel, stat.mtimeMs, stat.isDirectory() ? null : readFileSync(join(out, rel)).toString("base64")];
+        });
+    const before = snapshot();
+
+    const run = spawnSync(process.execPath, [join(dir, "build-episodes.mjs")], { cwd: dir, encoding: "utf8" });
+    assert.equal(run.status, 1, `build should fail: ${run.stderr}`);
+    assert.match(run.stderr, new RegExp(`matches [01] episodes \\(minimum ${MIN_HUB_EPISODES}\\)`));
+    assert.deepEqual(snapshot(), before, "a failed build changed public/");
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
   }
 });
 
