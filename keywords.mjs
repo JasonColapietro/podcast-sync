@@ -50,8 +50,89 @@ export const withBrand = (terms) => {
 
 export const keywordContent = (terms) => withBrand(terms).join(", ");
 
+/**
+ * Topic hubs: one page per subject that several episodes' own show notes cover
+ * (/topics/<slug>). An episode belongs to a hub when `match` hits its title or
+ * a line of its notes, with link lines and hashtags left out (topics.mjs), so
+ * membership comes from what each episode's copy says, not from its tags.
+ *
+ * `lede` and `short` paraphrase the notes they summarise; quotes on the hub
+ * pages are the notes' own lines. `keywords` reuses terms from TOPIC_RULES
+ * below. A hub needs at least MIN_HUB_EPISODES members or it is not built
+ * (test/topics.test.mjs).
+ */
+export const MIN_HUB_EPISODES = 4;
+
+export const TOPIC_HUBS = [
+  {
+    slug: "music-ip-real-world-assets",
+    name: "Music IP as a real-world asset",
+    title: "Music IP as a Real-World Asset (RWA): Episodes | AI Suede Podcast",
+    description: (n) =>
+      `${n} AI Suede Podcast recordings on music IP as a real-world asset (RWA): tokenized rights, on-chain settlement and creators who own their catalog.`,
+    short: "Tokenized music rights that the people who made the work own and earn from.",
+    lede:
+      "Recordings whose show notes cover music IP as a real-world asset (RWA): putting the rights to a song on-chain so the people who made it own the asset and earn from it.",
+    match: /real[- ]world asset|\bRWAs?\b/i,
+    keywords: ["music RWA", "real-world assets", "music IP", "music rights"],
+  },
+  {
+    slug: "music-royalties",
+    name: "Music royalties and the Vault",
+    title: "Music Royalties and the Vault: Episodes | AI Suede Podcast",
+    description: (n) =>
+      `${n} AI Suede Podcast recordings on music royalties: on-chain settlement and payouts, the delay in legacy royalty payments, and the Vault.`,
+    short: "On-chain settlement and payouts, legacy royalty lag, and the Vault.",
+    lede:
+      "Recordings whose show notes cover music royalties: how on-chain settlement and payouts work, where the delay in legacy royalty payments comes from, and the Vault, which the notes describe as liquidity now for artists and royalty yield for supporters.",
+    match: /royalt|\bvault\b/i,
+    keywords: ["on-chain royalties", "music royalties", "music RWA"],
+  },
+  {
+    slug: "music-rights-registry-and-provenance",
+    name: "Rights registry and provenance",
+    title: "Music Rights Registry and Provenance: Episodes | AI Suede Podcast",
+    description: (n) =>
+      `${n} AI Suede Podcast recordings on public records of who made a work: the Suede AI rights registry, on-chain provenance and signed artist identity.`,
+    short: "Public records of who made a work: the rights registry, provenance and signatures.",
+    lede:
+      "Recordings whose show notes cover public records of who made a work: the Suede rights registry, on-chain provenance for tracking rights, and cryptographic signatures that tie an artist to their own catalog.",
+    match: /registry|proof of authorship|provenance|signature|identity/i,
+    product: "registry",
+    keywords: ["music IP registry blockchain", "artist identity", "AI likeness protection", "music rights"],
+  },
+  {
+    slug: "token-launches-and-tokenomics",
+    name: "Token launches and tokenomics",
+    title: "Token Launches and Tokenomics: Episodes | AI Suede Podcast",
+    description: (n) =>
+      `${n} AI Suede Podcast recordings on token launches and tokenomics: what goes wrong at launch, token burns, and a launchpad that pays artists.`,
+    short: "Launch failures, token burns, and a launchpad built to pay artists.",
+    lede:
+      "Recordings whose show notes cover token launches and tokenomics: what goes wrong in typical launches, token burns, and the Suede launchpad, which the notes describe as tax tokens that pay creators in SOL/USDC rather than in the artist's own token.",
+    match: /launchpad|\blaunch(?:es)?\b|tokenomics|token burn|tax tokens|\brugs?\b/i,
+    keywords: ["tokenomics", "token burn", "crypto launches", "Solana"],
+  },
+  {
+    slug: "ai-and-the-music-industry",
+    name: "AI and the music industry",
+    title: "AI and the Music Industry: Episodes | AI Suede Podcast",
+    description: (n) =>
+      `${n} AI Suede Podcast recordings on AI in music: AI as a creator-side tool, paying the original artist when AI uses their work, and AI agents.`,
+    short: "AI as a creator-side tool, paying artists when AI uses their work, AI agents.",
+    lede:
+      "Recordings whose show notes cover AI in music: AI as a creator-side tool rather than a replacement, paying the original creator when AI uses their work, and AI agents.",
+    match:
+      /\bAI (?:tools?|tooling)\b|\bAI use of\b|creator-side tool|\bAI-(?:driven|generated|powered)\b|\bAI music\b|\bAI agents?\b/i,
+    keywords: ["AI and music industry", "AI tools for musicians", "AI agents", "AI creativity"],
+  },
+];
+
+export const topicPath = (slug) => `/topics/${slug}`;
+
 /** Static and index pages, keyed by public path. */
 export const PAGE_KEYWORDS = {
+  ...Object.fromEntries(TOPIC_HUBS.map((t) => [topicPath(t.slug), t.keywords])),
   "/ai-instructions": ["AI instructions", "official sources", "citation guidance"],
   "/": [
     "AI podcast for musicians",
@@ -85,7 +166,7 @@ export const PAGE_KEYWORDS = {
 };
 
 /** Base term every episode page carries after its topic terms. */
-const EPISODE_BASE = ["AI music podcast episode"];
+export const EPISODE_BASE = ["AI music podcast episode"];
 
 /**
  * Topic rules: when an episode's title or summary matches, its terms are added.

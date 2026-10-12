@@ -105,7 +105,16 @@
       .meta { color:var(--muted); font-size:14px; margin:0 0 28px; }
       .credit { margin:0 0 28px; padding:12px 14px; border:1px solid var(--line);
         border-radius:8px; background:var(--panel); font-size:15px; }
-      .notes { white-space:pre-wrap; }
+      .notes p { margin:0 0 14px; }
+      .notes ul { margin:0 0 14px; padding-left:22px; }
+      .notes li, ol.chapters li, ul.related-list li, ul.products li { margin:6px 0; }
+      ol.chapters { margin:0 0 14px; padding-left:22px; }
+      ol.chapters a { font-variant-numeric: tabular-nums; }
+      .topics { font-size:15px; margin:-12px 0 24px; }
+      ul.related-list, ul.products { margin:0; padding-left:20px; }
+      .summary { display:block; font-size:15px; }
+      .ep-meta { display:block; color:var(--muted); font-size:13px; }
+      nav.pager { display:flex; flex-wrap:wrap; gap:8px 24px; margin:32px 0 0; font-size:15px; }
       audio { width:100%; margin:20px 0 28px; }
       nav.crumbs { font-size:14px; color:var(--muted); margin-bottom:24px; }
       nav.footer-nav { display:flex; flex-wrap:wrap; gap:6px 10px; margin:2px 0 0 -8px;
@@ -122,14 +131,69 @@
       <p class="meta">
         Published 2025-03-14 &middot; 45:04
       </p>
+      <p class="topics">Topics: <a href="/topics/music-ip-real-world-assets">Music IP as a real-world asset</a>, <a href="/topics/music-rights-registry-and-provenance">Rights registry and provenance</a>, <a href="/topics/ai-and-the-music-industry">AI and the music industry</a></p>
       <p class="credit">Guest appearance on DigiTalk, hosted by DigiFinex.
         <a href="/appearances">All appearances</a>.
       </p>
       <audio controls preload="none" src="https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/yS81oANTwf0.mp3"></audio>
       <section class="notes-section">
         <h2>Episode show notes</h2>
-        <div class="notes">DigiTalk Episode 15 with Jason Colapietro on the actual intersection of AI tooling and the music industry — and how Suede Labs builds for creators, not against them. We get into: • What AI use of music should pay back to the original creator • Music IP as a real-world asset (RWA) on Base • The Suede Labs registry: court-enforceable proof of authorship on-chain • What's next for the music IP stack 🎙️ Hosted on @DigiFinex 🔗 Suede Labs → https://suedeai.ai 🐦 Johnny Suede → https://x.com/johnnysuede #DigiFinex #SuedeLabs #Base #ArtistRights #MusicRWA #MusicIP #OnChainMusic</div>
+        <div class="notes"><p>DigiTalk Episode 15 with Jason Colapietro on the actual intersection of AI tooling and the music industry — and how Suede Labs builds for creators, not against them.</p>
+<p>We get into:</p>
+<ul>
+<li>What AI use of music should pay back to the original creator</li>
+<li>Music IP as a real-world asset (RWA) on Base</li>
+<li>The Suede Labs registry: court-enforceable proof of authorship on-chain</li>
+<li>What's next for the music IP stack</li>
+</ul>
+<p>🎙️ Hosted on @DigiFinex<br />
+🔗 Suede Labs → https://suedeai.ai<br />
+🐦 Johnny Suede → https://x.com/johnnysuede</p>
+<p>#DigiFinex #SuedeLabs #Base #ArtistRights #MusicRWA #MusicIP #OnChainMusic</p></div>
       </section>
+      <section class="notes-section">
+        <h2>Suede AI products in this episode</h2>
+        <ul class="products">
+          <li>
+            <a href="https://registry.suedeai.ai">Suede AI IP Registry</a>. The ID and trust layer for music: one verifiable public ID per work, with a wallet-signed creator claim, contributors, timestamp, and derivative links on Base and Avalanche.
+            <span class="ep-meta">Named in the show notes, published 2025-03-14.</span>
+          </li>
+        </ul>
+      </section>
+      <section class="notes-section">
+        <h2>Related episodes</h2>
+        <p class="ep-meta">Chosen by the topics, hosts and keywords their show notes share with this episode, then by publish date.</p>
+        <ul class="related-list">
+          <li>
+            <a href="/episodes/btse-suede-labs-redefining-the-music-industry-with-crypto-ai">BTSE × Suede AI: Redefining the Music Industry with Crypto + AI</a>
+            <span class="ep-meta">2025-03-16 &middot; 36:00 &middot; Guest appearance, hosted by BTSE.</span>
+            <span class="summary">BTSE AMA with Jason Colapietro on what gets rebuilt when the music industry meets a real on-chain stack — and how AI tooling fits into that picture as a…</span>
+            <span class="ep-meta">Shared topics: Music IP as a real-world asset, Rights registry and provenance, AI and the music industry</span>
+          </li>
+          <li>
+            <a href="/episodes/mario-nawfal-jason-colapietro-protecting-artist-identity-from-ai-agents">Mario Nawfal × Jason Colapietro: Protecting Artist Identity from AI Agents</a>
+            <span class="ep-meta">2025-06-20 &middot; 23:06 &middot; Guest appearance, hosted by Mario Nawfal.</span>
+            <span class="summary">@MarioNawfal and Jason Colapietro on the artist-identity problem AI agents create — and how Suede Labs uses on-chain signatures so creators keep control…</span>
+            <span class="ep-meta">Shared topics: Music IP as a real-world asset, Rights registry and provenance, AI and the music industry</span>
+          </li>
+          <li>
+            <a href="/episodes/stop-losing-rights-own-your-ip-music-rwas-ai-x402-on-base-jason-colapiet">Stop Losing Rights, Own Your IP: Music RWAs, AI, x402 on Base | Jason Colapietro</a>
+            <span class="ep-meta">2026-05-15 &middot; 2:27:14 &middot; Guest appearance, hosted by matthewjmalek.</span>
+            <span class="summary">Jason Colapietro (founder, Suede Labs) sits down with @matthewjmalek to talk about why the music industry's IP layer is structurally broken — and how an…</span>
+            <span class="ep-meta">Shared topics: Music IP as a real-world asset, Rights registry and provenance, AI and the music industry</span>
+          </li>
+          <li>
+            <a href="/episodes/block-suede-labs-chill-ama-the-future-of-ai-in-music-web3">Block × Suede AI (Chill AMA): The Future of AI in Music + Web3</a>
+            <span class="ep-meta">2025-03-14 &middot; 47:49 &middot; Guest appearance, hosted by Block.</span>
+            <span class="summary">Casual Block AMA with Jason Colapietro on where AI tooling and Web3 actually overlap for music creators — and what an artist-owned future looks like when…</span>
+            <span class="ep-meta">Shared topics: Music IP as a real-world asset, AI and the music industry</span>
+          </li>
+        </ul>
+      </section>
+      <nav class="pager" aria-label="Earlier and later episodes">
+        <a href="/episodes/binance-suede-labs-ai-music-web3-creativity-full-ama">Earlier (episode 10): Binance × Suede AI: AI, Music + Web3 Creativity (Full AMA)</a>
+        <a href="/episodes/block-suede-labs-chill-ama-the-future-of-ai-in-music-web3">Later (episode 12): Block × Suede AI (Chill AMA): The Future of AI in Music + Web3</a>
+      </nav>
       <hr />
       <p class="meta">
         Carried on <a href="/">AI Suede: Build, Create, Ship</a>.

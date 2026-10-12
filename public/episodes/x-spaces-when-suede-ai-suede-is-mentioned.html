@@ -81,7 +81,16 @@
       .meta { color:var(--muted); font-size:14px; margin:0 0 28px; }
       .credit { margin:0 0 28px; padding:12px 14px; border:1px solid var(--line);
         border-radius:8px; background:var(--panel); font-size:15px; }
-      .notes { white-space:pre-wrap; }
+      .notes p { margin:0 0 14px; }
+      .notes ul { margin:0 0 14px; padding-left:22px; }
+      .notes li, ol.chapters li, ul.related-list li, ul.products li { margin:6px 0; }
+      ol.chapters { margin:0 0 14px; padding-left:22px; }
+      ol.chapters a { font-variant-numeric: tabular-nums; }
+      .topics { font-size:15px; margin:-12px 0 24px; }
+      ul.related-list, ul.products { margin:0; padding-left:20px; }
+      .summary { display:block; font-size:15px; }
+      .ep-meta { display:block; color:var(--muted); font-size:13px; }
+      nav.pager { display:flex; flex-wrap:wrap; gap:8px 24px; margin:32px 0 0; font-size:15px; }
       audio { width:100%; margin:20px 0 28px; }
       nav.crumbs { font-size:14px; color:var(--muted); margin-bottom:24px; }
       nav.footer-nav { display:flex; flex-wrap:wrap; gap:6px 10px; margin:2px 0 0 -8px;
@@ -102,8 +111,37 @@
       <audio controls preload="none" src="https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/upUortozhNY.mp3"></audio>
       <section class="notes-section">
         <h2>Episode show notes</h2>
-        <div class="notes">Episode 25 of AI Suede: Build, Create, Ship: X Spaces when $SUEDE AI Suede is mentioned.</div>
+        <div class="notes"><p>Episode 25 of AI Suede: Build, Create, Ship: X Spaces when $SUEDE AI Suede is mentioned.</p></div>
       </section>
+      <section class="notes-section">
+        <h2>Related episodes</h2>
+        <p class="ep-meta">Chosen by the topics, hosts and keywords their show notes share with this episode, then by publish date.</p>
+        <ul class="related-list">
+          <li>
+            <a href="/episodes/suede-x-metaguardians-chill-space">$SUEDE X METAGUARDIANS CHILL SPACE</a>
+            <span class="ep-meta">2025-03-16 &middot; 7:37 &middot; Hosted by Jason Colapietro, with MetaGuardians as guest.</span>
+            <span class="summary">$SUEDE X METAGUARDIANS CHILL SPACE Join us for an exclusive Chill Space with MetaGuardians as we dive into the world of $SUEDE AI, AI-powered music…</span>
+          </li>
+          <li>
+            <a href="/episodes/mario-nawfal-jason-colapietro-protecting-artist-identity-from-ai-agents">Mario Nawfal × Jason Colapietro: Protecting Artist Identity from AI Agents</a>
+            <span class="ep-meta">2025-06-20 &middot; 23:06 &middot; Guest appearance, hosted by Mario Nawfal.</span>
+            <span class="summary">@MarioNawfal and Jason Colapietro on the artist-identity problem AI agents create — and how Suede Labs uses on-chain signatures so creators keep control…</span>
+          </li>
+          <li>
+            <a href="/episodes/mario-nawfal-suede-labs-the-web3-music-stack-explained">Mario Nawfal × Suede AI: The Web3 Music Stack, Explained</a>
+            <span class="ep-meta">2025-06-24 &middot; 22:56 &middot; Guest appearance, hosted by Mario Nawfal.</span>
+            <span class="summary">@MarioNawfal and Jason Colapietro break down the Web3 music stack that Suede Labs is building — the layers musicians have actually been waiting for…</span>
+          </li>
+          <li>
+            <a href="/episodes/suede-ai-interview">$SUEDE AI Interview</a>
+            <span class="ep-meta">2025-06-25 &middot; 18:53 &middot; Episode by Jason Colapietro.</span>
+          </li>
+        </ul>
+      </section>
+      <nav class="pager" aria-label="Earlier and later episodes">
+        <a href="/episodes/mario-nawfal-jason-colapietro-protecting-artist-identity-from-ai-agents">Earlier (episode 24): Mario Nawfal × Jason Colapietro: Protecting Artist Identity from AI Agents</a>
+        <a href="/episodes/mario-nawfal-suede-labs-the-web3-music-stack-explained">Later (episode 26): Mario Nawfal × Suede AI: The Web3 Music Stack, Explained</a>
+      </nav>
       <hr />
       <p class="meta">
         From <a href="/">AI Suede: Build, Create, Ship</a> by

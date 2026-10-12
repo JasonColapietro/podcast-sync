@@ -81,7 +81,16 @@
       .meta { color:var(--muted); font-size:14px; margin:0 0 28px; }
       .credit { margin:0 0 28px; padding:12px 14px; border:1px solid var(--line);
         border-radius:8px; background:var(--panel); font-size:15px; }
-      .notes { white-space:pre-wrap; }
+      .notes p { margin:0 0 14px; }
+      .notes ul { margin:0 0 14px; padding-left:22px; }
+      .notes li, ol.chapters li, ul.related-list li, ul.products li { margin:6px 0; }
+      ol.chapters { margin:0 0 14px; padding-left:22px; }
+      ol.chapters a { font-variant-numeric: tabular-nums; }
+      .topics { font-size:15px; margin:-12px 0 24px; }
+      ul.related-list, ul.products { margin:0; padding-left:20px; }
+      .summary { display:block; font-size:15px; }
+      .ep-meta { display:block; color:var(--muted); font-size:13px; }
+      nav.pager { display:flex; flex-wrap:wrap; gap:8px 24px; margin:32px 0 0; font-size:15px; }
       audio { width:100%; margin:20px 0 28px; }
       nav.crumbs { font-size:14px; color:var(--muted); margin-bottom:24px; }
       nav.footer-nav { display:flex; flex-wrap:wrap; gap:6px 10px; margin:2px 0 0 -8px;
@@ -102,17 +111,48 @@
       <audio controls preload="none" src="https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/3WCYIsEdqX4.mp3"></audio>
       <section class="notes-section">
         <h2>Episode show notes</h2>
-        <div class="notes">Episode 3 of AI Suede: Build, Create, Ship: New member welcome part two $SUEDE.</div>
+        <div class="notes"><p>Episode 3 of AI Suede: Build, Create, Ship: New member welcome part two $SUEDE.</p></div>
       </section>
       <section class="notes-section">
         <h2>Episode chapters</h2>
-        <div class="notes">Chapter markers from the YouTube upload of this recording:
-0:00 Ethos and community values
-1:09 The philosophy of trustless
-2:54 Actions beyond words
-4:54 Decentralization and mission
-7:21 Future outlook and vision</div>
+        <p class="ep-meta">YouTube generated these chapter markers for the upload of this recording; the show notes carry none. Each time opens the recording at that point on YouTube.</p>
+        <ol class="chapters">
+          <li><a href="https://www.youtube.com/watch?v=3WCYIsEdqX4">0:00</a> Ethos and community values</li>
+          <li><a href="https://www.youtube.com/watch?v=3WCYIsEdqX4&amp;t=69s">1:09</a> The philosophy of trustless</li>
+          <li><a href="https://www.youtube.com/watch?v=3WCYIsEdqX4&amp;t=174s">2:54</a> Actions beyond words</li>
+          <li><a href="https://www.youtube.com/watch?v=3WCYIsEdqX4&amp;t=294s">4:54</a> Decentralization and mission</li>
+          <li><a href="https://www.youtube.com/watch?v=3WCYIsEdqX4&amp;t=441s">7:21</a> Future outlook and vision</li>
+        </ol>
       </section>
+      <section class="notes-section">
+        <h2>Related episodes</h2>
+        <p class="ep-meta">Chosen by the topics, hosts and keywords their show notes share with this episode, then by publish date.</p>
+        <ul class="related-list">
+          <li>
+            <a href="/episodes/binance-and-suede-crypto-ai-agents">Binance and Suede Crypto AI Agents</a>
+            <span class="ep-meta">2024-12-17 &middot; 39:08 &middot; Guest appearance on Binance Live, hosted by Binance.</span>
+            <span class="summary">Jason Colapietro &quot;Johnny Suede&quot; Founder CEO of Suede AI sit down with Binance Live.</span>
+          </li>
+          <li>
+            <a href="/episodes/unleashing-creativity-how-suede-ai-s-feedback-loops-are-changing-the-gam">Unleashing Creativity: How Suede AI’s Feedback Loops Are Changing the Game for Artists!</a>
+            <span class="ep-meta">2024-12-10 &middot; 1:06 &middot; Episode by Jason Colapietro.</span>
+          </li>
+          <li>
+            <a href="/episodes/suede-ai-ama-portion-of-mario-nawfal-crypto-roundtable-crypto-ai">$SUEDE AI AMA Portion of Mario Nawfal Crypto Roundtable #crypto #ai</a>
+            <span class="ep-meta">2025-02-08 &middot; 17:18 &middot; Guest appearance on Crypto Roundtable, hosted by Mario Nawfal.</span>
+            <span class="summary">$SUEDE AI AMA Segment | Mario Nawfal Crypto Roundtable (Exclusive Clip)</span>
+          </li>
+          <li>
+            <a href="/episodes/binance-livestream-ama-suede-labs-founder-on-music-ip">Binance Livestream AMA: Suede AI Founder on Music IP</a>
+            <span class="ep-meta">2025-02-19 &middot; 40:24 &middot; Guest appearance, hosted by Binance.</span>
+            <span class="summary">Binance Livestream AMA with Jason Colapietro on the music IP stack Suede Labs is building — what's live, where it's heading, and how the pieces fit…</span>
+          </li>
+        </ul>
+      </section>
+      <nav class="pager" aria-label="Earlier and later episodes">
+        <a href="/episodes/binance-and-suede-crypto-ai-agents">Earlier (episode 2): Binance and Suede Crypto AI Agents</a>
+        <a href="/episodes/suede-ai-ama-portion-of-mario-nawfal-crypto-roundtable-crypto-ai">Later (episode 4): $SUEDE AI AMA Portion of Mario Nawfal Crypto Roundtable #crypto #ai</a>
+      </nav>
       <hr />
       <p class="meta">
         From <a href="/">AI Suede: Build, Create, Ship</a> by

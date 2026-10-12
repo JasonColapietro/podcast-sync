@@ -94,7 +94,16 @@
       .meta { color:var(--muted); font-size:14px; margin:0 0 28px; }
       .credit { margin:0 0 28px; padding:12px 14px; border:1px solid var(--line);
         border-radius:8px; background:var(--panel); font-size:15px; }
-      .notes { white-space:pre-wrap; }
+      .notes p { margin:0 0 14px; }
+      .notes ul { margin:0 0 14px; padding-left:22px; }
+      .notes li, ol.chapters li, ul.related-list li, ul.products li { margin:6px 0; }
+      ol.chapters { margin:0 0 14px; padding-left:22px; }
+      ol.chapters a { font-variant-numeric: tabular-nums; }
+      .topics { font-size:15px; margin:-12px 0 24px; }
+      ul.related-list, ul.products { margin:0; padding-left:20px; }
+      .summary { display:block; font-size:15px; }
+      .ep-meta { display:block; color:var(--muted); font-size:13px; }
+      nav.pager { display:flex; flex-wrap:wrap; gap:8px 24px; margin:32px 0 0; font-size:15px; }
       audio { width:100%; margin:20px 0 28px; }
       nav.crumbs { font-size:14px; color:var(--muted); margin-bottom:24px; }
       nav.footer-nav { display:flex; flex-wrap:wrap; gap:6px 10px; margin:2px 0 0 -8px;
@@ -111,14 +120,60 @@
       <p class="meta">
         Published 2025-03-22 &middot; 53:16
       </p>
+      <p class="topics">Topics: <a href="/topics/music-ip-real-world-assets">Music IP as a real-world asset</a>, <a href="/topics/music-royalties">Music royalties and the Vault</a></p>
       <p class="credit">Guest appearance, hosted by Block.
         <a href="/appearances">All appearances</a>.
       </p>
       <audio controls preload="none" src="https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/PuLkFjiXwsY.mp3"></audio>
       <section class="notes-section">
         <h2>Episode show notes</h2>
-        <div class="notes">Block AMA with Jason Colapietro on the actual mechanics of on-chain royalties — how settlement, payouts, and creator splits work when the music IP layer lives on-chain instead of in a label spreadsheet. We get into: • Where the royalty lag comes from in the legacy industry (and why it's 18–24 months) • How on-chain settlement collapses that to near-instant • The Vault: liquidity now for artists, royalty yield for supporters • Music IP as a real-world asset (RWA) on Base 🎙️ Hosted on @Block 🔗 Suede Labs → https://suedeai.ai 🐦 Johnny Suede → https://x.com/johnnysuede #Block #SuedeLabs #Base #x402 #MusicRWA #Royalties #ArtistRights #OnChainMusic</div>
+        <div class="notes"><p>Block AMA with Jason Colapietro on the actual mechanics of on-chain royalties — how settlement, payouts, and creator splits work when the music IP layer lives on-chain instead of in a label spreadsheet.</p>
+<p>We get into:</p>
+<ul>
+<li>Where the royalty lag comes from in the legacy industry (and why it's 18–24 months)</li>
+<li>How on-chain settlement collapses that to near-instant</li>
+<li>The Vault: liquidity now for artists, royalty yield for supporters</li>
+<li>Music IP as a real-world asset (RWA) on Base</li>
+</ul>
+<p>🎙️ Hosted on @Block<br />
+🔗 Suede Labs → https://suedeai.ai<br />
+🐦 Johnny Suede → https://x.com/johnnysuede</p>
+<p>#Block #SuedeLabs #Base #x402 #MusicRWA #Royalties #ArtistRights #OnChainMusic</p></div>
       </section>
+      <section class="notes-section">
+        <h2>Related episodes</h2>
+        <p class="ep-meta">Chosen by the topics, hosts and keywords their show notes share with this episode, then by publish date.</p>
+        <ul class="related-list">
+          <li>
+            <a href="/episodes/binance-livestream-ama-suede-labs-founder-on-music-ip">Binance Livestream AMA: Suede AI Founder on Music IP</a>
+            <span class="ep-meta">2025-02-19 &middot; 40:24 &middot; Guest appearance, hosted by Binance.</span>
+            <span class="summary">Binance Livestream AMA with Jason Colapietro on the music IP stack Suede Labs is building — what's live, where it's heading, and how the pieces fit…</span>
+            <span class="ep-meta">Shared topics: Music IP as a real-world asset, Music royalties and the Vault</span>
+          </li>
+          <li>
+            <a href="/episodes/binance-ama-suede-labs-on-the-music-ip-stack-full-recap">Binance AMA: Suede AI on the Music IP Stack (Full Recap)</a>
+            <span class="ep-meta">2025-04-29 &middot; 45:24 &middot; Guest appearance, hosted by Binance.</span>
+            <span class="summary">Full recap of the Binance AMA with Jason Colapietro — the music IP stack Suede Labs is building, what's actually live, and where it's headed.</span>
+            <span class="ep-meta">Shared topics: Music IP as a real-world asset, Music royalties and the Vault</span>
+          </li>
+          <li>
+            <a href="/episodes/block-suede-labs-ama-the-music-stack-on-base">Block × Suede AI AMA: The Music Stack on Base</a>
+            <span class="ep-meta">2025-03-18 &middot; 53:21 &middot; Guest appearance, hosted by Block.</span>
+            <span class="summary">Block AMA with Jason Colapietro on the music stack Suede Labs is shipping on Base — what's live, what's next, and how the pieces fit together for artists…</span>
+            <span class="ep-meta">Shared topics: Music IP as a real-world asset, Music royalties and the Vault</span>
+          </li>
+          <li>
+            <a href="/episodes/how-music-ip-becomes-a-real-world-asset-on-base-suede-labs-avax-chainlin">How Music IP Becomes a Real-World Asset on Base | Suede AI × AVAX × Chainlink</a>
+            <span class="ep-meta">2026-03-14 &middot; 9:46 &middot; Episode by Jason Colapietro.</span>
+            <span class="summary">Jason Colapietro on building Suede Labs across Base, AVAX, and Chainlink — and why music IP needs a real on-chain home, not another platform-as-landlord.</span>
+            <span class="ep-meta">Shared topics: Music IP as a real-world asset, Music royalties and the Vault</span>
+          </li>
+        </ul>
+      </section>
+      <nav class="pager" aria-label="Earlier and later episodes">
+        <a href="/episodes/block-suede-labs-ama-the-music-stack-on-base">Earlier (episode 17): Block × Suede AI AMA: The Music Stack on Base</a>
+        <a href="/episodes/coinmerge-fity-eth-on-suede-labs-sol-train">Later (episode 19): CoinMerge × Fity.eth on Suede AI (Sol Train)</a>
+      </nav>
       <hr />
       <p class="meta">
         Carried on <a href="/">AI Suede: Build, Create, Ship</a>.

@@ -81,7 +81,16 @@
       .meta { color:var(--muted); font-size:14px; margin:0 0 28px; }
       .credit { margin:0 0 28px; padding:12px 14px; border:1px solid var(--line);
         border-radius:8px; background:var(--panel); font-size:15px; }
-      .notes { white-space:pre-wrap; }
+      .notes p { margin:0 0 14px; }
+      .notes ul { margin:0 0 14px; padding-left:22px; }
+      .notes li, ol.chapters li, ul.related-list li, ul.products li { margin:6px 0; }
+      ol.chapters { margin:0 0 14px; padding-left:22px; }
+      ol.chapters a { font-variant-numeric: tabular-nums; }
+      .topics { font-size:15px; margin:-12px 0 24px; }
+      ul.related-list, ul.products { margin:0; padding-left:20px; }
+      .summary { display:block; font-size:15px; }
+      .ep-meta { display:block; color:var(--muted); font-size:13px; }
+      nav.pager { display:flex; flex-wrap:wrap; gap:8px 24px; margin:32px 0 0; font-size:15px; }
       audio { width:100%; margin:20px 0 28px; }
       nav.crumbs { font-size:14px; color:var(--muted); margin-bottom:24px; }
       nav.footer-nav { display:flex; flex-wrap:wrap; gap:6px 10px; margin:2px 0 0 -8px;
@@ -102,8 +111,37 @@
       <audio controls preload="none" src="https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/422CMPRWHgo.mp3"></audio>
       <section class="notes-section">
         <h2>Episode show notes</h2>
-        <div class="notes">Episode 27 of AI Suede: Build, Create, Ship: $SUEDE AI Interview.</div>
+        <div class="notes"><p>Episode 27 of AI Suede: Build, Create, Ship: $SUEDE AI Interview.</p></div>
       </section>
+      <section class="notes-section">
+        <h2>Related episodes</h2>
+        <p class="ep-meta">Chosen by the topics, hosts and keywords their show notes share with this episode, then by publish date.</p>
+        <ul class="related-list">
+          <li>
+            <a href="/episodes/suede-ai-on-crypto-shogun-discussing-musician-benefits-and-tokenomics-cr">$SUEDE AI On Crypto Shogun Discussing Musician Benefits and Tokenomics Crypto</a>
+            <span class="ep-meta">2025-03-12 &middot; 7:55 &middot; Guest appearance on Crypto Shogun.</span>
+            <span class="summary">$SUEDE AI – Revolutionizing Music Creation | Exclusive Interview on Crypto Shogun</span>
+          </li>
+          <li>
+            <a href="/episodes/mario-nawfal-suede-labs-the-web3-music-stack-explained">Mario Nawfal × Suede AI: The Web3 Music Stack, Explained</a>
+            <span class="ep-meta">2025-06-24 &middot; 22:56 &middot; Guest appearance, hosted by Mario Nawfal.</span>
+            <span class="summary">@MarioNawfal and Jason Colapietro break down the Web3 music stack that Suede Labs is building — the layers musicians have actually been waiting for…</span>
+          </li>
+          <li>
+            <a href="/episodes/x-spaces-when-suede-ai-suede-is-mentioned">X Spaces when $SUEDE AI Suede is mentioned.</a>
+            <span class="ep-meta">2025-06-20 &middot; 2:02 &middot; Episode by Jason Colapietro.</span>
+          </li>
+          <li>
+            <a href="/episodes/mario-nawfal-jason-colapietro-protecting-artist-identity-from-ai-agents">Mario Nawfal × Jason Colapietro: Protecting Artist Identity from AI Agents</a>
+            <span class="ep-meta">2025-06-20 &middot; 23:06 &middot; Guest appearance, hosted by Mario Nawfal.</span>
+            <span class="summary">@MarioNawfal and Jason Colapietro on the artist-identity problem AI agents create — and how Suede Labs uses on-chain signatures so creators keep control…</span>
+          </li>
+        </ul>
+      </section>
+      <nav class="pager" aria-label="Earlier and later episodes">
+        <a href="/episodes/mario-nawfal-suede-labs-the-web3-music-stack-explained">Earlier (episode 26): Mario Nawfal × Suede AI: The Web3 Music Stack, Explained</a>
+        <a href="/episodes/mario-nawfal-jason-colapietro-ai-music-and-the-future-of-culture">Later (episode 28): Mario Nawfal × Jason Colapietro: AI, Music, and the Future of Culture</a>
+      </nav>
       <hr />
       <p class="meta">
         From <a href="/">AI Suede: Build, Create, Ship</a> by
