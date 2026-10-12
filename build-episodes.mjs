@@ -46,7 +46,11 @@ const EPISODES_DIR = join(PUBLIC, "episodes");
 const TOPICS_DIR = join(PUBLIC, "topics");
 const SITE = "https://podcast.suedeai.ai";
 const ARTWORK = `${SITE}/artwork.jpg`;
+// Pages share a 1200x630 card for link previews. ARTWORK stays the square
+// 3000px show art that the feed and the PodcastSeries node carry.
+export const SOCIAL_IMAGE = { url: `${SITE}/og-image.jpg`, width: 1200, height: 630 };
 const SHOW = "AI Suede: Build, Create, Ship";
+const ORG_ID = "https://suedeai.ai/#organization";
 // Canonical Person @id for the host. The node itself is published at
 // https://suedeai.ai/founder; every page in this estate points at it rather
 // than redeclaring it.
@@ -150,8 +154,60 @@ const truncateAtWord = (text, limit = 155) => {
   return `${cut}…`;
 };
 
-/** Word-safe meta description (~155). */
-const metaDescription = (e) => truncateAtWord(resolveSummary(e), 155);
+/**
+ * Word-safe meta description, 120 to 160 characters. A summary shorter than
+ * 120 (a stub's fallback sentence, or a one-line note) is followed by a plain
+ * statement of what the page is and when the recording was published, so the
+ * snippet stays specific to this episode without inventing anything about it.
+ */
+const META_MIN = 120;
+const descriptionTail = (e) => {
+  const when = e.date ? ` Published ${e.date}` : "";
+  const length = e.duration ? `, ${e.duration} long` : "";
+  return [
+    `.${when}${length}. Show notes and audio from the AI Suede Podcast with Jason Colapietro.`,
+    `.${when}${length}. Show notes and audio on the AI Suede Podcast.`,
+    ". Show notes and audio from the AI Suede Podcast with Jason Colapietro.",
+    `.${when}. Show notes and audio on the AI Suede Podcast.`,
+    ". Show notes and audio on the AI Suede Podcast.",
+  ];
+};
+const metaDescription = (e) => {
+  const base = truncateAtWord(resolveSummary(e), 155);
+  if (base.length >= META_MIN || base.endsWith("…")) return base;
+  const head = base.replace(/[.!?]$/, "");
+  for (const tail of descriptionTail(e)) {
+    const full = `${head}${tail}`;
+    if (full.length >= META_MIN && full.length <= 160) return full;
+  }
+  return base;
+};
+
+/**
+ * <title> for an episode page, at most 65 characters. The feed titles run to
+ * 99 characters, so the page title is the feed title cut at a " | " segment
+ * where one fits, otherwise at a word boundary, and the show name is appended
+ * only when it still fits. The visible <h1> and the schema keep the full title.
+ */
+const TITLE_MAX = 65;
+const TITLE_SUFFIX = " | AI Suede Podcast";
+const TITLE_TRAIL = /[\s,;:|·×+&\-–—]+$/;
+const TITLE_DANGLE = /\s+(?:and|or|the|a|an|of|on|in|for|to|with|from|at|by|x|×|\+|&)$/i;
+const fitTitleWords = (text, limit) => {
+  if (text.length <= limit) return text;
+  let cut = text.slice(0, limit + 1);
+  cut = cut.slice(0, cut.lastIndexOf(" "));
+  for (let i = 0; i < 3; i += 1) cut = cut.replace(TITLE_TRAIL, "").replace(TITLE_DANGLE, "");
+  return cut;
+};
+export const pageTitle = (e) => {
+  const full = cleanText(e.title).replace(/(?:\s+#\w+)+\s*$/g, "").trim();
+  const parts = full.split(" | ");
+  const variants = parts.map((_, i) => parts.slice(0, parts.length - i).join(" | "));
+  for (const v of variants) if (`${v}${TITLE_SUFFIX}`.length <= TITLE_MAX) return `${v}${TITLE_SUFFIX}`;
+  for (const v of variants) if (v.length <= TITLE_MAX) return v;
+  return fitTitleWords(variants[variants.length - 1], TITLE_MAX);
+};
 /** Word-safe schema.org description — a fuller summary, still bullet-free. */
 const schemaDescription = (e) => truncateAtWord(resolveSummary(e), 400);
 /**
@@ -371,6 +427,8 @@ export const parseEpisodes = (xml) => {
       url: `${SITE}/episodes/${slugify(title, guid)}`,
     };
     e.metaDescription = metaDescription(e);
+    // The summary shown in lists on other pages: the notes' own words only.
+    e.listSummary = truncateAtWord(resolveSummary(e), 155);
     e.schemaDescription = schemaDescription(e);
     e.body = bodyText(e);
     return e;
@@ -389,11 +447,11 @@ export const parseEpisodes = (xml) => {
 };
 
 // Exported so the guard test can prove truncation lands on a word boundary.
-export { resolveSummary, metaDescription, schemaDescription, hubSummary, truncateAtWord, looksLikeStub, fallbackSummary, cleanText };
+export { resolveSummary, metaDescription, descriptionTail, schemaDescription, hubSummary, truncateAtWord, looksLikeStub, fallbackSummary, cleanText };
 
 const SHARED_HEAD = (e) => `    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>${esc(e.title)} | AI Suede Podcast</title>
+    <title>${esc(pageTitle(e))}</title>
     <meta name="description" content="${esc(e.metaDescription)}" />
     <meta name="keywords" content="${esc(episodeKeywords(e).join(", "))}" />
     <link rel="canonical" href="${e.url}" />
@@ -412,13 +470,57 @@ const SHARED_HEAD = (e) => `    <meta charset="utf-8" />
     <meta property="og:title" content="${esc(e.title)}" />
     <meta property="og:description" content="${esc(e.metaDescription)}" />
     <meta property="og:url" content="${e.url}" />
-    <meta property="og:image" content="${ARTWORK}" />
+${socialImageTags()}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@AISUEDE" />
     <meta name="twitter:creator" content="@johnnysuede" />
     <meta name="twitter:title" content="${esc(e.title)}" />
     <meta name="twitter:description" content="${esc(e.metaDescription)}" />
-    <meta name="twitter:image" content="${ARTWORK}" />`;
+    <meta name="twitter:image" content="${SOCIAL_IMAGE.url}" />`;
+
+/** og:image block shared by every generated page. */
+function socialImageTags() {
+  return `    <meta property="og:image" content="${SOCIAL_IMAGE.url}" />
+    <meta property="og:image:width" content="${SOCIAL_IMAGE.width}" />
+    <meta property="og:image:height" content="${SOCIAL_IMAGE.height}" />
+    <meta property="og:image:alt" content="AI Suede Podcast with Jason Colapietro" />`;
+}
+
+/**
+ * BreadcrumbList from the home page down to `crumbs`. Inlined (no @id) in the
+ * page node, so it never reads as a separately described entity.
+ */
+const breadcrumbList = (crumbs) => ({
+  "@type": "BreadcrumbList",
+  itemListElement: [{ name: "AI Suede Podcast", item: `${SITE}/` }, ...crumbs].map((c, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: c.name,
+    item: c.item,
+  })),
+});
+
+/** WebPage node, with its breadcrumb, for a generated page below the home page. */
+const pageNodes = ({ url, name, description, crumbs, extra = {} }) => [
+  {
+    "@type": "WebPage",
+    "@id": `${url}#webpage`,
+    url,
+    name,
+    description,
+    inLanguage: "en-US",
+    isPartOf: { "@id": `${SITE}/#podcast` },
+    publisher: { "@id": ORG_ID },
+    breadcrumb: breadcrumbList(crumbs),
+    primaryImageOfPage: {
+      "@type": "ImageObject",
+      url: SOCIAL_IMAGE.url,
+      width: SOCIAL_IMAGE.width,
+      height: SOCIAL_IMAGE.height,
+    },
+    ...extra,
+  },
+];
 
 /**
  * Most of these recordings are appearances on other people's programmes. For
@@ -445,7 +547,7 @@ const SHARED_HEAD = (e) => `    <meta charset="utf-8" />
 // suede-seo, 2026-09-11). Nor is the page's last commit the answer: an
 // em-dash pass on 2026-09-05 touched all 33 pages without changing a word.
 // The date is the newest commit that changed more than two lines of the
-// page's own words: not <meta>/<link> lines, not a line the same commit
+// page's own words: not <head> lines (title, <meta>, <link>, JSON-LD), not a line the same commit
 // changed identically in other pages, not a line whose letters and digits
 // survived. That is the rule record-audit.py applies, so the two agree.
 // A page not yet committed, or regenerated with changes, is dated today;
@@ -459,15 +561,22 @@ const git = (...args) => spawnSync("git", ["-C", __dirname, ...args], { encoding
 const wordsOf = (line) => line.toLowerCase().replace(/[^0-9a-z]+/g, "");
 const META_LINE = /^\s*<(meta|link)\b/;
 const commitCache = new Map();
+// The diff is read with full context so each changed line is known to be in
+// <head> or not. Head lines (title, meta, JSON-LD) describe the page; they are
+// not its words, so a metadata-only commit does not move the content date.
 function commitChanges(sha) {
   if (!commitCache.has(sha)) {
     const files = new Map();
     let cur = null;
-    for (const line of (git("show", "--format=", sha).stdout || "").split("\n")) {
-      if (line.startsWith("diff --git ")) { cur = line.split(" b/")[1]; files.set(cur, []); continue; }
-      if (cur && (line[0] === "+" || line[0] === "-") && !line.startsWith("+++") && !line.startsWith("---")) {
-        files.get(cur).push([line[0], line.slice(1)]);
-      }
+    let inHead = false;
+    const out = git("show", "--format=", "-U1000000", sha).stdout || "";
+    for (const line of out.split("\n")) {
+      if (line.startsWith("diff --git ")) { cur = line.split(" b/")[1]; files.set(cur, []); inHead = false; continue; }
+      if (!cur || line.startsWith("+++") || line.startsWith("---") || line.startsWith("@@")) continue;
+      const body = line.slice(1);
+      if (/<head\b/i.test(body)) inHead = true;
+      if ((line[0] === "+" || line[0] === "-") && !inHead) files.get(cur).push([line[0], body]);
+      if (/<\/head>/i.test(body)) inHead = false;
     }
     commitCache.set(sha, files);
   }
@@ -524,6 +633,9 @@ const episodeJsonLd = (e) => {
             : {}),
           ...(e.isoDuration ? { timeRequired: e.isoDuration } : {}),
           partOfSeries: { "@id": `${SITE}/#podcast` },
+          mainEntityOfPage: { "@id": `${e.url}#webpage` },
+          image: ARTWORK,
+          inLanguage: "en-US",
           associatedMedia: e.audio
             ? {
                 "@type": "MediaObject",
@@ -548,6 +660,16 @@ const episodeJsonLd = (e) => {
           url: `${SITE}/`,
           webFeed: `${SITE}/feed.xml`,
         },
+        ...pageNodes({
+          url: e.url,
+          name: pageTitle(e),
+          description: e.metaDescription,
+          crumbs: [{ name: e.title, item: e.url }],
+          extra: {
+            mainEntity: { "@id": `${e.url}#episode` },
+            ...(e.iso ? { datePublished: e.iso } : {}),
+          },
+        }),
         ...(credit ? credit.nodes : []),
       ],
     },
@@ -650,7 +772,7 @@ ${relatedEpisodes(e, all)
     ({ episode: r, sharedHubs }) => `          <li>
             <a href="/episodes/${r.slug}">${esc(r.title)}</a>
             <span class="ep-meta">${dateAndLength(r)}${dateAndLength(r) ? " &middot; " : ""}${esc(creditLabel(r))}</span>${
-              looksLikeStub(r.description) ? "" : `\n            <span class="summary">${esc(r.metaDescription)}</span>`
+              looksLikeStub(r.description) ? "" : `\n            <span class="summary">${esc(r.listSummary)}</span>`
             }${
               sharedHubs.length
                 ? `\n            <span class="ep-meta">Shared topics: ${sharedHubs.map((h) => esc(h.name)).join(", ")}</span>`
@@ -783,6 +905,9 @@ const hubJsonLd = (hub, members) =>
           description: hub.description(members.length),
           keywords: keywordContent(PAGE_KEYWORDS[topicPath(hub.slug)]),
           isPartOf: { "@id": `${SITE}/#podcast` },
+          publisher: { "@id": ORG_ID },
+          inLanguage: "en-US",
+          breadcrumb: breadcrumbList([{ name: hub.name, item: hubUrl(hub) }]),
           mainEntity: { "@id": `${hubUrl(hub)}#list` },
         },
         {
@@ -870,13 +995,13 @@ const hubPage = (hub, members, hubs, episodes) => {
     <meta property="og:title" content="${esc(hub.title)}" />
     <meta property="og:description" content="${esc(desc)}" />
     <meta property="og:url" content="${hubUrl(hub)}" />
-    <meta property="og:image" content="${ARTWORK}" />
+${socialImageTags()}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@AISUEDE" />
     <meta name="twitter:creator" content="@johnnysuede" />
     <meta name="twitter:title" content="${esc(hub.title)}" />
     <meta name="twitter:description" content="${esc(desc)}" />
-    <meta name="twitter:image" content="${ARTWORK}" />
+    <meta name="twitter:image" content="${SOCIAL_IMAGE.url}" />
     <script type="application/ld+json">
 ${hubJsonLd(hub, members)}
     </script>
@@ -967,7 +1092,7 @@ ${others
 const APPEARANCES_TITLE = "Podcast appearances | Jason Colapietro";
 const APPEARANCES_DESC =
   "Guest appearances by Jason Colapietro (Johnny Suede) of Suede AI on other people's " +
-  "podcasts, AMAs and Spaces — grouped by show, each linking to the full recording.";
+  "podcasts, AMAs and Spaces, grouped by show with links to each recording.";
 
 const appearancesJsonLd = (groups) => {
   const items = groups.flatMap((g) => g.episodes.map(({ episode }) => episode));
@@ -982,6 +1107,9 @@ const appearancesJsonLd = (groups) => {
           name: APPEARANCES_TITLE,
           description: APPEARANCES_DESC,
           isPartOf: { "@id": `${SITE}/#podcast` },
+          publisher: { "@id": ORG_ID },
+          inLanguage: "en-US",
+          breadcrumb: breadcrumbList([{ name: "Appearances", item: APPEARANCES_URL }]),
           about: { "@id": PERSON_ID },
           mainEntity: { "@id": `${APPEARANCES_URL}#list` },
         },
@@ -1041,13 +1169,13 @@ const appearancesPage = (groups) => {
     <meta property="og:title" content="${esc(APPEARANCES_TITLE)}" />
     <meta property="og:description" content="${esc(APPEARANCES_DESC)}" />
     <meta property="og:url" content="${APPEARANCES_URL}" />
-    <meta property="og:image" content="${ARTWORK}" />
+${socialImageTags()}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@AISUEDE" />
     <meta name="twitter:creator" content="@johnnysuede" />
     <meta name="twitter:title" content="${esc(APPEARANCES_TITLE)}" />
     <meta name="twitter:description" content="${esc(APPEARANCES_DESC)}" />
-    <meta name="twitter:image" content="${ARTWORK}" />
+    <meta name="twitter:image" content="${SOCIAL_IMAGE.url}" />
     <script type="application/ld+json">
 ${appearancesJsonLd(groups)}
     </script>
@@ -1072,7 +1200,7 @@ ${STYLE}
       <p class="eyebrow">Appearances</p>
       <h1>Where Jason Colapietro has been a guest</h1>
       <p class="lede">
-        ${total} recording${total === 1 ? "" : "s"} across ${groups.length} third-party programme${groups.length === 1 ? "" : "s"} — podcasts,
+        ${total} recording${total === 1 ? "" : "s"} across ${groups.length} third-party programme${groups.length === 1 ? "" : "s"}: podcasts,
         exchange AMAs and Spaces hosted by other people. Each is carried on the
         <a href="/">AI Suede</a> feed, but the show and the host are theirs.
         Episodes made for this feed are listed on the <a href="/">home page</a>.
@@ -1117,6 +1245,122 @@ ${g.episodes
   </body>
 </html>
 `;
+};
+
+/** Visible text of a static page's <main>, one paragraph per block element. */
+const pageText = (rel) => {
+  const html = readFileSync(join(PUBLIC, rel), "utf8");
+  const body = (html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/) ?? [, ""])[1]
+    .replace(/<!--[\s\S]*?-->/g, "")
+    .replace(/<nav\b[\s\S]*?<\/nav>/g, "")
+    .replace(/<div class="actions">[\s\S]*?<\/div>/g, "")
+    .replace(/<(?:section|picture)\b[\s\S]*?<\/(?:section|picture)>/g, "");
+  return body
+    .split(/<\/(?:p|h1|h2|h3|li)>/)
+    .map((chunk) =>
+      chunk
+        .replace(/<[^>]+>/g, " ")
+        .replace(/&nbsp;/g, " ")
+        .replace(/&middot;/g, "·")
+        .replace(/&rsaquo;/g, "›")
+        .replace(/&mdash;/g, ",")
+        .replace(/&amp;/g, "&")
+        .replace(/&quot;/g, '"')
+        .replace(/&#x27;|&#39;/g, "'")
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">")
+        .replace(/\s+([.,;:])/g, "$1")
+        .replace(/\s+/g, " ")
+        .trim(),
+    )
+    .filter(Boolean)
+    .join("\n\n");
+};
+
+/** Show notes as plain text: the feed's own copy, bullets kept as list lines. */
+const notesText = (e) => {
+  const { notes, chapters } = episodeContent(e);
+  const lines = String(notes)
+    .split(/\r?\n/)
+    .map((l) => l.replace(/\s+/g, " ").trim())
+    .map((l) => (BULLET_LINE.test(l) ? `- ${l.replace(BULLET_LINE, "")}` : l));
+  const out = lines.join("\n").replace(/\n{3,}/g, "\n\n").trim();
+  if (!chapters) return out;
+  const marks = chapters.items.map((c) => `- ${c.stamp} ${c.title}`).join("\n");
+  return `${out}\n\nChapters:\n${marks}${chapters.after ? `\n\n${chapters.after.trim()}` : ""}`;
+};
+
+export const llmsFull = (episodes, hubs, groups) => {
+  const appearanceCount = groups.reduce((n, g) => n + g.episodes.length, 0);
+  const parts = [
+    "# AI Suede Podcast: full text",
+    "",
+    "> The complete public text of podcast.suedeai.ai: the show, its host, every episode's show notes, the topic hubs and the guest appearances index. Generated from the podcast feed at build time, so it matches the published pages.",
+    "",
+    `- Show: ${SHOW}`,
+    "- Host: Jason Colapietro (also known as Johnny Suede), founder of Suede AI: https://suedeai.ai/founder",
+    "- Publisher: Suede AI (also known as Suede Labs): https://suedeai.ai",
+    `- Site: ${SITE}/`,
+    `- RSS feed: ${SITE}/feed.xml`,
+    "- Apple Podcasts: https://podcasts.apple.com/us/podcast/ai-suede-build-create-ship/id6787263913",
+    "- YouTube: https://www.youtube.com/@aisuede",
+    `- Episodes: ${episodes.length}, of which ${appearanceCount} are guest appearances on other people's programmes`,
+    `- Short index: ${SITE}/llms.txt`,
+    "",
+    "## About the podcast",
+    "",
+    `Source: ${SITE}/about`,
+    "",
+    pageText("about.html"),
+    "",
+    "## Contact",
+    "",
+    `Source: ${SITE}/contact`,
+    "",
+    pageText("contact.html"),
+    "",
+    "## Topics",
+    "",
+    ...hubs.flatMap(({ hub, members }) => [
+      `### ${hub.name}`,
+      "",
+      `Source: ${hubUrl(hub)}`,
+      "",
+      hub.lede,
+      "",
+      ...members.map((e) => `- [${e.title}](${e.url})${e.date ? `, ${e.date}` : ""}`),
+      "",
+    ]),
+    "## Guest appearances",
+    "",
+    `Source: ${APPEARANCES_URL}`,
+    "",
+    ...groups.flatMap((g) => [
+      `### ${g.name}`,
+      "",
+      ...g.episodes.map(({ episode: e }) => `- [${e.title}](${e.url})${e.date ? `, ${e.date}` : ""}`),
+      "",
+    ]),
+    "## Episodes",
+    "",
+    "Newest first. Each entry gives the episode's published date, length, credit and full show notes.",
+    "",
+    ...episodes.flatMap((e) => [
+      `### ${e.title}`,
+      "",
+      `- URL: ${e.url}`,
+      ...(e.number ? [`- Episode: ${e.number}`] : []),
+      ...(e.date ? [`- Published: ${e.date}`] : []),
+      ...(e.duration ? [`- Length: ${e.duration}`] : []),
+      `- Credit: ${creditLabel(e)}`,
+      ...(topicsFor(e).length ? [`- Topics: ${topicsFor(e).map((h) => h.name).join(", ")}`] : []),
+      ...(e.audio ? [`- Audio: ${e.audio}`] : []),
+      "",
+      notesText(e),
+      "",
+    ]),
+  ];
+  return `${parts.join("\n").replace(/\n{3,}/g, "\n\n").trim()}\n`;
 };
 
 const main = () => {
@@ -1164,19 +1408,20 @@ const main = () => {
   writeFileSync(join(appearancesDir, "index.html"), appearancesPage(groups));
 
   // Sitemap: the static pages, the topic hubs, and every episode.
+  // `file` is the page's source, dated by the same content rule as the episodes.
   const staticUrls = [
-    { loc: `${SITE}/ai-instructions`, changefreq: "monthly", priority: "0.4" },
-    { loc: `${SITE}/`, changefreq: "weekly", priority: "1.0" },
-    { loc: `${SITE}/about`, changefreq: "monthly", priority: "0.5" },
-    { loc: `${SITE}/appearances`, changefreq: "monthly", priority: "0.8" },
-    { loc: `${SITE}/contact`, changefreq: "monthly", priority: "0.5" },
+    { loc: `${SITE}/ai-instructions`, file: join("public", "ai-instructions.html"), changefreq: "monthly", priority: "0.4" },
+    { loc: `${SITE}/`, file: join("public", "index.html"), changefreq: "weekly", priority: "1.0" },
+    { loc: `${SITE}/about`, file: join("public", "about.html"), changefreq: "monthly", priority: "0.5" },
+    { loc: `${SITE}/appearances`, file: join("public", "appearances", "index.html"), changefreq: "monthly", priority: "0.8" },
+    { loc: `${SITE}/contact`, file: join("public", "contact.html"), changefreq: "monthly", priority: "0.5" },
   ];
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${staticUrls
   .map(
     (u) =>
-      `  <url>\n    <loc>${u.loc}</loc>\n    <changefreq>${u.changefreq}</changefreq>\n    <priority>${u.priority}</priority>\n  </url>`,
+      `  <url>\n    <loc>${u.loc}</loc>\n    <lastmod>${contentDate(u.file)}</lastmod>\n    <changefreq>${u.changefreq}</changefreq>\n    <priority>${u.priority}</priority>\n  </url>`,
   )
   .join("\n")}
 ${hubs
@@ -1201,8 +1446,8 @@ ${episodes
   const listHtml = `        <section class="episodes" aria-labelledby="episodes-heading">
           <h2 id="episodes-heading">Episodes</h2>
           <p class="ep-meta">
-            ${groups.reduce((n, g) => n + g.episodes.length, 0)} of these are guest appearances on other people's shows &mdash;
-            <a href="/appearances">see them grouped by host</a>.
+            ${groups.reduce((n, g) => n + g.episodes.length, 0)} of these are guest appearances on other people's shows.
+            <a href="/appearances">See them grouped by host</a>.
           </p>
           <ol class="episode-list">
 ${episodes
@@ -1266,6 +1511,10 @@ ${hubs
     );
   }
   writeFileSync(indexPath, index);
+
+  // llms-full.txt: the full text of the site for answer engines, generated from
+  // the same feed and tables as the pages so the two cannot drift.
+  writeFileSync(join(PUBLIC, "llms-full.txt"), llmsFull(episodes, hubs, groups));
 
   console.log(`build-episodes: ${episodes.length} episode pages`);
   console.log(

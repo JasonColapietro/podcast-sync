@@ -28,10 +28,10 @@
       content="Creator ownership, music IP, programmable media, and solo founder shipping from Jason Colapietro and Suede AI."
     />
     <meta property="og:url" content="https://podcast.suedeai.ai/" />
-    <meta property="og:image" content="https://podcast.suedeai.ai/artwork.jpg" />
-    <meta property="og:image:width" content="3000" />
-    <meta property="og:image:height" content="3000" />
-    <meta property="og:image:alt" content="AI Suede podcast artwork" />
+    <meta property="og:image" content="https://podcast.suedeai.ai/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="AI Suede Podcast with Jason Colapietro" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@AISUEDE" />
     <meta name="twitter:creator" content="@johnnysuede" />
@@ -40,7 +40,7 @@
       name="twitter:description"
       content="Creator ownership, music IP, programmable media, and solo founder shipping from Jason Colapietro and Suede AI."
     />
-    <meta name="twitter:image" content="https://podcast.suedeai.ai/artwork.jpg" />
+    <meta name="twitter:image" content="https://podcast.suedeai.ai/og-image.jpg" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -60,6 +60,7 @@
               "@type": "Organization",
               "@id": "https://suedeai.ai/#organization",
               "name": "Suede AI",
+              "alternateName": ["Suede Labs", "Suede Labs AI"],
               "url": "https://suedeai.ai",
               "foundingDate": "2024",
               "founder": {
@@ -81,6 +82,19 @@
             ]
           },
           {
+            "@type": "WebSite",
+            "@id": "https://podcast.suedeai.ai/#website",
+            "url": "https://podcast.suedeai.ai/",
+            "name": "AI Suede Podcast",
+            "inLanguage": "en-US",
+            "publisher": {
+              "@id": "https://suedeai.ai/#organization"
+            },
+            "about": {
+              "@id": "https://podcast.suedeai.ai/#podcast"
+            }
+          },
+          {
             "@type": "WebPage",
             "@id": "https://podcast.suedeai.ai/#webpage",
             "url": "https://podcast.suedeai.ai/",
@@ -89,6 +103,9 @@
             "datePublished": "2026-07-15",
             "dateModified": "2026-10-11",
             "isPartOf": {
+              "@id": "https://podcast.suedeai.ai/#website"
+            },
+            "about": {
               "@id": "https://podcast.suedeai.ai/#podcast"
             },
             "primaryImageOfPage": {
@@ -300,8 +317,8 @@
           </p>
         </div>
         <!-- Web-sized derivatives only. /artwork.jpg stays the 3000x3000
-             original because feed.xml, og:image, twitter:image and the
-             JSON-LD all point at it — Apple Podcasts requires 1400-3000px,
+             original because feed.xml and the JSON-LD point at it (link
+             previews use the 1200x630 /og-image.jpg). Apple Podcasts requires 1400-3000px,
              and social crawlers fetch it server-side, so none of that costs
              a visitor anything. This <img> was the one place the full
              319 KB file was being sent to real browsers for a box that is
@@ -354,8 +371,8 @@
         <section class="episodes" aria-labelledby="episodes-heading">
           <h2 id="episodes-heading">Episodes</h2>
           <p class="ep-meta">
-            20 of these are guest appearances on other people's shows &mdash;
-            <a href="/appearances">see them grouped by host</a>.
+            20 of these are guest appearances on other people's shows.
+            <a href="/appearances">See them grouped by host</a>.
           </p>
           <ol class="episode-list">
             <li>

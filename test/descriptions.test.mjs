@@ -8,6 +8,7 @@ import {
   parseEpisodes,
   resolveSummary,
   metaDescription,
+  descriptionTail,
   looksLikeStub,
 } from "../build-episodes.mjs";
 
@@ -48,9 +49,17 @@ for (const e of episodes) {
         boundary === "" || !WORD.test(boundary),
         `${label}: meta was cut mid-word (next source char = ${JSON.stringify(boundary)})\n  ${meta}`,
       );
+    } else if (meta === full) {
+      // Not truncated: the whole summary, so nothing was chopped off.
     } else {
-      // Not truncated: it must be the whole summary, so nothing was chopped off.
-      assert.equal(meta, full, `${label}: meta neither truncated nor complete\n  ${meta}`);
+      // A summary under 120 characters is completed, never cut: the whole
+      // summary followed by one of the factual tails (date, length, show).
+      const head = full.replace(/[.!?]$/, "");
+      const tails = descriptionTail(e).map((t) => `${head}${t}`);
+      assert.ok(
+        tails.includes(meta),
+        `${label}: meta neither truncated, complete, nor the summary plus its tail\n  ${meta}\n  full: ${full}`,
+      );
     }
   });
 
@@ -64,6 +73,11 @@ for (const e of episodes) {
     // require real alphabetic content.
     const alpha = meta.replace(/[^A-Za-z]/g, "").length;
     assert.ok(alpha >= 25, `${label}: meta has too little prose (${alpha} letters): ${JSON.stringify(meta)}`);
+  });
+
+  test(`${label}: meta description is 120 to 160 characters`, () => {
+    const meta = e.metaDescription;
+    assert.ok(meta.length >= 120 && meta.length <= 160, `${label}: meta is ${meta.length} chars: ${meta}`);
   });
 
   test(`${label}: meta description carries no bullet or markdown markers`, () => {

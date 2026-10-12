@@ -48,7 +48,10 @@ for (const page of pages) {
 
     assert.ok(ogTitle, `${page}: missing og:title`);
     assert.ok(ogDescription, `${page}: missing og:description`);
-    assert.equal(ogImage, "https://podcast.suedeai.ai/artwork.jpg");
+    // Link previews use the 1200x630 card; the square show art stays in the feed.
+    assert.equal(ogImage, "https://podcast.suedeai.ai/og-image.jpg");
+    assert.equal(metaContent(html, "property", "og:image:width"), "1200");
+    assert.equal(metaContent(html, "property", "og:image:height"), "630");
     assert.equal(metaContent(html, "name", "twitter:title"), ogTitle);
     assert.equal(metaContent(html, "name", "twitter:description"), ogDescription);
     assert.equal(metaContent(html, "name", "twitter:image"), ogImage);

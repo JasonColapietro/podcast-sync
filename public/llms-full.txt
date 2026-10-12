@@ -1,0 +1,946 @@
+# AI Suede Podcast: full text
+
+> The complete public text of podcast.suedeai.ai: the show, its host, every episode's show notes, the topic hubs and the guest appearances index. Generated from the podcast feed at build time, so it matches the published pages.
+
+- Show: AI Suede: Build, Create, Ship
+- Host: Jason Colapietro (also known as Johnny Suede), founder of Suede AI: https://suedeai.ai/founder
+- Publisher: Suede AI (also known as Suede Labs): https://suedeai.ai
+- Site: https://podcast.suedeai.ai/
+- RSS feed: https://podcast.suedeai.ai/feed.xml
+- Apple Podcasts: https://podcasts.apple.com/us/podcast/ai-suede-build-create-ship/id6787263913
+- YouTube: https://www.youtube.com/@aisuede
+- Episodes: 33, of which 20 are guest appearances on other people's programmes
+- Short index: https://podcast.suedeai.ai/llms.txt
+
+## About the podcast
+
+Source: https://podcast.suedeai.ai/about
+
+About
+
+About the AI Suede podcast
+
+AI Suede is the podcast feed for Jason Colapietro, also known as Johnny Suede, founder of Suede AI. It carries conversations, AMAs, and clips on creator ownership, music IP as a real-world asset, programmable media, on-chain royalties, and what it actually takes to ship as a solo founder.
+
+Episodes are pulled from the @aisuede YouTube channel and synced to a standard podcast RSS feed so the same conversations are listenable in any podcast app.
+
+For more on the host, see Jason Colapietro's founder bio. For more on the parent company, see About Suede AI.
+
+Page last updated 2026-07-15.
+
+## Contact
+
+Source: https://podcast.suedeai.ai/contact
+
+Contact
+
+Get in touch.
+
+For booking, guest pitches, feedback, or press, reach the host at jason@suedeai.ai.
+
+For questions about Suede AI itself, see About Suede AI or the founder bio for Jason Colapietro.
+
+Booking a guest spot or an interview
+
+AI Suede carries Jason's own episodes and his guest appearances on other people's podcasts, exchange AMAs and X Spaces. To invite him onto your show, include the programme name, the format (recorded, live or Spaces), the proposed date and the topic. Past appearances are listed on the appearances page, grouped by host.
+
+Press and corrections
+
+For press questions, quotes or a correction to an episode page, email the same address and name the episode URL. Episode pages reproduce the show notes published in the podcast feed, so a correction is made at the source and the page is regenerated from it.
+
+Listen and subscribe
+
+The show is available on Apple Podcasts, on the @aisuede YouTube channel, and in any podcast app through the RSS feed at podcast.suedeai.ai/feed.xml.
+
+Page last updated 2026-10-12.
+
+## Topics
+
+### Music IP as a real-world asset
+
+Source: https://podcast.suedeai.ai/topics/music-ip-real-world-assets
+
+Recordings whose show notes cover music IP as a real-world asset (RWA): putting the rights to a song on-chain so the people who made it own the asset and earn from it.
+
+- [Stop Losing Rights, Own Your IP: Music RWAs, AI, x402 on Base | Jason Colapietro](https://podcast.suedeai.ai/episodes/stop-losing-rights-own-your-ip-music-rwas-ai-x402-on-base-jason-colapiet), 2026-05-15
+- [AI Will Eat Music. Here's Who Gets Paid | Jason Colapietro on Music RWAs](https://podcast.suedeai.ai/episodes/ai-will-eat-music-here-s-who-gets-paid-jason-colapietro-on-music-rwas), 2026-04-12
+- [How Music IP Becomes a Real-World Asset on Base | Suede AI × AVAX × Chainlink](https://podcast.suedeai.ai/episodes/how-music-ip-becomes-a-real-world-asset-on-base-suede-labs-avax-chainlin), 2026-03-14
+- [Why Suede AI Chose Avalanche for Music IP | The Subnet Architecture Bet](https://podcast.suedeai.ai/episodes/why-suede-labs-chose-avalanche-for-music-ip-the-subnet-architecture-bet), 2026-02-25
+- [Mario Nawfal × Jason Colapietro: AI, Music, and the Future of Culture](https://podcast.suedeai.ai/episodes/mario-nawfal-jason-colapietro-ai-music-and-the-future-of-culture), 2025-09-24
+- [Mario Nawfal × Suede AI: The Web3 Music Stack, Explained](https://podcast.suedeai.ai/episodes/mario-nawfal-suede-labs-the-web3-music-stack-explained), 2025-06-24
+- [Mario Nawfal × Jason Colapietro: Protecting Artist Identity from AI Agents](https://podcast.suedeai.ai/episodes/mario-nawfal-jason-colapietro-protecting-artist-identity-from-ai-agents), 2025-06-20
+- [Binance AMA: Suede AI on the Music IP Stack (Full Recap)](https://podcast.suedeai.ai/episodes/binance-ama-suede-labs-on-the-music-ip-stack-full-recap), 2025-04-29
+- [CoinMerge × Fity.eth on Suede AI (Sol Train)](https://podcast.suedeai.ai/episodes/coinmerge-fity-eth-on-suede-labs-sol-train), 2025-04-01
+- [Block × Suede AI: How On-Chain Royalties Actually Work](https://podcast.suedeai.ai/episodes/block-suede-labs-how-on-chain-royalties-actually-work), 2025-03-22
+- [Block × Suede AI AMA: The Music Stack on Base](https://podcast.suedeai.ai/episodes/block-suede-labs-ama-the-music-stack-on-base), 2025-03-18
+- [APEX Exchange × Suede AI: AI, Music + Crypto Distribution](https://podcast.suedeai.ai/episodes/apex-exchange-suede-labs-ai-music-crypto-distribution), 2025-03-16
+- [BTSE × Suede AI: Redefining the Music Industry with Crypto + AI](https://podcast.suedeai.ai/episodes/btse-suede-labs-redefining-the-music-industry-with-crypto-ai), 2025-03-16
+- [Block × Suede AI (Chill AMA): The Future of AI in Music + Web3](https://podcast.suedeai.ai/episodes/block-suede-labs-chill-ama-the-future-of-ai-in-music-web3), 2025-03-14
+- [DigiFinex × Suede AI (Ep 15): Where AI and Music Are Headed](https://podcast.suedeai.ai/episodes/digifinex-suede-labs-ep-15-where-ai-and-music-are-headed), 2025-03-14
+- [Binance × Suede AI: AI, Music + Web3 Creativity (Full AMA)](https://podcast.suedeai.ai/episodes/binance-suede-labs-ai-music-web3-creativity-full-ama), 2025-03-12
+- [Binance Livestream AMA: Suede AI Founder on Music IP](https://podcast.suedeai.ai/episodes/binance-livestream-ama-suede-labs-founder-on-music-ip), 2025-02-19
+
+### Music royalties and the Vault
+
+Source: https://podcast.suedeai.ai/topics/music-royalties
+
+Recordings whose show notes cover music royalties: how on-chain settlement and payouts work, where the delay in legacy royalty payments comes from, and the Vault, which the notes describe as liquidity now for artists and royalty yield for supporters.
+
+- [Stop Losing Rights, Own Your IP: Music RWAs, AI, x402 on Base | Jason Colapietro](https://podcast.suedeai.ai/episodes/stop-losing-rights-own-your-ip-music-rwas-ai-x402-on-base-jason-colapiet), 2026-05-15
+- [How Music IP Becomes a Real-World Asset on Base | Suede AI × AVAX × Chainlink](https://podcast.suedeai.ai/episodes/how-music-ip-becomes-a-real-world-asset-on-base-suede-labs-avax-chainlin), 2026-03-14
+- [Mario Nawfal × Suede AI: The Web3 Music Stack, Explained](https://podcast.suedeai.ai/episodes/mario-nawfal-suede-labs-the-web3-music-stack-explained), 2025-06-24
+- [Binance AMA: Suede AI on the Music IP Stack (Full Recap)](https://podcast.suedeai.ai/episodes/binance-ama-suede-labs-on-the-music-ip-stack-full-recap), 2025-04-29
+- [Block × Suede AI: How On-Chain Royalties Actually Work](https://podcast.suedeai.ai/episodes/block-suede-labs-how-on-chain-royalties-actually-work), 2025-03-22
+- [Block × Suede AI AMA: The Music Stack on Base](https://podcast.suedeai.ai/episodes/block-suede-labs-ama-the-music-stack-on-base), 2025-03-18
+- [Binance Livestream AMA: Suede AI Founder on Music IP](https://podcast.suedeai.ai/episodes/binance-livestream-ama-suede-labs-founder-on-music-ip), 2025-02-19
+
+### Rights registry and provenance
+
+Source: https://podcast.suedeai.ai/topics/music-rights-registry-and-provenance
+
+Recordings whose show notes cover public records of who made a work: the Suede rights registry, on-chain provenance for tracking rights, and cryptographic signatures that tie an artist to their own catalog.
+
+- [Stop Losing Rights, Own Your IP: Music RWAs, AI, x402 on Base | Jason Colapietro](https://podcast.suedeai.ai/episodes/stop-losing-rights-own-your-ip-music-rwas-ai-x402-on-base-jason-colapiet), 2026-05-15
+- [Mario Nawfal × Jason Colapietro: Protecting Artist Identity from AI Agents](https://podcast.suedeai.ai/episodes/mario-nawfal-jason-colapietro-protecting-artist-identity-from-ai-agents), 2025-06-20
+- [CoinMerge × Fity.eth on Suede AI (Sol Train)](https://podcast.suedeai.ai/episodes/coinmerge-fity-eth-on-suede-labs-sol-train), 2025-04-01
+- [Block × Suede AI AMA: The Music Stack on Base](https://podcast.suedeai.ai/episodes/block-suede-labs-ama-the-music-stack-on-base), 2025-03-18
+- [BTSE × Suede AI: Redefining the Music Industry with Crypto + AI](https://podcast.suedeai.ai/episodes/btse-suede-labs-redefining-the-music-industry-with-crypto-ai), 2025-03-16
+- [DigiFinex × Suede AI (Ep 15): Where AI and Music Are Headed](https://podcast.suedeai.ai/episodes/digifinex-suede-labs-ep-15-where-ai-and-music-are-headed), 2025-03-14
+- [Binance Livestream AMA: Suede AI Founder on Music IP](https://podcast.suedeai.ai/episodes/binance-livestream-ama-suede-labs-founder-on-music-ip), 2025-02-19
+
+### Token launches and tokenomics
+
+Source: https://podcast.suedeai.ai/topics/token-launches-and-tokenomics
+
+Recordings whose show notes cover token launches and tokenomics: what goes wrong in typical launches, token burns, and the Suede launchpad, which the notes describe as tax tokens that pay creators in SOL/USDC rather than in the artist's own token.
+
+- [Stop Losing Rights, Own Your IP: Music RWAs, AI, x402 on Base | Jason Colapietro](https://podcast.suedeai.ai/episodes/stop-losing-rights-own-your-ip-music-rwas-ai-x402-on-base-jason-colapiet), 2026-05-15
+- [Token burn conversation on Solana $suede](https://podcast.suedeai.ai/episodes/token-burn-conversation-on-solana-suede), 2025-04-14
+- [Fity.eth × Suede AI: The Dark Truth About Crypto Launches](https://podcast.suedeai.ai/episodes/fity-eth-suede-labs-the-dark-truth-about-crypto-launches), 2025-04-01
+- [CoinMerge × Fity.eth on Suede AI (Sol Train)](https://podcast.suedeai.ai/episodes/coinmerge-fity-eth-on-suede-labs-sol-train), 2025-04-01
+- [CoinMerge Reviews $SUEDE: Is the Music + Crypto Thesis Real?](https://podcast.suedeai.ai/episodes/coinmerge-reviews-suede-is-the-music-crypto-thesis-real), 2025-03-12
+- [$SUEDE AI On Crypto Shogun Discussing Musician Benefits and Tokenomics Crypto](https://podcast.suedeai.ai/episodes/suede-ai-on-crypto-shogun-discussing-musician-benefits-and-tokenomics-cr), 2025-03-12
+- [$SUEDE AI AMA Portion of Mario Nawfal Crypto Roundtable #crypto #ai](https://podcast.suedeai.ai/episodes/suede-ai-ama-portion-of-mario-nawfal-crypto-roundtable-crypto-ai), 2025-02-08
+
+### AI and the music industry
+
+Source: https://podcast.suedeai.ai/topics/ai-and-the-music-industry
+
+Recordings whose show notes cover AI in music: AI as a creator-side tool rather than a replacement, paying the original creator when AI uses their work, and AI agents.
+
+- [Stop Losing Rights, Own Your IP: Music RWAs, AI, x402 on Base | Jason Colapietro](https://podcast.suedeai.ai/episodes/stop-losing-rights-own-your-ip-music-rwas-ai-x402-on-base-jason-colapiet), 2026-05-15
+- [AI Will Eat Music. Here's Who Gets Paid | Jason Colapietro on Music RWAs](https://podcast.suedeai.ai/episodes/ai-will-eat-music-here-s-who-gets-paid-jason-colapietro-on-music-rwas), 2026-04-12
+- [Mario Nawfal × Jason Colapietro: AI, Music, and the Future of Culture](https://podcast.suedeai.ai/episodes/mario-nawfal-jason-colapietro-ai-music-and-the-future-of-culture), 2025-09-24
+- [Mario Nawfal × Jason Colapietro: Protecting Artist Identity from AI Agents](https://podcast.suedeai.ai/episodes/mario-nawfal-jason-colapietro-protecting-artist-identity-from-ai-agents), 2025-06-20
+- [APEX Exchange × Suede AI: AI, Music + Crypto Distribution](https://podcast.suedeai.ai/episodes/apex-exchange-suede-labs-ai-music-crypto-distribution), 2025-03-16
+- [$SUEDE X METAGUARDIANS CHILL SPACE](https://podcast.suedeai.ai/episodes/suede-x-metaguardians-chill-space), 2025-03-16
+- [BTSE × Suede AI: Redefining the Music Industry with Crypto + AI](https://podcast.suedeai.ai/episodes/btse-suede-labs-redefining-the-music-industry-with-crypto-ai), 2025-03-16
+- [Block × Suede AI (Chill AMA): The Future of AI in Music + Web3](https://podcast.suedeai.ai/episodes/block-suede-labs-chill-ama-the-future-of-ai-in-music-web3), 2025-03-14
+- [DigiFinex × Suede AI (Ep 15): Where AI and Music Are Headed](https://podcast.suedeai.ai/episodes/digifinex-suede-labs-ep-15-where-ai-and-music-are-headed), 2025-03-14
+- [Binance × Suede AI: AI, Music + Web3 Creativity (Full AMA)](https://podcast.suedeai.ai/episodes/binance-suede-labs-ai-music-web3-creativity-full-ama), 2025-03-12
+- [$SUEDE AI On Crypto Shogun Discussing Musician Benefits and Tokenomics Crypto](https://podcast.suedeai.ai/episodes/suede-ai-on-crypto-shogun-discussing-musician-benefits-and-tokenomics-cr), 2025-03-12
+- [$SUEDE AI x CoinMerge Meme Culture: Exclusive Voice Chat – Game-Changing AI & Crypto Innovations!](https://podcast.suedeai.ai/episodes/suede-ai-x-coinmerge-meme-culture-exclusive-voice-chat-game-changing-ai), 2025-03-12
+- [$SUEDE AI AMA Portion of Mario Nawfal Crypto Roundtable #crypto #ai](https://podcast.suedeai.ai/episodes/suede-ai-ama-portion-of-mario-nawfal-crypto-roundtable-crypto-ai), 2025-02-08
+- [Binance and Suede Crypto AI Agents](https://podcast.suedeai.ai/episodes/binance-and-suede-crypto-ai-agents), 2024-12-17
+- [Unleashing Creativity: How Suede AI’s Feedback Loops Are Changing the Game for Artists!](https://podcast.suedeai.ai/episodes/unleashing-creativity-how-suede-ai-s-feedback-loops-are-changing-the-gam), 2024-12-10
+
+## Guest appearances
+
+Source: https://podcast.suedeai.ai/appearances
+
+### Binance
+
+- [Binance AMA: Suede AI on the Music IP Stack (Full Recap)](https://podcast.suedeai.ai/episodes/binance-ama-suede-labs-on-the-music-ip-stack-full-recap), 2025-04-29
+- [Binance × Suede AI: AI, Music + Web3 Creativity (Full AMA)](https://podcast.suedeai.ai/episodes/binance-suede-labs-ai-music-web3-creativity-full-ama), 2025-03-12
+- [Binance Livestream AMA: Suede AI Founder on Music IP](https://podcast.suedeai.ai/episodes/binance-livestream-ama-suede-labs-founder-on-music-ip), 2025-02-19
+- [Binance and Suede Crypto AI Agents](https://podcast.suedeai.ai/episodes/binance-and-suede-crypto-ai-agents), 2024-12-17
+
+### Block
+
+- [Block × Suede AI: How On-Chain Royalties Actually Work](https://podcast.suedeai.ai/episodes/block-suede-labs-how-on-chain-royalties-actually-work), 2025-03-22
+- [Block × Suede AI AMA: The Music Stack on Base](https://podcast.suedeai.ai/episodes/block-suede-labs-ama-the-music-stack-on-base), 2025-03-18
+- [Block × Suede AI: Weekly Build Update (March 6 2025)](https://podcast.suedeai.ai/episodes/block-suede-labs-weekly-build-update-march-6-2025), 2025-03-16
+- [Block × Suede AI (Chill AMA): The Future of AI in Music + Web3](https://podcast.suedeai.ai/episodes/block-suede-labs-chill-ama-the-future-of-ai-in-music-web3), 2025-03-14
+
+### Mario Nawfal
+
+- [Mario Nawfal × Jason Colapietro: AI, Music, and the Future of Culture](https://podcast.suedeai.ai/episodes/mario-nawfal-jason-colapietro-ai-music-and-the-future-of-culture), 2025-09-24
+- [Mario Nawfal × Suede AI: The Web3 Music Stack, Explained](https://podcast.suedeai.ai/episodes/mario-nawfal-suede-labs-the-web3-music-stack-explained), 2025-06-24
+- [Mario Nawfal × Jason Colapietro: Protecting Artist Identity from AI Agents](https://podcast.suedeai.ai/episodes/mario-nawfal-jason-colapietro-protecting-artist-identity-from-ai-agents), 2025-06-20
+- [$SUEDE AI AMA Portion of Mario Nawfal Crypto Roundtable #crypto #ai](https://podcast.suedeai.ai/episodes/suede-ai-ama-portion-of-mario-nawfal-crypto-roundtable-crypto-ai), 2025-02-08
+
+### CoinMerge
+
+- [CoinMerge × Fity.eth on Suede AI (Sol Train)](https://podcast.suedeai.ai/episodes/coinmerge-fity-eth-on-suede-labs-sol-train), 2025-04-01
+- [CoinMerge Reviews $SUEDE: Is the Music + Crypto Thesis Real?](https://podcast.suedeai.ai/episodes/coinmerge-reviews-suede-is-the-music-crypto-thesis-real), 2025-03-12
+
+### APEX Exchange
+
+- [APEX Exchange × Suede AI: AI, Music + Crypto Distribution](https://podcast.suedeai.ai/episodes/apex-exchange-suede-labs-ai-music-crypto-distribution), 2025-03-16
+
+### BTSE
+
+- [BTSE × Suede AI: Redefining the Music Industry with Crypto + AI](https://podcast.suedeai.ai/episodes/btse-suede-labs-redefining-the-music-industry-with-crypto-ai), 2025-03-16
+
+### Crypto Shogun
+
+- [$SUEDE AI On Crypto Shogun Discussing Musician Benefits and Tokenomics Crypto](https://podcast.suedeai.ai/episodes/suede-ai-on-crypto-shogun-discussing-musician-benefits-and-tokenomics-cr), 2025-03-12
+
+### DigiFinex
+
+- [DigiFinex × Suede AI (Ep 15): Where AI and Music Are Headed](https://podcast.suedeai.ai/episodes/digifinex-suede-labs-ep-15-where-ai-and-music-are-headed), 2025-03-14
+
+### Fity.eth
+
+- [Fity.eth × Suede AI: The Dark Truth About Crypto Launches](https://podcast.suedeai.ai/episodes/fity-eth-suede-labs-the-dark-truth-about-crypto-launches), 2025-04-01
+
+### matthewjmalek
+
+- [Stop Losing Rights, Own Your IP: Music RWAs, AI, x402 on Base | Jason Colapietro](https://podcast.suedeai.ai/episodes/stop-losing-rights-own-your-ip-music-rwas-ai-x402-on-base-jason-colapiet), 2026-05-15
+
+## Episodes
+
+Newest first. Each entry gives the episode's published date, length, credit and full show notes.
+
+### Stop Losing Rights, Own Your IP: Music RWAs, AI, x402 on Base | Jason Colapietro
+
+- URL: https://podcast.suedeai.ai/episodes/stop-losing-rights-own-your-ip-music-rwas-ai-x402-on-base-jason-colapiet
+- Episode: 33
+- Published: 2026-05-15
+- Length: 2:27:14
+- Credit: Guest appearance, hosted by matthewjmalek.
+- Topics: Music IP as a real-world asset, Music royalties and the Vault, Rights registry and provenance, Token launches and tokenomics, AI and the music industry
+- Audio: https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/LKSMThczsrE.mp3
+
+Jason Colapietro (founder, Suede Labs) sits down with @matthewjmalek to talk about why the music industry's IP layer is structurally broken — and how an artist-owned, on-chain stack actually pays the people doing the work.
+
+We get into:
+- Why songwriters and producers lose rights & revenue at every layer of the stack
+- Music IP as a real-world asset (RWA): tokenizing rights so creators own and earn from their catalog
+- Suede Labs' tooling — built so musicians keep ownership and get paid for what they make
+- How x402 + the Model-Pay-Per-Call (MPP) primitive change who gets paid every time AI uses someone's work
+- AI as a creator-side tool, not a replacement — agents that work for artists, not around them
+- Why Base is the right home for the music stack
+- The Vault: DeFi for music royalties — liquidity now, royalty yield for supporters
+- Building on Arena, prediction markets, and what crypto-native distribution unlocks for independent creators
+
+🔗 Suede Labs → https://suedeai.ai
+🐦 Johnny Suede → https://x.com/johnnysuede
+🎙️ Hosted by → https://x.com/matthewjmalek
+
+Chapters:
+- 0:00 Cold open — LA stories, sleep schedules
+- 5:00 Crypto origin — $3k cost-basis Bitcoin, the fiancée intervention
+- 15:00 Rove on Solana, $2M raise, FTX collapsing 7 days before Clerks 3
+- 23:00 CZ vs Hyperliquid, Binance Labs funding DEXs
+- 26:00 The Suede Labs pitch — the ownership problem (DVD vs Netflix)
+- 30:00 Vatican, Vermeer & how an art-history obsession led to building Suede
+- 35:00 Why blockchain belongs in music — "I mailed cassette tapes to myself"
+- 36:00 AI music as the biggest shield AND biggest earning potential for artists
+- 40:00 Multi-chain swap, LayerZero, 40+ chains
+- 43:00 Avalanche, Build Games denial story
+- 46:00 App Store war — Rove was the first blockchain app approved (+ the burn-address gaffe)
+- 50:00 Live tour: Suede AI's "Create with rights" feature
+- 55:00 The on-chain registry — court-enforceable proof of authorship
+- 58:00 Why every celebrity-token cycle ends the same way (Iggy, Soldier Boy, Derulo)
+- 59:00 The launchpad fix: tax tokens that pay artists in SOL/USDC, not their own token
+- 1:02:00 Suede Social — gear forums reborn with shareable rig DNA
+- 1:05:00 "Programmable artistic matter" — beyond music to all IP
+- 1:08:00 Cognitive Architecture test — the founder profile (Conductor / Future Scribe / Hunter)
+- 1:55:00 Suede Studio: 197 pedals, polyphonic tuner, Dr. Johnny
+- 2:00:00 DSP libraries, neural amp modeler, app-store live
+- 2:15:00 THE VAULT — DeFi for music royalties (the killer feature)
+- 2:18:00 Wrap-up + community duck race
+
+#MusicRWA #SuedeLabs #x402 #Base #ArtistRights #MusicIP #CreatorEconomy #OnChainMusic
+
+### AI Will Eat Music. Here's Who Gets Paid | Jason Colapietro on Music RWAs
+
+- URL: https://podcast.suedeai.ai/episodes/ai-will-eat-music-here-s-who-gets-paid-jason-colapietro-on-music-rwas
+- Episode: 32
+- Published: 2026-04-12
+- Length: 20:44
+- Credit: Episode by Jason Colapietro.
+- Topics: Music IP as a real-world asset, AI and the music industry
+- Audio: https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/-yeh9r_UMKc.mp3
+
+Jason Colapietro (founder, Suede Labs) on why music IP is the next big asset class — and how an artist-owned, on-chain stack puts the people doing the work back in control.
+
+We get into:
+- Why songwriters and producers lose rights & revenue at every layer of the legacy stack
+- Music IP as a real-world asset (RWA) — tokenizing rights so creators own and earn from their catalog
+- How AI use of music should pay the original creator, not the platform
+- Why Web3 distribution unlocks new audiences for independent artists
+- Building Suede Labs on Base — the music stack for creators
+
+🔗 Suede Labs → https://suedeai.ai
+🐦 Johnny Suede → https://x.com/johnnysuede
+
+#SuedeLabs #x402 #Base #MusicRWA #ArtistRights #MusicIP #CreatorEconomy #OnChainMusic
+
+### How Music IP Becomes a Real-World Asset on Base | Suede AI × AVAX × Chainlink
+
+- URL: https://podcast.suedeai.ai/episodes/how-music-ip-becomes-a-real-world-asset-on-base-suede-labs-avax-chainlin
+- Episode: 31
+- Published: 2026-03-14
+- Length: 9:46
+- Credit: Episode by Jason Colapietro.
+- Topics: Music IP as a real-world asset, Music royalties and the Vault
+- Audio: https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/W1LxsxwGHK4.mp3
+
+Jason Colapietro on building Suede Labs across Base, AVAX, and Chainlink — and why music IP needs a real on-chain home, not another platform-as-landlord.
+
+We get into:
+- Music IP as a real-world asset (RWA) — tokenizing rights so creators own and earn from their catalog
+- Why Base is the right home for the music stack
+- Cross-chain liquidity: how AVAX subnets + Chainlink price feeds make royalty pools work
+- What "creators stop pitching and start building" actually means in practice
+
+🔗 Suede Labs → https://suedeai.ai
+🐦 Johnny Suede → https://x.com/johnnysuede
+
+#SuedeLabs #x402 #Base #AVAX #Chainlink #MusicRWA #ArtistRights #MusicIP #OnChainMusic
+
+### AJ Writes Crypto and Suede AI
+
+- URL: https://podcast.suedeai.ai/episodes/aj-writes-crypto-and-suede-labs-ai
+- Episode: 30
+- Published: 2026-03-14
+- Length: 3:10
+- Credit: Hosted by Jason Colapietro, with AJ Writes Crypto as guest.
+- Audio: https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/CdZWyuwhhS0.mp3
+
+Episode 30 of AI Suede: Build, Create, Ship: AJ Writes Crypto and Suede AI.
+
+### Why Suede AI Chose Avalanche for Music IP | The Subnet Architecture Bet
+
+- URL: https://podcast.suedeai.ai/episodes/why-suede-labs-chose-avalanche-for-music-ip-the-subnet-architecture-bet
+- Episode: 29
+- Published: 2026-02-25
+- Length: 2:00
+- Credit: Episode by Jason Colapietro.
+- Topics: Music IP as a real-world asset
+- Audio: https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/VFTtm9EzMYs.mp3
+
+Jason Colapietro on building Suede Labs on Avalanche — the subnet architecture bet, what AVAX makes possible for compute, and why sovereign chains matter for creator infrastructure.
+
+We get into:
+- Why Avalanche subnets handle on-chain compute without bloating the main chain
+- Music IP as a real-world asset — what an artist-owned stack actually looks like
+- The trade-offs between AVAX, Base, and Solana for music infrastructure
+- Why Suede Labs went multi-chain instead of picking one ecosystem
+
+🔗 Suede Labs → https://suedeai.ai
+🐦 Johnny Suede → https://x.com/johnnysuede
+
+#SuedeLabs #Avalanche #AVAX #Subnets #MusicRWA #ArtistRights #MusicIP #OnChainMusic #x402
+
+### Mario Nawfal × Jason Colapietro: AI, Music, and the Future of Culture
+
+- URL: https://podcast.suedeai.ai/episodes/mario-nawfal-jason-colapietro-ai-music-and-the-future-of-culture
+- Episode: 28
+- Published: 2025-09-24
+- Length: 19:42
+- Credit: Guest appearance, hosted by Mario Nawfal.
+- Topics: Music IP as a real-world asset, AI and the music industry
+- Audio: https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/62seKw6F0Jo.mp3
+
+@MarioNawfal sits down with Jason Colapietro (founder, Suede Labs) on what happens at the intersection of AI tooling and the music industry — and why the artists who shape culture should also own the upside.
+
+We get into:
+- Why music has always shaped culture before tech does
+- How AI tools change who gets paid when art moves through the system
+- Music IP as a real-world asset (RWA) — keeping rights with creators, not platforms
+- What an artist-owned, on-chain future actually looks like in practice
+
+🎙️ Hosted by @MarioNawfal
+🔗 Suede Labs → https://suedeai.ai
+🐦 Johnny Suede → https://x.com/johnnysuede
+
+#MarioNawfal #SuedeLabs #MusicRWA #ArtistRights #MusicIP #OnChainMusic #CreatorEconomy
+
+### $SUEDE AI Interview
+
+- URL: https://podcast.suedeai.ai/episodes/suede-ai-interview
+- Episode: 27
+- Published: 2025-06-25
+- Length: 18:53
+- Credit: Episode by Jason Colapietro.
+- Audio: https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/422CMPRWHgo.mp3
+
+Episode 27 of AI Suede: Build, Create, Ship: $SUEDE AI Interview.
+
+### Mario Nawfal × Suede AI: The Web3 Music Stack, Explained
+
+- URL: https://podcast.suedeai.ai/episodes/mario-nawfal-suede-labs-the-web3-music-stack-explained
+- Episode: 26
+- Published: 2025-06-24
+- Length: 22:56
+- Credit: Guest appearance, hosted by Mario Nawfal.
+- Topics: Music IP as a real-world asset, Music royalties and the Vault
+- Audio: https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/wI89GiGIvYo.mp3
+
+@MarioNawfal and Jason Colapietro break down the Web3 music stack that Suede Labs is building — the layers musicians have actually been waiting for: rights, royalties, and a real on-chain home for music IP.
+
+We get into:
+- The four layers every musician needs to actually own their work
+- Why the legacy industry's split-pot model destroys creator economics
+- Music IP as a real-world asset (RWA) on Base — with on-chain settlement
+- How the Vault gives artists liquidity now without selling future royalty upside
+
+🎙️ Hosted by @MarioNawfal
+🔗 Suede Labs → https://suedeai.ai
+🐦 Johnny Suede → https://x.com/johnnysuede
+
+#MarioNawfal #SuedeLabs #Base #x402 #MusicRWA #ArtistRights #MusicIP #OnChainMusic
+
+### X Spaces when $SUEDE AI Suede is mentioned.
+
+- URL: https://podcast.suedeai.ai/episodes/x-spaces-when-suede-ai-suede-is-mentioned
+- Episode: 25
+- Published: 2025-06-20
+- Length: 2:02
+- Credit: Episode by Jason Colapietro.
+- Audio: https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/upUortozhNY.mp3
+
+Episode 25 of AI Suede: Build, Create, Ship: X Spaces when $SUEDE AI Suede is mentioned.
+
+### Mario Nawfal × Jason Colapietro: Protecting Artist Identity from AI Agents
+
+- URL: https://podcast.suedeai.ai/episodes/mario-nawfal-jason-colapietro-protecting-artist-identity-from-ai-agents
+- Episode: 24
+- Published: 2025-06-20
+- Length: 23:06
+- Credit: Guest appearance, hosted by Mario Nawfal.
+- Topics: Music IP as a real-world asset, Rights registry and provenance, AI and the music industry
+- Audio: https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/rf9C0cRTkMc.mp3
+
+@MarioNawfal and Jason Colapietro on the artist-identity problem AI agents create — and how Suede Labs uses on-chain signatures so creators keep control of their own likeness, voice, and catalog.
+
+We get into:
+- Why "deepfake artist" is the wrong frame — the real risk is unsigned identity
+- How cryptographic signatures on-chain anchor an artist to their own work
+- Music IP as a real-world asset (RWA): tokenized rights with on-chain provenance
+- What happens when an AI agent uses your work without your signature
+
+🎙️ Hosted by @MarioNawfal
+🔗 Suede Labs → https://suedeai.ai
+🐦 Johnny Suede → https://x.com/johnnysuede
+
+#MarioNawfal #SuedeLabs #ArtistIdentity #MusicRWA #ArtistRights #MusicIP #OnChainMusic
+
+### We need to have a pre Dubai Suede AI Conversation 4k
+
+- URL: https://podcast.suedeai.ai/episodes/we-need-to-have-a-pre-dubai-suede-ai-conversation-4k
+- Episode: 23
+- Published: 2025-04-29
+- Length: 18:34
+- Credit: Episode by Jason Colapietro.
+- Audio: https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/b_yfSaJ634M.mp3
+
+Episode 23 of AI Suede: Build, Create, Ship: We need to have a pre Dubai Suede AI Conversation 4k.
+
+### Binance AMA: Suede AI on the Music IP Stack (Full Recap)
+
+- URL: https://podcast.suedeai.ai/episodes/binance-ama-suede-labs-on-the-music-ip-stack-full-recap
+- Episode: 22
+- Published: 2025-04-29
+- Length: 45:24
+- Credit: Guest appearance, hosted by Binance.
+- Topics: Music IP as a real-world asset, Music royalties and the Vault
+- Audio: https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/TbCvLzh1psc.mp3
+
+Full recap of the Binance AMA with Jason Colapietro — the music IP stack Suede Labs is building, what's actually live, and where it's headed.
+
+We get into:
+- The four layers every musician needs to actually own their work
+- What's shipped and what's coming next on Base
+- Music IP as a real-world asset (RWA) — tokenized rights with on-chain settlement
+- How the Vault gives artists liquidity now without selling future royalty upside
+
+🎙️ Hosted on @Binance
+🔗 Suede Labs → https://suedeai.ai
+🐦 Johnny Suede → https://x.com/johnnysuede
+
+#Binance #SuedeLabs #Base #x402 #MusicRWA #ArtistRights #MusicIP #OnChainMusic
+
+### Token burn conversation on Solana $suede
+
+- URL: https://podcast.suedeai.ai/episodes/token-burn-conversation-on-solana-suede
+- Episode: 21
+- Published: 2025-04-14
+- Length: 8:15
+- Credit: Episode by Jason Colapietro.
+- Topics: Token launches and tokenomics
+- Audio: https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/ssS9b8YKyaQ.mp3
+
+Episode 21 of AI Suede: Build, Create, Ship: Token burn conversation on Solana $suede.
+
+### Fity.eth × Suede AI: The Dark Truth About Crypto Launches
+
+- URL: https://podcast.suedeai.ai/episodes/fity-eth-suede-labs-the-dark-truth-about-crypto-launches
+- Episode: 20
+- Published: 2025-04-01
+- Length: 1:19:45
+- Credit: Guest appearance, hosted by Fity.eth and Block.
+- Topics: Token launches and tokenomics
+- Audio: https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/7ktod33U8o0.mp3
+
+Fity.eth and Jason Colapietro on what actually goes wrong with token launches — the founder-side view of the games, the rugs, and what a launch designed for artists looks like instead.
+
+We get into:
+- The patterns every rug shares (and what gives them away early)
+- Why most artist tokens dump on the people who believed first
+- The Suede Labs launchpad: tax tokens that pay creators in SOL/USDC, not the artist token
+- What a healthy long-term launch actually looks like
+
+🎙️ Hosted by @Fity_eth on Block
+🔗 Suede Labs → https://suedeai.ai
+🐦 Johnny Suede → https://x.com/johnnysuede
+
+#Fityeth #SuedeLabs #x402 #Base #ArtistRights #Tokenomics #CreatorEconomy
+
+### CoinMerge × Fity.eth on Suede AI (Sol Train)
+
+- URL: https://podcast.suedeai.ai/episodes/coinmerge-fity-eth-on-suede-labs-sol-train
+- Episode: 19
+- Published: 2025-04-01
+- Length: 18:11
+- Credit: Guest appearance on Sol Train, hosted by CoinMerge and Fity.eth.
+- Topics: Music IP as a real-world asset, Rights registry and provenance, Token launches and tokenomics
+- Audio: https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/hm45Z3yUPZA.mp3
+
+CoinMerge's Sol Train hosts Fity.eth + Jason Colapietro on what Suede Labs is actually building — the music IP stack, the launchpad design, and what an artist-owned future looks like on Solana and Base.
+
+We get into:
+- Why music infrastructure is the last industry crypto hasn't fixed
+- The launchpad mechanics: tax tokens that pay creators in SOL/USDC
+- Music IP as a real-world asset (RWA) with on-chain provenance
+- What being multi-chain unlocks for independent artists
+
+🎙️ Hosted on @CoinMerge with @Fity_eth
+🔗 Suede Labs → https://suedeai.ai
+🐦 Johnny Suede → https://x.com/johnnysuede
+
+#CoinMerge #SuedeLabs #Solana #Base #ArtistRights #MusicRWA
+
+### Block × Suede AI: How On-Chain Royalties Actually Work
+
+- URL: https://podcast.suedeai.ai/episodes/block-suede-labs-how-on-chain-royalties-actually-work
+- Episode: 18
+- Published: 2025-03-22
+- Length: 53:16
+- Credit: Guest appearance, hosted by Block.
+- Topics: Music IP as a real-world asset, Music royalties and the Vault
+- Audio: https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/PuLkFjiXwsY.mp3
+
+Block AMA with Jason Colapietro on the actual mechanics of on-chain royalties — how settlement, payouts, and creator splits work when the music IP layer lives on-chain instead of in a label spreadsheet.
+
+We get into:
+- Where the royalty lag comes from in the legacy industry (and why it's 18–24 months)
+- How on-chain settlement collapses that to near-instant
+- The Vault: liquidity now for artists, royalty yield for supporters
+- Music IP as a real-world asset (RWA) on Base
+
+🎙️ Hosted on @Block
+🔗 Suede Labs → https://suedeai.ai
+🐦 Johnny Suede → https://x.com/johnnysuede
+
+#Block #SuedeLabs #Base #x402 #MusicRWA #Royalties #ArtistRights #OnChainMusic
+
+### Block × Suede AI AMA: The Music Stack on Base
+
+- URL: https://podcast.suedeai.ai/episodes/block-suede-labs-ama-the-music-stack-on-base
+- Episode: 17
+- Published: 2025-03-18
+- Length: 53:21
+- Credit: Guest appearance, hosted by Block.
+- Topics: Music IP as a real-world asset, Music royalties and the Vault, Rights registry and provenance
+- Audio: https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/_VLl8MNgePM.mp3
+
+Block AMA with Jason Colapietro on the music stack Suede Labs is shipping on Base — what's live, what's next, and how the pieces fit together for artists who want to actually own their work.
+
+We get into:
+- Why Base is the right home for music IP infrastructure
+- Tooling for creators — from rights registry to royalty vaults
+- Music IP as a real-world asset (RWA): tokenized rights with on-chain settlement
+- What "shipped" means at every layer of the stack right now
+
+🎙️ Hosted on @Block
+🔗 Suede Labs → https://suedeai.ai
+🐦 Johnny Suede → https://x.com/johnnysuede
+
+#Block #SuedeLabs #Base #x402 #MusicRWA #ArtistRights #MusicIP #OnChainMusic
+
+### Block × Suede AI: Weekly Build Update (March 6 2025)
+
+- URL: https://podcast.suedeai.ai/episodes/block-suede-labs-weekly-build-update-march-6-2025
+- Episode: 16
+- Published: 2025-03-16
+- Length: 1:09:37
+- Credit: Guest appearance, hosted by Block.
+- Audio: https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/EUJjMQpt6Ls.mp3
+
+Weekly Suede Pulse update on @Block (March 6 2025) — Jason Colapietro on what shipped this week, what's next, and where the build is heading.
+
+We get into:
+- The week's shipped features and infrastructure milestones
+- What's coming up across the music IP stack
+- Open questions from the community + the founder's read on each
+
+🎙️ Hosted on @Block
+🔗 Suede Labs → https://suedeai.ai
+🐦 Johnny Suede → https://x.com/johnnysuede
+
+#Block #SuedeLabs #BuildInPublic #MusicIP #ArtistRights
+
+### APEX Exchange × Suede AI: AI, Music + Crypto Distribution
+
+- URL: https://podcast.suedeai.ai/episodes/apex-exchange-suede-labs-ai-music-crypto-distribution
+- Episode: 15
+- Published: 2025-03-16
+- Length: 1:04:41
+- Credit: Guest appearance, hosted by APEX Exchange.
+- Topics: Music IP as a real-world asset, AI and the music industry
+- Audio: https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/QO5YfD9q-KU.mp3
+
+APEX Exchange AMA with Jason Colapietro on what changes when AI tools meet a crypto-native distribution layer for music — and how Suede Labs makes that work for independent artists, not platforms.
+
+We get into:
+- Why distribution is the bottleneck for independent artists today
+- How crypto-native rails change who finds new music
+- Music IP as a real-world asset (RWA) on-chain
+- The Suede Labs tools that ship on Base
+
+🎙️ Hosted on @APEX_Exchange
+🔗 Suede Labs → https://suedeai.ai
+🐦 Johnny Suede → https://x.com/johnnysuede
+
+#APEXExchange #SuedeLabs #Base #ArtistRights #MusicRWA #CreatorEconomy
+
+### $SUEDE X METAGUARDIANS CHILL SPACE
+
+- URL: https://podcast.suedeai.ai/episodes/suede-x-metaguardians-chill-space
+- Episode: 14
+- Published: 2025-03-16
+- Length: 7:37
+- Credit: Hosted by Jason Colapietro, with MetaGuardians as guest.
+- Topics: AI and the music industry
+- Audio: https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/TNNZiuAufbY.mp3
+
+$SUEDE X METAGUARDIANS CHILL SPACE 🎙️🚀
+
+Join us for an exclusive Chill Space with MetaGuardians as we dive into the world of $SUEDE AI, AI-powered music innovation, and the fusion of blockchain with creative industries! 🎶🔥
+
+We’ll be discussing:
+- How $SUEDE AI is redefining music creation
+- The impact of AI & blockchain on the industry
+- What’s next for $SUEDE and MetaGuardians
+- Live community insights and discussions
+
+Sit back, relax, and tune in to this exciting conversation! 🎧
+
+🔹 Follow $SUEDE AI:
+📍 Twitter: https://x.com/aisuede
+📍 Suede Agent: https://x.com/Suedeagent
+📍 Founder: https://x.com/johnnysuede
+📍 YouTube: https://www.youtube.com/@AISUEDE
+📍 Suede Radio: https://www.youtube.com/@SUEDERADIO
+📍 Telegram: https://t.me/suedeai
+📍 Website: https://suedeai.xyz | https://suedeai.org
+📍 Linktree: https://linktree.com/suedeai
+
+Stay connected and be part of the AI-powered music revolution! 🚀🎶 #SUEDEAI #MetaGuardians #Crypto #Web3 #AI
+
+### BTSE × Suede AI: Redefining the Music Industry with Crypto + AI
+
+- URL: https://podcast.suedeai.ai/episodes/btse-suede-labs-redefining-the-music-industry-with-crypto-ai
+- Episode: 13
+- Published: 2025-03-16
+- Length: 36:00
+- Credit: Guest appearance, hosted by BTSE.
+- Topics: Music IP as a real-world asset, Rights registry and provenance, AI and the music industry
+- Audio: https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/vFUa3R4x6ls.mp3
+
+BTSE AMA with Jason Colapietro on what gets rebuilt when the music industry meets a real on-chain stack — and how AI tooling fits into that picture as a creator-side tool, not a replacement.
+
+We get into:
+- Why the legacy music industry's incentives are broken
+- How blockchain provenance solves the rights-tracking problem
+- AI as a creator-side tool, not a replacement
+- Music IP as a real-world asset (RWA) with on-chain settlement
+
+🎙️ Hosted on @BTSE_Official
+🔗 Suede Labs → https://suedeai.ai
+🐦 Johnny Suede → https://x.com/johnnysuede
+
+#BTSE #SuedeLabs #Base #ArtistRights #MusicRWA #MusicIP #OnChainMusic
+
+### Block × Suede AI (Chill AMA): The Future of AI in Music + Web3
+
+- URL: https://podcast.suedeai.ai/episodes/block-suede-labs-chill-ama-the-future-of-ai-in-music-web3
+- Episode: 12
+- Published: 2025-03-14
+- Length: 47:49
+- Credit: Guest appearance, hosted by Block.
+- Topics: Music IP as a real-world asset, AI and the music industry
+- Audio: https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/DUO1njPGruw.mp3
+
+Casual Block AMA with Jason Colapietro on where AI tooling and Web3 actually overlap for music creators — and what an artist-owned future looks like when both stacks click into place.
+
+We get into:
+- What AI tools change for the working musician (and what they don't)
+- Where Web3 fits in the music value chain
+- Music IP as a real-world asset (RWA) on Base
+- What the next 12 months of build looks like at Suede Labs
+
+🎙️ Hosted on @Block
+🔗 Suede Labs → https://suedeai.ai
+🐦 Johnny Suede → https://x.com/johnnysuede
+
+#Block #SuedeLabs #Base #x402 #ArtistRights #MusicRWA #MusicIP
+
+### DigiFinex × Suede AI (Ep 15): Where AI and Music Are Headed
+
+- URL: https://podcast.suedeai.ai/episodes/digifinex-suede-labs-ep-15-where-ai-and-music-are-headed
+- Episode: 11
+- Published: 2025-03-14
+- Length: 45:04
+- Credit: Guest appearance on DigiTalk, hosted by DigiFinex.
+- Topics: Music IP as a real-world asset, Rights registry and provenance, AI and the music industry
+- Audio: https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/yS81oANTwf0.mp3
+
+DigiTalk Episode 15 with Jason Colapietro on the actual intersection of AI tooling and the music industry — and how Suede Labs builds for creators, not against them.
+
+We get into:
+- What AI use of music should pay back to the original creator
+- Music IP as a real-world asset (RWA) on Base
+- The Suede Labs registry: court-enforceable proof of authorship on-chain
+- What's next for the music IP stack
+
+🎙️ Hosted on @DigiFinex
+🔗 Suede Labs → https://suedeai.ai
+🐦 Johnny Suede → https://x.com/johnnysuede
+
+#DigiFinex #SuedeLabs #Base #ArtistRights #MusicRWA #MusicIP #OnChainMusic
+
+### Binance × Suede AI: AI, Music + Web3 Creativity (Full AMA)
+
+- URL: https://podcast.suedeai.ai/episodes/binance-suede-labs-ai-music-web3-creativity-full-ama
+- Episode: 10
+- Published: 2025-03-12
+- Length: 40:05
+- Credit: Guest appearance, hosted by Binance.
+- Topics: Music IP as a real-world asset, AI and the music industry
+- Audio: https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/wzdMA1mTtQI.mp3
+
+Binance AMA with Jason Colapietro on the intersection of AI tooling, music, and Web3 creativity — and what an artist-owned future actually looks like in production.
+
+We get into:
+- What AI tools change for the working musician (and what they don't)
+- Why Web3 distribution unlocks new audiences for independent artists
+- Music IP as a real-world asset (RWA) on Base
+- What's shipped and what's coming next at Suede Labs
+
+🎙️ Hosted on @Binance
+🔗 Suede Labs → https://suedeai.ai
+🐦 Johnny Suede → https://x.com/johnnysuede
+
+#Binance #SuedeLabs #Base #x402 #ArtistRights #MusicRWA #MusicIP #OnChainMusic
+
+### CoinMerge Reviews $SUEDE: Is the Music + Crypto Thesis Real?
+
+- URL: https://podcast.suedeai.ai/episodes/coinmerge-reviews-suede-is-the-music-crypto-thesis-real
+- Episode: 9
+- Published: 2025-03-12
+- Length: 7:22
+- Credit: Guest appearance, hosted by CoinMerge.
+- Topics: Token launches and tokenomics
+- Audio: https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/KAIloI0-ll8.mp3
+
+CoinMerge takes the Suede Labs thesis seriously — the music + crypto pitch, the launchpad design, and what's actually live versus what's still vapor.
+
+We get into:
+- The actual product surface area at Suede Labs (and what's live on Base)
+- Why the music IP layer is the missing piece in crypto
+- The launchpad mechanics: tokens that pay artists in SOL/USDC, not their own token
+- What the next 12 months should look like for music infrastructure
+
+🎙️ Hosted on @CoinMerge
+🔗 Suede Labs → https://suedeai.ai
+🐦 Johnny Suede → https://x.com/johnnysuede
+
+#CoinMerge #SuedeLabs #Base #ArtistRights #MusicRWA #CreatorEconomy
+
+### $SUEDE AI On Crypto Shogun Discussing Musician Benefits and Tokenomics Crypto
+
+- URL: https://podcast.suedeai.ai/episodes/suede-ai-on-crypto-shogun-discussing-musician-benefits-and-tokenomics-cr
+- Episode: 8
+- Published: 2025-03-12
+- Length: 7:55
+- Credit: Guest appearance on Crypto Shogun.
+- Topics: Token launches and tokenomics, AI and the music industry
+- Audio: https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/mzUwFjJAY0c.mp3
+
+$SUEDE AI – Revolutionizing Music Creation | Exclusive Interview on Crypto Shogun
+
+🎵 How $SUEDE AI is transforming the music industry with AI-driven creativity
+🚀 The explosive growth, top-tier exchange listings & major partnerships
+🔗 The future of decentralized music ownership and blockchain integration
+🌍 Why $SUEDE AI is at the forefront of AI and Web3 innovation
+
+This is a must-watch for crypto enthusiasts, AI innovators, and music lovers alike. Don’t miss out on this in-depth discussion about the future of music and Web3!
+
+Follow $SUEDE AI for more updates:
+🐦 Twitter: https://x.com/aisuede
+📺 YouTube: https://www.youtube.com/@AISUEDE
+📻 Suede Radio: https://www.youtube.com/@SUEDERADIO
+📢 Telegram: https://t.me/suedeai
+🌐 Website: https://suedeai.xyz | https://suedeai.org
+
+🔔 Subscribe & stay tuned for the latest updates on AI, blockchain, and music innovation!
+
+### $SUEDE AI x CoinMerge Meme Culture: Exclusive Voice Chat – Game-Changing AI & Crypto Innovations!
+
+- URL: https://podcast.suedeai.ai/episodes/suede-ai-x-coinmerge-meme-culture-exclusive-voice-chat-game-changing-ai
+- Episode: 7
+- Published: 2025-03-12
+- Length: 14:08
+- Credit: Hosted by Jason Colapietro, with CoinMerge as guest.
+- Topics: AI and the music industry
+- Audio: https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/-9NM-WpmBXI.mp3
+
+Join us for an exclusive voice chat with CoinMerge as we dive into the latest and most exciting updates for $SUEDE AI! From groundbreaking partnerships to major platform advancements, we’re pushing the boundaries of AI-powered music creation and blockchain innovation. Get the inside scoop on what’s next for $SUEDE, how we’re revolutionizing the industry, and why this is just the beginning. Don’t miss out—tune in now!
+
+🔹 Follow $SUEDE AI:
+📍 Twitter: https://x.com/aisuede
+📍 Suede Agent: https://x.com/Suedeagent
+📍 Founder: https://x.com/johnnysuede
+📍 YouTube: https://www.youtube.com/@AISUEDE
+📍 Suede Radio: https://www.youtube.com/@SUEDERADIO
+📍 Telegram: https://t.me/suedeai
+📍 Website: https://suedeai.xyz | https://suedeai.org
+📍 Linktree: https://linktree.com/suedeai
+
+Stay connected and be part of the future of AI-powered music! 🚀🎶
+
+#crypto #ai #investing #suedeai #memecoins
+
+### $SUEDE On Why Trust Matters #crypto #ai
+
+- URL: https://podcast.suedeai.ai/episodes/suede-on-why-trust-matters-crypto-ai
+- Episode: 6
+- Published: 2025-02-22
+- Length: 6:44
+- Credit: Episode by Jason Colapietro.
+- Audio: https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/TxkJVR66wmo.mp3
+
+Episode 6 of AI Suede: Build, Create, Ship: $SUEDE On Why Trust Matters.
+
+### Binance Livestream AMA: Suede AI Founder on Music IP
+
+- URL: https://podcast.suedeai.ai/episodes/binance-livestream-ama-suede-labs-founder-on-music-ip
+- Episode: 5
+- Published: 2025-02-19
+- Length: 40:24
+- Credit: Guest appearance, hosted by Binance.
+- Topics: Music IP as a real-world asset, Music royalties and the Vault, Rights registry and provenance
+- Audio: https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/FYWTqMPyvb0.mp3
+
+Binance Livestream AMA with Jason Colapietro on the music IP stack Suede Labs is building — what's live, where it's heading, and how the pieces fit together for artists who want to actually own their work.
+
+We get into:
+- Why music IP is the next major asset class
+- The Suede Labs registry: court-enforceable proof of authorship on-chain
+- Music IP as a real-world asset (RWA) on Base
+- The Vault: liquidity now for artists, royalty yield for supporters
+
+🎙️ Hosted on @Binance
+🔗 Suede Labs → https://suedeai.ai
+🐦 Johnny Suede → https://x.com/johnnysuede
+
+#Binance #SuedeLabs #Base #x402 #ArtistRights #MusicRWA #MusicIP #OnChainMusic
+
+### $SUEDE AI AMA Portion of Mario Nawfal Crypto Roundtable #crypto #ai
+
+- URL: https://podcast.suedeai.ai/episodes/suede-ai-ama-portion-of-mario-nawfal-crypto-roundtable-crypto-ai
+- Episode: 4
+- Published: 2025-02-08
+- Length: 17:18
+- Credit: Guest appearance on Crypto Roundtable, hosted by Mario Nawfal.
+- Topics: Token launches and tokenomics, AI and the music industry
+- Audio: https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/8uJewXJ1U28.mp3
+
+$SUEDE AI AMA Segment | Mario Nawfal Crypto Roundtable (Exclusive Clip)
+
+Description:
+This is the exclusive $SUEDE AI AMA segment from Mario Nawfal’s Crypto Roundtable! In this clip, we dive into how $SUEDE AI is revolutionizing AI-driven music composition through semantic graphing, blockchain tokenomics, and decentralized creativity.
+
+🔥 Key Topics in This Segment:
+
+- How $SUEDE AI is pioneering AI-generated music
+- The role of tokenomics in creative ownership
+- The future of blockchain-integrated AI in the music industry
+
+💡 This is just a small part of a larger interview—be sure to check out the full discussion for even more insights!
+
+📅 Originally streamed everywhere
+📍 Watch now and stay ahead of the curve!
+
+🚀 Don’t forget to like, comment, and subscribe for more updates! #SUEDEAI #CryptoAMA #Web3Music #AIInnovation
+
+### New member welcome part two $SUEDE
+
+- URL: https://podcast.suedeai.ai/episodes/new-member-welcome-part-two-suede
+- Episode: 3
+- Published: 2024-12-28
+- Length: 8:41
+- Credit: Episode by Jason Colapietro.
+- Audio: https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/3WCYIsEdqX4.mp3
+
+Episode 3 of AI Suede: Build, Create, Ship: New member welcome part two $SUEDE.
+
+Chapters:
+- 0:00 Ethos and community values
+- 1:09 The philosophy of trustless
+- 2:54 Actions beyond words
+- 4:54 Decentralization and mission
+- 7:21 Future outlook and vision
+
+### Binance and Suede Crypto AI Agents
+
+- URL: https://podcast.suedeai.ai/episodes/binance-and-suede-crypto-ai-agents
+- Episode: 2
+- Published: 2024-12-17
+- Length: 39:08
+- Credit: Guest appearance on Binance Live, hosted by Binance.
+- Topics: AI and the music industry
+- Audio: https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/B6cfMw-bJG4.mp3
+
+Jason Colapietro "Johnny Suede" Founder CEO of Suede AI sit down with Binance Live.
+
+Crypto AI Agents Music
+
+Chapters:
+- 0:00 Introduction and background
+- 2:42 Project vision for music
+- 5:45 Empowering artists with AI
+- 8:49 Tokenomics and sustainability
+- 13:46 Accessibility for new users
+- 16:47 Artist integration and usage
+- 19:24 Decentralization and governance
+- 22:43 Community growth and engagement
+- 27:14 Future events and expansion
+- 33:38 Roadmap and concluding remarks
+
+### Unleashing Creativity: How Suede AI’s Feedback Loops Are Changing the Game for Artists!
+
+- URL: https://podcast.suedeai.ai/episodes/unleashing-creativity-how-suede-ai-s-feedback-loops-are-changing-the-gam
+- Episode: 1
+- Published: 2024-12-10
+- Length: 1:06
+- Credit: Episode by Jason Colapietro.
+- Topics: AI and the music industry
+- Audio: https://pub-23dd340a8b2043159e3f53a4dca7b398.r2.dev/episodes/gwvLQRYCVcg.mp3
+
+Episode 1 of AI Suede: Build, Create, Ship: Unleashing Creativity: How Suede AI’s Feedback Loops Are Changing the Game for Artists!
