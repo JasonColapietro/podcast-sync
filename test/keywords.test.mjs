@@ -27,7 +27,11 @@ const episodeFiles = readdirSync(join(pub, "episodes")).filter((f) => f.endsWith
 test("every indexable page carries a short keywords meta with exactly one brand term", () => {
   const files = [...Object.values(STATIC), ...episodeFiles.map((f) => join("episodes", f))];
   const topLevel = readdirSync(pub).filter((f) => f.endsWith(".html"));
-  for (const f of topLevel) assert.ok(Object.values(STATIC).includes(f), `unmapped page public/${f}: add it to PAGE_KEYWORDS`);
+  for (const f of topLevel) {
+    // A noindex page (the 404) is not a search page, so it needs no keyword entry.
+    if (isNoindex(readFileSync(join(pub, f), "utf8"))) continue;
+    assert.ok(Object.values(STATIC).includes(f), `unmapped page public/${f}: add it to PAGE_KEYWORDS`);
+  }
   for (const f of readdirSync(join(pub, "topics"))) {
     assert.ok(Object.values(STATIC).includes(join("topics", f)), `unmapped page public/topics/${f}: add it to TOPIC_HUBS`);
   }
