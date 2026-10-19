@@ -16,7 +16,7 @@
  * generated metadata without spawning the build; the file-writing work only runs
  * when this module is executed directly.
  */
-import { readFileSync, writeFileSync, mkdirSync, rmSync, existsSync } from "fs";
+import { readFileSync, writeFileSync, mkdirSync, rmSync, existsSync, realpathSync } from "fs";
 import { spawnSync } from "child_process";
 import { join, dirname } from "path";
 import { fileURLToPath, pathToFileURL } from "url";
@@ -1525,4 +1525,7 @@ ${hubs
   console.log(`build-episodes: sitemap ${staticUrls.length + hubs.length + episodes.length} URLs`);
 };
 
-if (import.meta.url === pathToFileURL(process.argv[1]).href) main();
+// Compare real paths: node resolves import.meta.url through symlinks, so on macOS
+// a script under /tmp or /var (both links into /private) never matched argv[1]
+// and main() silently did not run.
+if (process.argv[1] && import.meta.url === pathToFileURL(realpathSync(process.argv[1])).href) main();
