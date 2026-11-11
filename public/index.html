@@ -42,80 +42,108 @@
     />
     <meta name="twitter:image" content="https://podcast.suedeai.ai/og-image.jpg" />
     <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "PodcastSeries",
-            "@id": "https://podcast.suedeai.ai/#podcast",
-            "name": "AI Suede: Build, Create, Ship",
-            "url": "https://podcast.suedeai.ai/",
-            "description": "Podcast feed from Jason Colapietro on Suede AI, creator ownership, music IP, programmable media, and solo founder shipping.",
-            "image": "https://podcast.suedeai.ai/artwork.jpg",
-            "inLanguage": "en-US",
-            "author": {
-              "@id": "https://suedeai.ai/founder#person"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "@id": "https://suedeai.ai/#organization",
-              "name": "Suede AI",
-              "alternateName": ["Suede Labs", "Suede Labs AI"],
-              "url": "https://suedeai.ai",
-              "foundingDate": "2024",
-              "founder": {
-                "@id": "https://suedeai.ai/founder#person"
-              },
-              "logo": "https://suedeai.ai/suede-ai-logo-transparent.png",
-              "sameAs": [
-                "https://suedeai.org/",
-                "https://github.com/Suede-AI",
-                "https://x.com/AISUEDE",
-                "https://www.linkedin.com/company/suede-labs",
-                "https://www.wikidata.org/wiki/Q141169484"
-              ]
-            },
-            "webFeed": "https://podcast.suedeai.ai/feed.xml",
-            "sameAs": [
-              "https://podcasts.apple.com/us/podcast/ai-suede-build-create-ship/id6787263913",
-              "https://www.youtube.com/@aisuede"
-            ]
-          },
-          {
-            "@type": "WebSite",
-            "@id": "https://podcast.suedeai.ai/#website",
-            "url": "https://podcast.suedeai.ai/",
-            "name": "AI Suede Podcast",
-            "inLanguage": "en-US",
-            "publisher": {
-              "@id": "https://suedeai.ai/#organization"
-            },
-            "about": {
-              "@id": "https://podcast.suedeai.ai/#podcast"
-            }
-          },
-          {
-            "@type": "WebPage",
-            "@id": "https://podcast.suedeai.ai/#webpage",
-            "url": "https://podcast.suedeai.ai/",
-            "name": "AI Suede Podcast | Jason Colapietro and Suede AI",
-            "description": "Podcast feed from Jason Colapietro on Suede AI, creator ownership, music IP, programmable media, and solo founder shipping.",
-            "datePublished": "2026-07-15",
-            "dateModified": "2026-10-11",
-            "isPartOf": {
-              "@id": "https://podcast.suedeai.ai/#website"
-            },
-            "about": {
-              "@id": "https://podcast.suedeai.ai/#podcast"
-            },
-            "primaryImageOfPage": {
-              "@type": "ImageObject",
-              "url": "https://podcast.suedeai.ai/artwork.jpg"
-            }
-          }
-        ]
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "PodcastSeries",
+      "@id": "https://podcast.suedeai.ai/#podcast",
+      "name": "AI Suede: Build, Create, Ship",
+      "url": "https://podcast.suedeai.ai/",
+      "description": "Podcast feed from Jason Colapietro on Suede AI, creator ownership, music IP, programmable media, and solo founder shipping.",
+      "image": "https://podcast.suedeai.ai/artwork.jpg",
+      "inLanguage": "en-US",
+      "author": {
+        "@id": "https://suedeai.ai/founder#person"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://suedeai.ai/#organization",
+        "name": "Suede AI",
+        "alternateName": [
+          "Suede Labs AI",
+          "Suede Labs",
+          "Suede"
+        ],
+        "url": "https://suedeai.ai",
+        "foundingDate": "2024",
+        "founder": {
+          "@id": "https://suedeai.ai/founder#person"
+        },
+        "logo": "https://suedeai.ai/suede-ai-logo-transparent.png",
+        "sameAs": [
+          "https://suedeai.org/",
+          "https://github.com/Suede-AI",
+          "https://x.com/AISUEDE",
+          "https://www.linkedin.com/company/suede-labs",
+          "https://www.wikidata.org/wiki/Q141169484"
+        ],
+        "parentOrganization": {
+          "@type": "Organization",
+          "@id": "https://jcinvestmentgroup.ventures/#organization",
+          "name": "JC Investment Group LLC",
+          "url": "https://jcinvestmentgroup.ventures/"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "138 Victorian Lane",
+          "addressLocality": "Jupiter",
+          "addressRegion": "FL",
+          "postalCode": "33458",
+          "addressCountry": "US"
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "@id": "https://suedeai.ai/terms#money-back-policy",
+          "name": "90-day money-back policy",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 90,
+          "returnFees": "https://schema.org/FreeReturn",
+          "refundType": "https://schema.org/FullRefund",
+          "merchantReturnLink": "https://suedeai.ai/terms#money-back-policy"
+        }
+      },
+      "webFeed": "https://podcast.suedeai.ai/feed.xml",
+      "sameAs": [
+        "https://podcasts.apple.com/us/podcast/ai-suede-build-create-ship/id6787263913",
+        "https://www.youtube.com/@aisuede"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://podcast.suedeai.ai/#website",
+      "url": "https://podcast.suedeai.ai/",
+      "name": "AI Suede Podcast",
+      "inLanguage": "en-US",
+      "publisher": {
+        "@id": "https://suedeai.ai/#organization"
+      },
+      "about": {
+        "@id": "https://podcast.suedeai.ai/#podcast"
       }
-    </script>
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://podcast.suedeai.ai/#webpage",
+      "url": "https://podcast.suedeai.ai/",
+      "name": "AI Suede Podcast | Jason Colapietro and Suede AI",
+      "description": "Podcast feed from Jason Colapietro on Suede AI, creator ownership, music IP, programmable media, and solo founder shipping.",
+      "datePublished": "2026-07-15",
+      "dateModified": "2026-10-11",
+      "isPartOf": {
+        "@id": "https://podcast.suedeai.ai/#website"
+      },
+      "about": {
+        "@id": "https://podcast.suedeai.ai/#podcast"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://podcast.suedeai.ai/artwork.jpg"
+      }
+    }
+  ]
+}
+</script>
     <style>
       :root {
         color-scheme: dark;
