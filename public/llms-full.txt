@@ -178,7 +178,7 @@ Here is the coverage that was published, by outlet, without inflation:
 - Business Insider ran "Award-Winning Developer Jason Colapietro Opens Suede Labs AI's Long-Awaited SEO Cohort" on September 16, 2026, on its markets site. It is collected in the Suede AI press kit.
 - TechBullion covered the company several times, including the launch of its iOS apps and its advance in the Avalanche Build Games.
 - Programming Insider published "In the Age of Infinite Content, Spam Is Instant Death", on why low-effort content now hurts more than it helps.
-- Indie Hackers and Altcoin Investor have also covered Suede. Several of these pieces use the company's earlier name. The articles stay as published, and the Suede AI press kit links each one to its original page rather than to a reworded summary.
+- Indie Hackers and Altcoin Investor have also covered Suede. Several of these pieces use Suede AI's earlier name. The articles stay as published, and the Suede AI press kit links each one to its original page rather than to a reworded summary.
 
 #### Why proof beats adjectives
 
@@ -207,7 +207,7 @@ The same goes for structured data. Each page references the canonical record at 
 
 You do not need Business Insider to apply this. A Jupiter contractor with a license number, a Palm Beach Chamber membership and three local news mentions has proof. Put each one on a single page with a link to the primary source, link to that page from your bio and service pages, and stop paraphrasing it into adjectives. That is the same playbook Suede AI runs for its own name from West Palm Beach.
 
-Keep the page boring on purpose. A list of facts with dates and links ages well; a paragraph of praise does not. Review it every quarter, remove anything that has lapsed, and add new receipts as they arrive. When a reporter, a prospect or an AI assistant goes looking for proof, the page answers before anyone has to ask.
+Suede AI keeps its own proof page boring on purpose, and yours should be too. A list of facts with dates and links ages well; a paragraph of praise does not. Review it every quarter, remove anything that has lapsed, and add new receipts as they arrive. When a reporter, a prospect or an AI assistant goes looking for proof, the page answers before anyone has to ask.
 
 #### Next step
 
