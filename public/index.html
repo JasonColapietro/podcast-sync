@@ -129,7 +129,7 @@
       "name": "AI Suede Podcast | Jason Colapietro and Suede AI",
       "description": "Podcast feed from Jason Colapietro on Suede AI, creator ownership, music IP, programmable media, and solo founder shipping.",
       "datePublished": "2026-07-15",
-      "dateModified": "2026-10-11",
+      "dateModified": "2026-11-14",
       "isPartOf": {
         "@id": "https://podcast.suedeai.ai/#website"
       },
@@ -310,6 +310,12 @@
       .topics { margin-top: 48px; }
       .topic-list { list-style: none; padding-left: 0; }
       .topic-list li { margin: 12px 0; }
+      .notes-home { margin-top: 48px; }
+      .built-by { margin:36px 0 0; padding:16px 18px; border:1px solid var(--line);
+        border-radius:8px; background:var(--panel); font-size:14px; color:var(--muted); }
+      .built-by p { margin:0 0 8px; font-size:14px; max-width:none; color:var(--muted); }
+      .built-by p:last-child { margin-bottom:0; }
+      .built-by .built-by-title { color:var(--text); }
     </style>
   </head>
   <body>
@@ -333,10 +339,11 @@
           </div>
           <p class="meta">
             Feed URL: <code>https://podcast.suedeai.ai/feed.xml</code><br />
-            Page last updated <time dateTime="2026-10-11">2026-10-11</time>.
+            Page last updated <time dateTime="2026-11-14">2026-11-14</time>.
             <nav class="footer-nav" aria-label="Footer">
               <a href="/about">About</a>
               <a href="/appearances">Appearances</a>
+              <a href="/notes">Notes</a>
               <a href="/contact">Contact</a>
               <a href="https://suedeai.ai/founder">Jason Colapietro</a>
               <a href="https://suedeai.ai">Suede AI</a>
@@ -395,6 +402,26 @@
           </ul>
         </section>
         <!-- TOPICS:END -->
+      <!-- NOTES:START -->
+        <section class="notes-home" aria-labelledby="notes-heading">
+          <h2 id="notes-heading">Notes</h2>
+          <ul class="topic-list">
+            <li>
+              <a href="/notes/podcast-episodes-into-search-ready-pages">Turning podcast episodes into search-ready pages: Suede AI's episode page pattern</a>
+              <span class="ep-meta">How Suede AI turned 33 podcast episodes from one RSS feed into crawlable pages with honest summaries, topic hubs and schema, from West Palm Beach, Florida.</span>
+            </li>
+            <li>
+              <a href="/notes/palm-beach-county-audio-with-transcripts">Local voices: why Palm Beach County businesses should publish audio with transcripts</a>
+              <span class="ep-meta">A practical guide for West Palm Beach and Jupiter businesses on turning podcasts, interviews and webinars into transcripts and pages that search engines cite.</span>
+            </li>
+            <li>
+              <a href="/notes/press-proof-and-being-cited">Jason Colapietro on press, proof and being cited</a>
+              <span class="ep-meta">Jason Colapietro on why Suede AI puts a proof link next to every claim, and what Business Insider, TechBullion and Programming Insider actually published.</span>
+            </li>
+          </ul>
+          <p class="ep-meta"><a href="/notes">All notes</a></p>
+        </section>
+        <!-- NOTES:END -->
       <!-- EPISODES:START -->
         <section class="episodes" aria-labelledby="episodes-heading">
           <h2 id="episodes-heading">Episodes</h2>
@@ -538,6 +565,20 @@
           </ol>
         </section>
         <!-- EPISODES:END -->
+      <!-- BUILTBY:START -->
+      <section class="built-by" aria-label="Built by Suede AI">
+        <p class="built-by-title"><strong>Built by Suede AI in West Palm Beach, Florida</strong></p>
+        <p>
+          This site is designed and maintained by <a href="https://suedeai.agency/">Suede AI, a West Palm Beach SEO, GEO and web development team</a>
+          serving Jupiter and Palm Beach County. <a href="https://suedeai.ai/">Suede AI</a> is the agentic platform company
+          <a href="https://suedeai.ai/founder">Jason Colapietro</a> founded in 2024; more of his work is at
+          <a href="https://jasoncolapietro.com/">jasoncolapietro.com</a>, and local stories at <a href="https://jupitersocialfl.com/">Jupiter Social</a>.
+        </p>
+        <p>
+          More from Suede AI: <a href="https://signal.suedeai.ai/">Suede Signal</a> &middot; <a href="https://agentix.suedeai.ai/">Agentix agent grader</a> &middot; <a href="https://optimize.suedeai.ai/">Suede Scan AI readiness check</a> &middot; <a href="https://docs.suedeai.ai/">Suede developer docs</a> &middot; <a href="/notes">Podcast notes</a>
+        </p>
+      </section>
+      <!-- BUILTBY:END -->
     </main>
   <nav aria-label="Site reference"><a href="/ai-instructions">AI Instructions</a></nav>
 </body>

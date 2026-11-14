@@ -37,6 +37,7 @@ import {
   keywordContent,
   topicPath,
 } from "./keywords.mjs";
+import { BUILT_BY_STYLE, NOTES, NOTES_DATE, NOTES_INDEX, NOTES_PATH, NOTE_PLACES, builtByHtml, notePath } from "./notes.mjs";
 import { productByKey } from "./suede-sites.mjs";
 import { hubEpisodes, productsFor, proseLine, relatedEpisodes, topicQuotes, topicsFor } from "./topics.mjs";
 
@@ -707,7 +708,8 @@ const STYLE = `      :root { color-scheme: dark; --bg:#09090b; --panel:#151517; 
       nav.footer-nav { display:flex; flex-wrap:wrap; gap:6px 10px; margin:2px 0 0 -8px;
         font-size:14px; }
       nav.footer-nav a { padding:10px 8px; color:var(--muted); text-decoration:none; }
-      hr { border:0; border-top:1px solid var(--line); margin:36px 0; }`;
+      hr { border:0; border-top:1px solid var(--line); margin:36px 0; }
+${BUILT_BY_STYLE}`;
 
 /** One-line credit for an episode listed on another page, from appearances.mjs. */
 const creditLabel = (e) =>
@@ -861,9 +863,11 @@ ${
         <a href="/">Home</a>
         <a href="/about">About</a>
         <a href="/appearances">Appearances</a>
+        <a href="${NOTES_PATH}">Notes</a>
         <a href="/contact">Contact</a>
         <a href="https://suedeai.ai/privacy">Privacy</a>
       </nav>
+${builtByHtml()}
     </main>
   </body>
 </html>
@@ -1069,9 +1073,11 @@ ${others
         <a href="/">Home</a>
         <a href="/about">About</a>
         <a href="/appearances">Appearances</a>
+        <a href="${NOTES_PATH}">Notes</a>
         <a href="/contact">Contact</a>
         <a href="https://suedeai.ai/privacy">Privacy</a>
       </nav>
+${builtByHtml()}
     </main>
   </body>
 </html>
@@ -1235,17 +1241,251 @@ ${g.episodes
         <nav class="footer-nav" aria-label="Footer">
           <a href="/">Home</a>
           <a href="/about">About</a>
+          <a href="${NOTES_PATH}">Notes</a>
           <a href="/contact">Contact</a>
           <a href="https://suedeai.ai/founder">Jason Colapietro</a>
           <a href="https://suedeai.ai">Suede AI</a>
           <a href="https://suedeai.ai/privacy">Privacy</a>
         </nav>
       </p>
+${builtByHtml()}
     </main>
   </body>
 </html>
 `;
 };
+
+// ---------------------------------------------------------------------------
+// /notes — articles written for this site (notes.mjs), and their index.
+//
+// Every other page here is generated from the feed's own words. The notes are
+// the exception: long-form articles from the team that builds the site. Each is
+// a BlogPosting whose author and publisher are the canonical Person and
+// Organization, referenced by @id and never restated.
+// ---------------------------------------------------------------------------
+const NOTES_URL = `${SITE}${NOTES_PATH}`;
+const noteUrl = (n) => `${SITE}${notePath(n.slug)}`;
+const BLOG_ID = `${NOTES_URL}#blog`;
+
+const notePlaces = () =>
+  NOTE_PLACES.map((p) => ({ "@type": "Place", name: p.name, sameAs: p.wikipedia }));
+
+const noteHead = ({ title, description, url, keywords, ogType, jsonLd }) => `    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>${esc(title)}</title>
+    <meta name="description" content="${esc(description)}" />
+    <meta name="keywords" content="${esc(keywordContent(keywords))}" />
+    <meta name="author" content="Jason Colapietro" />
+    <link rel="canonical" href="${url}" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="AI Suede: Build, Create, Ship"
+      href="${SITE}/feed.xml"
+    />
+    <meta property="og:type" content="${ogType}" />
+    <meta property="og:site_name" content="AI Suede Podcast" />
+    <meta property="og:title" content="${esc(title)}" />
+    <meta property="og:description" content="${esc(description)}" />
+    <meta property="og:url" content="${url}" />
+${ogType === "article" ? `    <meta property="article:published_time" content="${NOTES_DATE}" />
+    <meta property="article:author" content="https://suedeai.ai/founder" />
+` : ""}${socialImageTags()}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@AISUEDE" />
+    <meta name="twitter:creator" content="@johnnysuede" />
+    <meta name="twitter:title" content="${esc(title)}" />
+    <meta name="twitter:description" content="${esc(description)}" />
+    <meta name="twitter:image" content="${SOCIAL_IMAGE.url}" />
+    <script type="application/ld+json">
+${jsonLd}
+    </script>`;
+
+const NOTE_STYLE = `      .lede { color:var(--muted); font-size:17px; margin:0 0 32px; }
+      .article p, .article li { font-size:17px; }
+      .article p { margin:0 0 16px; }
+      .article ul { margin:0 0 16px; padding-left:22px; }
+      .article li { margin:8px 0; }
+      .article code { font-size:15px; }
+      .author-box { margin:36px 0 0; padding:16px 18px; border:1px solid var(--line);
+        border-radius:8px; background:var(--panel); font-size:15px; }
+      .author-box p { margin:0; }
+      ul.note-list { list-style:none; padding:0; margin:0; }
+      ul.note-list li { margin:0 0 24px; }
+      ul.note-list a { font-size:19px; font-weight:600; }`;
+
+const noteFooterNav = `      <nav class="footer-nav" aria-label="Footer">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/appearances">Appearances</a>
+        <a href="${NOTES_PATH}">Notes</a>
+        <a href="/contact">Contact</a>
+        <a href="https://suedeai.ai/privacy">Privacy</a>
+      </nav>`;
+
+const authorBox = `      <aside class="author-box" aria-label="About the author">
+        <p>
+          <strong>Jason Colapietro</strong>, Founder and CEO, Suede AI, West Palm Beach, Florida.
+          <a href="https://suedeai.ai/founder">Founder page</a> &middot;
+          <a href="https://jasoncolapietro.com/">jasoncolapietro.com</a> &middot;
+          <a href="https://seo.suedeai.ai/evidence">Proof of every claim</a>
+        </p>
+      </aside>`;
+
+const noteJsonLd = (n) => {
+  const url = noteUrl(n);
+  return JSON.stringify(
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BlogPosting",
+          "@id": `${url}#article`,
+          headline: n.headline,
+          description: n.description,
+          url,
+          datePublished: NOTES_DATE,
+          dateModified: NOTES_DATE,
+          inLanguage: "en-US",
+          keywords: n.keywords.join(", "),
+          image: SOCIAL_IMAGE.url,
+          author: { "@id": PERSON_ID },
+          publisher: { "@id": ORG_ID },
+          isPartOf: { "@id": BLOG_ID },
+          mainEntityOfPage: { "@id": `${url}#webpage` },
+          about: { "@id": `${SITE}/#podcast` },
+          spatialCoverage: notePlaces(),
+        },
+        ...pageNodes({
+          url,
+          name: n.title,
+          description: n.description,
+          crumbs: [
+            { name: "Notes", item: NOTES_URL },
+            { name: n.headline, item: url },
+          ],
+          extra: { mainEntity: { "@id": `${url}#article` }, datePublished: NOTES_DATE },
+        }),
+      ],
+    },
+    null,
+    2,
+  );
+};
+
+const notePage = (n) => `<!doctype html>
+<html lang="en">
+  <head>
+${noteHead({ title: n.title, description: n.description, url: noteUrl(n), keywords: n.keywords, ogType: "article", jsonLd: noteJsonLd(n) })}
+    <style>
+${STYLE}
+${NOTE_STYLE}
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav class="crumbs"><a href="/">AI Suede Podcast</a> &rsaquo; <a href="${NOTES_PATH}">Notes</a></nav>
+      <p class="eyebrow">Notes</p>
+      <article class="article">
+        <h1>${esc(n.headline)}</h1>
+        <p class="meta">By <a href="https://suedeai.ai/founder">Jason Colapietro</a>, Suede AI &middot; West Palm Beach, Florida &middot; <time datetime="${NOTES_DATE}">${NOTES_DATE}</time></p>
+${n.body.replace(/^\n/, "").replace(/^ {6}/gm, "        ")}
+      </article>
+${authorBox}
+      <hr />
+      <p class="meta">
+        More notes: ${NOTES.filter((o) => o.slug !== n.slug)
+          .map((o) => `<a href="${notePath(o.slug)}">${esc(o.headline)}</a>`)
+          .join(" &middot; ")}.
+        Subscribe to the podcast via <a href="/feed.xml">RSS</a>.
+      </p>
+${noteFooterNav}
+${builtByHtml()}
+    </main>
+  </body>
+</html>
+`;
+
+const notesIndexJsonLd = () =>
+  JSON.stringify(
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Blog",
+          "@id": BLOG_ID,
+          name: "AI Suede Podcast notes",
+          url: NOTES_URL,
+          description: NOTES_INDEX.description,
+          inLanguage: "en-US",
+          author: { "@id": PERSON_ID },
+          publisher: { "@id": ORG_ID },
+          blogPost: NOTES.map((n) => ({ "@id": `${noteUrl(n)}#article` })),
+          spatialCoverage: notePlaces(),
+        },
+        ...pageNodes({
+          url: NOTES_URL,
+          name: NOTES_INDEX.title,
+          description: NOTES_INDEX.description,
+          crumbs: [{ name: "Notes", item: NOTES_URL }],
+          extra: { "@type": "CollectionPage", mainEntity: { "@id": BLOG_ID } },
+        }),
+      ],
+    },
+    null,
+    2,
+  );
+
+const notesIndexPage = () => `<!doctype html>
+<html lang="en">
+  <head>
+${noteHead({ title: NOTES_INDEX.title, description: NOTES_INDEX.description, url: NOTES_URL, keywords: NOTES_INDEX.keywords, ogType: "website", jsonLd: notesIndexJsonLd() })}
+    <style>
+${STYLE}
+${NOTE_STYLE}
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav class="crumbs"><a href="/">AI Suede Podcast</a> &rsaquo; Notes</nav>
+      <p class="eyebrow">Notes</p>
+      <h1>Notes on podcast SEO, transcripts and proof</h1>
+      <p class="lede">${esc(NOTES_INDEX.lede)}</p>
+      <h2>Articles</h2>
+      <ul class="note-list">
+${NOTES.map(
+  (n) =>
+    `        <li>\n          <a href="${notePath(n.slug)}">${esc(n.headline)}</a>\n          <span class="summary">${esc(n.description)}</span>\n          <span class="ep-meta">Jason Colapietro &middot; <time datetime="${NOTES_DATE}">${NOTES_DATE}</time></span>\n        </li>`,
+).join("\n")}
+      </ul>
+${authorBox}
+      <hr />
+${noteFooterNav}
+${builtByHtml()}
+    </main>
+  </body>
+</html>
+`;
+
+/** Plain text of a note's body for llms-full.txt. */
+const noteText = (n) =>
+  n.body
+    .replace(/\s+/g, " ")
+    .replace(/<h2>([\s\S]*?)<\/h2>/g, "\n\n#### $1\n\n")
+    .replace(/<li>/g, "\n- ")
+    .replace(/<\/p>/g, "\n\n")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/[ \t]+/g, " ")
+    .replace(/ ([.,;:)])/g, "$1")
+    .replace(/\( /g, "(")
+    .replace(/ *\n */g, "\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
 
 /** Visible text of a static page's <main>, one paragraph per block element. */
 const pageText = (rel) => {
@@ -1319,6 +1559,22 @@ export const llmsFull = (episodes, hubs, groups) => {
     "",
     pageText("contact.html"),
     "",
+    "## Notes",
+    "",
+    `Source: ${NOTES_URL}`,
+    "",
+    NOTES_INDEX.lede,
+    "",
+    ...NOTES.flatMap((n) => [
+      `### ${n.headline}`,
+      "",
+      `- URL: ${noteUrl(n)}`,
+      `- Published: ${NOTES_DATE}`,
+      "- Author: Jason Colapietro, Founder and CEO, Suede AI, West Palm Beach, Florida",
+      "",
+      noteText(n),
+      "",
+    ]),
     "## Topics",
     "",
     ...hubs.flatMap(({ hub, members }) => [
@@ -1361,6 +1617,21 @@ export const llmsFull = (episodes, hubs, groups) => {
     ]),
   ];
   return `${parts.join("\n").replace(/\n{3,}/g, "\n\n").trim()}\n`;
+};
+
+/**
+ * The "Built by Suede AI" block on a hand-written page (home, about, contact),
+ * between markers so a rebuild replaces it instead of stacking a second copy.
+ */
+const withBuiltBy = (html) => {
+  const START = "<!-- BUILTBY:START -->";
+  const END = "<!-- BUILTBY:END -->";
+  const block = `      ${START}\n${builtByHtml()}\n      ${END}`;
+  let out = html.includes(START)
+    ? html.replace(new RegExp(`[ ]*${START}[\\s\\S]*?${END}`), block)
+    : html.replace("    </main>", `${block}\n    </main>`);
+  if (!out.includes(".built-by {")) out = out.replace("    </style>", `${BUILT_BY_STYLE}\n    </style>`);
+  return out;
 };
 
 const main = () => {
@@ -1407,6 +1678,13 @@ const main = () => {
   mkdirSync(appearancesDir, { recursive: true });
   writeFileSync(join(appearancesDir, "index.html"), appearancesPage(groups));
 
+  // /notes — rebuilt from notes.mjs, so a note dropped there takes its page with it.
+  const notesDir = join(PUBLIC, "notes");
+  if (existsSync(notesDir)) rmSync(notesDir, { recursive: true });
+  mkdirSync(notesDir, { recursive: true });
+  writeFileSync(join(notesDir, "index.html"), notesIndexPage());
+  for (const n of NOTES) writeFileSync(join(notesDir, `${n.slug}.html`), notePage(n));
+
   // Sitemap: the static pages, the topic hubs, and every episode.
   // `file` is the page's source, dated by the same content rule as the episodes.
   const staticUrls = [
@@ -1422,6 +1700,13 @@ ${staticUrls
   .map(
     (u) =>
       `  <url>\n    <loc>${u.loc}</loc>\n    <lastmod>${contentDate(u.file)}</lastmod>\n    <changefreq>${u.changefreq}</changefreq>\n    <priority>${u.priority}</priority>\n  </url>`,
+  )
+  .join("\n")}
+${[{ loc: NOTES_URL, priority: "0.7" }, ...NOTES.map((n) => ({ loc: noteUrl(n), priority: "0.6" }))]
+  .map(
+    (u) =>
+      // Notes are dated by their own published/reviewed date in notes.mjs.
+      `  <url>\n    <loc>${u.loc}</loc>\n    <lastmod>${NOTES_DATE}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>${u.priority}</priority>\n  </url>`,
   )
   .join("\n")}
 ${hubs
@@ -1510,7 +1795,33 @@ ${hubs
     </style>`,
     );
   }
-  writeFileSync(indexPath, index);
+  // Latest notes on the homepage, below the topics, so /notes is one link from the root.
+  const notesHtml = `        <section class="notes-home" aria-labelledby="notes-heading">
+          <h2 id="notes-heading">Notes</h2>
+          <ul class="topic-list">
+${NOTES.map(
+  (n) =>
+    `            <li>\n              <a href="${notePath(n.slug)}">${esc(n.headline)}</a>\n              <span class="ep-meta">${esc(n.description)}</span>\n            </li>`,
+).join("\n")}
+          </ul>
+          <p class="ep-meta"><a href="${NOTES_PATH}">All notes</a></p>
+        </section>`;
+  const N_START = "<!-- NOTES:START -->";
+  const N_END = "<!-- NOTES:END -->";
+  const notesBlock = `${N_START}\n${notesHtml}\n        ${N_END}`;
+  if (index.includes(N_START)) {
+    index = index.replace(new RegExp(`${N_START}[\\s\\S]*?${N_END}`), notesBlock);
+  } else {
+    index = index.replace("      <!-- EPISODES:START -->", `      ${notesBlock}\n      <!-- EPISODES:START -->`);
+  }
+  if (!index.includes(".notes-home")) {
+    index = index.replace("    </style>", `      .notes-home { margin-top: 48px; }\n    </style>`);
+  }
+  writeFileSync(indexPath, withBuiltBy(index));
+  for (const name of ["about.html", "contact.html"]) {
+    const path = join(PUBLIC, name);
+    writeFileSync(path, withBuiltBy(readFileSync(path, "utf8")));
+  }
 
   // llms-full.txt: the full text of the site for answer engines, generated from
   // the same feed and tables as the pages so the two cannot drift.
@@ -1522,7 +1833,8 @@ ${hubs
       `${groups.length} third-party programmes`,
   );
   console.log(`build-episodes: ${hubs.length} topic hubs (${hubs.map(({ hub, members }) => `${hub.slug} ${members.length}`).join(", ")})`);
-  console.log(`build-episodes: sitemap ${staticUrls.length + hubs.length + episodes.length} URLs`);
+  console.log(`build-episodes: ${NOTES.length} notes`);
+  console.log(`build-episodes: sitemap ${staticUrls.length + 1 + NOTES.length + hubs.length + episodes.length} URLs`);
 };
 
 // Compare real paths: node resolves import.meta.url through symlinks, so on macOS

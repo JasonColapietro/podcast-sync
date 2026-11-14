@@ -94,6 +94,7 @@ test("no page restates a thinner copy of the canonical Person", () => {
     join(root, "public", "about.html"),
     join(root, "public", "contact.html"),
     join(root, "public", "appearances", "index.html"),
+    ...readdirSync(join(root, "public", "notes")).map((n) => join(root, "public", "notes", n)),
     ...readdirSync(join(root, "public", "episodes"))
       .filter((n) => n.endsWith(".html"))
       .map((n) => join(root, "public", "episodes", n)),

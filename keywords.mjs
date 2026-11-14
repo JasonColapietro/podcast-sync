@@ -12,6 +12,8 @@
  * + agents groups) and from what each page actually discusses. No claims.
  */
 
+import { NOTES, NOTES_INDEX, NOTES_PATH, notePath } from "./notes.mjs";
+
 /** The one brand term a page carries when its own list names no brand. */
 export const BRAND_TERM = "AI Suede Podcast";
 
@@ -133,6 +135,9 @@ export const topicPath = (slug) => `/topics/${slug}`;
 /** Static and index pages, keyed by public path. */
 export const PAGE_KEYWORDS = {
   ...Object.fromEntries(TOPIC_HUBS.map((t) => [topicPath(t.slug), t.keywords])),
+  // /notes and its articles keep their keywords next to their copy (notes.mjs).
+  [NOTES_PATH]: NOTES_INDEX.keywords,
+  ...Object.fromEntries(NOTES.map((n) => [notePath(n.slug), n.keywords])),
   "/ai-instructions": ["AI instructions", "official sources", "citation guidance"],
   "/": [
     "AI podcast for musicians",

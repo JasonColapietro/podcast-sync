@@ -8,6 +8,7 @@ import { fileURLToPath } from "url";
 
 import { cleanText, hubSummary, parseEpisodes, videoId } from "../build-episodes.mjs";
 import { MIN_HUB_EPISODES, TOPIC_HUBS, topicPath } from "../keywords.mjs";
+import { NOTES, NOTES_PATH, notePath } from "../notes.mjs";
 import { LEGAL_EFFECT_CLAIM, PRODUCTS } from "../suede-sites.mjs";
 import { hubEpisodes, productsFor, proseLine, relatedEpisodes, topicsFor } from "../topics.mjs";
 
@@ -38,6 +39,8 @@ const PAGES = [
   ["contact.html", `${SITE}/contact`],
   ["ai-instructions.html", `${SITE}/ai-instructions`],
   ["appearances/index.html", `${SITE}/appearances`],
+  ["notes/index.html", `${SITE}${NOTES_PATH}`],
+  ...NOTES.map((n) => [join("notes", `${n.slug}.html`), `${SITE}${notePath(n.slug)}`]),
   ...TOPIC_HUBS.map((h) => [join("topics", `${h.slug}.html`), `${SITE}${topicPath(h.slug)}`]),
   ...episodes.map((e) => [join("episodes", `${e.slug}.html`), e.url]),
 ];

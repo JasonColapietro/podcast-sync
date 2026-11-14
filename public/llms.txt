@@ -8,6 +8,12 @@
 - [Full text](https://podcast.suedeai.ai/llms-full.txt): Every episode's show notes, the topic hubs and the appearances index in one Markdown file.
 - [About](https://podcast.suedeai.ai/about): The show, its host Jason Colapietro, and where to listen.
 - [Contact](https://podcast.suedeai.ai/contact): Guest booking, interview requests and press.
+- [Notes](https://podcast.suedeai.ai/notes): Articles from Jason Colapietro and Suede AI, written in West Palm Beach, Florida, on podcast SEO, transcripts and proof.
+
+## Notes
+- [Turning podcast episodes into search-ready pages](https://podcast.suedeai.ai/notes/podcast-episodes-into-search-ready-pages): How this site turns one RSS feed into crawlable episode pages, topic hubs and schema.
+- [Why Palm Beach County businesses should publish audio with transcripts](https://podcast.suedeai.ai/notes/palm-beach-county-audio-with-transcripts): A transcript workflow for West Palm Beach and Jupiter businesses.
+- [Jason Colapietro on press, proof and being cited](https://podcast.suedeai.ai/notes/press-proof-and-being-cited): What Business Insider, TechBullion and Programming Insider published, and why every claim carries a proof link.
 
 ## Topics
 - [Music IP as a real-world asset](https://podcast.suedeai.ai/topics/music-ip-real-world-assets): Episodes on tokenized music rights that the people who made the work own and earn from.
@@ -18,6 +24,7 @@
 
 ## Key facts
 - Host: Jason Colapietro, founder of Suede AI.
+- Built and maintained by Suede AI in West Palm Beach, Florida: https://suedeai.agency/
 - Topics: creator ownership infrastructure, programmable IP, music rights, AI product shipping.
 - Publisher: Suede AI (also known as Suede Labs), https://suedeai.ai.
 

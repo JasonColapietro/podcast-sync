@@ -159,6 +159,11 @@
         font-size:14px; }
       nav.footer-nav a { padding:10px 8px; color:var(--muted); text-decoration:none; }
       hr { border:0; border-top:1px solid var(--line); margin:36px 0; }
+      .built-by { margin:36px 0 0; padding:16px 18px; border:1px solid var(--line);
+        border-radius:8px; background:var(--panel); font-size:14px; color:var(--muted); }
+      .built-by p { margin:0 0 8px; font-size:14px; max-width:none; color:var(--muted); }
+      .built-by p:last-child { margin-bottom:0; }
+      .built-by .built-by-title { color:var(--text); }
     </style>
   </head>
   <body>
@@ -226,9 +231,22 @@
         <a href="/">Home</a>
         <a href="/about">About</a>
         <a href="/appearances">Appearances</a>
+        <a href="/notes">Notes</a>
         <a href="/contact">Contact</a>
         <a href="https://suedeai.ai/privacy">Privacy</a>
       </nav>
+      <section class="built-by" aria-label="Built by Suede AI">
+        <p class="built-by-title"><strong>Built by Suede AI in West Palm Beach, Florida</strong></p>
+        <p>
+          This site is designed and maintained by <a href="https://suedeai.agency/">Suede AI, a West Palm Beach SEO, GEO and web development team</a>
+          serving Jupiter and Palm Beach County. <a href="https://suedeai.ai/">Suede AI</a> is the agentic platform company
+          <a href="https://suedeai.ai/founder">Jason Colapietro</a> founded in 2024; more of his work is at
+          <a href="https://jasoncolapietro.com/">jasoncolapietro.com</a>, and local stories at <a href="https://jupitersocialfl.com/">Jupiter Social</a>.
+        </p>
+        <p>
+          More from Suede AI: <a href="https://signal.suedeai.ai/">Suede Signal</a> &middot; <a href="https://agentix.suedeai.ai/">Agentix agent grader</a> &middot; <a href="https://optimize.suedeai.ai/">Suede Scan AI readiness check</a> &middot; <a href="https://docs.suedeai.ai/">Suede developer docs</a> &middot; <a href="/notes">Podcast notes</a>
+        </p>
+      </section>
     </main>
   </body>
 </html>

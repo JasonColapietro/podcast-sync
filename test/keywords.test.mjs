@@ -5,6 +5,7 @@ import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
 import { parseEpisodes } from "../build-episodes.mjs";
+import { NOTES, NOTES_PATH, notePath } from "../notes.mjs";
 import { BRAND_TERM, MAX_TERMS, PAGE_KEYWORDS, TOPIC_HUBS, episodeKeywords, isBrandTerm, keywordContent, topicPath, withBrand } from "../keywords.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -22,6 +23,9 @@ const isNoindex = (html) => /<meta\s+name="robots"\s+content="[^"]*noindex/i.tes
 const STATIC = { "/ai-instructions": "ai-instructions.html", "/": "index.html", "/about": "about.html", "/contact": "contact.html", "/appearances": "appearances/index.html" };
 // Topic hubs are generated, but their keywords come from the same central map.
 for (const hub of TOPIC_HUBS) STATIC[topicPath(hub.slug)] = join("topics", `${hub.slug}.html`);
+// So are the notes and their index.
+STATIC[NOTES_PATH] = join("notes", "index.html");
+for (const n of NOTES) STATIC[notePath(n.slug)] = join("notes", `${n.slug}.html`);
 const episodeFiles = readdirSync(join(pub, "episodes")).filter((f) => f.endsWith(".html"));
 
 test("every indexable page carries a short keywords meta with exactly one brand term", () => {
@@ -31,6 +35,9 @@ test("every indexable page carries a short keywords meta with exactly one brand 
     // A noindex page (the 404) is not a search page, so it needs no keyword entry.
     if (isNoindex(readFileSync(join(pub, f), "utf8"))) continue;
     assert.ok(Object.values(STATIC).includes(f), `unmapped page public/${f}: add it to PAGE_KEYWORDS`);
+  }
+  for (const f of readdirSync(join(pub, "notes"))) {
+    assert.ok(Object.values(STATIC).includes(join("notes", f)), `unmapped page public/notes/${f}: add it to NOTES`);
   }
   for (const f of readdirSync(join(pub, "topics"))) {
     assert.ok(Object.values(STATIC).includes(join("topics", f)), `unmapped page public/topics/${f}: add it to TOPIC_HUBS`);
