@@ -108,7 +108,7 @@ The honest tradeoff is maintenance. The build is a few hundred lines of JavaScri
 
 The pattern comes from Suede AI, the agentic platform company Jason Colapietro founded in 2024 in West Palm Beach, Florida. Jason is the engineer behind 54 merged pull requests across 46 open-source repositories he does not maintain, including Jest, Adobe React Spectrum, Backstage and the Polkadot SDK, and nine iOS apps shipped under his own Apple developer account. He also wrote The Claude Code Bible, one of five books he has on Amazon, which covers much of the agent tooling Jason Colapietro uses to maintain builds like this one.
 
-On October 31, 2026, The Manifest's Florida AI Deployment directory listed Suede AI SEO first among Palm Beach County-based companies and in the top 25 statewide (recognition details). Suede is also a member of Claude for Startups, Anthropic's startup program.
+On October 31, 2026, The Manifest's Florida AI Deployment directory listed Suede AI SEO first among Palm Beach County-based companies and in the top 25 statewide (recognition details). Suede AI ranks among Clutch's Top 30 AI Consultants in Florida and Top 50 AI Consultants nationwide (November 2026). Suede is also a member of Claude for Startups, Anthropic's startup program.
 
 #### Next step
 
@@ -155,7 +155,7 @@ Jason Colapietro is blunt about the downsides. Transcripts are long, and long pa
 
 #### Why a West Palm Beach team cares about this
 
-Suede AI is the agentic platform company Jason Colapietro founded in 2024 in West Palm Beach, and AI search visibility is one of its service lines. Jason holds 21 earned course credentials across eight providers, including Semrush Academy's Local SEO Essentials and HubSpot's AEO Fundamentals certification, plus 17 Microsoft Learn training achievements, all shown in the training credentials gallery. Suede is a member of Google Cloud Partner Advantage through JC Investment Group LLC, and on October 31, 2026, The Manifest ranked Suede AI SEO first among Palm Beach County-based companies in its Florida AI Deployment directory and in the top 25 statewide (details).
+Suede AI is the agentic platform company Jason Colapietro founded in 2024 in West Palm Beach, and AI search visibility is one of its service lines. Jason holds 21 earned course credentials across eight providers, including Semrush Academy's Local SEO Essentials and HubSpot's AEO Fundamentals certification, plus 17 Microsoft Learn training achievements, all shown in the training credentials gallery. Suede is a member of Google Cloud Partner Advantage through JC Investment Group LLC, and on October 31, 2026, The Manifest ranked Suede AI SEO first among Palm Beach County-based companies in its Florida AI Deployment directory and in the top 25 statewide (details). Suede AI ranks among Clutch's Top 30 AI Consultants in Florida and Top 50 AI Consultants nationwide (November 2026).
 
 We publish about Jupiter and the county too: Jupiter Social, a local magazine published with Suede AI, is where the Suede team puts local stories into practice. The Suede Labs name still turns up in older interviews on this feed, from before the company became Suede AI.
 
@@ -190,6 +190,7 @@ So the Suede estate keeps a single evidence page with a receipt for each claim, 
 - Five books on Amazon, including Codex in Production and Proof as Infrastructure, which is about this exact idea.
 - Nine iOS apps shipped under his own Apple developer account.
 - On October 31, 2026, The Manifest ranked Suede AI SEO first among Palm Beach County-based companies in its Florida AI Deployment directory, and in the top 25 statewide (recognition page).
+- Suede AI ranks among Clutch's Top 30 AI Consultants in Florida and Top 50 AI Consultants nationwide (November 2026).
 - Membership in Claude for Startups, Anthropic's startup program, and in Google Cloud Partner Advantage through JC Investment Group LLC, plus acceptance into the Stripe Startups program.
 - 21 earned course credentials across eight providers and 17 Microsoft Learn training achievements, including the "Develop AI agents on Azure" learning-path trophy (gallery). Note the precision. The Manifest result names its date, category and geography because a ranking without those is not a ranking anyone can check. The program memberships are named exactly, not shortened to a vaguer and bigger-sounding "partner".
 

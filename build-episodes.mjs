@@ -37,7 +37,7 @@ import {
   keywordContent,
   topicPath,
 } from "./keywords.mjs";
-import { BUILT_BY_STYLE, NOTES, NOTES_DATE, NOTES_INDEX, NOTES_PATH, NOTE_PLACES, builtByHtml, notePath } from "./notes.mjs";
+import { BUILT_BY_STYLE, NOTES, NOTES_DATE, NOTES_INDEX, NOTES_MODIFIED, NOTES_PATH, NOTE_PLACES, builtByHtml, notePath } from "./notes.mjs";
 import { productByKey } from "./suede-sites.mjs";
 import { hubEpisodes, productsFor, proseLine, relatedEpisodes, topicQuotes, topicsFor } from "./topics.mjs";
 
@@ -1296,6 +1296,7 @@ const noteHead = ({ title, description, url, keywords, ogType, jsonLd }) => `   
     <meta property="og:description" content="${esc(description)}" />
     <meta property="og:url" content="${url}" />
 ${ogType === "article" ? `    <meta property="article:published_time" content="${NOTES_DATE}" />
+    <meta property="article:modified_time" content="${NOTES_MODIFIED}" />
     <meta property="article:author" content="https://suedeai.ai/founder" />
 ` : ""}${socialImageTags()}
     <meta name="twitter:card" content="summary_large_image" />
@@ -1352,7 +1353,7 @@ const noteJsonLd = (n) => {
           description: n.description,
           url,
           datePublished: NOTES_DATE,
-          dateModified: NOTES_DATE,
+          dateModified: NOTES_MODIFIED,
           inLanguage: "en-US",
           keywords: n.keywords.join(", "),
           image: SOCIAL_IMAGE.url,
@@ -1487,6 +1488,7 @@ const noteText = (n) =>
     .replace(/&amp;/g, "&")
     .replace(/[ \t]+/g, " ")
     .replace(/ ([.,;:)])/g, "$1")
+    .replace(/ ('s\b)/g, "$1")
     .replace(/\( /g, "(")
     .replace(/ *\n */g, "\n")
     .replace(/\n{3,}/g, "\n\n")
@@ -1710,8 +1712,8 @@ ${staticUrls
 ${[{ loc: NOTES_URL, priority: "0.7" }, ...NOTES.map((n) => ({ loc: noteUrl(n), priority: "0.6" }))]
   .map(
     (u) =>
-      // Notes are dated by their own published/reviewed date in notes.mjs.
-      `  <url>\n    <loc>${u.loc}</loc>\n    <lastmod>${NOTES_DATE}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>${u.priority}</priority>\n  </url>`,
+      // Notes are dated by their own last-modified date in notes.mjs.
+      `  <url>\n    <loc>${u.loc}</loc>\n    <lastmod>${NOTES_MODIFIED}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>${u.priority}</priority>\n  </url>`,
   )
   .join("\n")}
 ${hubs

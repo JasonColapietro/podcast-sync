@@ -20,6 +20,9 @@ export const notePath = (slug) => `${NOTES_PATH}/${slug}`;
 /** Published and last-reviewed date for the current set (sitemap lastmod). */
 export const NOTES_DATE = "2026-11-14";
 
+/** Last-modified date for the current set (BlogPosting dateModified, sitemap lastmod). */
+export const NOTES_MODIFIED = "2026-11-15";
+
 export const NOTES_INDEX = {
   title: "Podcast SEO Notes From West Palm Beach | AI Suede Podcast",
   description:
@@ -40,6 +43,9 @@ const PROOF = {
   prs: "https://github.com/search?q=is%3Apr+author%3AJasonColapietro+is%3Amerged+-user%3AJasonColapietro+-user%3ASuede-AI&type=pullrequests",
   apps: "https://apps.apple.com/us/developer/jason-colapietro/id1895958699",
   manifest: "https://themanifest.com/artificial-intelligence/consulting/deployment/companies/florida",
+  clutch: "https://clutch.co/profile/suede-ai-seo",
+  clutchFlorida: "https://clutch.co/consulting/ai/florida",
+  clutchUs: "https://clutch.co/us/consulting/ai",
   recognition: "https://suedeai.agency/company/recognition",
   claude: "https://seo.suedeai.ai/evidence#claude-for-startups",
   gcp: "https://seo.suedeai.ai/evidence#google-cloud",
@@ -54,6 +60,14 @@ const PROOF = {
   codex: "https://www.amazon.com/dp/B0HHTF3LG1",
   proofInfra: "https://www.amazon.com/dp/B0GMB2VLXQ",
 };
+
+/**
+ * The Clutch ranking, verbatim. Kept apart from The Manifest result: the two are
+ * different directories with different categories and dates, never one claim.
+ */
+const CLUTCH_CLAIM =
+  `Suede AI ranks among <a href="${PROOF.clutch}">Clutch</a>'s <a href="${PROOF.clutchFlorida}">Top 30 AI Consultants in Florida</a>` +
+  ` and <a href="${PROOF.clutchUs}">Top 50 AI Consultants nationwide</a> (November 2026).`;
 
 export const NOTES = [
   {
@@ -161,7 +175,7 @@ export const NOTES = [
       <p>
         On October 31, 2026, <a href="${PROOF.manifest}">The Manifest's Florida AI Deployment directory</a> listed
         Suede AI SEO first among Palm Beach County-based companies and in the top 25 statewide
-        (<a href="${PROOF.recognition}">recognition details</a>). Suede is also a member of
+        (<a href="${PROOF.recognition}">recognition details</a>). ${CLUTCH_CLAIM} Suede is also a member of
         <a href="${PROOF.claude}">Claude for Startups, Anthropic's startup program</a>.
       </p>
       <h2>Next step</h2>
@@ -271,7 +285,7 @@ export const NOTES = [
         <a href="${PROOF.gcp}">Google Cloud Partner Advantage</a> through JC Investment Group LLC, and on October 31,
         2026, <a href="${PROOF.manifest}">The Manifest</a> ranked Suede AI SEO first among Palm Beach County-based
         companies in its Florida AI Deployment directory and in the top 25 statewide
-        (<a href="${PROOF.recognition}">details</a>).
+        (<a href="${PROOF.recognition}">details</a>). ${CLUTCH_CLAIM}
       </p>
       <p>
         We publish about Jupiter and the county too: <a href="https://jupitersocialfl.com/">Jupiter Social</a>, a local
@@ -353,6 +367,7 @@ export const NOTES = [
           County-based companies in its Florida AI Deployment directory, and in the top 25 statewide
           (<a href="${PROOF.recognition}">recognition page</a>).
         </li>
+        <li>${CLUTCH_CLAIM}</li>
         <li>
           Membership in <a href="${PROOF.claude}">Claude for Startups, Anthropic's startup program</a>, and in
           <a href="${PROOF.gcp}">Google Cloud Partner Advantage</a> through JC Investment Group LLC, plus acceptance
@@ -433,6 +448,7 @@ export const builtByHtml = (indent = "      ") =>
     `    <a href="https://suedeai.ai/founder">Jason Colapietro</a> founded in 2024; more of his work is at`,
     `    <a href="https://jasoncolapietro.com/">jasoncolapietro.com</a>, and local stories at <a href="https://jupitersocialfl.com/">Jupiter Social</a>.`,
     `  </p>`,
+    `  <p>${CLUTCH_CLAIM}</p>`,
     `  <p>`,
     `    More from Suede AI: ${SIBLINGS.map((s) => `<a href="${s.href}">${s.name}</a>`).join(" &middot; ")} &middot; <a href="${NOTES_PATH}">Podcast notes</a>`,
     `  </p>`,
