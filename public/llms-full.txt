@@ -220,7 +220,7 @@ Make a list of every claim on your About page and ask, for each one, where a str
 - Published: 2026-11-15
 - Author: Jason Colapietro, Founder and CEO, Suede AI, West Palm Beach, Florida
 
-A Delray Beach podcaster records a strong hour on how restaurants along Atlantic Avenue survive the summer slowdown, uploads it, pastes two lines into the description box and moves on. Three months later the episode has a few hundred plays and no search visibility at all, because the only text on the web about it is those two lines.
+Picture a Delray Beach podcaster who records a strong hour on how restaurants along Atlantic Avenue survive the summer slowdown, uploads it, pastes two lines into the description box and moves on. Months later the episode still has no search visibility at all, because the only text on the web about it is those two lines.
 
 This checklist is the production pass Jason Colapietro and Suede AI run before an episode goes live. It is written for the independent shows in Delray Beach and Boynton Beach, from chamber interviews to fishing reports out of the Boynton Inlet, but it works for any show that wants its recordings found and quoted.
 
@@ -234,13 +234,13 @@ When one layer is missing, the others cannot cover for it. This site shows the g
 
 - Write the one-sentence answer first. Decide which question the episode answers and write the answer in one sentence. It becomes the first line of the show notes and the top of the transcript page.
 - Collect spellings. Guest names, business names and places. Automatic transcription is weak on local names: Boynton can come back as "Boyington", Lake Worth Beach loses a word, and a guest's surname turns into a common noun. A one-page spelling sheet saves an hour of editing.
-- Get consent in writing. Ask every guest whether a full transcript can be published. Most say yes, and the ones who say no are far happier to be asked before than after.
+- Get consent in writing. Ask every guest whether a full transcript can be published. Asking before the recording is a far easier conversation than taking a page down afterwards.
 
 #### Show notes checklist
 
 - Open with the answer sentence, not "In this episode we talk about".
 - Name the guest, their role and their business, and link to them once.
-- Keep the summary that doubles as a meta description between 120 and 160 characters, cut on a word boundary. The build Jason Colapietro wrote for this site enforces that range and fails when a page drifts outside it.
+- Keep the summary that doubles as a meta description between 120 and 160 characters, cut on a word boundary. The generator Jason Colapietro wrote for this site cuts descriptions into that range, and a test fails if any page drifts outside it.
 - Strip markdown asterisks and emoji bullets from anything a search engine will display. The first version of these episode pages shipped raw asterisks into descriptions; the fix was a cleaning step, not a rewrite.
 - Mention places only where the conversation was about them. An episode on events at Old School Square should say Delray Beach. A general marketing episode should not pretend to be local.
 
@@ -254,7 +254,7 @@ When one layer is missing, the others cannot cover for it. This site shows the g
 
 #### Transcript checklist
 
-- Generate with a speech-to-text tool, then edit with the spelling sheet open. Budget roughly the running time again.
+- Generate with a speech-to-text tool, then edit with the spelling sheet open. The editing, not the generation, is where the time goes.
 - Label speakers by name, never "Speaker 1".
 - Break the text under the chapter titles as headings, so the transcript and the chapters share one outline.
 - Put a three-sentence written summary above it. Suede Signal's guide to writing passages AI answer engines can quote explains why the first clear answer on a page carries so much weight.
@@ -268,9 +268,9 @@ When one layer is missing, the others cannot cover for it. This site shows the g
 - Add the page to your sitemap and, if you publish one, to llms.txt.
 - Link the episode to the service or topic page it supports, and link back.
 
-#### What the pass costs a small show
+#### Where a small show should spend its time
 
-Rough numbers from our own passes: a careful job on a 45-minute episode takes most of an afternoon the first few times, with about 45 minutes on transcript edits, 20 on chapters and 20 on notes and publishing. It drops quickly once the spelling sheet and templates exist. Weekly shows usually batch the work, or keep full transcripts for the episodes that answer questions people actually search. That is a fair tradeoff. A transcript of a rambling catch-up episode helps nobody, and at Suede we would rather see ten corrected transcripts than fifty raw ones.
+The transcript edit is the expensive step, and the first few passes are the slowest, before the spelling sheet and templates exist. A weekly show does not have to do all of it every week. Notes and chapters are cheap enough for every episode; full transcripts can be kept for the episodes that answer questions people actually search. That is a fair tradeoff. A transcript of a rambling catch-up episode helps nobody, and at Suede we would rather see ten corrected transcripts than fifty raw ones.
 
 #### Who wrote this checklist
 
@@ -300,13 +300,13 @@ So the rule at Suede is short. Every repurposed asset gets a different job, diff
 
 #### Asset one: the episode page, the canonical home
 
-The episode page holds the complete record: the show notes as written, chapters, the full corrected transcript when there is one, guest credits and structured data. On this site every episode page is generated from the feed and carries its own canonical URL, and a test fails the build if two pages share a title, description or canonical. Everything else points here.
+The episode page holds the complete record: the show notes as written, chapters, the full corrected transcript when there is one, guest credits and structured data. On this site every episode page is generated from the feed and carries its own canonical URL, and a test fails if two pages share a title, description or canonical. Everything else points here.
 
 The feed repeats the show notes, and that is fine. Podcast apps read an RSS item; search engines rank web pages. The feed item and the episode page are one piece of content in two formats, not two pages competing.
 
 #### Asset two: an article that answers one question in new words
 
-Pick the single most useful answer in the episode and write it up as an article. Do not paste the transcript section. Rewrite it for a reader: the claim, the reasoning, a worked example and what to do next, with a link to the timestamp where it was said. When Jason Colapietro does this, a 40-minute conversation about royalty splits becomes one focused article on how a split sheet works. The article ranks for the question; the episode page ranks for the conversation.
+Pick the single most useful answer in the episode and write it up as an article. Do not paste the transcript section. Rewrite it for a reader: the claim, the reasoning, a worked example and what to do next, with a link to the timestamp where it was said. On this site, for example, the episode on how on-chain royalties actually work could become one focused article built around the clearest answer given in it. The article would rank for the question; the episode page ranks for the conversation.
 
 Suede AI's docs site applies the same thinking to reference pages in its note on building docs that AI assistants quote correctly: one source of truth, written so a quoted passage stands on its own.
 
@@ -320,7 +320,7 @@ A 45-second clip should answer one narrow question, with a caption written for t
 
 #### Asset five: a hub entry that adds context
 
-Topic hubs collect episodes on one subject. This site has five, including music royalties and AI and the music industry. A hub entry carries a short summary taken from the episode's own notes and a link, never the notes in full, and the hub adds what no single episode can: the whole list on one subject in one place. An episode joins a hub only when its own notes cover the subject, and a hub with fewer than four episodes fails the build rather than shipping as a thin page.
+Topic hubs collect episodes on one subject. This site has five, including music royalties and AI and the music industry. A hub entry carries a short summary taken from the episode's own notes and a link, never the notes in full, and the hub adds what no single episode can: the whole list on one subject in one place. Because membership is decided by what each episode's notes say, a hub cannot quietly fill up with near-copies of pages that are not about its subject.
 
 #### The one deliberate exception
 

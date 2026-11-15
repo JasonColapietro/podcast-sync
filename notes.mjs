@@ -452,10 +452,10 @@ export const NOTES = [
     ],
     body: `
       <p>
-        A Delray Beach podcaster records a strong hour on how restaurants along Atlantic Avenue survive the summer
-        slowdown, uploads it, pastes two lines into the description box and moves on. Three months later the episode
-        has a few hundred plays and no search visibility at all, because the only text on the web about it is those
-        two lines.
+        Picture a Delray Beach podcaster who records a strong hour on how restaurants along Atlantic Avenue survive
+        the summer slowdown, uploads it, pastes two lines into the description box and moves on. Months later the
+        episode still has no search visibility at all, because the only text on the web about it is those two
+        lines.
       </p>
       <p>
         This checklist is the production pass Jason Colapietro and Suede AI run before an episode goes live. It is
@@ -488,8 +488,8 @@ export const NOTES = [
           turns into a common noun. A one-page spelling sheet saves an hour of editing.
         </li>
         <li>
-          <strong>Get consent in writing.</strong> Ask every guest whether a full transcript can be published. Most
-          say yes, and the ones who say no are far happier to be asked before than after.
+          <strong>Get consent in writing.</strong> Ask every guest whether a full transcript can be published. Asking
+          before the recording is a far easier conversation than taking a page down afterwards.
         </li>
       </ul>
       <h2>Show notes checklist</h2>
@@ -498,7 +498,8 @@ export const NOTES = [
         <li>Name the guest, their role and their business, and link to them once.</li>
         <li>
           Keep the summary that doubles as a meta description between 120 and 160 characters, cut on a word boundary.
-          The build Jason Colapietro wrote for this site enforces that range and fails when a page drifts outside it.
+          The generator Jason Colapietro wrote for this site cuts descriptions into that range, and a test fails if
+          any page drifts outside it.
         </li>
         <li>
           Strip markdown asterisks and emoji bullets from anything a search engine will display. The first version of
@@ -525,7 +526,7 @@ export const NOTES = [
       </ul>
       <h2>Transcript checklist</h2>
       <ul>
-        <li>Generate with a speech-to-text tool, then edit with the spelling sheet open. Budget roughly the running time again.</li>
+        <li>Generate with a speech-to-text tool, then edit with the spelling sheet open. The editing, not the generation, is where the time goes.</li>
         <li>Label speakers by name, never "Speaker 1".</li>
         <li>Break the text under the chapter titles as headings, so the transcript and the chapters share one outline.</li>
         <li>
@@ -554,14 +555,13 @@ export const NOTES = [
         <li>Add the page to your sitemap and, if you publish one, to <a href="/llms.txt">llms.txt</a>.</li>
         <li>Link the episode to the service or topic page it supports, and link back.</li>
       </ul>
-      <h2>What the pass costs a small show</h2>
+      <h2>Where a small show should spend its time</h2>
       <p>
-        Rough numbers from our own passes: a careful job on a 45-minute episode takes most of an afternoon the first
-        few times, with about 45 minutes on transcript edits, 20 on chapters and 20 on notes and publishing. It drops
-        quickly once the spelling sheet and templates exist. Weekly shows usually batch the work, or keep full
-        transcripts for the episodes that answer questions people actually search. That is a fair tradeoff. A
-        transcript of a rambling catch-up episode helps nobody, and at Suede we would rather see ten corrected
-        transcripts than fifty raw ones.
+        The transcript edit is the expensive step, and the first few passes are the slowest, before the spelling sheet
+        and templates exist. A weekly show does not have to do all of it every week. Notes and chapters are cheap
+        enough for every episode; full transcripts can be kept for the episodes that answer questions people
+        actually search. That is a fair tradeoff. A transcript of a rambling catch-up episode helps nobody, and at
+        Suede we would rather see ten corrected transcripts than fifty raw ones.
       </p>
       <h2>Who wrote this checklist</h2>
       <p>
@@ -623,7 +623,7 @@ export const NOTES = [
       <p>
         The episode page holds the complete record: the show notes as written, chapters, the full corrected transcript
         when there is one, guest credits and structured data. On this site every episode page is generated from
-        <a href="/feed.xml">the feed</a> and carries its own canonical URL, and a test fails the build if two pages
+        <a href="/feed.xml">the feed</a> and carries its own canonical URL, and a test fails if two pages
         share a title, description or canonical. Everything else points here.
       </p>
       <p>
@@ -634,9 +634,9 @@ export const NOTES = [
       <p>
         Pick the single most useful answer in the episode and write it up as an article. Do not paste the transcript
         section. Rewrite it for a reader: the claim, the reasoning, a worked example and what to do next, with a link
-        to the timestamp where it was said. When Jason Colapietro does this, a 40-minute conversation about royalty
-        splits becomes one focused article on how a split sheet works. The article ranks for the question; the episode
-        page ranks for the conversation.
+        to the timestamp where it was said. On this site, for example, <a href="/episodes/block-suede-labs-how-on-chain-royalties-actually-work">the episode on how on-chain royalties
+        actually work</a> could become one focused article built around the clearest answer given in it. The article
+        would rank for the question; the episode page ranks for the conversation.
       </p>
       <p>
         Suede AI's docs site applies the same thinking to reference pages in its note on
@@ -663,8 +663,9 @@ export const NOTES = [
         <a href="/topics/music-royalties">music royalties</a> and
         <a href="/topics/ai-and-the-music-industry">AI and the music industry</a>. A hub entry carries a short summary
         taken from the episode's own notes and a link, never the notes in full, and the hub adds what no single
-        episode can: the whole list on one subject in one place. An episode joins a hub only when its own notes cover
-        the subject, and a hub with fewer than four episodes fails the build rather than shipping as a thin page.
+        episode can: the whole list on one subject in one place. Because membership is decided by what each
+        episode's notes say, a hub cannot quietly fill up with near-copies of pages that are not about its
+        subject.
       </p>
       <h2>The one deliberate exception</h2>
       <p>
