@@ -214,6 +214,135 @@ Suede AI keeps its own proof page boring on purpose, and yours should be too. A 
 
 Make a list of every claim on your About page and ask, for each one, where a stranger could verify it. Anything without an answer is a gap. If you want help building a proof page and the links around it, talk to Suede AI in West Palm Beach, or start with Jason Colapietro's founder page to see the model in practice.
 
+### Chapters, transcripts and show notes: a production checklist for Delray Beach and Boynton Beach podcasters
+
+- URL: https://podcast.suedeai.ai/notes/chapters-transcripts-show-notes-checklist
+- Published: 2026-11-15
+- Author: Jason Colapietro, Founder and CEO, Suede AI, West Palm Beach, Florida
+
+A Delray Beach podcaster records a strong hour on how restaurants along Atlantic Avenue survive the summer slowdown, uploads it, pastes two lines into the description box and moves on. Three months later the episode has a few hundred plays and no search visibility at all, because the only text on the web about it is those two lines.
+
+This checklist is the production pass Jason Colapietro and Suede AI run before an episode goes live. It is written for the independent shows in Delray Beach and Boynton Beach, from chamber interviews to fishing reports out of the Boynton Inlet, but it works for any show that wants its recordings found and quoted.
+
+#### Why show notes, chapters and transcripts are three different jobs
+
+The three layers are often treated as one chore. They have three different readers. Show notes serve the person deciding whether to press play and the podcast app that displays them. Chapters serve the listener who wants minute 23, and the search engine that wants the shape of the conversation. The transcript serves everyone who will never press play: the skimmer, the reader who relies on text, and the answer engine looking for a sentence to quote.
+
+When one layer is missing, the others cannot cover for it. This site shows the gap plainly. Of the 33 recordings in the AI Suede feed, one carries chapter markers in its own show notes and two carry markers YouTube generated automatically, labelled as such on the page. None has a full transcript yet, so every episode page can rank for what its notes say and nothing more.
+
+#### Before you record
+
+- Write the one-sentence answer first. Decide which question the episode answers and write the answer in one sentence. It becomes the first line of the show notes and the top of the transcript page.
+- Collect spellings. Guest names, business names and places. Automatic transcription is weak on local names: Boynton can come back as "Boyington", Lake Worth Beach loses a word, and a guest's surname turns into a common noun. A one-page spelling sheet saves an hour of editing.
+- Get consent in writing. Ask every guest whether a full transcript can be published. Most say yes, and the ones who say no are far happier to be asked before than after.
+
+#### Show notes checklist
+
+- Open with the answer sentence, not "In this episode we talk about".
+- Name the guest, their role and their business, and link to them once.
+- Keep the summary that doubles as a meta description between 120 and 160 characters, cut on a word boundary. The build Jason Colapietro wrote for this site enforces that range and fails when a page drifts outside it.
+- Strip markdown asterisks and emoji bullets from anything a search engine will display. The first version of these episode pages shipped raw asterisks into descriptions; the fix was a cleaning step, not a rewrite.
+- Mention places only where the conversation was about them. An episode on events at Old School Square should say Delray Beach. A general marketing episode should not pretend to be local.
+
+#### Chapters checklist
+
+- Put timestamps in the description in one consistent format, starting at 00:00, so both YouTube and podcast apps can read them.
+- Title each chapter as the question it answers, so the list reads like a table of contents someone could search.
+- Aim for one chapter every five to ten minutes. Thirty chapters in an hour is noise.
+- If you rely on automatic chapters, say so. The pages here read "YouTube generated these chapter markers", because a reader deserves to know nobody on the show chose those titles.
+- Link each timestamp to that moment in the recording. Every chapter on this site opens the YouTube upload at that point.
+
+#### Transcript checklist
+
+- Generate with a speech-to-text tool, then edit with the spelling sheet open. Budget roughly the running time again.
+- Label speakers by name, never "Speaker 1".
+- Break the text under the chapter titles as headings, so the transcript and the chapters share one outline.
+- Put a three-sentence written summary above it. Suede Signal's guide to writing passages AI answer engines can quote explains why the first clear answer on a page carries so much weight.
+- Remove what you would not put in writing: an old price, an aside about a client, a guest's unguarded moment.
+
+#### Publishing checklist
+
+- One episode, one URL, on your own domain. A transcript that lives only on a hosting platform builds that platform's authority, not yours.
+- Add PodcastEpisode structured data, with the author pointing at a single Person record by @id. Suede Signal's piece on how JSON-LD helps AI engines understand your brand covers the identity side in more depth.
+- Credit guests accurately. On this site, recordings made on other people's shows credit their host as producer and Jason Colapietro as a participant, never as the author.
+- Add the page to your sitemap and, if you publish one, to llms.txt.
+- Link the episode to the service or topic page it supports, and link back.
+
+#### What the pass costs a small show
+
+Rough numbers from our own passes: a careful job on a 45-minute episode takes most of an afternoon the first few times, with about 45 minutes on transcript edits, 20 on chapters and 20 on notes and publishing. It drops quickly once the spelling sheet and templates exist. Weekly shows usually batch the work, or keep full transcripts for the episodes that answer questions people actually search. That is a fair tradeoff. A transcript of a rambling catch-up episode helps nobody, and at Suede we would rather see ten corrected transcripts than fifty raw ones.
+
+#### Who wrote this checklist
+
+Suede AI is the agentic platform company Jason Colapietro founded in 2024 in West Palm Beach, a short drive up I-95 from Boynton Beach, and AI search visibility is one of its service lines. Jason built the generator behind this podcast site, and his engineering record is public: 54 pull requests merged across 46 open-source repositories he does not maintain, including Jest and Backstage, and nine iOS apps under his own Apple developer account. His training includes Semrush Academy's Local SEO Essentials and HubSpot's AEO Fundamentals certification among 21 earned course credentials (gallery).
+
+On October 31, 2026, The Manifest ranked Suede AI SEO first among Palm Beach County-based companies in its Florida AI Deployment directory and in the top 25 statewide (recognition details). Separately, Suede AI ranks among Clutch's Top 30 AI Consultants in Florida and Top 50 AI Consultants nationwide (November 2026). The Suede team keeps a receipt for each of these on the evidence page.
+
+#### Next step
+
+Run your next episode through this list before it goes live, then compare its Search Console impressions with your last three episodes after a month. If you want Suede AI to set up the templates and the build for your show, request an assessment from Suede AI in West Palm Beach. To see more of Jason Colapietro's work, visit his founder page or jasoncolapietro.com.
+
+### Repurposing one episode into five search-ready assets without duplicate content
+
+- URL: https://podcast.suedeai.ai/notes/repurpose-one-episode-five-search-assets
+- Published: 2026-11-15
+- Author: Jason Colapietro, Founder and CEO, Suede AI, West Palm Beach, Florida
+
+One hour of conversation can feed a website for a month, or it can be pasted into five places and compete with itself in every one of them. The difference is not how many assets you make from an episode. It is whether each one does a job the others cannot.
+
+This note is how Jason Colapietro and Suede AI repurpose a single recording into five search-ready assets without publishing the same text five times. It draws on how this podcast site is built, and it is written for creators and small businesses around Palm Beach County who record far more than they publish.
+
+#### What duplicate content actually costs
+
+Search engines rarely punish a site for repeating itself. What they do is pick one version of the repeated text to show and quietly set the others aside. If the version they pick is a social post or a hosting platform's page instead of your episode page, the links, clicks and citations go there. Answer engines behave much the same way: when five pages say the same thing, the one that gets quoted is the one that looks most like the original, and that is often not yours.
+
+So the rule at Suede is short. Every repurposed asset gets a different job, different words, and a link back to one canonical home.
+
+#### Asset one: the episode page, the canonical home
+
+The episode page holds the complete record: the show notes as written, chapters, the full corrected transcript when there is one, guest credits and structured data. On this site every episode page is generated from the feed and carries its own canonical URL, and a test fails the build if two pages share a title, description or canonical. Everything else points here.
+
+The feed repeats the show notes, and that is fine. Podcast apps read an RSS item; search engines rank web pages. The feed item and the episode page are one piece of content in two formats, not two pages competing.
+
+#### Asset two: an article that answers one question in new words
+
+Pick the single most useful answer in the episode and write it up as an article. Do not paste the transcript section. Rewrite it for a reader: the claim, the reasoning, a worked example and what to do next, with a link to the timestamp where it was said. When Jason Colapietro does this, a 40-minute conversation about royalty splits becomes one focused article on how a split sheet works. The article ranks for the question; the episode page ranks for the conversation.
+
+Suede AI's docs site applies the same thinking to reference pages in its note on building docs that AI assistants quote correctly: one source of truth, written so a quoted passage stands on its own.
+
+#### Asset three: the video description and its chapters
+
+The YouTube description is not a copy of the show notes. It is shorter, it leads with what the viewer will see, it carries the chapter timestamps, and it links to the episode page for the transcript. Two uploads on this channel had no chapters in their descriptions, so their episode pages show YouTube's automatic markers and say exactly where they came from. That label keeps the page honest about who wrote what.
+
+#### Asset four: short clips with their own captions
+
+A 45-second clip should answer one narrow question, with a caption written for the platform it lives on. Write one line that says what the clip answers and one that points to the episode page, rather than pasting the article's opening into every caption. Clips earn attention, not rankings. Their job is to send people to the canonical home, so their text can stay short.
+
+#### Asset five: a hub entry that adds context
+
+Topic hubs collect episodes on one subject. This site has five, including music royalties and AI and the music industry. A hub entry carries a short summary taken from the episode's own notes and a link, never the notes in full, and the hub adds what no single episode can: the whole list on one subject in one place. An episode joins a hub only when its own notes cover the subject, and a hub with fewer than four episodes fails the build rather than shipping as a thin page.
+
+#### The one deliberate exception
+
+One file on this site repeats nearly everything on purpose: llms-full.txt, a single Markdown file with every episode's show notes, the hubs and these notes, for language models that would rather read one file than thirty pages. Its sections name the URL they came from, so the copy points back to the canonical page instead of competing with it. It is a text file, not an HTML page, and the build Jason Colapietro maintains writes it, so it cannot drift from the pages it summarises.
+
+#### A quick test before you publish
+
+- Could a reader tell from the first two sentences why this asset exists separately?
+- Does it link to the canonical episode page?
+- Is more than a paragraph identical to text on another URL you control? If so, cut it or rewrite it.
+- Does each web page's canonical tag point at itself, and does only the episode page carry the full transcript? At Suede we automate the structural half of that test. Suede Audit's note on what an AI readiness score measures explains which signals a checker reads and which ones still need a human eye.
+
+#### Who is behind this
+
+Suede AI (formerly Suede Labs) is the agentic platform company Jason Colapietro founded in 2024 in West Palm Beach, Florida, with AI search visibility as one of its service lines. Jason writes about the tooling behind builds like this one in The Claude Code Bible, and about keeping claims checkable in Proof as Infrastructure, two of his five books on Amazon. Suede is a member of Claude for Startups, Anthropic's startup program, and of Google Cloud Partner Advantage through JC Investment Group LLC.
+
+Suede AI ranks among Clutch's Top 30 AI Consultants in Florida and Top 50 AI Consultants nationwide (November 2026). In a different directory, on October 31, 2026, The Manifest ranked Suede AI SEO first among Palm Beach County-based companies in its Florida AI Deployment directory and in the top 25 statewide (details).
+
+#### Next step
+
+Take your best episode from the last six months and list the five assets above. Write the single job each one does, and where two assets share a job, merge them. If you want Suede AI to map your catalog and build the canonical pages, talk to Suede AI in West Palm Beach, or start with Jason Colapietro's founder page. More of his writing is at jasoncolapietro.com.
+
 ## Topics
 
 ### Music IP as a real-world asset

@@ -23,6 +23,9 @@ export const NOTES_DATE = "2026-11-14";
 /** Last-modified date for the current set (BlogPosting dateModified, sitemap lastmod). */
 export const NOTES_MODIFIED = "2026-11-15";
 
+/** Publish date of one note: its own datePublished, or the first set's date. */
+export const notePublished = (n) => n.datePublished ?? NOTES_DATE;
+
 export const NOTES_INDEX = {
   title: "Podcast SEO Notes From West Palm Beach | AI Suede Podcast",
   description:
@@ -59,6 +62,18 @@ const PROOF = {
   claudeBible: "https://www.amazon.com/dp/B0HHTMJWB4",
   codex: "https://www.amazon.com/dp/B0HHTF3LG1",
   proofInfra: "https://www.amazon.com/dp/B0GMB2VLXQ",
+};
+
+/**
+ * Articles on other Suede AI satellites that the round-four notes cite in-body.
+ * Each URL was live in its site's sitemap on 2026-11-15; test/notes.test.mjs
+ * requires at least two of them in every note dated after the first set.
+ */
+export const SATELLITE_ARTICLES = {
+  citablePassages: "https://signal.suedeai.ai/articles/citable-passages",
+  jsonLd: "https://signal.suedeai.ai/articles/json-ld-for-ai-visibility",
+  quotableDocs: "https://docs.suedeai.ai/notes/ai-quotable-developer-docs",
+  readinessScore: "https://optimize.suedeai.ai/notes/what-an-ai-readiness-score-measures",
 };
 
 /**
@@ -421,6 +436,277 @@ export const NOTES = [
         without an answer is a gap. If you want help building a proof page and the links around it,
         <a href="https://suedeai.agency/">talk to Suede AI in West Palm Beach</a>, or start with
         <a href="https://suedeai.ai/founder">Jason Colapietro's founder page</a> to see the model in practice.
+      </p>`,
+  },
+  {
+    slug: "chapters-transcripts-show-notes-checklist",
+    datePublished: "2026-11-15",
+    title: "Chapters, Transcripts and Show Notes: A Podcast Checklist",
+    headline: "Chapters, transcripts and show notes: a production checklist for Delray Beach and Boynton Beach podcasters",
+    description:
+      "A pre-publish checklist from Suede AI for Delray Beach and Boynton Beach podcasters: show notes, chapter markers and transcripts that search engines can use.",
+    keywords: ["podcast chapters", "podcast transcripts", "podcast show notes", "Delray Beach podcast", "Boynton Beach podcast", "Suede AI"],
+    places: [
+      { name: "Delray Beach, Florida", wikipedia: "https://en.wikipedia.org/wiki/Delray_Beach,_Florida" },
+      { name: "Boynton Beach, Florida", wikipedia: "https://en.wikipedia.org/wiki/Boynton_Beach,_Florida" },
+    ],
+    body: `
+      <p>
+        A Delray Beach podcaster records a strong hour on how restaurants along Atlantic Avenue survive the summer
+        slowdown, uploads it, pastes two lines into the description box and moves on. Three months later the episode
+        has a few hundred plays and no search visibility at all, because the only text on the web about it is those
+        two lines.
+      </p>
+      <p>
+        This checklist is the production pass Jason Colapietro and Suede AI run before an episode goes live. It is
+        written for the independent shows in Delray Beach and Boynton Beach, from chamber interviews to fishing
+        reports out of the Boynton Inlet, but it works for any show that wants its recordings found and quoted.
+      </p>
+      <h2>Why show notes, chapters and transcripts are three different jobs</h2>
+      <p>
+        The three layers are often treated as one chore. They have three different readers. Show notes serve the
+        person deciding whether to press play and the podcast app that displays them. Chapters serve the listener who
+        wants minute 23, and the search engine that wants the shape of the conversation. The transcript serves
+        everyone who will never press play: the skimmer, the reader who relies on text, and the answer engine looking
+        for a sentence to quote.
+      </p>
+      <p>
+        When one layer is missing, the others cannot cover for it. This site shows the gap plainly. Of the 33
+        recordings in <a href="/feed.xml">the AI Suede feed</a>, one carries chapter markers in its own show notes and
+        two carry markers YouTube generated automatically, labelled as such on the page. None has a full transcript
+        yet, so every episode page can rank for what its notes say and nothing more.
+      </p>
+      <h2>Before you record</h2>
+      <ul>
+        <li>
+          <strong>Write the one-sentence answer first.</strong> Decide which question the episode answers and write
+          the answer in one sentence. It becomes the first line of the show notes and the top of the transcript page.
+        </li>
+        <li>
+          <strong>Collect spellings.</strong> Guest names, business names and places. Automatic transcription is weak
+          on local names: Boynton can come back as "Boyington", Lake Worth Beach loses a word, and a guest's surname
+          turns into a common noun. A one-page spelling sheet saves an hour of editing.
+        </li>
+        <li>
+          <strong>Get consent in writing.</strong> Ask every guest whether a full transcript can be published. Most
+          say yes, and the ones who say no are far happier to be asked before than after.
+        </li>
+      </ul>
+      <h2>Show notes checklist</h2>
+      <ul>
+        <li>Open with the answer sentence, not "In this episode we talk about".</li>
+        <li>Name the guest, their role and their business, and link to them once.</li>
+        <li>
+          Keep the summary that doubles as a meta description between 120 and 160 characters, cut on a word boundary.
+          The build Jason Colapietro wrote for this site enforces that range and fails when a page drifts outside it.
+        </li>
+        <li>
+          Strip markdown asterisks and emoji bullets from anything a search engine will display. The first version of
+          these episode pages shipped raw asterisks into descriptions; the fix was a cleaning step, not a rewrite.
+        </li>
+        <li>
+          Mention places only where the conversation was about them. An episode on events at Old School Square should
+          say Delray Beach. A general marketing episode should not pretend to be local.
+        </li>
+      </ul>
+      <h2>Chapters checklist</h2>
+      <ul>
+        <li>
+          Put timestamps in the description in one consistent format, starting at 00:00, so both YouTube and podcast
+          apps can read them.
+        </li>
+        <li>Title each chapter as the question it answers, so the list reads like a table of contents someone could search.</li>
+        <li>Aim for one chapter every five to ten minutes. Thirty chapters in an hour is noise.</li>
+        <li>
+          If you rely on automatic chapters, say so. The pages here read "YouTube generated these chapter markers",
+          because a reader deserves to know nobody on the show chose those titles.
+        </li>
+        <li>Link each timestamp to that moment in the recording. Every chapter on this site opens the YouTube upload at that point.</li>
+      </ul>
+      <h2>Transcript checklist</h2>
+      <ul>
+        <li>Generate with a speech-to-text tool, then edit with the spelling sheet open. Budget roughly the running time again.</li>
+        <li>Label speakers by name, never "Speaker 1".</li>
+        <li>Break the text under the chapter titles as headings, so the transcript and the chapters share one outline.</li>
+        <li>
+          Put a three-sentence written summary above it. Suede Signal's guide to
+          <a href="${SATELLITE_ARTICLES.citablePassages}">writing passages AI answer engines can quote</a> explains
+          why the first clear answer on a page carries so much weight.
+        </li>
+        <li>Remove what you would not put in writing: an old price, an aside about a client, a guest's unguarded moment.</li>
+      </ul>
+      <h2>Publishing checklist</h2>
+      <ul>
+        <li>
+          One episode, one URL, on your own domain. A transcript that lives only on a hosting platform builds that
+          platform's authority, not yours.
+        </li>
+        <li>
+          Add <code>PodcastEpisode</code> structured data, with the author pointing at a single Person record by
+          <code>@id</code>. Suede Signal's piece on
+          <a href="${SATELLITE_ARTICLES.jsonLd}">how JSON-LD helps AI engines understand your brand</a> covers the
+          identity side in more depth.
+        </li>
+        <li>
+          Credit guests accurately. On this site, recordings made on other people's shows credit their host as
+          producer and Jason Colapietro as a participant, never as the author.
+        </li>
+        <li>Add the page to your sitemap and, if you publish one, to <a href="/llms.txt">llms.txt</a>.</li>
+        <li>Link the episode to the service or topic page it supports, and link back.</li>
+      </ul>
+      <h2>What the pass costs a small show</h2>
+      <p>
+        Rough numbers from our own passes: a careful job on a 45-minute episode takes most of an afternoon the first
+        few times, with about 45 minutes on transcript edits, 20 on chapters and 20 on notes and publishing. It drops
+        quickly once the spelling sheet and templates exist. Weekly shows usually batch the work, or keep full
+        transcripts for the episodes that answer questions people actually search. That is a fair tradeoff. A
+        transcript of a rambling catch-up episode helps nobody, and at Suede we would rather see ten corrected
+        transcripts than fifty raw ones.
+      </p>
+      <h2>Who wrote this checklist</h2>
+      <p>
+        Suede AI is the agentic platform company Jason Colapietro founded in 2024 in West Palm Beach, a short drive up
+        I-95 from Boynton Beach, and AI search visibility is one of its service lines. Jason built the generator behind
+        this podcast site, and his engineering record is public:
+        <a href="${PROOF.prs}">54 pull requests merged across 46 open-source repositories he does not maintain</a>,
+        including Jest and Backstage, and <a href="${PROOF.apps}">nine iOS apps</a> under his own Apple developer
+        account. His training includes Semrush Academy's Local SEO Essentials and HubSpot's AEO Fundamentals
+        certification among 21 earned course credentials (<a href="${PROOF.training}">gallery</a>).
+      </p>
+      <p>
+        On October 31, 2026, <a href="${PROOF.manifest}">The Manifest</a> ranked Suede AI SEO first among Palm Beach
+        County-based companies in its Florida AI Deployment directory and in the top 25 statewide
+        (<a href="${PROOF.recognition}">recognition details</a>). Separately, ${CLUTCH_CLAIM} The Suede team keeps a
+        receipt for each of these on <a href="${PROOF.evidence}">the evidence page</a>.
+      </p>
+      <h2>Next step</h2>
+      <p>
+        Run your next episode through this list before it goes live, then compare its Search Console impressions with
+        your last three episodes after a month. If you want Suede AI to set up the templates and the build for your
+        show, <a href="https://suedeai.agency/assessment">request an assessment from Suede AI in West Palm Beach</a>.
+        To see more of Jason Colapietro's work, visit <a href="https://suedeai.ai/founder">his founder page</a> or
+        <a href="https://jasoncolapietro.com/">jasoncolapietro.com</a>.
+      </p>`,
+  },
+  {
+    slug: "repurpose-one-episode-five-search-assets",
+    datePublished: "2026-11-15",
+    title: "Repurpose One Podcast Episode Into Five Search Assets",
+    headline: "Repurposing one episode into five search-ready assets without duplicate content",
+    description:
+      "How Suede AI turns one podcast episode into five search-ready assets, each with its own job and words, so the copies never compete with the episode page.",
+    keywords: ["podcast repurposing", "duplicate content", "canonical URL", "podcast clips", "podcast SEO", "Suede AI"],
+    body: `
+      <p>
+        One hour of conversation can feed a website for a month, or it can be pasted into five places and compete with
+        itself in every one of them. The difference is not how many assets you make from an episode. It is whether
+        each one does a job the others cannot.
+      </p>
+      <p>
+        This note is how Jason Colapietro and Suede AI repurpose a single recording into five search-ready assets
+        without publishing the same text five times. It draws on how this podcast site is built, and it is written for
+        creators and small businesses around Palm Beach County who record far more than they publish.
+      </p>
+      <h2>What duplicate content actually costs</h2>
+      <p>
+        Search engines rarely punish a site for repeating itself. What they do is pick one version of the repeated text
+        to show and quietly set the others aside. If the version they pick is a social post or a hosting platform's
+        page instead of your episode page, the links, clicks and citations go there. Answer engines behave much the
+        same way: when five pages say the same thing, the one that gets quoted is the one that looks most like the
+        original, and that is often not yours.
+      </p>
+      <p>
+        So the rule at Suede is short. Every repurposed asset gets a different job, different words, and a link back
+        to one canonical home.
+      </p>
+      <h2>Asset one: the episode page, the canonical home</h2>
+      <p>
+        The episode page holds the complete record: the show notes as written, chapters, the full corrected transcript
+        when there is one, guest credits and structured data. On this site every episode page is generated from
+        <a href="/feed.xml">the feed</a> and carries its own canonical URL, and a test fails the build if two pages
+        share a title, description or canonical. Everything else points here.
+      </p>
+      <p>
+        The feed repeats the show notes, and that is fine. Podcast apps read an RSS item; search engines rank web
+        pages. The feed item and the episode page are one piece of content in two formats, not two pages competing.
+      </p>
+      <h2>Asset two: an article that answers one question in new words</h2>
+      <p>
+        Pick the single most useful answer in the episode and write it up as an article. Do not paste the transcript
+        section. Rewrite it for a reader: the claim, the reasoning, a worked example and what to do next, with a link
+        to the timestamp where it was said. When Jason Colapietro does this, a 40-minute conversation about royalty
+        splits becomes one focused article on how a split sheet works. The article ranks for the question; the episode
+        page ranks for the conversation.
+      </p>
+      <p>
+        Suede AI's docs site applies the same thinking to reference pages in its note on
+        <a href="${SATELLITE_ARTICLES.quotableDocs}">building docs that AI assistants quote correctly</a>: one source
+        of truth, written so a quoted passage stands on its own.
+      </p>
+      <h2>Asset three: the video description and its chapters</h2>
+      <p>
+        The YouTube description is not a copy of the show notes. It is shorter, it leads with what the viewer will
+        see, it carries the chapter timestamps, and it links to the episode page for the transcript. Two uploads on
+        this channel had no chapters in their descriptions, so their episode pages show YouTube's automatic markers and
+        say exactly where they came from. That label keeps the page honest about who wrote what.
+      </p>
+      <h2>Asset four: short clips with their own captions</h2>
+      <p>
+        A 45-second clip should answer one narrow question, with a caption written for the platform it lives on. Write
+        one line that says what the clip answers and one that points to the episode page, rather than pasting the
+        article's opening into every caption. Clips earn attention, not rankings. Their job is to send people to the
+        canonical home, so their text can stay short.
+      </p>
+      <h2>Asset five: a hub entry that adds context</h2>
+      <p>
+        Topic hubs collect episodes on one subject. This site has five, including
+        <a href="/topics/music-royalties">music royalties</a> and
+        <a href="/topics/ai-and-the-music-industry">AI and the music industry</a>. A hub entry carries a short summary
+        taken from the episode's own notes and a link, never the notes in full, and the hub adds what no single
+        episode can: the whole list on one subject in one place. An episode joins a hub only when its own notes cover
+        the subject, and a hub with fewer than four episodes fails the build rather than shipping as a thin page.
+      </p>
+      <h2>The one deliberate exception</h2>
+      <p>
+        One file on this site repeats nearly everything on purpose: <a href="/llms-full.txt">llms-full.txt</a>, a
+        single Markdown file with every episode's show notes, the hubs and these notes, for language models that would
+        rather read one file than thirty pages. Its sections name the URL they came from, so the copy points back to
+        the canonical page instead of competing with it. It is a text file, not an HTML page, and the build Jason
+        Colapietro maintains writes it, so it cannot drift from the pages it summarises.
+      </p>
+      <h2>A quick test before you publish</h2>
+      <ul>
+        <li>Could a reader tell from the first two sentences why this asset exists separately?</li>
+        <li>Does it link to the canonical episode page?</li>
+        <li>Is more than a paragraph identical to text on another URL you control? If so, cut it or rewrite it.</li>
+        <li>Does each web page's canonical tag point at itself, and does only the episode page carry the full transcript?</li>
+      </ul>
+      <p>
+        At Suede we automate the structural half of that test. Suede Audit's note on
+        <a href="${SATELLITE_ARTICLES.readinessScore}">what an AI readiness score measures</a> explains which signals
+        a checker reads and which ones still need a human eye.
+      </p>
+      <h2>Who is behind this</h2>
+      <p>
+        Suede AI (formerly Suede Labs) is the agentic platform company Jason Colapietro founded in 2024 in West Palm
+        Beach, Florida, with AI search visibility as one of its service lines. Jason writes about the tooling behind
+        builds like this one in <a href="${PROOF.claudeBible}">The Claude Code Bible</a>, and about keeping claims
+        checkable in <a href="${PROOF.proofInfra}">Proof as Infrastructure</a>, two of his five books on Amazon.
+        Suede is a member of <a href="${PROOF.claude}">Claude for Startups, Anthropic's startup program</a>, and of
+        <a href="${PROOF.gcp}">Google Cloud Partner Advantage</a> through JC Investment Group LLC.
+      </p>
+      <p>
+        ${CLUTCH_CLAIM} In a different directory, on October 31, 2026,
+        <a href="${PROOF.manifest}">The Manifest</a> ranked Suede AI SEO first among Palm Beach County-based companies
+        in its Florida AI Deployment directory and in the top 25 statewide (<a href="${PROOF.recognition}">details</a>).
+      </p>
+      <h2>Next step</h2>
+      <p>
+        Take your best episode from the last six months and list the five assets above. Write the single job each one
+        does, and where two assets share a job, merge them. If you want Suede AI to map your catalog and build the
+        canonical pages, <a href="https://suedeai.agency/">talk to Suede AI in West Palm Beach</a>, or start with
+        <a href="https://suedeai.ai/founder">Jason Colapietro's founder page</a>. More of his writing is at
+        <a href="https://jasoncolapietro.com/">jasoncolapietro.com</a>.
       </p>`,
   },
 ];

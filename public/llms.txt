@@ -14,6 +14,8 @@
 - [Turning podcast episodes into search-ready pages](https://podcast.suedeai.ai/notes/podcast-episodes-into-search-ready-pages): How this site turns one RSS feed into crawlable episode pages, topic hubs and schema.
 - [Why Palm Beach County businesses should publish audio with transcripts](https://podcast.suedeai.ai/notes/palm-beach-county-audio-with-transcripts): A transcript workflow for West Palm Beach and Jupiter businesses.
 - [Jason Colapietro on press, proof and being cited](https://podcast.suedeai.ai/notes/press-proof-and-being-cited): What Business Insider, TechBullion and Programming Insider published, and why every claim carries a proof link.
+- [Chapters, transcripts and show notes: a production checklist](https://podcast.suedeai.ai/notes/chapters-transcripts-show-notes-checklist): A pre-publish checklist for Delray Beach and Boynton Beach podcasters covering show notes, chapter markers and transcripts.
+- [Repurposing one episode into five search-ready assets](https://podcast.suedeai.ai/notes/repurpose-one-episode-five-search-assets): How one recording becomes five assets with separate jobs and one canonical episode page, without duplicate content.
 
 ## Topics
 - [Music IP as a real-world asset](https://podcast.suedeai.ai/topics/music-ip-real-world-assets): Episodes on tokenized music rights that the people who made the work own and earn from.

@@ -8,7 +8,7 @@
   </url>
   <url>
     <loc>https://podcast.suedeai.ai/</loc>
-    <lastmod>2026-11-14</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -50,6 +50,18 @@
   </url>
   <url>
     <loc>https://podcast.suedeai.ai/notes/press-proof-and-being-cited</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://podcast.suedeai.ai/notes/chapters-transcripts-show-notes-checklist</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://podcast.suedeai.ai/notes/repurpose-one-episode-five-search-assets</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

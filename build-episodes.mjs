@@ -37,7 +37,7 @@ import {
   keywordContent,
   topicPath,
 } from "./keywords.mjs";
-import { BUILT_BY_STYLE, NOTES, NOTES_DATE, NOTES_INDEX, NOTES_MODIFIED, NOTES_PATH, NOTE_PLACES, builtByHtml, notePath } from "./notes.mjs";
+import { BUILT_BY_STYLE, NOTES, NOTES_INDEX, NOTES_MODIFIED, NOTES_PATH, NOTE_PLACES, builtByHtml, notePath, notePublished } from "./notes.mjs";
 import { productByKey } from "./suede-sites.mjs";
 import { hubEpisodes, productsFor, proseLine, relatedEpisodes, topicQuotes, topicsFor } from "./topics.mjs";
 
@@ -1270,10 +1270,11 @@ const NOTES_URL = `${SITE}${NOTES_PATH}`;
 const noteUrl = (n) => `${SITE}${notePath(n.slug)}`;
 const BLOG_ID = `${NOTES_URL}#blog`;
 
-const notePlaces = () =>
-  NOTE_PLACES.map((p) => ({ "@type": "Place", name: p.name, sameAs: p.wikipedia }));
+/** The estate's places, plus any a note is written for (its own `places`). */
+const notePlaces = (n) =>
+  [...NOTE_PLACES, ...(n?.places ?? [])].map((p) => ({ "@type": "Place", name: p.name, sameAs: p.wikipedia }));
 
-const noteHead = ({ title, description, url, keywords, ogType, jsonLd }) => `    <meta charset="utf-8" />
+const noteHead = ({ title, description, url, keywords, ogType, jsonLd, published }) => `    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>${esc(title)}</title>
     <meta name="description" content="${esc(description)}" />
@@ -1295,7 +1296,7 @@ const noteHead = ({ title, description, url, keywords, ogType, jsonLd }) => `   
     <meta property="og:title" content="${esc(title)}" />
     <meta property="og:description" content="${esc(description)}" />
     <meta property="og:url" content="${url}" />
-${ogType === "article" ? `    <meta property="article:published_time" content="${NOTES_DATE}" />
+${ogType === "article" ? `    <meta property="article:published_time" content="${published}" />
     <meta property="article:modified_time" content="${NOTES_MODIFIED}" />
     <meta property="article:author" content="https://suedeai.ai/founder" />
 ` : ""}${socialImageTags()}
@@ -1352,7 +1353,7 @@ const noteJsonLd = (n) => {
           headline: n.headline,
           description: n.description,
           url,
-          datePublished: NOTES_DATE,
+          datePublished: notePublished(n),
           dateModified: NOTES_MODIFIED,
           inLanguage: "en-US",
           keywords: n.keywords.join(", "),
@@ -1362,7 +1363,7 @@ const noteJsonLd = (n) => {
           isPartOf: { "@id": BLOG_ID },
           mainEntityOfPage: { "@id": `${url}#webpage` },
           about: { "@id": `${SITE}/#podcast` },
-          spatialCoverage: notePlaces(),
+          spatialCoverage: notePlaces(n),
         },
         ...pageNodes({
           url,
@@ -1372,7 +1373,7 @@ const noteJsonLd = (n) => {
             { name: "Notes", item: NOTES_URL },
             { name: n.headline, item: url },
           ],
-          extra: { mainEntity: { "@id": `${url}#article` }, datePublished: NOTES_DATE },
+          extra: { mainEntity: { "@id": `${url}#article` }, datePublished: notePublished(n) },
         }),
       ],
     },
@@ -1384,7 +1385,7 @@ const noteJsonLd = (n) => {
 const notePage = (n) => `<!doctype html>
 <html lang="en">
   <head>
-${noteHead({ title: n.title, description: n.description, url: noteUrl(n), keywords: n.keywords, ogType: "article", jsonLd: noteJsonLd(n) })}
+${noteHead({ title: n.title, description: n.description, url: noteUrl(n), keywords: n.keywords, ogType: "article", jsonLd: noteJsonLd(n), published: notePublished(n) })}
     <style>
 ${STYLE}
 ${NOTE_STYLE}
@@ -1396,7 +1397,7 @@ ${NOTE_STYLE}
       <p class="eyebrow">Notes</p>
       <article class="article">
         <h1>${esc(n.headline)}</h1>
-        <p class="meta">By <a href="https://suedeai.ai/founder">Jason Colapietro</a>, Suede AI &middot; West Palm Beach, Florida &middot; <time datetime="${NOTES_DATE}">${NOTES_DATE}</time></p>
+        <p class="meta">By <a href="https://suedeai.ai/founder">Jason Colapietro</a>, Suede AI &middot; West Palm Beach, Florida &middot; <time datetime="${notePublished(n)}">${notePublished(n)}</time></p>
 ${n.body.replace(/^\n/, "").replace(/^ {6}/gm, "        ")}
       </article>
 ${authorBox}
@@ -1464,7 +1465,7 @@ ${NOTE_STYLE}
       <ul class="note-list">
 ${NOTES.map(
   (n) =>
-    `        <li>\n          <a href="${notePath(n.slug)}">${esc(n.headline)}</a>\n          <span class="summary">${esc(n.description)}</span>\n          <span class="ep-meta">Jason Colapietro &middot; <time datetime="${NOTES_DATE}">${NOTES_DATE}</time></span>\n        </li>`,
+    `        <li>\n          <a href="${notePath(n.slug)}">${esc(n.headline)}</a>\n          <span class="summary">${esc(n.description)}</span>\n          <span class="ep-meta">Jason Colapietro &middot; <time datetime="${notePublished(n)}">${notePublished(n)}</time></span>\n        </li>`,
 ).join("\n")}
       </ul>
 ${authorBox}
@@ -1576,7 +1577,7 @@ export const llmsFull = (episodes, hubs, groups) => {
       `### ${n.headline}`,
       "",
       `- URL: ${noteUrl(n)}`,
-      `- Published: ${NOTES_DATE}`,
+      `- Published: ${notePublished(n)}`,
       "- Author: Jason Colapietro, Founder and CEO, Suede AI, West Palm Beach, Florida",
       "",
       noteText(n),
