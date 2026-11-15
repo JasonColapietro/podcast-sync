@@ -869,6 +869,7 @@ ${
       </nav>
 ${builtByHtml()}
     </main>
+    <script src="https://suedeai.ai/agent-view.js" defer></script>
   </body>
 </html>
 `;
@@ -1079,6 +1080,7 @@ ${others
       </nav>
 ${builtByHtml()}
     </main>
+    <script src="https://suedeai.ai/agent-view.js" defer></script>
   </body>
 </html>
 `;
@@ -1250,6 +1252,7 @@ ${g.episodes
       </p>
 ${builtByHtml()}
     </main>
+    <script src="https://suedeai.ai/agent-view.js" defer></script>
   </body>
 </html>
 `;
@@ -1406,6 +1409,7 @@ ${authorBox}
 ${noteFooterNav}
 ${builtByHtml()}
     </main>
+    <script src="https://suedeai.ai/agent-view.js" defer></script>
   </body>
 </html>
 `;
@@ -1467,6 +1471,7 @@ ${authorBox}
 ${noteFooterNav}
 ${builtByHtml()}
     </main>
+    <script src="https://suedeai.ai/agent-view.js" defer></script>
   </body>
 </html>
 `;
