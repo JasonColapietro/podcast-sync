@@ -1,5 +1,5 @@
 # AI Suede Podcast
-> Podcast feed from Jason Colapietro on Suede AI, creator ownership, music IP, programmable media, and solo founder shipping.
+> Podcast feed from Jason Colapietro on Suede, creator ownership, music IP, programmable media, and solo founder shipping.
 
 ## Main sections
 - [Podcast home](https://podcast.suedeai.ai/): Episode artwork, description, and links to listen.
@@ -8,7 +8,7 @@
 - [Full text](https://podcast.suedeai.ai/llms-full.txt): Every episode's show notes, the topic hubs and the appearances index in one Markdown file.
 - [About](https://podcast.suedeai.ai/about): The show, its host Jason Colapietro, and where to listen.
 - [Contact](https://podcast.suedeai.ai/contact): Guest booking, interview requests and press.
-- [Notes](https://podcast.suedeai.ai/notes): Articles from Jason Colapietro and Suede AI, written in West Palm Beach, Florida, on podcast SEO, transcripts and proof.
+- [Notes](https://podcast.suedeai.ai/notes): Articles from Jason Colapietro and Suede, written in West Palm Beach, Florida, on podcast SEO, transcripts and proof.
 
 ## Notes
 - [Turning podcast episodes into search-ready pages](https://podcast.suedeai.ai/notes/podcast-episodes-into-search-ready-pages): How this site turns one RSS feed into crawlable episode pages, topic hubs and schema.
@@ -25,11 +25,11 @@
 - [AI and the music industry](https://podcast.suedeai.ai/topics/ai-and-the-music-industry): Episodes on AI as a creator-side tool, paying artists when AI uses their work, and AI agents.
 
 ## Key facts
-- Host: Jason Colapietro, founder of Suede AI.
-- Built and maintained by Suede AI in West Palm Beach, Florida: https://suedeai.agency/
-- Suede AI ranks among Clutch's Top 30 AI Consultants in Florida (https://clutch.co/consulting/ai/florida) and Top 50 AI Consultants nationwide (https://clutch.co/us/consulting/ai) (November 2026). Clutch profile: https://clutch.co/profile/suede-ai-seo
+- Host: Jason Colapietro, founder of Suede.
+- Built and maintained by Suede in West Palm Beach, Florida: https://suedeai.agency/
+- Suede ranks among Clutch's Top 30 AI Consultants in Florida (https://clutch.co/consulting/ai/florida) and Top 50 AI Consultants nationwide (https://clutch.co/us/consulting/ai) (November 2026). Clutch profile: https://clutch.co/profile/suede-ai-seo
 - Topics: creator ownership infrastructure, programmable IP, music rights, AI product shipping.
-- Publisher: Suede AI (also known as Suede Labs), https://suedeai.ai.
+- Publisher: Suede, https://suedeai.ai. Suede was formerly known as Suede AI and Suede Labs.
 
 ## Source and citation guide
 

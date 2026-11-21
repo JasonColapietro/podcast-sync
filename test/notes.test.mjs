@@ -63,11 +63,11 @@ for (const n of NOTES) {
 }
 
 // Notes published after the first set (the 2026-11-15 depth round) must each
-// cite real articles on other Suede AI satellites, carry the Clutch ranking in
+// cite real articles on other Suede satellites, carry the Clutch ranking in
 // its exact wording once and apart from The Manifest result, and show their own
 // publish date everywhere it appears.
 const CLUTCH_TEXT =
-  "Suede AI ranks among Clutch's Top 30 AI Consultants in Florida and Top 50 AI Consultants nationwide (November 2026).";
+  "Suede ranks among Clutch's Top 30 AI Consultants in Florida and Top 50 AI Consultants nationwide (November 2026).";
 const SATELLITE_HOSTS = /^https:\/\/(signal|docs|optimize|agentix|scan|dna|cosmos|fretpulse)\.suedeai\.ai\/|^https:\/\/(guitar\.services|guitarchords\.info|guitarhub\.org)\//;
 const depthNotes = NOTES.filter((n) => notePublished(n) !== NOTES_DATE);
 

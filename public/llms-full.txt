@@ -3,8 +3,8 @@
 > The complete public text of podcast.suedeai.ai: the show, its host, every episode's show notes, the topic hubs and the guest appearances index. Generated from the podcast feed at build time, so it matches the published pages.
 
 - Show: AI Suede: Build, Create, Ship
-- Host: Jason Colapietro (also known as Johnny Suede), founder of Suede AI: https://suedeai.ai/founder
-- Publisher: Suede AI (also known as Suede Labs): https://suedeai.ai
+- Host: Jason Colapietro (also known as Johnny Suede), founder of Suede: https://suedeai.ai/founder
+- Publisher: Suede: https://suedeai.ai. Suede was formerly known as Suede AI and Suede Labs.
 - Site: https://podcast.suedeai.ai/
 - RSS feed: https://podcast.suedeai.ai/feed.xml
 - Apple Podcasts: https://podcasts.apple.com/us/podcast/ai-suede-build-create-ship/id6787263913
@@ -20,11 +20,11 @@ About
 
 About the AI Suede podcast
 
-AI Suede is the podcast feed for Jason Colapietro, also known as Johnny Suede, founder of Suede AI. It carries conversations, AMAs, and clips on creator ownership, music IP as a real-world asset, programmable media, on-chain royalties, and what it actually takes to ship as a solo founder.
+AI Suede is the podcast feed for Jason Colapietro, also known as Johnny Suede, founder of Suede. It carries conversations, AMAs, and clips on creator ownership, music IP as a real-world asset, programmable media, on-chain royalties, and what it actually takes to ship as a solo founder.
 
 Episodes are pulled from the @aisuede YouTube channel and synced to a standard podcast RSS feed so the same conversations are listenable in any podcast app.
 
-For more on the host, see Jason Colapietro's founder bio. For more on the parent company, see About Suede AI.
+For more on the host, see Jason Colapietro's founder bio. For more on the parent company, see About Suede.
 
 Page last updated 2026-07-15.
 
@@ -38,7 +38,7 @@ Get in touch.
 
 For booking, guest pitches, feedback, or press, reach the host at jason@suedeai.ai.
 
-For questions about Suede AI itself, see About Suede AI or the founder bio for Jason Colapietro.
+For questions about Suede itself, see About Suede or the founder bio for Jason Colapietro.
 
 Booking a guest spot or an interview
 
@@ -60,19 +60,19 @@ Source: https://podcast.suedeai.ai/notes
 
 Working notes from the team that builds this site. How the episode pages are made, what a Palm Beach County business can borrow from them, and how the host's press and proof are kept checkable.
 
-### Turning podcast episodes into search-ready pages: Suede AI's episode page pattern
+### Turning podcast episodes into search-ready pages: Suede's episode page pattern
 
 - URL: https://podcast.suedeai.ai/notes/podcast-episodes-into-search-ready-pages
 - Published: 2026-11-14
-- Author: Jason Colapietro, Founder and CEO, Suede AI, West Palm Beach, Florida
+- Author: Jason Colapietro, Founder and CEO, Suede, West Palm Beach, Florida
 
-For most of its life this podcast had 33 episodes and three web pages. Every recording sat inside an RSS feed that podcast apps could read and search engines mostly ignored, so a conversation about on-chain royalties could never rank for "on-chain royalties". This note walks through the pattern Suede AI and Jason Colapietro used to fix that, written so a team in West Palm Beach, Jupiter or anywhere else can copy it.
+For most of its life this podcast had 33 episodes and three web pages. Every recording sat inside an RSS feed that podcast apps could read and search engines mostly ignored, so a conversation about on-chain royalties could never rank for "on-chain royalties". This note walks through the pattern Suede and Jason Colapietro used to fix that, written so a team in West Palm Beach, Jupiter or anywhere else can copy it.
 
 #### The problem: a feed is not a website
 
 An RSS feed is a list of enclosures with show notes attached. It is the right format for Apple Podcasts and the wrong one for Google, Bing, ChatGPT search or Perplexity. Those systems cite pages: a URL with a title, a description, headings and text they can quote. When Jason Colapietro started auditing the Suede estate, the podcast had home, about and contact pages and listed no episodes at all. The whole body of work was reachable only by a podcast client parsing XML.
 
-The fix Suede AI settled on is simple to say. Every episode gets its own page, generated from the feed, so the two can never disagree. The details are where most podcast sites go wrong.
+The fix Suede settled on is simple to say. Every episode gets its own page, generated from the feed, so the two can never disagree. The details are where most podcast sites go wrong.
 
 #### Step one: generate pages from the feed, never by hand
 
@@ -106,23 +106,23 @@ The honest tradeoff is maintenance. The build is a few hundred lines of JavaScri
 
 #### Who built this, and why that matters
 
-The pattern comes from Suede AI, the agentic platform company Jason Colapietro founded in 2024 in West Palm Beach, Florida. Jason is the engineer behind 54 merged pull requests across 46 open-source repositories he does not maintain, including Jest, Adobe React Spectrum, Backstage and the Polkadot SDK, and nine iOS apps shipped under his own Apple developer account. He also wrote The Claude Code Bible, one of five books he has on Amazon, which covers much of the agent tooling Jason Colapietro uses to maintain builds like this one.
+The pattern comes from Suede, the agentic platform company Jason Colapietro founded in 2024 in West Palm Beach, Florida. Jason is the engineer behind 54 merged pull requests across 46 open-source repositories he does not maintain, including Jest, Adobe React Spectrum, Backstage and the Polkadot SDK, and nine iOS apps shipped under his own Apple developer account. He also wrote The Claude Code Bible, one of five books he has on Amazon, which covers much of the agent tooling Jason Colapietro uses to maintain builds like this one.
 
-On October 31, 2026, The Manifest's Florida AI Deployment directory listed Suede AI SEO first among Palm Beach County-based companies and in the top 25 statewide (recognition details). Suede AI ranks among Clutch's Top 30 AI Consultants in Florida and Top 50 AI Consultants nationwide (November 2026). Suede is also a member of Claude for Startups, Anthropic's startup program.
+On October 31, 2026, The Manifest's Florida AI Deployment directory listed Suede AI SEO first among Palm Beach County-based companies and in the top 25 statewide (recognition details). Suede ranks among Clutch's Top 30 AI Consultants in Florida and Top 50 AI Consultants nationwide (November 2026). Suede is also a member of Claude for Startups, Anthropic's startup program.
 
 #### Next step
 
-If your podcast, webinar library or video channel lives only inside a feed, start with a page count: how many recordings do you have, and how many URLs does Google know about? If the second number is much smaller, book a Suede AI search visibility assessment and we will map the gap. To see the rest of Jason Colapietro's work first, read his founder page.
+If your podcast, webinar library or video channel lives only inside a feed, start with a page count: how many recordings do you have, and how many URLs does Google know about? If the second number is much smaller, book a Suede search visibility assessment and we will map the gap. To see the rest of Jason Colapietro's work first, read his founder page.
 
 ### Local voices: why Palm Beach County businesses should publish audio with transcripts
 
 - URL: https://podcast.suedeai.ai/notes/palm-beach-county-audio-with-transcripts
 - Published: 2026-11-14
-- Author: Jason Colapietro, Founder and CEO, Suede AI, West Palm Beach, Florida
+- Author: Jason Colapietro, Founder and CEO, Suede, West Palm Beach, Florida
 
 A Jupiter marina owner explains on a local podcast exactly how to winterize an outboard. A Palm Beach Gardens accountant spends 40 minutes on a webinar answering hurricane-season insurance questions. Neither answer will ever show up in Google or ChatGPT, because nobody can search what was only said out loud.
 
-That is the gap this note is about. Jason Colapietro and the Suede AI team build websites and search visibility programs from West Palm Beach, and the most underused asset we find in local businesses is recorded audio that never became text.
+That is the gap this note is about. Jason Colapietro and the Suede team build websites and search visibility programs from West Palm Beach, and the most underused asset we find in local businesses is recorded audio that never became text.
 
 #### Why audio alone is invisible
 
@@ -155,30 +155,30 @@ Jason Colapietro is blunt about the downsides. Transcripts are long, and long pa
 
 #### Why a West Palm Beach team cares about this
 
-Suede AI is the agentic platform company Jason Colapietro founded in 2024 in West Palm Beach, and AI search visibility is one of its service lines. Jason holds 21 earned course credentials across eight providers, including Semrush Academy's Local SEO Essentials and HubSpot's AEO Fundamentals certification, plus 17 Microsoft Learn training achievements, all shown in the training credentials gallery. Suede is a member of Google Cloud Partner Advantage through JC Investment Group LLC, and on October 31, 2026, The Manifest ranked Suede AI SEO first among Palm Beach County-based companies in its Florida AI Deployment directory and in the top 25 statewide (details). Suede AI ranks among Clutch's Top 30 AI Consultants in Florida and Top 50 AI Consultants nationwide (November 2026).
+Suede is the agentic platform company Jason Colapietro founded in 2024 in West Palm Beach, and AI search visibility is one of its service lines. Jason holds 21 earned course credentials across eight providers, including Semrush Academy's Local SEO Essentials and HubSpot's AEO Fundamentals certification, plus 17 Microsoft Learn training achievements, all shown in the training credentials gallery. Suede is a member of Google Cloud Partner Advantage through JC Investment Group LLC, and on October 31, 2026, The Manifest ranked Suede AI SEO first among Palm Beach County-based companies in its Florida AI Deployment directory and in the top 25 statewide (details). Suede ranks among Clutch's Top 30 AI Consultants in Florida and Top 50 AI Consultants nationwide (November 2026).
 
-We publish about Jupiter and the county too: Jupiter Social, a local magazine published with Suede AI, is where the Suede team puts local stories into practice. The Suede Labs name still turns up in older interviews on this feed, from before the company became Suede AI.
+We publish about Jupiter and the county too: Jupiter Social, a local magazine published with Suede, is where the Suede team puts local stories into practice. The Suede Labs name still turns up in older interviews on this feed, from before the company became Suede.
 
 #### Next step
 
-Pick your three best recordings, the ones where you answered a question customers ask every week. Transcribe and correct those first, give each its own page, and watch which queries they start to earn in Search Console. If you want a plan built around your own catalog, request a Suede AI assessment, or read about Jason Colapietro and how he approaches this work.
+Pick your three best recordings, the ones where you answered a question customers ask every week. Transcribe and correct those first, give each its own page, and watch which queries they start to earn in Search Console. If you want a plan built around your own catalog, request a Suede assessment, or read about Jason Colapietro and how he approaches this work.
 
 ### Jason Colapietro on press, proof and being cited
 
 - URL: https://podcast.suedeai.ai/notes/press-proof-and-being-cited
 - Published: 2026-11-14
-- Author: Jason Colapietro, Founder and CEO, Suede AI, West Palm Beach, Florida
+- Author: Jason Colapietro, Founder and CEO, Suede, West Palm Beach, Florida
 
-Press coverage is easy to overstate and hard to check. Answer engines have started to notice the difference, and they reward the people who make checking easy. This note is about how Jason Colapietro and Suede AI handle press, credentials and recognition, and why every claim on the Suede estate now sits next to a link that proves it.
+Press coverage is easy to overstate and hard to check. Answer engines have started to notice the difference, and they reward the people who make checking easy. This note is about how Jason Colapietro and Suede handle press, credentials and recognition, and why every claim on the Suede estate now sits next to a link that proves it.
 
 #### What actually ran
 
 Here is the coverage that was published, by outlet, without inflation:
 
-- Business Insider ran "Award-Winning Developer Jason Colapietro Opens Suede Labs AI's Long-Awaited SEO Cohort" on September 16, 2026, on its markets site. It is collected in the Suede AI press kit.
+- Business Insider ran "Award-Winning Developer Jason Colapietro Opens Suede Labs AI's Long-Awaited SEO Cohort" on September 16, 2026, on its markets site. It is collected in the Suede press kit.
 - TechBullion covered the company several times, including the launch of its iOS apps and its advance in the Avalanche Build Games.
 - Programming Insider published "In the Age of Infinite Content, Spam Is Instant Death", on why low-effort content now hurts more than it helps.
-- Indie Hackers and Altcoin Investor have also covered Suede. Several of these pieces use Suede AI's earlier name. The articles stay as published, and the Suede AI press kit links each one to its original page rather than to a reworded summary.
+- Indie Hackers and Altcoin Investor have also covered Suede. Several of these pieces use Suede's earlier name. The articles stay as published, and the Suede press kit links each one to its original page rather than to a reworded summary.
 
 #### Why proof beats adjectives
 
@@ -190,7 +190,7 @@ So the Suede estate keeps a single evidence page with a receipt for each claim, 
 - Five books on Amazon, including Codex in Production and Proof as Infrastructure, which is about this exact idea.
 - Nine iOS apps shipped under his own Apple developer account.
 - On October 31, 2026, The Manifest ranked Suede AI SEO first among Palm Beach County-based companies in its Florida AI Deployment directory, and in the top 25 statewide (recognition page).
-- Suede AI ranks among Clutch's Top 30 AI Consultants in Florida and Top 50 AI Consultants nationwide (November 2026).
+- Suede ranks among Clutch's Top 30 AI Consultants in Florida and Top 50 AI Consultants nationwide (November 2026).
 - Membership in Claude for Startups, Anthropic's startup program, and in Google Cloud Partner Advantage through JC Investment Group LLC, plus acceptance into the Stripe Startups program.
 - 21 earned course credentials across eight providers and 17 Microsoft Learn training achievements, including the "Develop AI agents on Azure" learning-path trophy (gallery). Note the precision. The Manifest result names its date, category and geography because a ranking without those is not a ranking anyone can check. The program memberships are named exactly, not shortened to a vaguer and bigger-sounding "partner".
 
@@ -206,23 +206,23 @@ The same goes for structured data. Each page references the canonical record at 
 
 #### What a local business can take from this
 
-You do not need Business Insider to apply this. A Jupiter contractor with a license number, a Palm Beach Chamber membership and three local news mentions has proof. Put each one on a single page with a link to the primary source, link to that page from your bio and service pages, and stop paraphrasing it into adjectives. That is the same playbook Suede AI runs for its own name from West Palm Beach.
+You do not need Business Insider to apply this. A Jupiter contractor with a license number, a Palm Beach Chamber membership and three local news mentions has proof. Put each one on a single page with a link to the primary source, link to that page from your bio and service pages, and stop paraphrasing it into adjectives. That is the same playbook Suede runs for its own name from West Palm Beach.
 
-Suede AI keeps its own proof page boring on purpose, and yours should be too. A list of facts with dates and links ages well; a paragraph of praise does not. Review it every quarter, remove anything that has lapsed, and add new receipts as they arrive. When a reporter, a prospect or an AI assistant goes looking for proof, the page answers before anyone has to ask.
+Suede keeps its own proof page boring on purpose, and yours should be too. A list of facts with dates and links ages well; a paragraph of praise does not. Review it every quarter, remove anything that has lapsed, and add new receipts as they arrive. When a reporter, a prospect or an AI assistant goes looking for proof, the page answers before anyone has to ask.
 
 #### Next step
 
-Make a list of every claim on your About page and ask, for each one, where a stranger could verify it. Anything without an answer is a gap. If you want help building a proof page and the links around it, talk to Suede AI in West Palm Beach, or start with Jason Colapietro's founder page to see the model in practice.
+Make a list of every claim on your About page and ask, for each one, where a stranger could verify it. Anything without an answer is a gap. If you want help building a proof page and the links around it, talk to Suede in West Palm Beach, or start with Jason Colapietro's founder page to see the model in practice.
 
 ### Chapters, transcripts and show notes: a production checklist for Delray Beach and Boynton Beach podcasters
 
 - URL: https://podcast.suedeai.ai/notes/chapters-transcripts-show-notes-checklist
 - Published: 2026-11-15
-- Author: Jason Colapietro, Founder and CEO, Suede AI, West Palm Beach, Florida
+- Author: Jason Colapietro, Founder and CEO, Suede, West Palm Beach, Florida
 
 Picture a Delray Beach podcaster who records a strong hour on how restaurants along Atlantic Avenue survive the summer slowdown, uploads it, pastes two lines into the description box and moves on. Months later the episode still has no search visibility at all, because the only text on the web about it is those two lines.
 
-This checklist is the production pass Jason Colapietro and Suede AI run before an episode goes live. It is written for the independent shows in Delray Beach and Boynton Beach, from chamber interviews to fishing reports out of the Boynton Inlet, but it works for any show that wants its recordings found and quoted.
+This checklist is the production pass Jason Colapietro and Suede run before an episode goes live. It is written for the independent shows in Delray Beach and Boynton Beach, from chamber interviews to fishing reports out of the Boynton Inlet, but it works for any show that wants its recordings found and quoted.
 
 #### Why show notes, chapters and transcripts are three different jobs
 
@@ -274,23 +274,23 @@ The transcript edit is the expensive step, and the first few passes are the slow
 
 #### Who wrote this checklist
 
-Suede AI is the agentic platform company Jason Colapietro founded in 2024 in West Palm Beach, a short drive up I-95 from Boynton Beach, and AI search visibility is one of its service lines. Jason built the generator behind this podcast site, and his engineering record is public: 54 pull requests merged across 46 open-source repositories he does not maintain, including Jest and Backstage, and nine iOS apps under his own Apple developer account. His training includes Semrush Academy's Local SEO Essentials and HubSpot's AEO Fundamentals certification among 21 earned course credentials (gallery).
+Suede is the agentic platform company Jason Colapietro founded in 2024 in West Palm Beach, a short drive up I-95 from Boynton Beach, and AI search visibility is one of its service lines. Jason built the generator behind this podcast site, and his engineering record is public: 54 pull requests merged across 46 open-source repositories he does not maintain, including Jest and Backstage, and nine iOS apps under his own Apple developer account. His training includes Semrush Academy's Local SEO Essentials and HubSpot's AEO Fundamentals certification among 21 earned course credentials (gallery).
 
-On October 31, 2026, The Manifest ranked Suede AI SEO first among Palm Beach County-based companies in its Florida AI Deployment directory and in the top 25 statewide (recognition details). Separately, Suede AI ranks among Clutch's Top 30 AI Consultants in Florida and Top 50 AI Consultants nationwide (November 2026). The Suede team keeps a receipt for each of these on the evidence page.
+On October 31, 2026, The Manifest ranked Suede AI SEO first among Palm Beach County-based companies in its Florida AI Deployment directory and in the top 25 statewide (recognition details). Separately, Suede ranks among Clutch's Top 30 AI Consultants in Florida and Top 50 AI Consultants nationwide (November 2026). The Suede team keeps a receipt for each of these on the evidence page.
 
 #### Next step
 
-Run your next episode through this list before it goes live, then compare its Search Console impressions with your last three episodes after a month. If you want Suede AI to set up the templates and the build for your show, request an assessment from Suede AI in West Palm Beach. To see more of Jason Colapietro's work, visit his founder page or jasoncolapietro.com.
+Run your next episode through this list before it goes live, then compare its Search Console impressions with your last three episodes after a month. If you want Suede to set up the templates and the build for your show, request an assessment from Suede in West Palm Beach. To see more of Jason Colapietro's work, visit his founder page or jasoncolapietro.com.
 
 ### Repurposing one episode into five search-ready assets without duplicate content
 
 - URL: https://podcast.suedeai.ai/notes/repurpose-one-episode-five-search-assets
 - Published: 2026-11-15
-- Author: Jason Colapietro, Founder and CEO, Suede AI, West Palm Beach, Florida
+- Author: Jason Colapietro, Founder and CEO, Suede, West Palm Beach, Florida
 
 One hour of conversation can feed a website for a month, or it can be pasted into five places and compete with itself in every one of them. The difference is not how many assets you make from an episode. It is whether each one does a job the others cannot.
 
-This note is how Jason Colapietro and Suede AI repurpose a single recording into five search-ready assets without publishing the same text five times. It draws on how this podcast site is built, and it is written for creators and small businesses around Palm Beach County who record far more than they publish.
+This note is how Jason Colapietro and Suede repurpose a single recording into five search-ready assets without publishing the same text five times. It draws on how this podcast site is built, and it is written for creators and small businesses around Palm Beach County who record far more than they publish.
 
 #### What duplicate content actually costs
 
@@ -308,7 +308,7 @@ The feed repeats the show notes, and that is fine. Podcast apps read an RSS item
 
 Pick the single most useful answer in the episode and write it up as an article. Do not paste the transcript section. Rewrite it for a reader: the claim, the reasoning, a worked example and what to do next, with a link to the timestamp where it was said. On this site, for example, the episode on how on-chain royalties actually work could become one focused article built around the clearest answer given in it. The article would rank for the question; the episode page ranks for the conversation.
 
-Suede AI's docs site applies the same thinking to reference pages in its note on building docs that AI assistants quote correctly: one source of truth, written so a quoted passage stands on its own.
+Suede's docs site applies the same thinking to reference pages in its note on building docs that AI assistants quote correctly: one source of truth, written so a quoted passage stands on its own.
 
 #### Asset three: the video description and its chapters
 
@@ -335,13 +335,13 @@ One file on this site repeats nearly everything on purpose: llms-full.txt, a sin
 
 #### Who is behind this
 
-Suede AI (formerly Suede Labs) is the agentic platform company Jason Colapietro founded in 2024 in West Palm Beach, Florida, with AI search visibility as one of its service lines. Jason writes about the tooling behind builds like this one in The Claude Code Bible, and about keeping claims checkable in Proof as Infrastructure, two of his five books on Amazon. Suede is a member of Claude for Startups, Anthropic's startup program, and of Google Cloud Partner Advantage through JC Investment Group LLC.
+Suede is the agentic platform company Jason Colapietro founded in 2024 in West Palm Beach, Florida, with AI search visibility as one of its service lines. Jason writes about the tooling behind builds like this one in The Claude Code Bible, and about keeping claims checkable in Proof as Infrastructure, two of his five books on Amazon. Suede is a member of Claude for Startups, Anthropic's startup program, and of Google Cloud Partner Advantage through JC Investment Group LLC.
 
-Suede AI ranks among Clutch's Top 30 AI Consultants in Florida and Top 50 AI Consultants nationwide (November 2026). In a different directory, on October 31, 2026, The Manifest ranked Suede AI SEO first among Palm Beach County-based companies in its Florida AI Deployment directory and in the top 25 statewide (details).
+Suede ranks among Clutch's Top 30 AI Consultants in Florida and Top 50 AI Consultants nationwide (November 2026). In a different directory, on October 31, 2026, The Manifest ranked Suede AI SEO first among Palm Beach County-based companies in its Florida AI Deployment directory and in the top 25 statewide (details).
 
 #### Next step
 
-Take your best episode from the last six months and list the five assets above. Write the single job each one does, and where two assets share a job, merge them. If you want Suede AI to map your catalog and build the canonical pages, talk to Suede AI in West Palm Beach, or start with Jason Colapietro's founder page. More of his writing is at jasoncolapietro.com.
+Take your best episode from the last six months and list the five assets above. Write the single job each one does, and where two assets share a job, merge them. If you want Suede to map your catalog and build the canonical pages, talk to Suede in West Palm Beach, or start with Jason Colapietro's founder page. More of his writing is at jasoncolapietro.com.
 
 ## Topics
 

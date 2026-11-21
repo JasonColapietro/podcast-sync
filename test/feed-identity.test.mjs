@@ -127,7 +127,7 @@ test("no page restates a thinner copy of the canonical Person", () => {
   assert.ok(references > 0, "expected the canonical Person to be referenced somewhere");
 });
 
-test("the Organization points at the real Suede AI Wikidata entity", () => {
+test("the Organization points at the real Suede Wikidata entity", () => {
   for (const name of ["index.html", "about.html", "contact.html"]) {
     const html = readFileSync(join(root, "public", name), "utf8");
     // Q131489584 is a Cameroonian lawyer, not this company.

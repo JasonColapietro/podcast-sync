@@ -95,7 +95,7 @@ export const TOPIC_HUBS = [
     name: "Rights registry and provenance",
     title: "Music Rights Registry and Provenance: Episodes | AI Suede Podcast",
     description: (n) =>
-      `${n} AI Suede Podcast recordings on public records of who made a work: the Suede AI rights registry, on-chain provenance and signed artist identity.`,
+      `${n} AI Suede Podcast recordings on public records of who made a work: the Suede rights registry, on-chain provenance and signed artist identity.`,
     short: "Public records of who made a work: the rights registry, provenance and signatures.",
     lede:
       "Recordings whose show notes cover public records of who made a work: the Suede rights registry, on-chain provenance for tracking rights, and cryptographic signatures that tie an artist to their own catalog.",

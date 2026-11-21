@@ -75,7 +75,7 @@ export const hubEpisodes = (hub, episodes) =>
   episodes.filter((e) => topicsFor(e).some((h) => h.slug === hub.slug));
 
 /**
- * Suede AI products the notes name. `lines` are the naming lines a product
+ * Suede products the notes name. `lines` are the naming lines a product
  * callout may quote; it can be empty when the only line that names the product
  * is a legal-effect claim, and the product is still listed, because the notes
  * still name it.

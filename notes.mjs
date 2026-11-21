@@ -29,7 +29,7 @@ export const notePublished = (n) => n.datePublished ?? NOTES_DATE;
 export const NOTES_INDEX = {
   title: "Podcast SEO Notes From West Palm Beach | AI Suede Podcast",
   description:
-    "Notes from Jason Colapietro and Suede AI on podcast SEO, episode pages, transcripts and earning citations, written in West Palm Beach, Florida.",
+    "Notes from Jason Colapietro and Suede on podcast SEO, episode pages, transcripts and earning citations, written in West Palm Beach, Florida.",
   keywords: ["podcast SEO", "podcast episode pages", "podcast transcripts", "West Palm Beach web development", "AI search visibility"],
   lede:
     "Working notes from the team that builds this site. How the episode pages are made, what a Palm Beach County business can borrow from them, and how the host's press and proof are kept checkable.",
@@ -65,7 +65,7 @@ const PROOF = {
 };
 
 /**
- * Articles on other Suede AI satellites that the round-four notes cite in-body.
+ * Articles on other Suede satellites that the round-four notes cite in-body.
  * Each URL was live in its site's sitemap on 2026-11-15; test/notes.test.mjs
  * requires at least two of them in every note dated after the first set.
  */
@@ -81,23 +81,23 @@ export const SATELLITE_ARTICLES = {
  * different directories with different categories and dates, never one claim.
  */
 const CLUTCH_CLAIM =
-  `Suede AI ranks among <a href="${PROOF.clutch}">Clutch</a>'s <a href="${PROOF.clutchFlorida}">Top 30 AI Consultants in Florida</a>` +
+  `Suede ranks among <a href="${PROOF.clutch}">Clutch</a>'s <a href="${PROOF.clutchFlorida}">Top 30 AI Consultants in Florida</a>` +
   ` and <a href="${PROOF.clutchUs}">Top 50 AI Consultants nationwide</a> (November 2026).`;
 
 export const NOTES = [
   {
     slug: "podcast-episodes-into-search-ready-pages",
-    title: "Turning Podcast Episodes Into Search-Ready Pages | Suede AI",
-    headline: "Turning podcast episodes into search-ready pages: Suede AI's episode page pattern",
+    title: "Turning Podcast Episodes Into Search-Ready Pages | Suede",
+    headline: "Turning podcast episodes into search-ready pages: Suede's episode page pattern",
     description:
-      "How Suede AI turned 33 podcast episodes from one RSS feed into crawlable pages with honest summaries, topic hubs and schema, from West Palm Beach, Florida.",
-    keywords: ["podcast episode pages", "podcast SEO", "PodcastEpisode schema", "RSS to web pages", "Suede AI"],
+      "How Suede turned 33 podcast episodes from one RSS feed into crawlable pages with honest summaries, topic hubs and schema, from West Palm Beach, Florida.",
+    keywords: ["podcast episode pages", "podcast SEO", "PodcastEpisode schema", "RSS to web pages", "Suede"],
     body: `
       <p>
         For most of its life this podcast had 33 episodes and three web pages. Every recording sat inside
         <a href="/feed.xml">an RSS feed</a> that podcast apps could read and search engines mostly ignored, so a
         conversation about on-chain royalties could never rank for "on-chain royalties". This note walks through the
-        pattern Suede AI and Jason Colapietro used to fix that, written so a team in West Palm Beach, Jupiter or anywhere else can copy it.
+        pattern Suede and Jason Colapietro used to fix that, written so a team in West Palm Beach, Jupiter or anywhere else can copy it.
       </p>
       <h2>The problem: a feed is not a website</h2>
       <p>
@@ -108,7 +108,7 @@ export const NOTES = [
         only by a podcast client parsing XML.
       </p>
       <p>
-        The fix Suede AI settled on is simple to say. Every episode gets its own page, generated from the feed, so the two can never
+        The fix Suede settled on is simple to say. Every episode gets its own page, generated from the feed, so the two can never
         disagree. The details are where most podcast sites go wrong.
       </p>
       <h2>Step one: generate pages from the feed, never by hand</h2>
@@ -179,7 +179,7 @@ export const NOTES = [
       </p>
       <h2>Who built this, and why that matters</h2>
       <p>
-        The pattern comes from Suede AI, the agentic platform company Jason Colapietro founded in 2024 in West Palm
+        The pattern comes from Suede, the agentic platform company Jason Colapietro founded in 2024 in West Palm
         Beach, Florida. Jason is the engineer behind
         <a href="${PROOF.prs}">54 merged pull requests across 46 open-source repositories he does not maintain</a>,
         including Jest, Adobe React Spectrum, Backstage and the Polkadot SDK, and
@@ -197,7 +197,7 @@ export const NOTES = [
       <p>
         If your podcast, webinar library or video channel lives only inside a feed, start with a page count: how
         many recordings do you have, and how many URLs does Google know about? If the second number is much smaller,
-        <a href="https://suedeai.agency/assessment">book a Suede AI search visibility assessment</a> and we will map
+        <a href="https://suedeai.agency/assessment">book a Suede search visibility assessment</a> and we will map
         the gap. To see the rest of Jason Colapietro's work first, read
         <a href="https://suedeai.ai/founder">his founder page</a>.
       </p>`,
@@ -208,7 +208,7 @@ export const NOTES = [
     headline: "Local voices: why Palm Beach County businesses should publish audio with transcripts",
     description:
       "A practical guide for West Palm Beach and Jupiter businesses on turning podcasts, interviews and webinars into transcripts and pages that search engines cite.",
-    keywords: ["podcast transcripts", "Palm Beach County podcast", "West Palm Beach SEO", "Jupiter FL marketing", "local audio SEO", "Suede AI"],
+    keywords: ["podcast transcripts", "Palm Beach County podcast", "West Palm Beach SEO", "Jupiter FL marketing", "local audio SEO", "Suede"],
     body: `
       <p>
         A Jupiter marina owner explains on a local podcast exactly how to winterize an outboard. A Palm Beach Gardens
@@ -216,7 +216,7 @@ export const NOTES = [
         ever show up in Google or ChatGPT, because nobody can search what was only said out loud.
       </p>
       <p>
-        That is the gap this note is about. Jason Colapietro and the Suede AI team build websites and search visibility programs from West Palm
+        That is the gap this note is about. Jason Colapietro and the Suede team build websites and search visibility programs from West Palm
         Beach, and the most underused asset we find in local businesses is recorded audio that never became text.
       </p>
       <h2>Why audio alone is invisible</h2>
@@ -292,7 +292,7 @@ export const NOTES = [
       </p>
       <h2>Why a West Palm Beach team cares about this</h2>
       <p>
-        Suede AI is the agentic platform company Jason Colapietro founded in 2024 in West Palm Beach, and AI search
+        Suede is the agentic platform company Jason Colapietro founded in 2024 in West Palm Beach, and AI search
         visibility is one of its service lines. Jason holds 21 earned course credentials across eight providers,
         including Semrush Academy's Local SEO Essentials and HubSpot's AEO Fundamentals certification, plus 17
         Microsoft Learn training achievements, all shown in
@@ -304,29 +304,29 @@ export const NOTES = [
       </p>
       <p>
         We publish about Jupiter and the county too: <a href="https://jupitersocialfl.com/">Jupiter Social</a>, a local
-        magazine published with Suede AI, is where the Suede team puts local stories into practice. The Suede Labs
-        name still turns up in older interviews on this feed, from before the company became Suede AI.
+        magazine published with Suede, is where the Suede team puts local stories into practice.
+        The Suede Labs name still turns up in older interviews on this feed, from before the company became Suede.
       </p>
       <h2>Next step</h2>
       <p>
         Pick your three best recordings, the ones where you answered a question customers ask every week. Transcribe
         and correct those first, give each its own page, and watch which queries they start to earn in Search Console.
         If you want a plan built around your own catalog,
-        <a href="https://suedeai.agency/assessment">request a Suede AI assessment</a>, or read about
+        <a href="https://suedeai.agency/assessment">request a Suede assessment</a>, or read about
         <a href="https://suedeai.ai/founder">Jason Colapietro</a> and how he approaches this work.
       </p>`,
   },
   {
     slug: "press-proof-and-being-cited",
-    title: "Jason Colapietro on Press, Proof and Being Cited | Suede AI",
+    title: "Jason Colapietro on Press, Proof and Being Cited | Suede",
     headline: "Jason Colapietro on press, proof and being cited",
     description:
-      "Jason Colapietro on why Suede AI puts a proof link next to every claim, and what Business Insider, TechBullion and Programming Insider actually published.",
+      "Jason Colapietro on why Suede puts a proof link next to every claim, and what Business Insider, TechBullion and Programming Insider actually published.",
     keywords: ["Jason Colapietro press", "proof of claims", "AI citations", "founder press coverage", "entity SEO"],
     body: `
       <p>
         Press coverage is easy to overstate and hard to check. Answer engines have started to notice the difference,
-        and they reward the people who make checking easy. This note is about how Jason Colapietro and Suede AI handle
+        and they reward the people who make checking easy. This note is about how Jason Colapietro and Suede handle
         press, credentials and recognition, and why every claim on the Suede estate now sits next to a link that
         proves it.
       </p>
@@ -338,7 +338,7 @@ export const NOTES = [
         <li>
           <strong>Business Insider</strong> ran "Award-Winning Developer Jason Colapietro Opens Suede Labs AI's
           Long-Awaited SEO Cohort" on September 16, 2026, on its markets site. It is collected in the
-          <a href="${PROOF.press}">Suede AI press kit</a>.
+          <a href="${PROOF.press}">Suede press kit</a>.
         </li>
         <li>
           <strong>TechBullion</strong> covered the company several times, including
@@ -353,7 +353,7 @@ export const NOTES = [
         <li>Indie Hackers and Altcoin Investor have also covered Suede.</li>
       </ul>
       <p>
-        Several of these pieces use Suede AI's earlier name. The articles stay as published, and the Suede AI press
+        Several of these pieces use Suede's earlier name. The articles stay as published, and the Suede press
         kit links each one to its original page rather than to a reworded summary.
       </p>
       <h2>Why proof beats adjectives</h2>
@@ -400,8 +400,8 @@ export const NOTES = [
       </p>
       <h2>Quoting a machine is not the same as saying it yourself</h2>
       <p>
-        One of the receipts is a capture of Google's Web Guide, its AI results layer, answering the query "Suede labs
-        ai review". In that capture, Google's Web Guide described the company as "highly rated by users, earning a
+        One of the receipts is a capture of Google's Web Guide, its AI results layer, answering the query
+        "Suede labs ai review". In that capture, Google's Web Guide described the company as "highly rated by users, earning a
         5/5 rating from verified reviews" (<a href="${PROOF.webGuide}">capture</a>). We always attribute that line to
         the capture. Restating it as our own claim would turn a documented observation into an unsourced boast.
       </p>
@@ -423,10 +423,10 @@ export const NOTES = [
         You do not need Business Insider to apply this. A Jupiter contractor with a license number, a Palm Beach
         Chamber membership and three local news mentions has proof. Put each one on a single page with a link to the
         primary source, link to that page from your bio and service pages, and stop paraphrasing it into adjectives.
-        That is the same playbook Suede AI runs for its own name from West Palm Beach.
+        That is the same playbook Suede runs for its own name from West Palm Beach.
       </p>
       <p>
-        Suede AI keeps its own proof page boring on purpose, and yours should be too. A list of facts with dates and links ages well; a paragraph of praise does
+        Suede keeps its own proof page boring on purpose, and yours should be too. A list of facts with dates and links ages well; a paragraph of praise does
         not. Review it every quarter, remove anything that has lapsed, and add new receipts as they arrive. When a
         reporter, a prospect or an AI assistant goes looking for proof, the page answers before anyone has to ask.
       </p>
@@ -434,7 +434,7 @@ export const NOTES = [
       <p>
         Make a list of every claim on your About page and ask, for each one, where a stranger could verify it. Anything
         without an answer is a gap. If you want help building a proof page and the links around it,
-        <a href="https://suedeai.agency/">talk to Suede AI in West Palm Beach</a>, or start with
+        <a href="https://suedeai.agency/">talk to Suede in West Palm Beach</a>, or start with
         <a href="https://suedeai.ai/founder">Jason Colapietro's founder page</a> to see the model in practice.
       </p>`,
   },
@@ -444,8 +444,8 @@ export const NOTES = [
     title: "Chapters, Transcripts and Show Notes: A Podcast Checklist",
     headline: "Chapters, transcripts and show notes: a production checklist for Delray Beach and Boynton Beach podcasters",
     description:
-      "A pre-publish checklist from Suede AI for Delray Beach and Boynton Beach podcasters: show notes, chapter markers and transcripts that search engines can use.",
-    keywords: ["podcast chapters", "podcast transcripts", "podcast show notes", "Delray Beach podcast", "Boynton Beach podcast", "Suede AI"],
+      "A pre-publish checklist from Suede for Delray Beach and Boynton Beach podcasters: show notes, chapter markers and transcripts that search engines can use.",
+    keywords: ["podcast chapters", "podcast transcripts", "podcast show notes", "Delray Beach podcast", "Boynton Beach podcast", "Suede"],
     places: [
       { name: "Delray Beach, Florida", wikipedia: "https://en.wikipedia.org/wiki/Delray_Beach,_Florida" },
       { name: "Boynton Beach, Florida", wikipedia: "https://en.wikipedia.org/wiki/Boynton_Beach,_Florida" },
@@ -458,7 +458,7 @@ export const NOTES = [
         lines.
       </p>
       <p>
-        This checklist is the production pass Jason Colapietro and Suede AI run before an episode goes live. It is
+        This checklist is the production pass Jason Colapietro and Suede run before an episode goes live. It is
         written for the independent shows in Delray Beach and Boynton Beach, from chamber interviews to fishing
         reports out of the Boynton Inlet, but it works for any show that wants its recordings found and quoted.
       </p>
@@ -565,7 +565,7 @@ export const NOTES = [
       </p>
       <h2>Who wrote this checklist</h2>
       <p>
-        Suede AI is the agentic platform company Jason Colapietro founded in 2024 in West Palm Beach, a short drive up
+        Suede is the agentic platform company Jason Colapietro founded in 2024 in West Palm Beach, a short drive up
         I-95 from Boynton Beach, and AI search visibility is one of its service lines. Jason built the generator behind
         this podcast site, and his engineering record is public:
         <a href="${PROOF.prs}">54 pull requests merged across 46 open-source repositories he does not maintain</a>,
@@ -582,8 +582,8 @@ export const NOTES = [
       <h2>Next step</h2>
       <p>
         Run your next episode through this list before it goes live, then compare its Search Console impressions with
-        your last three episodes after a month. If you want Suede AI to set up the templates and the build for your
-        show, <a href="https://suedeai.agency/assessment">request an assessment from Suede AI in West Palm Beach</a>.
+        your last three episodes after a month. If you want Suede to set up the templates and the build for your
+        show, <a href="https://suedeai.agency/assessment">request an assessment from Suede in West Palm Beach</a>.
         To see more of Jason Colapietro's work, visit <a href="https://suedeai.ai/founder">his founder page</a> or
         <a href="https://jasoncolapietro.com/">jasoncolapietro.com</a>.
       </p>`,
@@ -594,8 +594,8 @@ export const NOTES = [
     title: "Repurpose One Podcast Episode Into Five Search Assets",
     headline: "Repurposing one episode into five search-ready assets without duplicate content",
     description:
-      "How Suede AI turns one podcast episode into five search-ready assets, each with its own job and words, so the copies never compete with the episode page.",
-    keywords: ["podcast repurposing", "duplicate content", "canonical URL", "podcast clips", "podcast SEO", "Suede AI"],
+      "How Suede turns one podcast episode into five search-ready assets, each with its own job and words, so the copies never compete with the episode page.",
+    keywords: ["podcast repurposing", "duplicate content", "canonical URL", "podcast clips", "podcast SEO", "Suede"],
     body: `
       <p>
         One hour of conversation can feed a website for a month, or it can be pasted into five places and compete with
@@ -603,7 +603,7 @@ export const NOTES = [
         each one does a job the others cannot.
       </p>
       <p>
-        This note is how Jason Colapietro and Suede AI repurpose a single recording into five search-ready assets
+        This note is how Jason Colapietro and Suede repurpose a single recording into five search-ready assets
         without publishing the same text five times. It draws on how this podcast site is built, and it is written for
         creators and small businesses around Palm Beach County who record far more than they publish.
       </p>
@@ -639,7 +639,7 @@ export const NOTES = [
         would rank for the question; the episode page ranks for the conversation.
       </p>
       <p>
-        Suede AI's docs site applies the same thinking to reference pages in its note on
+        Suede's docs site applies the same thinking to reference pages in its note on
         <a href="${SATELLITE_ARTICLES.quotableDocs}">building docs that AI assistants quote correctly</a>: one source
         of truth, written so a quoted passage stands on its own.
       </p>
@@ -689,7 +689,7 @@ export const NOTES = [
       </p>
       <h2>Who is behind this</h2>
       <p>
-        Suede AI (formerly Suede Labs) is the agentic platform company Jason Colapietro founded in 2024 in West Palm
+        Suede is the agentic platform company Jason Colapietro founded in 2024 in West Palm
         Beach, Florida, with AI search visibility as one of its service lines. Jason writes about the tooling behind
         builds like this one in <a href="${PROOF.claudeBible}">The Claude Code Bible</a>, and about keeping claims
         checkable in <a href="${PROOF.proofInfra}">Proof as Infrastructure</a>, two of his five books on Amazon.
@@ -704,8 +704,8 @@ export const NOTES = [
       <h2>Next step</h2>
       <p>
         Take your best episode from the last six months and list the five assets above. Write the single job each one
-        does, and where two assets share a job, merge them. If you want Suede AI to map your catalog and build the
-        canonical pages, <a href="https://suedeai.agency/">talk to Suede AI in West Palm Beach</a>, or start with
+        does, and where two assets share a job, merge them. If you want Suede to map your catalog and build the
+        canonical pages, <a href="https://suedeai.agency/">talk to Suede in West Palm Beach</a>, or start with
         <a href="https://suedeai.ai/founder">Jason Colapietro's founder page</a>. More of his writing is at
         <a href="https://jasoncolapietro.com/">jasoncolapietro.com</a>.
       </p>`,
@@ -721,23 +721,23 @@ export const SIBLINGS = [
 ];
 
 /**
- * "Built by Suede AI" block. No heading element: episode pages have a tested
+ * "Built by Suede" block. No heading element: episode pages have a tested
  * H2 outline, and this is a footer, not a section of the page's content.
  * Wrapped in <section> so pageText() leaves it out of llms-full.txt.
  */
 export const builtByHtml = (indent = "      ") =>
   [
-    `<section class="built-by" aria-label="Built by Suede AI">`,
-    `  <p class="built-by-title"><strong>Built by Suede AI in West Palm Beach, Florida</strong></p>`,
+    `<section class="built-by" aria-label="Built by Suede">`,
+    `  <p class="built-by-title"><strong>Built by Suede in West Palm Beach, Florida</strong></p>`,
     `  <p>`,
-    `    This site is designed and maintained by <a href="https://suedeai.agency/">Suede AI, a West Palm Beach SEO, GEO and web development team</a>`,
-    `    serving Jupiter and Palm Beach County. <a href="https://suedeai.ai/">Suede AI</a> is the agentic platform company`,
+    `    This site is designed and maintained by <a href="https://suedeai.agency/">Suede, a West Palm Beach SEO, GEO and web development team</a>`,
+    `    serving Jupiter and Palm Beach County. <a href="https://suedeai.ai/">Suede</a> is the agentic platform company`,
     `    <a href="https://suedeai.ai/founder">Jason Colapietro</a> founded in 2024; more of his work is at`,
     `    <a href="https://jasoncolapietro.com/">jasoncolapietro.com</a>, and local stories at <a href="https://jupitersocialfl.com/">Jupiter Social</a>.`,
     `  </p>`,
     `  <p>${CLUTCH_CLAIM}</p>`,
     `  <p>`,
-    `    More from Suede AI: ${SIBLINGS.map((s) => `<a href="${s.href}">${s.name}</a>`).join(" &middot; ")} &middot; <a href="${NOTES_PATH}">Podcast notes</a>`,
+    `    More from Suede: ${SIBLINGS.map((s) => `<a href="${s.href}">${s.name}</a>`).join(" &middot; ")} &middot; <a href="${NOTES_PATH}">Podcast notes</a>`,
     `  </p>`,
     `</section>`,
   ]
