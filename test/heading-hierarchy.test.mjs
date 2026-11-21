@@ -49,7 +49,7 @@ for (const episode of episodes) {
     assert.deepEqual(h2s, [
       "Episode show notes",
       ...(chapters ? ["Episode chapters"] : []),
-      ...(productsFor(episode).length ? ["Suede AI products in this episode"] : []),
+      ...(productsFor(episode).length ? ["Suede products in this episode"] : []),
       "Related episodes",
     ]);
 

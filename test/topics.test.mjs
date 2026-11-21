@@ -208,13 +208,13 @@ test("a legal-effect claim stays in its dated notes and is not repeated beside a
   assert.ok(claimed.length >= 3, "expected the court-enforceable lines in the feed");
   for (const e of claimed) {
     const html = episodeHtml(e);
-    const notes = html.split("<h2>Episode show notes</h2>")[1].split("<h2>Suede AI products")[0];
+    const notes = html.split("<h2>Episode show notes</h2>")[1].split("<h2>Suede products")[0];
     assert.match(notes, LEGAL_EFFECT_CLAIM, `${e.slug}: the notes lost their own line`);
   }
   for (const e of episodes) {
     const html = episodeHtml(e);
     if (!productsFor(e).length) continue;
-    const block = html.split("<h2>Suede AI products in this episode</h2>")[1].split("</section>")[0];
+    const block = html.split("<h2>Suede products in this episode</h2>")[1].split("</section>")[0];
     assert.doesNotMatch(block, LEGAL_EFFECT_CLAIM, `${e.slug}: product block repeats a legal-effect claim`);
     // Quotes from the notes carry the notes' own publish date.
     const labels = [...block.matchAll(/<span class="ep-meta">([^<]*)/g)].map((m) => m[1]);

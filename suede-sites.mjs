@@ -1,5 +1,5 @@
 /**
- * Suede AI products that episodes discuss, and the live site for each.
+ * Suede products that episodes discuss, and the live site for each.
  *
  * An episode page (and a topic hub) links a product only when a line of the
  * show notes names it (`match`, tested against the notes in topics.mjs). The
@@ -18,12 +18,12 @@
 export const PRODUCTS = [
   {
     key: "registry",
-    name: "Suede AI IP Registry",
-    title: "Suede AI IP Registry · The ID and trust layer for music",
+    name: "Suede IP Registry",
+    title: "Suede IP Registry · The ID and trust layer for music",
     href: "https://registry.suedeai.ai",
     description:
       "The ID and trust layer for music: one verifiable public ID per work, with a wallet-signed creator claim, contributors, timestamp, and derivative links on Base and Avalanche.",
-    // "The on-chain registry", "The Suede Labs registry", "rights registry".
+    // "The on-chain registry", "The Suede registry", "rights registry".
     match: /\bregistry\b/i,
   },
   {

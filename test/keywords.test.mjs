@@ -82,5 +82,5 @@ test("withBrand dedupes, keeps one brand term and caps the list", () => {
   assert.equal(many.length, MAX_TERMS);
   assert.equal(many.at(-1), BRAND_TERM);
   assert.equal(many[0], "term 0");
-  assert.ok(!/suede labs ai/i.test(BRAND_TERM), "company name is Suede AI");
+  assert.ok(!/suede labs ai/i.test(BRAND_TERM), "company name is Suede");
 });

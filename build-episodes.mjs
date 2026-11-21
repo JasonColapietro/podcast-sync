@@ -747,7 +747,7 @@ ${chapters.items
 const productsSection = (e, mentions) => {
   const published = e.date ? `, published ${esc(e.date)}` : "";
   return `      <section class="notes-section">
-        <h2>Suede AI products in this episode</h2>
+        <h2>Suede products in this episode</h2>
         <ul class="products">
 ${mentions
   .map(
@@ -1099,7 +1099,7 @@ ${builtByHtml()}
 
 const APPEARANCES_TITLE = "Podcast appearances | Jason Colapietro";
 const APPEARANCES_DESC =
-  "Guest appearances by Jason Colapietro (Johnny Suede) of Suede AI on other people's " +
+  "Guest appearances by Jason Colapietro (Johnny Suede) of Suede on other people's " +
   "podcasts, AMAs and Spaces, grouped by show with links to each recording.";
 
 const appearancesJsonLd = (groups) => {
@@ -1246,7 +1246,7 @@ ${g.episodes
           <a href="${NOTES_PATH}">Notes</a>
           <a href="/contact">Contact</a>
           <a href="https://suedeai.ai/founder">Jason Colapietro</a>
-          <a href="https://suedeai.ai">Suede AI</a>
+          <a href="https://suedeai.ai">Suede</a>
           <a href="https://suedeai.ai/privacy">Privacy</a>
         </nav>
       </p>
@@ -1334,7 +1334,7 @@ const noteFooterNav = `      <nav class="footer-nav" aria-label="Footer">
 
 const authorBox = `      <aside class="author-box" aria-label="About the author">
         <p>
-          <strong>Jason Colapietro</strong>, Founder and CEO, Suede AI, West Palm Beach, Florida.
+          <strong>Jason Colapietro</strong>, Founder and CEO, Suede, West Palm Beach, Florida.
           <a href="https://suedeai.ai/founder">Founder page</a> &middot;
           <a href="https://jasoncolapietro.com/">jasoncolapietro.com</a> &middot;
           <a href="https://seo.suedeai.ai/evidence">Proof of every claim</a>
@@ -1397,7 +1397,7 @@ ${NOTE_STYLE}
       <p class="eyebrow">Notes</p>
       <article class="article">
         <h1>${esc(n.headline)}</h1>
-        <p class="meta">By <a href="https://suedeai.ai/founder">Jason Colapietro</a>, Suede AI &middot; West Palm Beach, Florida &middot; <time datetime="${notePublished(n)}">${notePublished(n)}</time></p>
+        <p class="meta">By <a href="https://suedeai.ai/founder">Jason Colapietro</a>, Suede &middot; West Palm Beach, Florida &middot; <time datetime="${notePublished(n)}">${notePublished(n)}</time></p>
 ${n.body.replace(/^\n/, "").replace(/^ {6}/gm, "        ")}
       </article>
 ${authorBox}
@@ -1546,8 +1546,8 @@ export const llmsFull = (episodes, hubs, groups) => {
     "> The complete public text of podcast.suedeai.ai: the show, its host, every episode's show notes, the topic hubs and the guest appearances index. Generated from the podcast feed at build time, so it matches the published pages.",
     "",
     `- Show: ${SHOW}`,
-    "- Host: Jason Colapietro (also known as Johnny Suede), founder of Suede AI: https://suedeai.ai/founder",
-    "- Publisher: Suede AI (also known as Suede Labs): https://suedeai.ai",
+    "- Host: Jason Colapietro (also known as Johnny Suede), founder of Suede: https://suedeai.ai/founder",
+    "- Publisher: Suede: https://suedeai.ai. Suede was formerly known as Suede AI and Suede Labs.",
     `- Site: ${SITE}/`,
     `- RSS feed: ${SITE}/feed.xml`,
     "- Apple Podcasts: https://podcasts.apple.com/us/podcast/ai-suede-build-create-ship/id6787263913",
@@ -1578,7 +1578,7 @@ export const llmsFull = (episodes, hubs, groups) => {
       "",
       `- URL: ${noteUrl(n)}`,
       `- Published: ${notePublished(n)}`,
-      "- Author: Jason Colapietro, Founder and CEO, Suede AI, West Palm Beach, Florida",
+      "- Author: Jason Colapietro, Founder and CEO, Suede, West Palm Beach, Florida",
       "",
       noteText(n),
       "",
@@ -1628,7 +1628,7 @@ export const llmsFull = (episodes, hubs, groups) => {
 };
 
 /**
- * The "Built by Suede AI" block on a hand-written page (home, about, contact),
+ * The "Built by Suede" block on a hand-written page (home, about, contact),
  * between markers so a rebuild replaces it instead of stacking a second copy.
  */
 const withBuiltBy = (html) => {

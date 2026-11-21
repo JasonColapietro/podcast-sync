@@ -16,8 +16,8 @@
 export const SHOW = {
   title: 'AI Suede: Build, Create, Ship',
   subtitle: 'Music IP, AI tools, and solo founder stories',
-  description: 'AI tools for creators, music production, and solo founder stories from Jason Colapietro (also known as Johnny Suede) of Suede AI. Covers building with AI, programmable IP, and what it actually takes to ship as a solo founder.',
-  keywords: 'AI, music production, creator economy, programmable IP, blockchain music, Suede AI, Jason Colapietro, Johnny Suede, solo founder, Web3, Base, on-chain royalties, music NFT, artist ownership, crypto, entrepreneurship',
+  description: 'AI tools for creators, music production, and solo founder stories from Jason Colapietro (also known as Johnny Suede) of Suede. Covers building with AI, programmable IP, and what it actually takes to ship as a solo founder.',
+  keywords: 'AI, music production, creator economy, programmable IP, blockchain music, Suede, Jason Colapietro, Johnny Suede, solo founder, Web3, Base, on-chain royalties, music NFT, artist ownership, crypto, entrepreneurship',
   author: 'Jason Colapietro',
   // Ownership/administrative contact published in <itunes:owner>. This is a
   // machine-readable file that gets scraped wholesale, so it carries the
@@ -32,7 +32,7 @@ export const SHOW = {
   language: 'en-us',
   category: 'Technology',
   subcategory: 'Entrepreneurship',
-  copyright: `&#xA9; ${new Date().getFullYear()} Jason Colapietro / Suede AI`,
+  copyright: `&#xA9; ${new Date().getFullYear()} Jason Colapietro / Suede`,
   // Podcasting 2.0 stable GUID for this show (generated once, never changes)
   guid: 'b3e7f1a2-4c8d-4e9f-a0b1-2c3d4e5f6a7b',
   // Canonical Person record for the host, so the feed names the person behind
@@ -53,9 +53,12 @@ export function cleanText(text) {
   return String(text).replace(/\uFFFC/g, '').trim()
 }
 
-// The company is Suede AI. Upstream YouTube copy still says "Suede Labs AI"
-// (and episode titles say "Suede Labs"), so the feed renames it at render time.
-// Only display text changes: episode page slugs are pinned in build-episodes.mjs.
+// Episode titles and show notes are the published episode record. Upstream
+// YouTube copy says "Suede Labs AI" (and episode titles say "Suede Labs"); the
+// feed has rendered those episodes as "Suede AI" since that rename, and they
+// stay as published. The company is now "Suede" (owner direction, 2026-11-21):
+// that applies to the show's own channel copy (SHOW above) and the site, not
+// to episode text. Episode page slugs are pinned in build-episodes.mjs.
 export function renameBrand(text) {
   return String(text).replace(/Suede Labs AI\b/g, 'Suede AI')
 }
